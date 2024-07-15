@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Actor : MonoBehaviour, IEvent,IActor
+public abstract class Actor : MonoBehaviour, IEvent
 {
     protected ActorStatus status;
     protected ActorStats stats;
@@ -11,7 +11,7 @@ public abstract class Actor : MonoBehaviour, IEvent,IActor
         throw new System.NotImplementedException();
     }
 
-    public void SendEvent(IActor actor)
+    public void SendEvent(Actor actor)
     {
         throw new System.NotImplementedException();
     }
