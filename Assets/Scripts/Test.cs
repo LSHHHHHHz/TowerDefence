@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    public GameObject test;
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            PoolManager.instance.Get(0);
-        }
     }
 }
