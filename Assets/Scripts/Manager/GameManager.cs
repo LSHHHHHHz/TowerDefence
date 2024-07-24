@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     }
     public void AddNormarMonster()
     {
-        gameData.monsterData.AddNormarMonster(monsterName, new NormarMonsterProfileData(monsterName, iconPath, prefabPath, type), new NormarMonsterStatusData(maxHP, currentHP, damage), new NormarMonsterRewardData(rewardCoin, rewardExp));
+        gameData.monsterData.AddNormarMonster(monsterName, 
+            new NormarMonsterProfileData(monsterName, iconPath, prefabPath, type), 
+            new NormarMonsterStatusData(maxHP, currentHP, damage), 
+            new NormarMonsterRewardData(rewardCoin, rewardExp));
+        gameData.Save();
     }
 }

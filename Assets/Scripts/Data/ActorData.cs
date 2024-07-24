@@ -34,24 +34,44 @@ public class MonsterRewardData
 [Serializable]
 public class MonsterData
 {
-    public Dictionary<string, SetMonsterDatas> normarMonsterDatas;
-    public Dictionary<string, SetMonsterDatas> bossMonsterDatas;
+   // public Dictionary<string, SetMonsterDatas> normarMonsterDatas;
+   // public Dictionary<string, SetMonsterDatas> bossMonsterDatas;
+
+    public List<EntryDatas> normarMonsterEntryDatas;
+    public List<EntryDatas> bossMonsterEntryDatas;
     public MonsterData()
     {
-        normarMonsterDatas = new Dictionary<string, SetMonsterDatas>();
-        bossMonsterDatas = new Dictionary<string, SetMonsterDatas>();
+       // normarMonsterDatas = new Dictionary<string, SetMonsterDatas>();
+       // bossMonsterDatas = new Dictionary<string, SetMonsterDatas>();
+
+        normarMonsterEntryDatas = new List<EntryDatas>();
+        bossMonsterEntryDatas = new List<EntryDatas>();
     }
 
     public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterRewardData monsterRewardData)
     {
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData,monsterRewardData);
-        normarMonsterDatas[monsterID] = data;
+        //normarMonsterDatas[monsterID] = data;
+
+        normarMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
     }
     public void AddBossMonster(string monsterID, BossMonsterProfileData monsterProfileData, BossMonsterStatusData monsterStatusData, BossMonsterRewardData monsterRewardData)
     {
 
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
-        bossMonsterDatas[monsterID] = data;
+        //bossMonsterDatas[monsterID] = data;
+        bossMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
+    }
+}
+[Serializable]
+public class EntryDatas
+{
+    public string actorID;
+    SetMonsterDatas monsterDatas;
+    public EntryDatas(string id, SetMonsterDatas datas)
+    {
+        this.actorID = id;
+        this.monsterDatas = datas;
     }
 }
 [Serializable]

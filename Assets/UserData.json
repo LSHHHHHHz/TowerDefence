@@ -1,3 +1,10 @@
 {
-    "monsterData": {}
+    "monsterData": {
+        "normarMonsterEntryDatas": [
+            {
+                "actorID": "1번몬스터"
+            }
+        ],
+        "bossMonsterEntryDatas": []
+    }
 }
