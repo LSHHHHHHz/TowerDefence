@@ -2,9 +2,27 @@
     "monsterData": {
         "normarMonsterEntryDatas": [
             {
-                "actorID": "1번몬스터"
+                "actorID": "노말1",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "노말2",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "노말3",
+                "monsterDatas": {}
             }
         ],
-        "bossMonsterEntryDatas": []
+        "bossMonsterEntryDatas": [
+            {
+                "actorID": "보스1",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "보스2",
+                "monsterDatas": {}
+            }
+        ]
     }
 }

@@ -28,6 +28,8 @@ public class GameData
     public GameData()
     {
         monsterData = new MonsterData();
+        monsterData.InitializeMonsterData();
+        Save();
     }
     [ContextMenu("Save To Json Data")]
     public void Save()

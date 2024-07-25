@@ -33,17 +33,11 @@ public class MonsterRewardData
 
 [Serializable]
 public class MonsterData
-{
-   // public Dictionary<string, SetMonsterDatas> normarMonsterDatas;
-   // public Dictionary<string, SetMonsterDatas> bossMonsterDatas;
-
+{ 
     public List<EntryDatas> normarMonsterEntryDatas;
     public List<EntryDatas> bossMonsterEntryDatas;
     public MonsterData()
     {
-       // normarMonsterDatas = new Dictionary<string, SetMonsterDatas>();
-       // bossMonsterDatas = new Dictionary<string, SetMonsterDatas>();
-
         normarMonsterEntryDatas = new List<EntryDatas>();
         bossMonsterEntryDatas = new List<EntryDatas>();
     }
@@ -51,23 +45,42 @@ public class MonsterData
     public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterRewardData monsterRewardData)
     {
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData,monsterRewardData);
-        //normarMonsterDatas[monsterID] = data;
-
         normarMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
     }
     public void AddBossMonster(string monsterID, BossMonsterProfileData monsterProfileData, BossMonsterStatusData monsterStatusData, BossMonsterRewardData monsterRewardData)
     {
-
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
-        //bossMonsterDatas[monsterID] = data;
         bossMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
+    }
+    public void InitializeMonsterData()
+    {
+        AddNormarMonster("노말1", 
+            new NormarMonsterProfileData("이름 : 노말몬스터1", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterStatusData(500, 500, 0),
+            new NormarMonsterRewardData(10, 10));
+        AddNormarMonster("노말2",
+            new NormarMonsterProfileData("이름 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterStatusData(1000, 1000, 0),
+            new NormarMonsterRewardData(20, 20));
+        AddNormarMonster("노말3",
+            new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterStatusData(1500, 1500, 0),
+            new NormarMonsterRewardData(20, 20));
+        AddBossMonster("보스1",
+           new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.NormarMonster),
+           new BossMonsterStatusData(5000, 5000, 0),
+           new BossMonsterRewardData(100, 100));
+        AddBossMonster("보스2",
+           new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.NormarMonster),
+           new BossMonsterStatusData(8000, 8000, 0),
+           new BossMonsterRewardData(200, 200));
     }
 }
 [Serializable]
 public class EntryDatas
 {
     public string actorID;
-    SetMonsterDatas monsterDatas;
+    public SetMonsterDatas monsterDatas;
     public EntryDatas(string id, SetMonsterDatas datas)
     {
         this.actorID = id;
@@ -121,17 +134,32 @@ public class NormarMonsterRewardData : MonsterRewardData
 [Serializable]
 public class BossMonsterProfileData : ActorProfileData
 {
-
+    public BossMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActoryType type)
+    {
+        this.monstName = monsterName;
+        this.iconPath = iconPath;
+        this.prefabPath = prefabPath;
+        this.type = type;
+    }
 }
 [Serializable]
 public class BossMonsterStatusData : ActorStatusData
 {
-
+    public BossMonsterStatusData(int maxHP, int currentHP, int damage)
+    {
+        this.maxHP = maxHP;
+        this.curentHP = currentHP;
+        this.damage = damage;
+    }
 }
 [Serializable]
 public class BossMonsterRewardData : MonsterRewardData
-
 {
+    public BossMonsterRewardData(int rewardCoin, int rewardExp)
+    {
+        this.rewardCoin = rewardCoin;
+        this.rewardExp = rewardExp;
+    }
 
 }
 [Serializable]
