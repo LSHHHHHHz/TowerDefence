@@ -8,6 +8,8 @@ public class PoolManager : MonoBehaviour
     public static PoolManager instance;
     public List<GameObject> prefabs;
     public List<List<GameObject>> pools;
+    string preGameObjectPrefabPath;
+    GameObject preGameObject;
     private void Awake()
     {
         instance = this; 
@@ -19,12 +21,17 @@ public class PoolManager : MonoBehaviour
     }
 
     //프리펩아이디로
-    public GameObject SetPool(GameObject gameObject)
+    public GameObject GetObjectFromPool(string gameObjectPath)
     {
+        if (preGameObjectPrefabPath != gameObjectPath)
+        {
+            preGameObjectPrefabPath = gameObjectPath;
+            preGameObject = Resources.Load<GameObject>(gameObjectPath);
+        }
         int index = -1;
         for (int i = 0; i < prefabs.Count; i++)
         {
-            if (prefabs[i] == gameObject)
+            if (prefabs[i] == preGameObject)
             {
                 index = i;
                 break;
@@ -32,7 +39,7 @@ public class PoolManager : MonoBehaviour
         }
         if (index == -1)
         {
-            prefabs.Add(gameObject);
+            prefabs.Add(preGameObject);
             pools.Add(new List<GameObject>());
             index = prefabs.Count - 1;
         }

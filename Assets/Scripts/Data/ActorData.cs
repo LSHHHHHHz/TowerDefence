@@ -36,6 +36,7 @@ public class MonsterData
 { 
     public List<EntryDatas> normarMonsterEntryDatas;
     public List<EntryDatas> bossMonsterEntryDatas;
+    public List<MonsterWarePointData> monsterWarePointDatas;
     public MonsterData()
     {
         normarMonsterEntryDatas = new List<EntryDatas>();
@@ -55,7 +56,7 @@ public class MonsterData
     public void InitializeMonsterData()
     {
         AddNormarMonster("노말1", 
-            new NormarMonsterProfileData("이름 : 노말몬스터1", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterProfileData("이름 : 노말몬스터1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
             new NormarMonsterStatusData(500, 500, 0),
             new NormarMonsterRewardData(10, 10));
         AddNormarMonster("노말2",
@@ -74,7 +75,12 @@ public class MonsterData
            new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.NormarMonster),
            new BossMonsterStatusData(8000, 8000, 0),
            new BossMonsterRewardData(200, 200));
+
     }
+}
+public class MonsterWarePointData
+{
+    public Vector3[] monserWarePointPos;
 }
 [Serializable]
 public class EntryDatas
