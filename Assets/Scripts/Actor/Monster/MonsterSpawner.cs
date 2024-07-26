@@ -6,7 +6,6 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     Monster spawnMonster;
-    GameData gameData;
 
     ActoryType currentMonsterType;
     string currentMonsterId;
@@ -15,10 +14,6 @@ public class MonsterSpawner : MonoBehaviour
     int normarMonsterCount = 100;
     int initialBossMonsterCount = 0;
     int bossMonsterCount = 2;
-    private void Awake()
-    {
-        gameData = GameData.instance;
-    }
     private void Start()
     {
         StartCoroutine(SpawnCoroutine(currentMonsterType));
