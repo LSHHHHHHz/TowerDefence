@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MonsterSpawner : MonoBehaviour
+public class MonsterSpawn : MonoBehaviour
 {
     Monster spawnMonster;
 
@@ -18,14 +18,15 @@ public class MonsterSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnCoroutine(currentMonsterType));
     }
-    public void StartSpawn()
+    public void StartSpawn(MonsterData data)
     {
-
+        List<Vector3> redPoint = data.monsterWarePointDatas.GetWarePointPos("Red");
+        List<Vector3> bluePoint = data.monsterWarePointDatas.GetWarePointPos("Blue");
     }
     IEnumerator SpawnCoroutine(ActoryType type)
     {
-        int spawnCount =0;
-        int count =0 ;
+        int spawnCount = 0;
+        int count = 0;
         switch (type)
         {
             case ActoryType.NormarMonster:
@@ -36,7 +37,7 @@ public class MonsterSpawner : MonoBehaviour
                 break;
 
         }
-        while (count <spawnCount)
+        while (count < spawnCount)
         {
 
             yield return new WaitForSeconds(0.3f);

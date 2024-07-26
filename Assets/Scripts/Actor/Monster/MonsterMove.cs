@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterWarePoint : MonoBehaviour
+public class MonsterMove : MonoBehaviour
 {
     public Transform[] warePointPos;
     int warePointIndex = 0;
