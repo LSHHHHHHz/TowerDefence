@@ -2,25 +2,45 @@
     "monsterData": {
         "normarMonsterEntryDatas": [
             {
-                "actorID": "노말1",
+                "actorID": "노말몬스터1",
                 "monsterDatas": {}
             },
             {
-                "actorID": "노말2",
+                "actorID": "노말몬스터2",
                 "monsterDatas": {}
             },
             {
-                "actorID": "노말3",
+                "actorID": "노말몬스터3",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "노말몬스터1",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "노말몬스터2",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "노말몬스터3",
                 "monsterDatas": {}
             }
         ],
         "bossMonsterEntryDatas": [
             {
-                "actorID": "보스1",
+                "actorID": "보스몬스터1",
                 "monsterDatas": {}
             },
             {
-                "actorID": "보스2",
+                "actorID": "보스몬스터2",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "보스몬스터1",
+                "monsterDatas": {}
+            },
+            {
+                "actorID": "보스몬스터2",
                 "monsterDatas": {}
             }
         ]

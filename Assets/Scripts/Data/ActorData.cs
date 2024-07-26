@@ -41,6 +41,7 @@ public class MonsterData
     {
         normarMonsterEntryDatas = new List<EntryDatas>();
         bossMonsterEntryDatas = new List<EntryDatas>();
+        InitializeMonsterData();
     }
 
     public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterRewardData monsterRewardData)
@@ -55,27 +56,47 @@ public class MonsterData
     }
     public void InitializeMonsterData()
     {
-        AddNormarMonster("노말1", 
-            new NormarMonsterProfileData("이름 : 노말몬스터1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
+        AddNormarMonster("노말몬스터1", 
+            new NormarMonsterProfileData("골렘1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
             new NormarMonsterStatusData(500, 500, 0),
             new NormarMonsterRewardData(10, 10));
-        AddNormarMonster("노말2",
-            new NormarMonsterProfileData("이름 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
+        AddNormarMonster("노말몬스터2",
+            new NormarMonsterProfileData("골레 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
             new NormarMonsterStatusData(1000, 1000, 0),
             new NormarMonsterRewardData(20, 20));
-        AddNormarMonster("노말3",
+        AddNormarMonster("노말몬스터3",
             new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActoryType.NormarMonster),
             new NormarMonsterStatusData(1500, 1500, 0),
             new NormarMonsterRewardData(20, 20));
-        AddBossMonster("보스1",
+        AddBossMonster("보스몬스터1",
            new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.NormarMonster),
            new BossMonsterStatusData(5000, 5000, 0),
            new BossMonsterRewardData(100, 100));
-        AddBossMonster("보스2",
+        AddBossMonster("보스몬스터2",
            new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.NormarMonster),
            new BossMonsterStatusData(8000, 8000, 0),
            new BossMonsterRewardData(200, 200));
-
+    }
+    public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActoryType type)
+    {
+        List<EntryDatas> data = null;
+        switch (type)
+        {
+            case ActoryType.NormarMonster:
+                data = normarMonsterEntryDatas;
+                break;
+            case ActoryType.BossMonster:
+                data = bossMonsterEntryDatas;
+                break;
+        }
+        foreach (var entry in data)
+        {
+            if (entry.GetMonsterID() == monsterNumber)
+            {
+                return entry.GetMonsterData();
+            }
+        }
+        return null;
     }
 }
 public class MonsterWarePointData
@@ -91,6 +112,15 @@ public class EntryDatas
     {
         this.actorID = id;
         this.monsterDatas = datas;
+    }
+    public string GetMonsterID()
+    {
+        return actorID;
+    }
+
+    public SetMonsterDatas GetMonsterData()
+    {
+        return monsterDatas;
     }
 }
 [Serializable]
