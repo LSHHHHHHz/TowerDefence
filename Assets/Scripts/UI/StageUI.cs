@@ -6,27 +6,37 @@ using UnityEngine.UI;
 
 public class StageUI : MonoBehaviour
 {
+    GameData gameData;
     int currentStageNumber = 1;
-    int lastStageNumber = 1;
-
     int initialStageNumber = 1;
-    int maxStageNumber = 999;
-
     public int clearStageNumber = 3;
 
     [SerializeField] Text stageText;
-    [SerializeField] MonsterInfoUI normarMonsterInfoUI;
-    [SerializeField] MonsterInfoUI bossMonsterInfoUI;
-    GameData gameData;
+    [SerializeField] StageMonsterInfoUI normarMonsterInfoUI;
+    [SerializeField] StageMonsterInfoUI bossMonsterInfoUI;
+    [SerializeField] Image selectNormarStageBackGround;
+    [SerializeField] Image selectBossStageBackGround;
+
     SetMonsterDatas setNormarMonsterDatas;
     SetMonsterDatas setBossMonsterDatas;
-    public Action<string> selectStage;
+    ActoryType selectMonsterStageType;
+
     private void Awake()
     {
-        currentStageNumber = lastStageNumber;
         gameData = GameData.instance;
-        SetMonsterData();
-        SetMonsterInfoUI();
+        currentStageNumber = gameData.stageData.lastStage;
+        stageText.text = "Stage " + currentStageNumber.ToString();
+    }
+    private void OnEnable()
+    {
+        EventManager.instance.currentStageNormarMonsterHandler += normarMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageBossMonsterHandler += bossMonsterInfoUI.SetMonsterData;
+        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.currentStageNormarMonsterHandler -= normarMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageBossMonsterHandler -= bossMonsterInfoUI.SetMonsterData;
     }
     public void StageDown()
     {
@@ -36,9 +46,8 @@ public class StageUI : MonoBehaviour
             currentStageNumber++;
             return;
         }
-        SetMonsterData();
-        SetMonsterInfoUI();
-
+        stageText.text = "Stage " + currentStageNumber.ToString();
+        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
     }
     public void StageUP()
     {
@@ -49,27 +58,22 @@ public class StageUI : MonoBehaviour
             return;
         }
         stageText.text = "Stage " + currentStageNumber.ToString();
-        SetMonsterData();
-        SetMonsterInfoUI();
-
-    }
-    private void SetMonsterData()
-    {
-        setNormarMonsterDatas = gameData.monsterData.GetMonsterStatusData("노말몬스터" + currentStageNumber.ToString(), ActoryType.NormarMonster);
-        setBossMonsterDatas = gameData.monsterData.GetMonsterStatusData("보스몬스터" + currentStageNumber.ToString(), ActoryType.BossMonster);
-    }
-    private void SetMonsterInfoUI()
-    {
-        stageText.text = "Stage " + currentStageNumber.ToString();
-        normarMonsterInfoUI.SetMonsterData(setNormarMonsterDatas);
-        bossMonsterInfoUI.SetMonsterData(setBossMonsterDatas);
+        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
     }
     public void SelectNormarStage()
     {
-
+        selectNormarStageBackGround.enabled = true;
+        selectBossStageBackGround.enabled = false;
+        selectMonsterStageType = ActoryType.NormarMonster;
     }
     public void SelectBossStage()
     {
-
+        selectNormarStageBackGround.enabled = false;
+        selectBossStageBackGround.enabled = true;
+        selectMonsterStageType = ActoryType.BossMonster;
+    }
+    public void StartStage()
+    {
+        EventManager.instance.StartStageEvent(currentStageNumber, selectMonsterStageType);
     }
 }

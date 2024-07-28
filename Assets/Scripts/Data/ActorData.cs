@@ -70,29 +70,32 @@ public class MonsterData
             new NormarMonsterStatusData(1500, 1500, 0),
             new NormarMonsterRewardData(20, 20));
         AddBossMonster("보스몬스터1",
-           new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.NormarMonster),
+           new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.BossMonster),
            new BossMonsterStatusData(5000, 5000, 0),
            new BossMonsterRewardData(100, 100));
         AddBossMonster("보스몬스터2",
-           new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.NormarMonster),
+           new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.BossMonster),
            new BossMonsterStatusData(8000, 8000, 0),
            new BossMonsterRewardData(200, 200));
     }
     public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActoryType type)
     {
         List<EntryDatas> data = null;
+        string monsterType = "";
         switch (type)
         {
             case ActoryType.NormarMonster:
                 data = normarMonsterEntryDatas;
+                monsterType = "노말몬스터";
                 break;
             case ActoryType.BossMonster:
                 data = bossMonsterEntryDatas;
+                monsterType = "보스몬스터";
                 break;
         }
         foreach (var entry in data)
         {
-            if (entry.GetMonsterID() == monsterNumber)
+            if (entry.GetMonsterID() == monsterType+monsterNumber)
             {
                 return entry.GetMonsterData();
             }

@@ -24,11 +24,12 @@ public class GameData
             _instance = value;
         }
     }
+    public StageData stageData;
     public MonsterData monsterData;
     public GameData()
     {
+        stageData = new StageData();
         monsterData = new MonsterData();
-        monsterData.InitializeMonsterData();
         Save();
     }
     [ContextMenu("Save To Json Data")]

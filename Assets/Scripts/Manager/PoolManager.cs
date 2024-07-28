@@ -19,8 +19,6 @@ public class PoolManager : MonoBehaviour
             pools.Add(new List<GameObject>());
         }
     }
-
-    //프리펩아이디로
     public GameObject GetObjectFromPool(string gameObjectPath)
     {
         if (preGameObjectPrefabPath != gameObjectPath)
@@ -42,6 +40,11 @@ public class PoolManager : MonoBehaviour
             prefabs.Add(preGameObject);
             pools.Add(new List<GameObject>());
             index = prefabs.Count - 1;
+        }
+        if(preGameObject == null)
+        {
+            Debug.Log("풀 프리펩 없음");
+            return null;
         }
         GameObject select = null;
         foreach (var obj in pools[index])

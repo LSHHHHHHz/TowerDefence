@@ -1,18 +1,15 @@
 {
+    "stageData": {
+        "lastStage": 1,
+        "normarMonsterPrefabsPath": [
+            "Prefabs/Monster/LV1_Golem",
+            "Prefabs/Monster/LV2_Golem",
+            "Prefabs/Monster/LV3_Golem"
+        ],
+        "bossMonsterPrefabsPath": []
+    },
     "monsterData": {
         "normarMonsterEntryDatas": [
-            {
-                "actorID": "노말몬스터1",
-                "monsterDatas": {}
-            },
-            {
-                "actorID": "노말몬스터2",
-                "monsterDatas": {}
-            },
-            {
-                "actorID": "노말몬스터3",
-                "monsterDatas": {}
-            },
             {
                 "actorID": "노말몬스터1",
                 "monsterDatas": {}
@@ -27,14 +24,6 @@
             }
         ],
         "bossMonsterEntryDatas": [
-            {
-                "actorID": "보스몬스터1",
-                "monsterDatas": {}
-            },
-            {
-                "actorID": "보스몬스터2",
-                "monsterDatas": {}
-            },
             {
                 "actorID": "보스몬스터1",
                 "monsterDatas": {}
