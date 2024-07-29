@@ -11,4 +11,8 @@ public class FSMController
         currentState = newState;
         currentState.Enter(this);
     }
+    public void FSMUpdate()
+    {
+        currentState.Update(this);
+    }
 }

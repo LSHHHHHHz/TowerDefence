@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ActorStatus
 {
-    public int currentHP { get; private set;}
+    public int currentHP { get; set;}
     public int maxHP { get; private set;}
-    public int currentMP { get; private set;}
+    public int currentMP { get; set;}
     public int maxMP { get; private set;}
     public ActorStatus(int maxHP, int maxMP)
     {
