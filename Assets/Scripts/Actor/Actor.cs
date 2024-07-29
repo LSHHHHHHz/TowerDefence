@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour, IActor
 {
     protected ActorStatus status;
-    protected ActorStats stats;
+    protected ActorStats stats;   
     public void ReceiveEvent(IEvent ievent)
     {
-        throw new System.NotImplementedException();
+        ievent.ExcuteEvent(this);
     }
     public abstract void DieActor();
 }

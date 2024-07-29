@@ -18,11 +18,6 @@ public class MonsterSpawn : MonoBehaviour
     {
         StartCoroutine(SpawnCoroutine(currentMonsterType));
     }
-    public void StartSpawn(MonsterData data)
-    {
-        List<Vector3> redPoint = data.monsterWarePointDatas.GetWarePointPos("Red");
-        List<Vector3> bluePoint = data.monsterWarePointDatas.GetWarePointPos("Blue");
-    }
     IEnumerator SpawnCoroutine(ActoryType type)
     {
         int spawnCount = 0;

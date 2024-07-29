@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    List<List<Vector3>> monsterMovePos;
-    List<Vector3> startMonsterMovePos;
+    public string monsterStartColor;
+    List<Vector3> monsterMovePos;
     int warePointIndex = 0;
     Vector3 targetPos;
     Quaternion targetRot;
@@ -15,24 +15,38 @@ public class MonsterMove : MonoBehaviour
     private void Awake()
     {
         gameData = GameData.instance;
-        monsterMovePos = new List<List<Vector3>>();
-        monsterMovePos.Add(new List<Vector3>(gameData.monsterData.monsterWarePointDatas.GetWarePointPos("Red")));
-        monsterMovePos.Add(new List<Vector3>(gameData.monsterData.monsterWarePointDatas.GetWarePointPos("Blue")));
     }
-    private void Start()
+    private void OnEnable()
     {
-        targetPos = startMonsterMovePos[warePointIndex];
+        warePointIndex = 0;
+        if (monsterStartColor != "")
+        {
+            monsterMovePos = gameData.monsterWarePointData.GetWarePointPos(monsterStartColor);
+            targetPos = monsterMovePos[warePointIndex];
+            transform.position = targetPos;
+        }
     }
     private void Update()
     {
-        MoveMonster();
+        if (targetPos != null)
+        {
+            MoveMonster();
+        }
     }
     void MoveMonster()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.5f)
         {
             warePointIndex++;
-            targetPos = startMonsterMovePos[warePointIndex];
+            if (warePointIndex < monsterMovePos.Count)
+            {
+                targetPos = monsterMovePos[warePointIndex];
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                return;
+            }
         }
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
 
@@ -40,18 +54,5 @@ public class MonsterMove : MonoBehaviour
         dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotateSpeed);
-    }
-    public void StartMonster(string color)
-    {
-        switch (color)
-        {
-            case "Red":
-                startMonsterMovePos = monsterMovePos[0];
-                break;
-            case "Blue":
-                startMonsterMovePos = monsterMovePos[1];
-                break;
-
-        }
     }
 }

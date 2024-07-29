@@ -7,9 +7,10 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
     public GameData gameData;
-    public Action<string, ActoryType> stageEvent;
-    public Action<SetMonsterDatas> currentStageNormarMonsterHandler;
-    public Action<SetMonsterDatas> currentStageBossMonsterHandler;
+    public Action<int,string, ActoryType> stageEvent;
+    public Action<int> checkStageNumEvent; 
+    public Action<SetMonsterDatas> currentStageNormarMonsterEvent;
+    public Action<SetMonsterDatas> currentStageBossMonsterEvent;
     private void Awake()
     {
         if (instance == null)
@@ -25,13 +26,13 @@ public class EventManager : MonoBehaviour
     public void StartStageEvent(int stageNum, ActoryType type)
     {
         string prefabPath = gameData.stageData.GetMonsterObj(stageNum, type);
-        stageEvent?.Invoke(prefabPath, type);
+        stageEvent?.Invoke(stageNum,prefabPath, type);
     }
     public void ResetStageEvent(string stageMonsterId)
     {
         SetMonsterDatas setNormarMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActoryType.NormarMonster);
         SetMonsterDatas setBossMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActoryType.BossMonster);
-        currentStageNormarMonsterHandler?.Invoke(setNormarMonsterDatas);
-        currentStageBossMonsterHandler?.Invoke(setBossMonsterDatas);
+        currentStageNormarMonsterEvent?.Invoke(setNormarMonsterDatas);
+        currentStageBossMonsterEvent?.Invoke(setBossMonsterDatas);
     }
 }

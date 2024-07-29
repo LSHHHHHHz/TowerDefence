@@ -26,6 +26,7 @@ public class GameData
     }
     public StageData stageData;
     public MonsterData monsterData;
+    public MonsterWarePointData monsterWarePointData;
     public GameData()
     {
         stageData = new StageData();

@@ -29,14 +29,14 @@ public class StageUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.instance.currentStageNormarMonsterHandler += normarMonsterInfoUI.SetMonsterData;
-        EventManager.instance.currentStageBossMonsterHandler += bossMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageNormarMonsterEvent += normarMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageBossMonsterEvent += bossMonsterInfoUI.SetMonsterData;
         EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
     }
     private void OnDisable()
     {
-        EventManager.instance.currentStageNormarMonsterHandler -= normarMonsterInfoUI.SetMonsterData;
-        EventManager.instance.currentStageBossMonsterHandler -= bossMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageNormarMonsterEvent -= normarMonsterInfoUI.SetMonsterData;
+        EventManager.instance.currentStageBossMonsterEvent -= bossMonsterInfoUI.SetMonsterData;
     }
     public void StageDown()
     {

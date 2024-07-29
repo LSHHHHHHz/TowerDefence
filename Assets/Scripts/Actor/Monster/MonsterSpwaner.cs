@@ -8,16 +8,19 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class MonsterSpwaner : MonoBehaviour
 {
+    [SerializeField] string startColor;
+    private int currentSpawnStage;
+    private ActoryType currentSpawnType;
     private int _normarMonsterCount;
     public int normarMonsterCount
     {
-        get { return 100; }
+        get { return 10; }
         set { _normarMonsterCount = value; }
     }
     private int _bossMonsterCount;
     public int bossMonsterCount
     {
-        get { return 100; }
+        get { return 2; }
         set { _bossMonsterCount = value; }
     }
     float spawnTime;
@@ -33,10 +36,11 @@ public class MonsterSpwaner : MonoBehaviour
     {
         EventManager.instance.stageEvent -= StartSpawnMonster;
     }
-    public void StartSpawnMonster(string prefabIconPath, ActoryType type)
+    public void StartSpawnMonster(int stageNum, string prefabIconPath, ActoryType type)
     {
-        Debug.Log("여기 스폰 되나");
         int maxSpawnCount = 0;
+        currentSpawnStage = stageNum;
+        currentSpawnType = type;
         switch (type)
         {
             case ActoryType.NormarMonster:
@@ -53,19 +57,28 @@ public class MonsterSpwaner : MonoBehaviour
     IEnumerator SpawnMonster(string prefabIconPath, int spawnCount, ActoryType type)
     {
         int count = 0;
-        if(PoolManager.instance.GetObjectFromPool(prefabIconPath).GetComponent<Monster>() == null)
-        {
-            Debug.Log("프리펩 불러오기 안됨");
-            yield break;
-        }
-        Monster monster = PoolManager.instance.GetObjectFromPool(prefabIconPath).GetComponent<Monster>();
         while (count < spawnCount)
         {
+            GameObject monsterObj = PoolManager.instance.GetObjectFromPool(prefabIconPath);
+            monsterObj.gameObject.SetActive(false);
+            Monster monster = monsterObj.GetComponent<Monster>();
+            monster.Initialize(currentSpawnStage.ToString(), currentSpawnType);
+            if (monster == null)
+            {
+                Debug.Log("프리펩 불러오기 안됨");
+                yield break;
+            }
+
+            MonsterMove monsterMove = monster.GetComponent<MonsterMove>();
+            monsterMove.monsterStartColor = startColor;
+            monsterObj.gameObject.SetActive(true); 
             monsterList.Add(monster);
+
+            count++;
             yield return new WaitForSeconds(spawnTime);
         }
     }
-    public void UnregisterMonster()
+    public void UnregisterSapwnMonster()
     {
         if (spawnCoroutine != null)
         {
