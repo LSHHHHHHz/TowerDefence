@@ -36,6 +36,21 @@ public class MonsterRewardData
     public int rewardCoin;
     public int rewardExp;
 }
+public class TowerProfileData : ActorProfileData
+{
+    public int buyPrice;
+    public int sellPrice;
+    public int upgradeTime;
+}
+public class TowerStatusData : ActorStatusData
+{
+    public int maxExp;
+    public int currentExp;
+}
+public class TowerStatsData : ActorStatsData
+{
+
+}
 
 [Serializable]
 public class MonsterData
@@ -260,39 +275,39 @@ public class TowerData
     }
     public void InitializeMonsterData()
     {
-        AddNormarTower("normar11",
+        AddNormarTower("nor11",
             new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000,0),
             new NormarTowerStatsData(10, 10, 5, 0));
-        AddNormarTower("normar12",
+        AddNormarTower("nor12",
             new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000,2000,0),
             new NormarTowerStatsData(20, 10, 5, 0));
-        AddNormarTower("normar13",
+        AddNormarTower("nor13",
             new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500,3000,0),
             new NormarTowerStatsData(30, 10, 5, 0));
-        AddNormarTower("normar21",
+        AddNormarTower("nor21",
             new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500,1000,0),
             new NormarTowerStatsData(10, 10, 5, 0));
-        AddNormarTower("normar22",
+        AddNormarTower("nor22",
             new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000, 2000, 0),
             new NormarTowerStatsData(20, 10, 5, 0));
-        AddNormarTower("normar23",
+        AddNormarTower("nor23",
             new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500, 3000, 0),
             new NormarTowerStatsData(30, 10, 5, 0));
-        AddNormarTower("normar31",
+        AddNormarTower("nor31",
             new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000, 0),
             new NormarTowerStatsData(10, 10, 5, 0));
-        AddNormarTower("normar32",
+        AddNormarTower("nor32",
             new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000, 2000, 0),
             new NormarTowerStatsData(20, 10, 5, 0));
-        AddNormarTower("normar33",
+        AddNormarTower("nor33",
             new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500, 3000, 0),
             new NormarTowerStatsData(30, 10, 5, 0));
@@ -335,24 +350,21 @@ public class TowerData
             new ChamPionStatsData(100, 15, 3, 0));
 
     }
-    public SetTowerDatas GetTowerStatusData(string monsterNumber, ActoryType type)
+    public SetTowerDatas GetTowerStatusData(string towerID, ActoryType type)
     {
         List<TowerEntryDatas> data = null;
-        string monsterType = "";
         switch (type)
         {
             case ActoryType.NormarMonster:
                 data = normarTowerEntryDatas;
-                monsterType = "normar";
                 break;
             case ActoryType.BossMonster:
                 data = chapionTowerEntryDatas;
-                monsterType = "cham";
                 break;
         }
         foreach (var entry in data)
         {
-            if (entry.GetTowerID() == monsterType + monsterNumber)
+            if (entry.GetTowerID() == towerID)
             {
                 return entry.GetTowerData();
             }
@@ -383,11 +395,11 @@ public class TowerEntryDatas
 [Serializable]
 public class SetTowerDatas
 {
-    public ActorProfileData Profile;
-    public ActorStatusData Status;
-    public ActorStatsData Stats;
+    public TowerProfileData Profile;
+    public TowerStatusData Status;
+    public TowerStatsData Stats;
 
-    public SetTowerDatas(ActorProfileData profile, ActorStatusData status, ActorStatsData stats)
+    public SetTowerDatas(TowerProfileData profile, TowerStatusData status, TowerStatsData stats)
     {
         Profile = profile;
         Status = status;
@@ -395,11 +407,8 @@ public class SetTowerDatas
     }
 }
 [Serializable]
-public class NormarTowerProfileData : ActorProfileData
+public class NormarTowerProfileData : TowerProfileData
 {
-    public int buyPrice;
-    public int sellPrice;
-    public int upgradeTime;
     public NormarTowerProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
     {
         this.actorName = name;
@@ -412,10 +421,8 @@ public class NormarTowerProfileData : ActorProfileData
     }
 }
 [Serializable]
-public class NormarTowerStatusData : ActorStatusData
+public class NormarTowerStatusData : TowerStatusData
 {
-    public int maxExp;
-    public int currentExp;
     public NormarTowerStatusData(int maxHP, int currentHP, int maxExp, int currentExp)
     {
         this.maxHP = maxHP;
@@ -425,7 +432,7 @@ public class NormarTowerStatusData : ActorStatusData
     }
 }
 [Serializable]
-public class NormarTowerStatsData : ActorStatsData
+public class NormarTowerStatsData : TowerStatsData
 {
     public NormarTowerStatsData(int damage, int range, int attackSpeed, int moveSpeed)
     {
@@ -436,11 +443,8 @@ public class NormarTowerStatsData : ActorStatsData
     }
 }
 [Serializable]
-public class ChamPionProfileData : ActorProfileData
+public class ChamPionProfileData : TowerProfileData
 {
-    public int buyPrice;
-    public int sellPrice;
-    public int upgradeTime;
     public ChamPionProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
     {
         this.actorName = name;
@@ -453,10 +457,8 @@ public class ChamPionProfileData : ActorProfileData
     }
 }
 [Serializable]
-public class ChamPionStatusData : ActorStatusData
+public class ChamPionStatusData : TowerStatusData
 {
-    public int maxExp;
-    public int currentExp;
     public ChamPionStatusData(int maxHP, int currentHP, int maxExp,int currentExp)
     {
         this.maxHP = maxHP;
@@ -466,7 +468,7 @@ public class ChamPionStatusData : ActorStatusData
     }
 }
 [Serializable]
-public class ChamPionStatsData : ActorStatsData
+public class ChamPionStatsData : TowerStatsData
 {
     public ChamPionStatsData(int damage, int range, int attackSpeed, int moveSpeed)
     {

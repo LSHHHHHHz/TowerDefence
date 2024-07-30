@@ -9,8 +9,8 @@ public class MonsterMove : MonoBehaviour
     int warePointIndex = 0;
     Vector3 targetPos;
     Quaternion targetRot;
-    public float rotateSpeed = 10;
-    public float moveSpeed = 5;
+    float rotateSpeed = 10;
+    float moveSpeed = 5;
     GameData gameData;
     private void Awake()
     {

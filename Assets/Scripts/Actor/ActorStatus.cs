@@ -5,14 +5,25 @@ using UnityEngine;
 public class ActorStatus
 {
     public int currentHP { get; set;}
-    public int maxHP { get; private set;}
-    public int currentMP { get; set;}
-    public int maxMP { get; private set;}
-    public ActorStatus(int maxHP, int maxMP)
+    public int maxHP { get; set;}
+}
+public class MonsterStatus : ActorStatus
+{
+    public MonsterStatus(int currentHP, int maxHP)
     {
+        this.currentHP = currentHP;
         this.maxHP = maxHP;
-        this.currentHP = maxHP;
-        this.maxMP = maxMP;
-        this.currentMP = maxMP;
+    }
+}
+public class TowerStatus :ActorStatus
+{
+    public int currentExp {  get; set;}
+    public int maxExp { get; private set;}
+    public TowerStatus(int currentHP, int maxHP, int currentExp, int maxExp)
+    {
+        this.currentHP = currentHP;
+        this.maxHP = maxHP;
+        this.currentExp = currentExp;
+        this.maxExp = maxExp;
     }
 }

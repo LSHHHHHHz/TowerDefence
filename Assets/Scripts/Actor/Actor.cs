@@ -6,8 +6,8 @@ public abstract class Actor : MonoBehaviour, IActor
 {
     protected ActorStatus status;
     protected ActorStats stats;
-    protected ActorProfileData profileData;
+    protected ActorProfileData profileData;    
     public abstract void ReceiveEvent(IEvent ievent);
     public abstract void TakeDamage(int damage);
-    public abstract void DieActor();
+    public abstract void DieActor();    
 }

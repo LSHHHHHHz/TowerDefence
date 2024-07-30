@@ -38,5 +38,83 @@
             }
         ]
     },
+    "towerData": {
+        "normarTowerEntryDatas": [
+            {
+                "actorID": "nor11",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor12",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor13",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor21",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor22",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor23",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor31",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor32",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "nor33",
+                "towerDatas": {}
+            }
+        ],
+        "chapionTowerEntryDatas": [
+            {
+                "actorID": "cham11",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham12",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham13",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham21",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham22",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham23",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham31",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham32",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "cham33",
+                "towerDatas": {}
+            }
+        ]
+    },
     "monsterWarePointData": {}
 }

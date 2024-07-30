@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class ActorStats
 {
-    public int attackDamage { get; private set; }
-    public int attackRange { get; private set; }
-    public int attackSpeed { get; private set; }
-    public int moveSpeed { get; private set; }
-    public ActorStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
-    {
-        this.attackDamage = attackDamage;
-        this.attackRange = attackRange;
-        this.moveSpeed = moveSpeed;
-        this.attackSpeed = attackSpeed;
-    }
+    public int attackDamage { get; set; }
+    public int attackRange { get; set; }
+    public int attackSpeed { get;  set; }
+    public int moveSpeed { get;  set; }
     public void SetAttackDamage(int attackDamage)
     {
         this.attackDamage = attackDamage;
@@ -43,5 +36,25 @@ public class ActorStats
     public void IncreaseMoveSpeed(int amount)
     {
         moveSpeed += amount;
+    }
+}
+public class MonsterStats : ActorStats
+{
+    public MonsterStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
+    {
+        this.attackDamage = attackDamage;
+        this.attackRange = attackRange;
+        this.moveSpeed = moveSpeed;
+        this.attackSpeed = attackSpeed;
+    }
+}
+public class TowerStats : ActorStats
+{
+    public TowerStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
+    {
+        this.attackDamage = attackDamage;
+        this.attackRange = attackRange;
+        this.moveSpeed = moveSpeed;
+        this.attackSpeed = attackSpeed;
     }
 }
