@@ -8,5 +8,5 @@ public interface IActor
 }
 public interface IDetect
 {
-    void DetectActor(IActor actor);
+    void DetectActorsInRange(Vector3 center, float radius);
 }
