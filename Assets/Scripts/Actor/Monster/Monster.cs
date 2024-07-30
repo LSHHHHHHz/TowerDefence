@@ -15,7 +15,7 @@ public class Monster : Actor
         {
             profileData = monsterData.Profile;
             status = new ActorStatus(monsterData.Status.maxHP, 0);
-            stats = new ActorStats(monsterData.Status.damage,0,5);
+            stats = new ActorStats(monsterData.Stats.attackDamage,monsterData.Stats.attackRange,stats.moveSpeed,stats.attackSpeed);
 
             ApplyMonsterData();
         }

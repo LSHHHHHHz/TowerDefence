@@ -23,7 +23,13 @@ public class ActorStatusData
 {
     public int maxHP;
     public int curentHP;
-    public int damage;
+}
+public class ActorStatsData
+{
+    public int attackDamage;
+    public int attackRange;
+    public int attackSpeed;
+    public int moveSpeed;
 }
 public class MonsterRewardData
 {
@@ -43,12 +49,12 @@ public class MonsterData
         InitializeMonsterData();
     }
 
-    public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterRewardData monsterRewardData)
+    public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterStatsData normarMonsterStatsData, NormarMonsterRewardData monsterRewardData)
     {
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
         normarMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
     }
-    public void AddBossMonster(string monsterID, BossMonsterProfileData monsterProfileData, BossMonsterStatusData monsterStatusData, BossMonsterRewardData monsterRewardData)
+    public void AddBossMonster(string monsterID, BossMonsterProfileData monsterProfileData, BossMonsterStatusData monsterStatusData, BossMonsterStatsData bossMonsterStatsData, BossMonsterRewardData monsterRewardData)
     {
         SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
         bossMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
@@ -57,23 +63,28 @@ public class MonsterData
     {
         AddNormarMonster("노말몬스터1",
             new NormarMonsterProfileData("골렘1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
-            new NormarMonsterStatusData(500, 500, 0),
+            new NormarMonsterStatusData(500, 500),
+            new NormarMonsterStatsData(0,0,5,5),
             new NormarMonsterRewardData(10, 10));
         AddNormarMonster("노말몬스터2",
             new NormarMonsterProfileData("골레 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
-            new NormarMonsterStatusData(1000, 1000, 0),
+            new NormarMonsterStatusData(1000, 1000),
+             new NormarMonsterStatsData(0, 0, 5, 5),
             new NormarMonsterRewardData(20, 20));
         AddNormarMonster("노말몬스터3",
             new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActoryType.NormarMonster),
-            new NormarMonsterStatusData(1500, 1500, 0),
+            new NormarMonsterStatusData(1500, 1500),
+             new NormarMonsterStatsData(0, 0, 5, 5),
             new NormarMonsterRewardData(20, 20));
         AddBossMonster("보스몬스터1",
            new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.BossMonster),
-           new BossMonsterStatusData(5000, 5000, 0),
+           new BossMonsterStatusData(5000, 5000),
+            new BossMonsterStatsData(50, 5, 5, 5),
            new BossMonsterRewardData(100, 100));
         AddBossMonster("보스몬스터2",
            new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.BossMonster),
-           new BossMonsterStatusData(8000, 8000, 0),
+           new BossMonsterStatusData(8000, 8000),
+            new BossMonsterStatsData(100, 5, 5, 5),
            new BossMonsterRewardData(200, 200));
     }
     public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActoryType type)
@@ -126,6 +137,7 @@ public class SetMonsterDatas
 {
     public ActorProfileData Profile;
     public ActorStatusData Status;
+    public ActorStatsData Stats;
     public MonsterRewardData Reward;
 
     public SetMonsterDatas(ActorProfileData profile, ActorStatusData status, MonsterRewardData reward)
@@ -149,11 +161,21 @@ public class NormarMonsterProfileData : ActorProfileData
 [Serializable]
 public class NormarMonsterStatusData : ActorStatusData
 {
-    public NormarMonsterStatusData(int maxHP, int currentHP, int damage)
+    public NormarMonsterStatusData(int maxHP, int currentHP)
     {
         this.maxHP = maxHP;
         this.curentHP = currentHP;
-        this.damage = damage;
+    }
+}
+[Serializable]
+public class NormarMonsterStatsData : ActorStatsData
+{
+    public NormarMonsterStatsData(int damage, int range, int attackSpeed, int moveSpeed)
+    {
+        this.attackDamage = damage;
+        this.attackRange = range;
+        this.attackSpeed = attackSpeed;
+        this.moveSpeed = moveSpeed;
     }
 }
 [Serializable]
@@ -179,11 +201,21 @@ public class BossMonsterProfileData : ActorProfileData
 [Serializable]
 public class BossMonsterStatusData : ActorStatusData
 {
-    public BossMonsterStatusData(int maxHP, int currentHP, int damage)
+    public BossMonsterStatusData(int maxHP, int currentHP)
     {
         this.maxHP = maxHP;
         this.curentHP = currentHP;
-        this.damage = damage;
+    }
+}
+[Serializable]
+public class BossMonsterStatsData : ActorStatsData
+{
+    public BossMonsterStatsData(int damage, int range, int attackSpeed, int moveSpeed)
+    {
+        this.attackDamage = damage;
+        this.attackRange = range;
+        this.attackSpeed = attackSpeed;
+        this.moveSpeed = moveSpeed;
     }
 }
 [Serializable]

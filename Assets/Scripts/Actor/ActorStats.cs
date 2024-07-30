@@ -6,13 +6,14 @@ public class ActorStats
 {
     public int attackDamage { get; private set; }
     public int attackRange { get; private set; }
+    public int attackSpeed { get; private set; }
     public int moveSpeed { get; private set; }
-  
-    public ActorStats(int attackDamage, int attackRange, int moveSpeed)
+    public ActorStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
     {
         this.attackDamage = attackDamage;
         this.attackRange = attackRange;
         this.moveSpeed = moveSpeed;
+        this.attackSpeed = attackSpeed;
     }
     public void SetAttackDamage(int attackDamage)
     {
