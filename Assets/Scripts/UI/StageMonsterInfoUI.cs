@@ -15,7 +15,7 @@ public class StageMonsterInfoUI : MonoBehaviour
 
     public void SetMonsterData(SetMonsterDatas data)
     {
-        SetMonsterInfoUI(data.Profile.iconPath,data.Profile.monstName,data.Reward.rewardCoin,data.Reward.rewardExp,data.Status.maxHP);
+        SetMonsterInfoUI(data.Profile.iconPath,data.Profile.actorName,data.Reward.rewardCoin,data.Reward.rewardExp,data.Status.maxHP);
     }
     private void SetMonsterInfoUI(string path, string name, int coin, int exp, int hp)
     {

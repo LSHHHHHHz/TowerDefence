@@ -31,6 +31,10 @@
             {
                 "actorID": "보스몬스터2",
                 "monsterDatas": {}
+            },
+            {
+                "actorID": "보스몬스터3",
+                "monsterDatas": {}
             }
         ]
     },

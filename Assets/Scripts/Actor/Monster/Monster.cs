@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Monster : Actor
-{
-    protected ActorProfileData profileData;
+{   
     protected SetMonsterDatas monsterData;
 
     public void Initialize(string monsterID, ActoryType type)

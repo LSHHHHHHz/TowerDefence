@@ -14,7 +14,7 @@ public enum ActoryType
 }
 public class ActorProfileData
 {
-    public string monstName;
+    public string actorName;
     public string iconPath;
     public string prefabPath;
     public ActoryType type;
@@ -40,56 +40,61 @@ public class MonsterRewardData
 [Serializable]
 public class MonsterData
 {
-    public List<EntryDatas> normarMonsterEntryDatas;
-    public List<EntryDatas> bossMonsterEntryDatas;
+    public List<MonsterEntryDatas> normarMonsterEntryDatas;
+    public List<MonsterEntryDatas> bossMonsterEntryDatas;
     public MonsterData()
     {
-        normarMonsterEntryDatas = new List<EntryDatas>();
-        bossMonsterEntryDatas = new List<EntryDatas>();
+        normarMonsterEntryDatas = new List<MonsterEntryDatas>();
+        bossMonsterEntryDatas = new List<MonsterEntryDatas>();
         InitializeMonsterData();
     }
 
     public void AddNormarMonster(string monsterID, NormarMonsterProfileData monsterProfileData, NormarMonsterStatusData monsterStatusData, NormarMonsterStatsData normarMonsterStatsData, NormarMonsterRewardData monsterRewardData)
     {
-        SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
-        normarMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
+        SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData,normarMonsterStatsData, monsterRewardData);
+        normarMonsterEntryDatas.Add(new MonsterEntryDatas(monsterID, data));
     }
-    public void AddBossMonster(string monsterID, BossMonsterProfileData monsterProfileData, BossMonsterStatusData monsterStatusData, BossMonsterStatsData bossMonsterStatsData, BossMonsterRewardData monsterRewardData)
+    public void AddBossMonster(string monsterID, BossMonsterProfileData bossMonsterProfileData, BossMonsterStatusData bossMonsterStatusData, BossMonsterStatsData bossMonsterStatsData, BossMonsterRewardData bossMonsterRewardData)
     {
-        SetMonsterDatas data = new SetMonsterDatas(monsterProfileData, monsterStatusData, monsterRewardData);
-        bossMonsterEntryDatas.Add(new EntryDatas(monsterID, data));
+        SetMonsterDatas data = new SetMonsterDatas(bossMonsterProfileData, bossMonsterStatusData, bossMonsterStatsData, bossMonsterRewardData);
+        bossMonsterEntryDatas.Add(new MonsterEntryDatas(monsterID, data));
     }
     public void InitializeMonsterData()
     {
         AddNormarMonster("노말몬스터1",
             new NormarMonsterProfileData("골렘1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
             new NormarMonsterStatusData(500, 500),
-            new NormarMonsterStatsData(0,0,5,5),
+            new NormarMonsterStatsData(0,0,0,5),
             new NormarMonsterRewardData(10, 10));
         AddNormarMonster("노말몬스터2",
             new NormarMonsterProfileData("골레 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
             new NormarMonsterStatusData(1000, 1000),
-             new NormarMonsterStatsData(0, 0, 5, 5),
+             new NormarMonsterStatsData(0, 0, 0, 5),
             new NormarMonsterRewardData(20, 20));
         AddNormarMonster("노말몬스터3",
             new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActoryType.NormarMonster),
             new NormarMonsterStatusData(1500, 1500),
-             new NormarMonsterStatsData(0, 0, 5, 5),
+             new NormarMonsterStatsData(0, 0, 0, 5),
             new NormarMonsterRewardData(20, 20));
         AddBossMonster("보스몬스터1",
            new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.BossMonster),
            new BossMonsterStatusData(5000, 5000),
-            new BossMonsterStatsData(50, 5, 5, 5),
+            new BossMonsterStatsData(50, 5, 5, 4),
            new BossMonsterRewardData(100, 100));
         AddBossMonster("보스몬스터2",
            new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.BossMonster),
            new BossMonsterStatusData(8000, 8000),
-            new BossMonsterStatsData(100, 5, 5, 5),
+            new BossMonsterStatsData(100, 5, 5, 4),
            new BossMonsterRewardData(200, 200));
+        AddBossMonster("보스몬스터3",
+           new BossMonsterProfileData("이름 : 보스몬스터3", "none", "none", ActoryType.BossMonster),
+           new BossMonsterStatusData(10000, 10000),
+            new BossMonsterStatsData(200, 5, 5, 4),
+           new BossMonsterRewardData(300, 300));
     }
     public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActoryType type)
     {
-        List<EntryDatas> data = null;
+        List<MonsterEntryDatas> data = null;
         string monsterType = "";
         switch (type)
         {
@@ -113,11 +118,11 @@ public class MonsterData
     }
 }
 [Serializable]
-public class EntryDatas
+public class MonsterEntryDatas
 {
     public string actorID;
     public SetMonsterDatas monsterDatas;
-    public EntryDatas(string id, SetMonsterDatas datas)
+    public MonsterEntryDatas(string id, SetMonsterDatas datas)
     {
         this.actorID = id;
         this.monsterDatas = datas;
@@ -140,10 +145,11 @@ public class SetMonsterDatas
     public ActorStatsData Stats;
     public MonsterRewardData Reward;
 
-    public SetMonsterDatas(ActorProfileData profile, ActorStatusData status, MonsterRewardData reward)
+    public SetMonsterDatas(ActorProfileData profile, ActorStatusData status, ActorStatsData stats, MonsterRewardData reward)
     {
         Profile = profile;
         Status = status;
+        Stats = stats;
         Reward = reward;
     }
 }
@@ -152,7 +158,7 @@ public class NormarMonsterProfileData : ActorProfileData
 {
     public NormarMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActoryType type)
     {
-        this.monstName = monsterName;
+        this.actorName = monsterName;
         this.iconPath = iconPath;
         this.prefabPath = prefabPath;
         this.type = type;
@@ -192,7 +198,7 @@ public class BossMonsterProfileData : ActorProfileData
 {
     public BossMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActoryType type)
     {
-        this.monstName = monsterName;
+        this.actorName = monsterName;
         this.iconPath = iconPath;
         this.prefabPath = prefabPath;
         this.type = type;
@@ -226,15 +232,247 @@ public class BossMonsterRewardData : MonsterRewardData
         this.rewardCoin = rewardCoin;
         this.rewardExp = rewardExp;
     }
+}
+/// <summary>
+/// 
+/// </summary>
+[Serializable]
+public class TowerData
+{
+    public List<TowerEntryDatas> normarTowerEntryDatas;
+    public List<TowerEntryDatas> chapionTowerEntryDatas;
+    public TowerData()
+    {
+        normarTowerEntryDatas = new List<TowerEntryDatas>();
+        chapionTowerEntryDatas = new List<TowerEntryDatas>();
+        InitializeMonsterData();
+    }
 
+    public void AddNormarTower(string monsterID, NormarTowerProfileData normarTowerProfileData, NormarTowerStatusData normarTowerStatusData, NormarTowerStatsData normarTowerStatsData)
+    {
+        SetTowerDatas data = new SetTowerDatas(normarTowerProfileData, normarTowerStatusData, normarTowerStatsData);
+        normarTowerEntryDatas.Add(new TowerEntryDatas(monsterID, data));
+    }
+    public void AddChampionTower(string monsterID, ChamPionProfileData chamPionProfileData, ChamPionStatusData chamPionStatusData, ChamPionStatsData chamPionStatsData)
+    {
+        SetTowerDatas data = new SetTowerDatas(chamPionProfileData, chamPionStatusData, chamPionStatsData);
+        chapionTowerEntryDatas.Add(new TowerEntryDatas(monsterID, data));
+    }
+    public void InitializeMonsterData()
+    {
+        AddNormarTower("normar11",
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerStatusData(500, 500, 1000,0),
+            new NormarTowerStatsData(10, 10, 5, 0));
+        AddNormarTower("normar12",
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerStatusData(1000, 1000,2000,0),
+            new NormarTowerStatsData(20, 10, 5, 0));
+        AddNormarTower("normar13",
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerStatusData(1500, 1500,3000,0),
+            new NormarTowerStatsData(30, 10, 5, 0));
+        AddNormarTower("normar21",
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerStatusData(500, 500,1000,0),
+            new NormarTowerStatsData(10, 10, 5, 0));
+        AddNormarTower("normar22",
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerStatusData(1000, 1000, 2000, 0),
+            new NormarTowerStatsData(20, 10, 5, 0));
+        AddNormarTower("normar23",
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerStatusData(1500, 1500, 3000, 0),
+            new NormarTowerStatsData(30, 10, 5, 0));
+        AddNormarTower("normar31",
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerStatusData(500, 500, 1000, 0),
+            new NormarTowerStatsData(10, 10, 5, 0));
+        AddNormarTower("normar32",
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerStatusData(1000, 1000, 2000, 0),
+            new NormarTowerStatsData(20, 10, 5, 0));
+        AddNormarTower("normar33",
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerStatusData(1500, 1500, 3000, 0),
+            new NormarTowerStatsData(30, 10, 5, 0));
+
+        AddChampionTower("cham11",
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(1000, 1000, 1000, 0),
+            new ChamPionStatsData(20, 15, 3, 0));
+        AddChampionTower("cham12",
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(2000, 2000, 2000, 0),
+            new ChamPionStatsData(50, 15, 3, 0));
+        AddChampionTower("cham13",
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(5000, 5000, 3000, 0),
+            new ChamPionStatsData(100, 15, 3, 0));
+        AddChampionTower("cham21",
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(1000, 1000, 1000, 0),
+            new ChamPionStatsData(20, 15, 3, 0));
+        AddChampionTower("cham22",
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(2000, 2000, 2000, 0),
+            new ChamPionStatsData(50, 15, 3, 0));
+        AddChampionTower("cham23",
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(5000, 5000, 3000, 0),
+            new ChamPionStatsData(100, 15, 3, 0));
+        AddChampionTower("cham31",
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(1000, 1000, 1000, 0),
+            new ChamPionStatsData(20, 15, 3, 0));
+        AddChampionTower("cham32",
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(2000, 2000, 2000, 0),
+            new ChamPionStatsData(50, 15, 3, 0));
+        AddChampionTower("cham33",
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionStatusData(5000, 5000, 3000, 0),
+            new ChamPionStatsData(100, 15, 3, 0));
+
+    }
+    public SetTowerDatas GetTowerStatusData(string monsterNumber, ActoryType type)
+    {
+        List<TowerEntryDatas> data = null;
+        string monsterType = "";
+        switch (type)
+        {
+            case ActoryType.NormarMonster:
+                data = normarTowerEntryDatas;
+                monsterType = "normar";
+                break;
+            case ActoryType.BossMonster:
+                data = chapionTowerEntryDatas;
+                monsterType = "cham";
+                break;
+        }
+        foreach (var entry in data)
+        {
+            if (entry.GetTowerID() == monsterType + monsterNumber)
+            {
+                return entry.GetTowerData();
+            }
+        }
+        return null;
+    }
 }
 [Serializable]
-public class NormarTowerData
+public class TowerEntryDatas
 {
+    public string actorID;
+    public SetTowerDatas towerDatas;
+    public TowerEntryDatas(string id, SetTowerDatas datas)
+    {
+        this.actorID = id;
+        this.towerDatas = datas;
+    }
+    public string GetTowerID()
+    {
+        return actorID;
+    }
 
+    public SetTowerDatas GetTowerData()
+    {
+        return towerDatas;
+    }
 }
 [Serializable]
-public class ChampionTowerData
+public class SetTowerDatas
 {
+    public ActorProfileData Profile;
+    public ActorStatusData Status;
+    public ActorStatsData Stats;
 
+    public SetTowerDatas(ActorProfileData profile, ActorStatusData status, ActorStatsData stats)
+    {
+        Profile = profile;
+        Status = status;
+        Stats = stats;
+    }
+}
+[Serializable]
+public class NormarTowerProfileData : ActorProfileData
+{
+    public int buyPrice;
+    public int sellPrice;
+    public int upgradeTime;
+    public NormarTowerProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
+    {
+        this.actorName = name;
+        this.iconPath = iconPath;
+        this.prefabPath = prefabPath;
+        this.type = type;
+        this.buyPrice = buy;
+        this.sellPrice = sell;
+        this.upgradeTime = upgradeTime;
+    }
+}
+[Serializable]
+public class NormarTowerStatusData : ActorStatusData
+{
+    public int maxExp;
+    public int currentExp;
+    public NormarTowerStatusData(int maxHP, int currentHP, int maxExp, int currentExp)
+    {
+        this.maxHP = maxHP;
+        this.curentHP = currentHP;
+        this.maxExp = maxExp;
+        this.currentExp = currentExp;
+    }
+}
+[Serializable]
+public class NormarTowerStatsData : ActorStatsData
+{
+    public NormarTowerStatsData(int damage, int range, int attackSpeed, int moveSpeed)
+    {
+        this.attackDamage = damage;
+        this.attackRange = range;
+        this.attackSpeed = attackSpeed;
+        this.moveSpeed = moveSpeed;
+    }
+}
+[Serializable]
+public class ChamPionProfileData : ActorProfileData
+{
+    public int buyPrice;
+    public int sellPrice;
+    public int upgradeTime;
+    public ChamPionProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
+    {
+        this.actorName = name;
+        this.iconPath = iconPath;
+        this.prefabPath = prefabPath;
+        this.type = type;
+        this.buyPrice = buy;
+        this.sellPrice = sell;
+        this.upgradeTime = upgradeTime;
+    }
+}
+[Serializable]
+public class ChamPionStatusData : ActorStatusData
+{
+    public int maxExp;
+    public int currentExp;
+    public ChamPionStatusData(int maxHP, int currentHP, int maxExp,int currentExp)
+    {
+        this.maxHP = maxHP;
+        this.curentHP = currentHP;
+        this.maxExp = maxExp;
+        this.currentExp = currentExp;
+    }
+}
+[Serializable]
+public class ChamPionStatsData : ActorStatsData
+{
+    public ChamPionStatsData(int damage, int range, int attackSpeed, int moveSpeed)
+    {
+        this.attackDamage = damage;
+        this.attackRange = range;
+        this.attackSpeed = attackSpeed;
+        this.moveSpeed = moveSpeed;
+    }
 }

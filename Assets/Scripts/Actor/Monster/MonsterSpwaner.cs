@@ -11,18 +11,8 @@ public class MonsterSpwaner : MonoBehaviour
     [SerializeField] string startColor;
     private int currentSpawnStage;
     private ActoryType currentSpawnType;
-    private int _normarMonsterCount;
-    public int normarMonsterCount
-    {
-        get { return 10; }
-        set { _normarMonsterCount = value; }
-    }
-    private int _bossMonsterCount;
-    public int bossMonsterCount
-    {
-        get { return 2; }
-        set { _bossMonsterCount = value; }
-    }
+    private int normarMonsterCount = 10;
+    private int bossMonsterCount = 2;
     float spawnTime;
 
     List<Monster> monsterList = new List<Monster>();
