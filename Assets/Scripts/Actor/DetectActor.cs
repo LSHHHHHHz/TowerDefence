@@ -6,19 +6,22 @@ public class DetectActor : MonoBehaviour
 {
     bool isOntriggerEnter = false;
     string findActorTag;
-    Actor actor;
-    public Vector3 actorPosition { get; private set; }
+    [SerializeField] public Actor targetActor;
+    [SerializeField] public Vector3 actorPosition;
     private void Update()
     {
-        if (actor != null)
+        if (targetActor != null)
         {
-            actorPosition = actor.transform.position;
+            actorPosition = targetActor.transform.position;
         }
     }
     public void Initialized(ActorType type)
     {
         switch (type)
         {
+            case ActorType.NormarMonster:
+                findActorTag = "Tower";
+                break;
             case ActorType.BossMonster:
                 findActorTag = "Tower";
                 break;
@@ -37,13 +40,13 @@ public class DetectActor : MonoBehaviour
         {
             Debug.Log(other.gameObject.name);
             isOntriggerEnter = true;
-            actor = other.GetComponent<Actor>();
+            targetActor = other.GetComponent<Actor>();
 
         }
     }
     private void OnTriggerExit(Collider other)
     {
         isOntriggerEnter = false;
-        actor = null;
+        targetActor = null;
     }
 }

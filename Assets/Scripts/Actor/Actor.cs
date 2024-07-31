@@ -8,7 +8,7 @@ public abstract class Actor : MonoBehaviour, IActor
     protected ActorStats stats;
     protected ActorProfileData profileData;
     public DetectActor detectActor { get; private set; }
-    [SerializeField]protected ActorType actoryType;
+    protected ActorType actoryType;
     protected virtual void Awake()
     {
         detectActor = GetComponent<DetectActor>();

@@ -2,44 +2,62 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TowerAttack : MonoBehaviour
 {
     Tower tower;
+    Quaternion originRotation;
+    bool isOriginRotation = false;
+    bool isReadyToAttack = false;
     bool findMonster;
     Coroutine attackCoroutine;
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 30); //타워 데이터 만들고 다시작업
-    }
+    float attackDelay;
+    //코루틴을 멈춰도 attckDelay는 계속 줄여야함
     private void Awake()
     {
         tower = GetComponent<Tower>();
+        originRotation = transform.rotation;
+    }
+    private void Start()
+    {
+        attackDelay = tower.towerDatas.Stats.attackSpeed;
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        RotateToward();
+        if (isReadyToAttack) 
         {
-            if (findMonster)
-            {
-                findMonster = false;
-                StopAttack();
-            }
+            StartAttack(3);
         }
-        if (Input.GetMouseButtonDown(1))
+        else
         {
-            if (!findMonster)
-            {
-                findMonster = true;
-                StartAttack(2);
-            }
+            StopAttack();
         }
     }
     private void RotateToward()
     {
+        if (tower.detectActor.targetActor == null)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
+        }
+        else
+        {
+            Vector3 dir = (tower.detectActor.actorPosition - transform.position).normalized;
+            dir.y = 0;
+            Quaternion rot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
 
+            float angleDif = Quaternion.Angle(transform.rotation, rot);
+            if (angleDif < 0.1f)
+            {
+                isReadyToAttack = true;
+            }
+            else
+            {
+                isReadyToAttack = false;
+            }
+        }
     }
     private void StartAttack(float attackSpeed)
     {
@@ -63,16 +81,6 @@ public class TowerAttack : MonoBehaviour
         {
             StartAttackAction();
             yield return new WaitForSeconds(attackSpeed);
-        }
-    }
-    void DetectActor(Vector3 center, float radius, string tag)
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
-        int i = 0;
-        while (i < hitColliders.Length)
-        {
-            hitColliders[i].SendMessage("AddDamage");
-            i++;
         }
     }
     void StartAttackAction()

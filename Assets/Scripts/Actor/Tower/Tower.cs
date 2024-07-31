@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Tower : Actor
 {
-    [SerializeField] string id;//이건 나중에 수정
-    protected SetTowerDatas towerDatas;
+    [SerializeField] string id;//이건 나중에 수정 (Test)
+    public SetTowerDatas towerDatas { get; private set; }
     protected List<Monster> detectedMonsters;
     protected override void Awake()
     {
-        Initialize(id, actoryType); //이건 나중에 수정
+        Initialize(id, actoryType); //이건 나중에 수정 (Test)
         base.Awake();
     }
     public void Initialize(string TowerID, ActorType type)

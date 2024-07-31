@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Monster : Actor
 {
-    [SerializeField] string id;//이건 나중에 수정
+    [SerializeField] string id;//이건 나중에 수정 (Test)
     protected SetMonsterDatas monsterData;
     protected override void Awake()
     {
-        Initialize(id, actoryType); //이건 나중에 수정
+        Initialize(id, actoryType); //이건 나중에 수정 (Test)
         base.Awake();
     }
     public void Initialize(string monsterID, ActorType type)
@@ -20,7 +21,7 @@ public class Monster : Actor
             profileData = monsterData.Profile;
             actoryType = monsterData.Profile.type;
             status = new MonsterStatus(monsterData.Status.maxHP, 0);
-            stats = new MonsterStats(monsterData.Stats.attackDamage, monsterData.Stats.attackRange, stats.moveSpeed, stats.attackSpeed);
+            stats = new MonsterStats(monsterData.Stats.attackDamage, monsterData.Stats.attackRange, monsterData.Stats.moveSpeed, monsterData.Stats.attackSpeed);
 
             ApplyMonsterData();
         }
