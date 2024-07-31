@@ -22,15 +22,15 @@ public class StageData
         normarMonsterPrefabsPath.Add("Prefabs/Monster/LV2_Golem");
         normarMonsterPrefabsPath.Add("Prefabs/Monster/LV3_Golem");
     }
-    public string GetMonsterObj(int num, ActoryType type)
+    public string GetMonsterObj(int num, ActorType type)
     {
         List<string> monsterPath = new List<string>();
         switch (type)
         {
-            case ActoryType.NormarMonster:
+            case ActorType.NormarMonster:
                 monsterPath = normarMonsterPrefabsPath;
                 break;
-            case ActoryType.BossMonster:
+            case ActorType.BossMonster:
                 monsterPath = bossMonsterPrefabsPath;
                 break;
         }

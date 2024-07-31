@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : Actor, IDetect
+public class Tower : Actor
 {
-    [SerializeField] string id;
-    [SerializeField] ActoryType actoryType;
+    [SerializeField] string id;//이건 나중에 수정
     protected SetTowerDatas towerDatas;
     protected List<Monster> detectedMonsters;
-
-    private void Update()
+    protected override void Awake()
     {
-        DetectActorsInRange(transform.position, stats.attackRange);
+        Initialize(id, actoryType); //이건 나중에 수정
+        base.Awake();
     }
-    public void Initialize(string monsterID, ActoryType type)
+    public void Initialize(string TowerID, ActorType type)
     {
-        towerDatas = GameData.instance.towerData.GetTowerStatusData(monsterID, type);
+        towerDatas = GameData.instance.towerData.GetTowerStatusData(TowerID, type);
 
         if (towerDatas != null)
         {
             profileData = towerDatas.Profile;
+            actoryType = towerDatas.Profile.type;
             status = new TowerStatus(towerDatas.Status.curentHP, towerDatas.Status.maxHP, towerDatas.Status.currentExp, towerDatas.Status.currentExp);
             stats = new TowerStats(towerDatas.Stats.attackDamage, towerDatas.Stats.attackRange, towerDatas.Stats.moveSpeed, towerDatas.Stats.attackSpeed);
 
@@ -27,7 +27,7 @@ public class Tower : Actor, IDetect
         }
         else
         {
-            Debug.LogError("데이터 없음 ID: " + monsterID);
+            Debug.LogError("타워 데이터 없음 ID: " + TowerID);
         }
     }
     private void ApplyTowerData()
@@ -40,42 +40,6 @@ public class Tower : Actor, IDetect
         // 타워 상태 데이터 적용
         if (status != null)
         {
-        }
-    }
-    public void DetectActorsInRange(Vector3 center, float radius)
-    {
-        Collider[] detectedColliders = Physics.OverlapSphere(center, radius);
-
-        HashSet<Monster> newDetectedActors = new HashSet<Monster>();
-
-        foreach (var collider in detectedColliders)
-        {
-            Monster actor = collider.GetComponent<Monster>();
-            if (actor != null)
-            {
-                newDetectedActors.Add(actor);
-            }
-        }
-
-        foreach (var actor in newDetectedActors)
-        {
-            if (!detectedMonsters.Contains(actor))
-            {
-                detectedMonsters.Add(actor);
-            }
-        }
-
-        List<Monster> actorsToRemove = new List<Monster>();
-        foreach (var actor in detectedMonsters)
-        {
-            if (!newDetectedActors.Contains(actor))
-            {
-                actorsToRemove.Add(actor);
-            }
-        }
-        foreach (var actor in actorsToRemove)
-        {
-            detectedMonsters.Remove(actor);
         }
     }
     public override void ReceiveEvent(IEvent ievent)

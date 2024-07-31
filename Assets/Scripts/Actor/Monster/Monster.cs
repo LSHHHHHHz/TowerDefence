@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Monster : Actor
 {
+    [SerializeField] string id;//이건 나중에 수정
     protected SetMonsterDatas monsterData;
-    public void Initialize(string monsterID, ActoryType type)
+    protected override void Awake()
+    {
+        Initialize(id, actoryType); //이건 나중에 수정
+        base.Awake();
+    }
+    public void Initialize(string monsterID, ActorType type)
     {
         monsterData = GameData.instance.monsterData.GetMonsterStatusData(monsterID, type);
 
         if (monsterData != null)
         {
             profileData = monsterData.Profile;
+            actoryType = monsterData.Profile.type;
             status = new MonsterStatus(monsterData.Status.maxHP, 0);
             stats = new MonsterStats(monsterData.Stats.attackDamage, monsterData.Stats.attackRange, stats.moveSpeed, stats.attackSpeed);
 

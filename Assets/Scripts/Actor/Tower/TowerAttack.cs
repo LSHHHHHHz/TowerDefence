@@ -12,8 +12,6 @@ public class TowerAttack : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-
-
         Gizmos.DrawWireSphere(transform.position, 30); //타워 데이터 만들고 다시작업
     }
     private void Awake()
@@ -38,6 +36,10 @@ public class TowerAttack : MonoBehaviour
                 StartAttack(2);
             }
         }
+    }
+    private void RotateToward()
+    {
+
     }
     private void StartAttack(float attackSpeed)
     {

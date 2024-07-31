@@ -41,6 +41,18 @@
     "towerData": {
         "normarTowerEntryDatas": [
             {
+                "actorID": "static11",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "static12",
+                "towerDatas": {}
+            },
+            {
+                "actorID": "static13",
+                "towerDatas": {}
+            },
+            {
                 "actorID": "nor11",
                 "towerDatas": {}
             },

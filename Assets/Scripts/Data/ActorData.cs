@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public enum ActoryType
+public enum ActorType
 {
     NormarMonster,
     BossMonster,
@@ -17,7 +17,7 @@ public class ActorProfileData
     public string actorName;
     public string iconPath;
     public string prefabPath;
-    public ActoryType type;
+    public ActorType type;
 }
 public class ActorStatusData
 {
@@ -77,47 +77,47 @@ public class MonsterData
     public void InitializeMonsterData()
     {
         AddNormarMonster("노말몬스터1",
-            new NormarMonsterProfileData("골렘1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarMonster),
+            new NormarMonsterProfileData("골렘1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarMonster),
             new NormarMonsterStatusData(500, 500),
             new NormarMonsterStatsData(0,0,0,5),
             new NormarMonsterRewardData(10, 10));
         AddNormarMonster("노말몬스터2",
-            new NormarMonsterProfileData("골레 : 노말몬스터2", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterProfileData("골레 : 노말몬스터2", "none", "none", ActorType.NormarMonster),
             new NormarMonsterStatusData(1000, 1000),
              new NormarMonsterStatsData(0, 0, 0, 5),
             new NormarMonsterRewardData(20, 20));
         AddNormarMonster("노말몬스터3",
-            new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActoryType.NormarMonster),
+            new NormarMonsterProfileData("이름 : 노말몬스터3", "none", "none", ActorType.NormarMonster),
             new NormarMonsterStatusData(1500, 1500),
              new NormarMonsterStatsData(0, 0, 0, 5),
             new NormarMonsterRewardData(20, 20));
         AddBossMonster("보스몬스터1",
-           new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActoryType.BossMonster),
+           new BossMonsterProfileData("이름 : 보스몬스터1", "none", "none", ActorType.BossMonster),
            new BossMonsterStatusData(5000, 5000),
             new BossMonsterStatsData(50, 5, 5, 4),
            new BossMonsterRewardData(100, 100));
         AddBossMonster("보스몬스터2",
-           new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActoryType.BossMonster),
+           new BossMonsterProfileData("이름 : 보스몬스터2", "none", "none", ActorType.BossMonster),
            new BossMonsterStatusData(8000, 8000),
             new BossMonsterStatsData(100, 5, 5, 4),
            new BossMonsterRewardData(200, 200));
         AddBossMonster("보스몬스터3",
-           new BossMonsterProfileData("이름 : 보스몬스터3", "none", "none", ActoryType.BossMonster),
+           new BossMonsterProfileData("이름 : 보스몬스터3", "none", "none", ActorType.BossMonster),
            new BossMonsterStatusData(10000, 10000),
             new BossMonsterStatsData(200, 5, 5, 4),
            new BossMonsterRewardData(300, 300));
     }
-    public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActoryType type)
+    public SetMonsterDatas GetMonsterStatusData(string monsterNumber, ActorType type)
     {
         List<MonsterEntryDatas> data = null;
         string monsterType = "";
         switch (type)
         {
-            case ActoryType.NormarMonster:
+            case ActorType.NormarMonster:
                 data = normarMonsterEntryDatas;
                 monsterType = "노말몬스터";
                 break;
-            case ActoryType.BossMonster:
+            case ActorType.BossMonster:
                 data = bossMonsterEntryDatas;
                 monsterType = "보스몬스터";
                 break;
@@ -171,7 +171,7 @@ public class SetMonsterDatas
 [Serializable]
 public class NormarMonsterProfileData : ActorProfileData
 {
-    public NormarMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActoryType type)
+    public NormarMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActorType type)
     {
         this.actorName = monsterName;
         this.iconPath = iconPath;
@@ -211,7 +211,7 @@ public class NormarMonsterRewardData : MonsterRewardData
 [Serializable]
 public class BossMonsterProfileData : ActorProfileData
 {
-    public BossMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActoryType type)
+    public BossMonsterProfileData(string monsterName, string iconPath, string prefabPath, ActorType type)
     {
         this.actorName = monsterName;
         this.iconPath = iconPath;
@@ -275,90 +275,102 @@ public class TowerData
     }
     public void InitializeMonsterData()
     {
+        AddNormarTower("static11",
+            new NormarTowerProfileData("방어타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 30),
+            new NormarTowerStatusData(500, 500, 1000, 0),
+            new NormarTowerStatsData(10, 10, 5, 0));
+        AddNormarTower("static12",
+            new NormarTowerProfileData("바어타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 60),
+            new NormarTowerStatusData(1000, 1000, 2000, 0),
+            new NormarTowerStatsData(20, 10, 5, 0));
+        AddNormarTower("static13",
+            new NormarTowerProfileData("방어타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 90),
+            new NormarTowerStatusData(1500, 1500, 3000, 0),
+            new NormarTowerStatsData(30, 10, 5, 0));
         AddNormarTower("nor11",
-            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000,0),
             new NormarTowerStatsData(10, 10, 5, 0));
         AddNormarTower("nor12",
-            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000,2000,0),
             new NormarTowerStatsData(20, 10, 5, 0));
         AddNormarTower("nor13",
-            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerProfileData("불타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500,3000,0),
             new NormarTowerStatsData(30, 10, 5, 0));
         AddNormarTower("nor21",
-            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500,1000,0),
             new NormarTowerStatsData(10, 10, 5, 0));
         AddNormarTower("nor22",
-            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000, 2000, 0),
             new NormarTowerStatsData(20, 10, 5, 0));
         AddNormarTower("nor23",
-            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerProfileData("번개타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500, 3000, 0),
             new NormarTowerStatsData(30, 10, 5, 0));
         AddNormarTower("nor31",
-            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 30),
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000, 0),
             new NormarTowerStatsData(10, 10, 5, 0));
         AddNormarTower("nor32",
-            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 60),
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000, 2000, 0),
             new NormarTowerStatsData(20, 10, 5, 0));
         AddNormarTower("nor33",
-            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.NormarTower, 5000, 3000, 90),
+            new NormarTowerProfileData("물타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500, 3000, 0),
             new NormarTowerStatsData(30, 10, 5, 0));
 
         AddChampionTower("cham11",
-            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(1000, 1000, 1000, 0),
             new ChamPionStatsData(20, 15, 3, 0));
         AddChampionTower("cham12",
-            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(2000, 2000, 2000, 0),
             new ChamPionStatsData(50, 15, 3, 0));
         AddChampionTower("cham13",
-            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("슬로우챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(5000, 5000, 3000, 0),
             new ChamPionStatsData(100, 15, 3, 0));
         AddChampionTower("cham21",
-            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(1000, 1000, 1000, 0),
             new ChamPionStatsData(20, 15, 3, 0));
         AddChampionTower("cham22",
-            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(2000, 2000, 2000, 0),
             new ChamPionStatsData(50, 15, 3, 0));
         AddChampionTower("cham23",
-            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공속버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(5000, 5000, 3000, 0),
             new ChamPionStatsData(100, 15, 3, 0));
         AddChampionTower("cham31",
-            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(1000, 1000, 1000, 0),
             new ChamPionStatsData(20, 15, 3, 0));
         AddChampionTower("cham32",
-            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(2000, 2000, 2000, 0),
             new ChamPionStatsData(50, 15, 3, 0));
         AddChampionTower("cham33",
-            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActoryType.ChampionTower, 10000, 5000, 30),
+            new ChamPionProfileData("공격버프챔편", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.ChampionTower, 10000, 5000, 30),
             new ChamPionStatusData(5000, 5000, 3000, 0),
             new ChamPionStatsData(100, 15, 3, 0));
 
     }
-    public SetTowerDatas GetTowerStatusData(string towerID, ActoryType type)
+    public SetTowerDatas GetTowerStatusData(string towerID, ActorType type)
     {
         List<TowerEntryDatas> data = null;
         switch (type)
         {
-            case ActoryType.NormarMonster:
+            case ActorType.NormarMonster:
                 data = normarTowerEntryDatas;
                 break;
-            case ActoryType.BossMonster:
+            case ActorType.BossMonster:
                 data = chapionTowerEntryDatas;
                 break;
         }
@@ -409,7 +421,7 @@ public class SetTowerDatas
 [Serializable]
 public class NormarTowerProfileData : TowerProfileData
 {
-    public NormarTowerProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
+    public NormarTowerProfileData(string name, string iconPath, string prefabPath, ActorType type, int buy, int sell, int upgradeTime)
     {
         this.actorName = name;
         this.iconPath = iconPath;
@@ -445,7 +457,7 @@ public class NormarTowerStatsData : TowerStatsData
 [Serializable]
 public class ChamPionProfileData : TowerProfileData
 {
-    public ChamPionProfileData(string name, string iconPath, string prefabPath, ActoryType type, int buy, int sell, int upgradeTime)
+    public ChamPionProfileData(string name, string iconPath, string prefabPath, ActorType type, int buy, int sell, int upgradeTime)
     {
         this.actorName = name;
         this.iconPath = iconPath;

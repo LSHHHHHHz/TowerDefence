@@ -10,7 +10,7 @@ public class MonsterSpwaner : MonoBehaviour
 {
     [SerializeField] string startColor;
     private int currentSpawnStage;
-    private ActoryType currentSpawnType;
+    private ActorType currentSpawnType;
     private int normarMonsterCount = 10;
     private int bossMonsterCount = 2;
     float spawnTime;
@@ -26,25 +26,25 @@ public class MonsterSpwaner : MonoBehaviour
     {
         EventManager.instance.stageEvent -= StartSpawnMonster;
     }
-    public void StartSpawnMonster(int stageNum, string prefabIconPath, ActoryType type)
+    public void StartSpawnMonster(int stageNum, string prefabIconPath, ActorType type)
     {
         int maxSpawnCount = 0;
         currentSpawnStage = stageNum;
         currentSpawnType = type;
         switch (type)
         {
-            case ActoryType.NormarMonster:
+            case ActorType.NormarMonster:
                 maxSpawnCount = normarMonsterCount;
                 spawnTime = 0.1f;
                 break;
-            case ActoryType.BossMonster:
+            case ActorType.BossMonster:
                 maxSpawnCount = bossMonsterCount;
                 spawnTime = 1f;
                 break;
         }
         spawnCoroutine = StartCoroutine(SpawnMonster(prefabIconPath, maxSpawnCount, type));
     }
-    IEnumerator SpawnMonster(string prefabIconPath, int spawnCount, ActoryType type)
+    IEnumerator SpawnMonster(string prefabIconPath, int spawnCount, ActorType type)
     {
         int count = 0;
         while (count < spawnCount)

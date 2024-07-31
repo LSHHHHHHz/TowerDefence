@@ -7,7 +7,7 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
     public GameData gameData;
-    public Action<int,string, ActoryType> stageEvent;
+    public Action<int,string, ActorType> stageEvent;
     public Action<int> checkStageNumEvent; 
     public Action<SetMonsterDatas> currentStageNormarMonsterEvent;
     public Action<SetMonsterDatas> currentStageBossMonsterEvent;
@@ -23,15 +23,15 @@ public class EventManager : MonoBehaviour
         }
         gameData = GameData.instance;
     }
-    public void StartStageEvent(int stageNum, ActoryType type)
+    public void StartStageEvent(int stageNum, ActorType type)
     {
         string prefabPath = gameData.stageData.GetMonsterObj(stageNum, type);
         stageEvent?.Invoke(stageNum,prefabPath, type);
     }
     public void ResetStageEvent(string stageMonsterId)
     {
-        SetMonsterDatas setNormarMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActoryType.NormarMonster);
-        SetMonsterDatas setBossMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActoryType.BossMonster);
+        SetMonsterDatas setNormarMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActorType.NormarMonster);
+        SetMonsterDatas setBossMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActorType.BossMonster);
         currentStageNormarMonsterEvent?.Invoke(setNormarMonsterDatas);
         currentStageBossMonsterEvent?.Invoke(setBossMonsterDatas);
     }

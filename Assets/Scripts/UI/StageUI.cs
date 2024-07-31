@@ -19,7 +19,7 @@ public class StageUI : MonoBehaviour
 
     SetMonsterDatas setNormarMonsterDatas;
     SetMonsterDatas setBossMonsterDatas;
-    ActoryType selectMonsterStageType;
+    ActorType selectMonsterStageType;
 
     private void Awake()
     {
@@ -64,13 +64,13 @@ public class StageUI : MonoBehaviour
     {
         selectNormarStageBackGround.enabled = true;
         selectBossStageBackGround.enabled = false;
-        selectMonsterStageType = ActoryType.NormarMonster;
+        selectMonsterStageType = ActorType.NormarMonster;
     }
     public void SelectBossStage()
     {
         selectNormarStageBackGround.enabled = false;
         selectBossStageBackGround.enabled = true;
-        selectMonsterStageType = ActoryType.BossMonster;
+        selectMonsterStageType = ActorType.BossMonster;
     }
     public void StartStage()
     {
