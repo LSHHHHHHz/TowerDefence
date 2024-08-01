@@ -6,8 +6,8 @@ public class DetectActor : MonoBehaviour
 {
     bool isOntriggerEnter = false;
     string findActorTag;
-    [SerializeField] public Actor targetActor;
-    [SerializeField] public Vector3 actorPosition;
+    public Actor targetActor;
+    public Vector3 actorPosition;
     private void Update()
     {
         if (targetActor != null)

@@ -8,27 +8,40 @@ public class TowerAttack : MonoBehaviour
 {
     Tower tower;
     Quaternion originRotation;
-    bool isOriginRotation = false;
     bool isReadyToAttack = false;
-    bool findMonster;
     Coroutine attackCoroutine;
     float attackDelay;
-    //코루틴을 멈춰도 attckDelay는 계속 줄여야함
+    float initializedAttackDelay;
+    CapsuleCollider capsuleCollider;
+
+    [SerializeField] Transform firePos; //공격 시작 지점
+    Vector3 attackDir; //공격 방향
+    Vector3 targetPos; //타겟 위치
+    [SerializeField] string bulletPrefabPath;
     private void Awake()
     {
         tower = GetComponent<Tower>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
     }
     private void Start()
     {
-        attackDelay = tower.towerDatas.Stats.attackSpeed;
+        initializedAttackDelay = tower.towerDatas.Stats.attackSpeed;
+        attackDelay = 0f;
+        capsuleCollider.radius = tower.towerDatas.Stats.attackRange;
     }
     private void Update()
     {
         RotateToward();
-        if (isReadyToAttack) 
+
+        if (isReadyToAttack && tower.detectActor.targetActor != null)
         {
-            StartAttack(3);
+            attackDelay -= Time.deltaTime;
+            if (attackDelay <= 0)
+            {
+                StartAttackAction();
+                attackDelay = initializedAttackDelay;
+            }
         }
         else
         {
@@ -40,18 +53,24 @@ public class TowerAttack : MonoBehaviour
         if (tower.detectActor.targetActor == null)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
+            isReadyToAttack = false;
         }
         else
         {
             Vector3 dir = (tower.detectActor.actorPosition - transform.position).normalized;
             dir.y = 0;
             Quaternion rot = Quaternion.LookRotation(dir);
+            targetPos = tower.detectActor.actorPosition;
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
 
             float angleDif = Quaternion.Angle(transform.rotation, rot);
             if (angleDif < 0.1f)
             {
                 isReadyToAttack = true;
+                if (attackCoroutine == null)
+                {
+                    StartAttack();
+                }
             }
             else
             {
@@ -59,32 +78,45 @@ public class TowerAttack : MonoBehaviour
             }
         }
     }
-    private void StartAttack(float attackSpeed)
+    private void StartAttack()
     {
         if (attackCoroutine == null)
         {
-            attackCoroutine = StartCoroutine(StartBaseAttackCoroutine(2f));
+            attackCoroutine = StartCoroutine(AttackCorutine());
         }
     }
-
     private void StopAttack()
     {
-        if (attackCoroutine != null) 
+        if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
     }
-    IEnumerator StartBaseAttackCoroutine(float attackSpeed)
+    IEnumerator AttackCorutine()
     {
         while (true)
         {
-            StartAttackAction();
-            yield return new WaitForSeconds(attackSpeed);
+            if (tower.detectActor.targetActor != null)
+            {
+                attackDelay -= Time.deltaTime;
+                if (attackDelay <= 0)
+                {
+                    StartAttackAction();
+                    attackDelay = initializedAttackDelay;
+                }
+            }
+            yield return null;
         }
     }
     void StartAttackAction()
     {
+        attackDir = (firePos.gameObject.transform.position - tower.gameObject.transform.position).normalized;
         Debug.Log("공격!!!");
+        IBullet bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<IBullet>();
+        bullet.InitializedBullet(attackDir, targetPos);
+        bullet.FireBullet();
+
+        Debug.Log("공격???");
     }
 }

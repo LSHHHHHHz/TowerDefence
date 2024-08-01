@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-    GameManager instance;
+    public static GameManager instance;
     SpawnManager monsterSpawn;
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
