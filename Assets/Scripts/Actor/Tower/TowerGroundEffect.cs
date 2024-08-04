@@ -14,19 +14,37 @@ public class TowerGroundEffect : MonoBehaviour
         meshRenderer.material.color = originColor;
         effect = Instantiate(effectPrefab, transform);
     }
-    public void ChangeGroundColorEnterMouse()
+    private void OnEnable()
     {
-        if (meshRenderer != null)
-        {
-            meshRenderer.material.color = new Color(255, 222, 13);
-        }
+        GameManager.instance.towerGroundEventManager.onMouseEnter += ChangeGroundColorEnterMouse;
+        GameManager.instance.towerGroundEventManager.onMouseExit += ChangeGroundColorExitMouse;
     }
-    public void ChangeGroundColorExitMouse()
+    private void OnDisable()
     {
-        if (meshRenderer != null)
+        GameManager.instance.towerGroundEventManager.onMouseEnter -= ChangeGroundColorEnterMouse;
+        GameManager.instance.towerGroundEventManager.onMouseExit -= ChangeGroundColorExitMouse;
+    }
+    public void ChangeGroundColorEnterMouse(TowerGround tower)
+    {
+        if (tower != null)
         {
-            meshRenderer.material.color = Color.black;
+            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = new Color(255, 222, 13);
         }
+        //if (meshRenderer != null)
+        //{
+        //    meshRenderer.material.color = new Color(255, 222, 13);
+        //}
+    }
+    public void ChangeGroundColorExitMouse(TowerGround tower)
+    {
+        if (tower != null)
+        {
+            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = Color.black;
+        }
+        //if (meshRenderer != null)
+        //{
+        //    meshRenderer.material.color = Color.black;
+        //}
     }
     public void ChangeGroundColorInTower()
     {

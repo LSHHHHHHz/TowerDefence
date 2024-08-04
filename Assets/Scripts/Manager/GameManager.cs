@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public SpawnManager monsterSpawn;
     public InputEventManager inputManager;
     public StageEventManager stageEventManager;
+    public TowerGroundEventManager towerGroundEventManager;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         gameData = GameData.instance;
         inputManager = new InputEventManager();
         stageEventManager = new StageEventManager(gameData);
+        towerGroundEventManager = new TowerGroundEventManager();
     }
     private void Update()
     {
