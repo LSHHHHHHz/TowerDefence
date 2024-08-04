@@ -18,9 +18,9 @@ public class StageData
     }
     public void InitializeStageMonsterData()
     {
-        normarMonsterPrefabsPath.Add("Prefabs/Monster/LV1_Golem");
-        normarMonsterPrefabsPath.Add("Prefabs/Monster/LV2_Golem");
-        normarMonsterPrefabsPath.Add("Prefabs/Monster/LV3_Golem");
+        normarMonsterPrefabsPath.Add("Prefabs/Monster/Normar/LV1_Golem");
+        normarMonsterPrefabsPath.Add("Prefabs/Monster/Normar/LV2_Golem");
+        normarMonsterPrefabsPath.Add("Prefabs/Monster/Normar/LV3_Golem");
     }
     public string GetMonsterObj(int num, ActorType type)
     {

@@ -78,7 +78,7 @@ public class MonsterData
     public void InitializeMonsterData()
     {
         AddNormarMonster("≥Î∏ª∏ÛΩ∫≈Õ1",
-            new NormarMonsterProfileData("∞Ò∑Ω1", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarMonster),
+            new NormarMonsterProfileData("∞Ò∑Ω1", "none", "Prefabs/Monster/Normar/LV1_Golem", ActorType.NormarMonster),
             new NormarMonsterStatusData(500, 500),
             new NormarMonsterStatsData(0,0,0,5,10),
             new NormarMonsterRewardData(10, 10));

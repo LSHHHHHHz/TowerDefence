@@ -2,9 +2,9 @@
     "stageData": {
         "lastStage": 1,
         "normarMonsterPrefabsPath": [
-            "Prefabs/Monster/LV1_Golem",
-            "Prefabs/Monster/LV2_Golem",
-            "Prefabs/Monster/LV3_Golem"
+            "Prefabs/Monster/Normar/LV1_Golem",
+            "Prefabs/Monster/Normar/LV2_Golem",
+            "Prefabs/Monster/Normar/LV3_Golem"
         ],
         "bossMonsterPrefabsPath": []
     },

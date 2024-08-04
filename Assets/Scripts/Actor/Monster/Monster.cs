@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class Monster : Actor
 {
-    [SerializeField] string id;//이건 나중에 수정 (Test)
     protected SetMonsterDatas monsterData;
     protected override void Awake()
     {
-        Initialize(id, actoryType); //이건 나중에 수정 (Test)
         base.Awake();
     }
     public void Initialize(string monsterID, ActorType type)
