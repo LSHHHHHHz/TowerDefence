@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     GameData gameData;
     public SpawnManager monsterSpawn;
-    public InputManager inputManager;
+    public InputEventManager inputManager;
     public StageEventManager stageEventManager;
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         gameData = GameData.instance;
-        inputManager = new InputManager();
+        inputManager = new InputEventManager();
         stageEventManager = new StageEventManager(gameData);
     }
     private void Update()
