@@ -20,11 +20,22 @@ public class CameraMove : MonoBehaviour
 
     bool isCameraRot = false;
     bool isContactBoundary = false;
-    bool isOriginPos = false;
+    bool isOriginPos = true;
+    bool wasOriginPos = false;
     private void Awake()
     {
         originPos = transform.position;
         originRot = transform.rotation;
+    }
+    private void OnEnable()
+    {
+        GameManager.instance.inputManager.enableMove += EnableMovement;
+        GameManager.instance.inputManager.disableMove += DisableMovement;
+    }
+    private void OnDisable()
+    {
+        GameManager.instance.inputManager.enableMove -= EnableMovement;
+        GameManager.instance.inputManager.disableMove -= DisableMovement;
     }
     private void Update()
     {
@@ -37,9 +48,17 @@ public class CameraMove : MonoBehaviour
         }
         else
         {
+            if (wasOriginPos)
+            {
+                yaw = transform.eulerAngles.y;
+                pitch = transform.eulerAngles.x;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
+            }
             MoveCamera();
             RotationCamera();
         }
+        wasOriginPos = isOriginPos;
     }
     void MoveCamera()
     {
@@ -64,11 +83,12 @@ public class CameraMove : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(pitch, yaw, 0);
     }
-    public void Test1()
+    public void EnableMovement()
     {
         isOriginPos = false;
     }
-    public void Test2()
+
+    public void DisableMovement()
     {
         isOriginPos = true;
     }

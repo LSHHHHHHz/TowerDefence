@@ -29,14 +29,14 @@ public class StageUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.instance.currentStageNormarMonsterEvent += normarMonsterInfoUI.SetMonsterData;
-        EventManager.instance.currentStageBossMonsterEvent += bossMonsterInfoUI.SetMonsterData;
-        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
+        GameManager.instance.stageEventManager.currentStageNormarMonsterEvent += normarMonsterInfoUI.SetMonsterData;
+        GameManager.instance.stageEventManager.currentStageBossMonsterEvent += bossMonsterInfoUI.SetMonsterData;
+        GameManager.instance.stageEventManager.ResetStageEvent(currentStageNumber.ToString());
     }
     private void OnDisable()
     {
-        EventManager.instance.currentStageNormarMonsterEvent -= normarMonsterInfoUI.SetMonsterData;
-        EventManager.instance.currentStageBossMonsterEvent -= bossMonsterInfoUI.SetMonsterData;
+        GameManager.instance.stageEventManager.currentStageNormarMonsterEvent -= normarMonsterInfoUI.SetMonsterData;
+        GameManager.instance.stageEventManager.currentStageBossMonsterEvent -= bossMonsterInfoUI.SetMonsterData;
     }
     public void StageDown()
     {
@@ -47,7 +47,7 @@ public class StageUI : MonoBehaviour
             return;
         }
         stageText.text = "Stage " + currentStageNumber.ToString();
-        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
+        GameManager.instance.stageEventManager.ResetStageEvent(currentStageNumber.ToString());
     }
     public void StageUP()
     {
@@ -58,7 +58,7 @@ public class StageUI : MonoBehaviour
             return;
         }
         stageText.text = "Stage " + currentStageNumber.ToString();
-        EventManager.instance.ResetStageEvent(currentStageNumber.ToString());
+        GameManager.instance.stageEventManager.ResetStageEvent(currentStageNumber.ToString());
     }
     public void SelectNormarStage()
     {
@@ -74,6 +74,6 @@ public class StageUI : MonoBehaviour
     }
     public void StartStage()
     {
-        EventManager.instance.StartStageEvent(currentStageNumber, selectMonsterStageType);
+        GameManager.instance.stageEventManager.StartStageEvent(currentStageNumber, selectMonsterStageType);
     }
 }

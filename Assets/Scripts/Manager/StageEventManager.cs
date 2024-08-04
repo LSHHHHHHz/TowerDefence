@@ -3,25 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class StageEventManager
 {
-    public static EventManager instance;
     public GameData gameData;
     public Action<int,string, ActorType> stageEvent;
     public Action<int> checkStageNumEvent; 
     public Action<SetMonsterDatas> currentStageNormarMonsterEvent;
     public Action<SetMonsterDatas> currentStageBossMonsterEvent;
-    private void Awake()
+    public StageEventManager(GameData gameData)
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        gameData = GameData.instance;
+        this.gameData = gameData;
     }
     public void StartStageEvent(int stageNum, ActorType type)
     {

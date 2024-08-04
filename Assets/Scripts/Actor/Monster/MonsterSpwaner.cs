@@ -19,12 +19,12 @@ public class MonsterSpwaner : MonoBehaviour
     Coroutine spawnCoroutine;
     private void OnEnable()
     {
-        EventManager.instance.stageEvent += StartSpawnMonster;
+       GameManager.instance.stageEventManager.stageEvent += StartSpawnMonster;
     }
 
     private void OnDisable()
     {
-        EventManager.instance.stageEvent -= StartSpawnMonster;
+        GameManager.instance.stageEventManager.stageEvent -= StartSpawnMonster;
     }
     public void StartSpawnMonster(int stageNum, string prefabIconPath, ActorType type)
     {
