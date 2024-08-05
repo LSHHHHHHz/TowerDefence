@@ -7,7 +7,7 @@ public class TowerGroundEventManager
 {
     public Action<TowerGround> onMouseEnter;
     public Action<TowerGround> onMouseExit;
-    public Action towerOnGround;
+    public Action<Tower> towerOnGround;
     public Action towerOutGround;
     public void MouseEnter(TowerGround tower)
     {
@@ -17,9 +17,9 @@ public class TowerGroundEventManager
     {
         onMouseExit?.Invoke(tower);
     }
-    public void TowerOnGround()
+    public void TowerOnGround(Tower tower)
     {
-        towerOnGround?.Invoke();
+        towerOnGround?.Invoke(tower);
     }
     public void TowerOutGround()
     {
