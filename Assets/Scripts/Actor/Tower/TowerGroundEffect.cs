@@ -30,10 +30,6 @@ public class TowerGroundEffect : MonoBehaviour
         {
             tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = new Color(255, 222, 13);
         }
-        //if (meshRenderer != null)
-        //{
-        //    meshRenderer.material.color = new Color(255, 222, 13);
-        //}
     }
     public void ChangeGroundColorExitMouse(TowerGround tower)
     {
@@ -41,10 +37,6 @@ public class TowerGroundEffect : MonoBehaviour
         {
             tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = Color.black;
         }
-        //if (meshRenderer != null)
-        //{
-        //    meshRenderer.material.color = Color.black;
-        //}
     }
     public void ChangeGroundColorInTower()
     {

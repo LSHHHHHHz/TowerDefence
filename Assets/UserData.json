@@ -128,5 +128,241 @@
             }
         ]
     },
-    "monsterWarePointData": {}
+    "monsterWarePointData": {},
+    "groundData": {
+        "_towerGroundData": [
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            },
+            {
+                "towerID": "",
+                "type": 0
+            }
+        ]
+    }
 }
