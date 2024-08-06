@@ -5,32 +5,36 @@ using UnityEngine;
 
 public class TowerGround : MonoBehaviour 
 {
-    TowerOnGroundData towerGroundData;
-    Tower tower;
-    string installTowerID;
-    ActorType type;
+    public TowerOnGroundData towerGroundData;
+    List<Tower> towers = new List<Tower>();
     public bool isHasTower;
-    private void OnEnable()
-    {
-       // GameManager.instance.towerGroundEventManager.towerOnGround += DropTower;
-        //GameManager.instance.towerGroundEventManager.towerOutGround += RemoveTower;
-    }
-    private void OnDisable()
-    {
-        //GameManager.instance.towerGroundEventManager.towerOnGround -= DropTower;
-        //GameManager.instance.towerGroundEventManager.towerOutGround -= RemoveTower;
-    }
     public void DropTower(string towerID, ActorType type)
     {
-        this.installTowerID = towerID;
-        this.type = type;
-        string path = GameData.instance.towerData.GetTowerStatusData(towerGroundData.towerID, towerGroundData.type).Profile.prefabPath;
+        foreach (Tower t in towers)
+        {
+            t.gameObject.SetActive(false);
+        }
+        string path = GameData.instance.towerData.GetTowerStatusData(towerID, type).Profile.prefabPath;
         GameObject obj = Resources.Load<GameObject>(path);
-        tower = Instantiate(obj, transform).GetComponent<Tower>();
+        Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
+        foreach(Tower t in towers)
+        {
+            if(t == tower)
+            {
+                t.gameObject.SetActive(true);
+                towers.Add(t);
+                break;
+            }
+        }
+        isHasTower = true;
     }
     public void RemoveTower()
     {
-        installTowerID = null;
+        foreach (Tower t in towers)
+        {
+            t.gameObject.SetActive(false);
+        }
+        isHasTower = false;
     }
     public bool ISHasTower()
     {

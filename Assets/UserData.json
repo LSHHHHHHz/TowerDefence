@@ -130,7 +130,7 @@
     },
     "monsterWarePointData": {},
     "groundData": {
-        "_towerGroundData": [
+        "_towerGroundDatas": [
             {
                 "towerID": "",
                 "type": 0

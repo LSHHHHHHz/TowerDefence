@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerGroundManager : MonoBehaviour
 {
-    GroundData groundData;
+    TowerGroundManagerData groundData;
     List<TowerGround> towerGroundList = new List<TowerGround>();
     private void Awake()
     {
@@ -13,8 +13,8 @@ public class TowerGroundManager : MonoBehaviour
         {
             TowerGround towerGround = transform.GetChild(i).GetComponent<TowerGround>();
             towerGroundList.Add(towerGround);
-            groundData.towerGroundData[i].setTowerData += towerGround.DropTower;
-            groundData.towerGroundData[i].resetTowerData += towerGround.RemoveTower;
+            groundData.towerGroundDatas[i].setTowerData += towerGround.DropTower;
+            groundData.towerGroundDatas[i].resetTowerData += towerGround.RemoveTower;
         }
     }
 }
