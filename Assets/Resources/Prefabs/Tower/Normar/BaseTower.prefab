@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2725032164220990672}
   - component: {fileID: 9032471305038887636}
-  - component: {fileID: 1381598888205962015}
+  - component: {fileID: 1901610393139272564}
   m_Layer: 0
   m_Name: BaseTower
   m_TagString: Untagged
@@ -138,7 +138,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1381598888205962015
+--- !u!114 &1901610393139272564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,15 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 925078531614342593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918170c09d88a7f47991f97e2ae42f62, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eecac282e9406b4181f7799559db7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_baseRotation: {fileID: 8810028965143999645}
-  go_GunBody: {fileID: 5270733580952358428}
-  go_barrel: {fileID: 1151315988732371234}
-  barrelRotationSpeed: 1000
-  firingRange: 10
-  muzzelFlash: {fileID: 8368011662559023417}
+  actorId: 
+  actoryType: 0
 --- !u!1 &1193375950831347498
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,10 +66,10 @@ public class TowerGroundManagerData
     }
     public void InitializeSlots(int count)
     {
-        towerGroundDatas = new List<TowerOnGroundData>(count);
+        _towerGroundDatas = new List<TowerOnGroundData>(count);
         for (int i = 0; i < count; i++)
         {
-            towerGroundDatas.Add(new TowerOnGroundData());
+            _towerGroundDatas.Add(new TowerOnGroundData());
         }
     }
 }

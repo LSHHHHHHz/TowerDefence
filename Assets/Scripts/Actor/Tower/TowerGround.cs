@@ -7,7 +7,13 @@ public class TowerGround : MonoBehaviour
 {
     public TowerOnGroundData towerGroundData;
     List<Tower> towers = new List<Tower>();
-    public bool isHasTower;
+    public Tower currentTower;
+    public bool isHasTower { get; private set; }
+    private void Start()
+    {
+        towerGroundData.setTowerData += DropTower;
+        towerGroundData.resetTowerData += RemoveTower;
+    }
     public void DropTower(string towerID, ActorType type)
     {
         foreach (Tower t in towers)
@@ -21,8 +27,9 @@ public class TowerGround : MonoBehaviour
         {
             if(t == tower)
             {
-                t.gameObject.SetActive(true);
-                towers.Add(t);
+                currentTower = t;
+                currentTower.gameObject.SetActive(true);
+                towers.Add(currentTower);
                 break;
             }
         }
@@ -30,10 +37,7 @@ public class TowerGround : MonoBehaviour
     }
     public void RemoveTower()
     {
-        foreach (Tower t in towers)
-        {
-            t.gameObject.SetActive(false);
-        }
+        currentTower?.gameObject.SetActive(false);
         isHasTower = false;
     }
     public bool ISHasTower()

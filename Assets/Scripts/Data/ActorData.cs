@@ -279,7 +279,7 @@ public class TowerData
     public void InitializeMonsterData()
     {
         AddNormarTower("static11",
-            new NormarTowerProfileData("规绢鸥况", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 30),
+            new NormarTowerProfileData("规绢鸥况", "none", "Prefabs/Tower/Normar/BaseTower", ActorType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000, 0),
             new NormarTowerStatsData(10, 10, 5, 0, 10));
         AddNormarTower("static12",
@@ -370,10 +370,10 @@ public class TowerData
         List<TowerEntryDatas> data = null;
         switch (type)
         {
-            case ActorType.NormarMonster:
+            case ActorType.NormarTower:
                 data = normarTowerEntryDatas;
                 break;
-            case ActorType.BossMonster:
+            case ActorType.ChampionTower:
                 data = chapionTowerEntryDatas;
                 break;
         }
