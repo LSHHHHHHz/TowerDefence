@@ -8,7 +8,7 @@ public class TowerAttackSensor : MonoBehaviour
 {
     Tower tower;
     Quaternion originRotation;
-    bool isReadyToAttack = false;
+    bool isReadyToAttack = true;
     Coroutine attackCoroutine;
     float attackDelay;
     float initializedAttackDelay;
@@ -18,11 +18,14 @@ public class TowerAttackSensor : MonoBehaviour
     Vector3 attackDir; //공격 방향
     Vector3 targetPos; //타겟 위치
     [SerializeField] string bulletPrefabPath;
+
+    TowerBaseAttack towerAttack;
     private void Awake()
     {
         tower = GetComponent<Tower>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
+        towerAttack = GetComponent<TowerBaseAttack>();
     }
     private void Start()
     {
@@ -36,12 +39,7 @@ public class TowerAttackSensor : MonoBehaviour
 
         if (isReadyToAttack && tower.detectActor.targetActor != null)
         {
-            attackDelay -= Time.deltaTime;
-            if (attackDelay <= 0)
-            {
-                StartAttackAction();
-                attackDelay = initializedAttackDelay;
-            }
+            StartAttack();
         }
         else
         {
@@ -58,19 +56,19 @@ public class TowerAttackSensor : MonoBehaviour
         else
         {
             Vector3 dir = (tower.detectActor.actorPosition - transform.position).normalized;
-            dir.y = 0;
+            dir.y = 0; 
             Quaternion rot = Quaternion.LookRotation(dir);
-            targetPos = tower.detectActor.actorPosition;
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
+
+            Quaternion currentRot = transform.rotation;
+            Quaternion adjustedRot = Quaternion.Euler(currentRot.eulerAngles.x, rot.eulerAngles.y, currentRot.eulerAngles.z);
+
+            transform.rotation = Quaternion.Slerp(adjustedRot, rot, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
 
             float angleDif = Quaternion.Angle(transform.rotation, rot);
+
             if (angleDif < 0.1f)
             {
                 isReadyToAttack = true;
-                if (attackCoroutine == null)
-                {
-                    StartAttack();
-                }
             }
             else
             {
@@ -111,12 +109,8 @@ public class TowerAttackSensor : MonoBehaviour
     }
     void StartAttackAction()
     {
+        Debug.Log("들어오나");
         attackDir = (firePos.gameObject.transform.position - tower.gameObject.transform.position).normalized;
-        Debug.Log("공격!!!");
-        ITowerBasicAttack bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<ITowerBasicAttack>();
-        bullet.InitializedBullet(attackDir, targetPos);
-        bullet.FireBullet();
-
-        Debug.Log("공격???");
+        towerAttack.FireBullet(attackDir, targetPos);
     }
 }
