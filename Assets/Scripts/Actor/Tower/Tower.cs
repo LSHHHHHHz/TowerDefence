@@ -9,6 +9,7 @@ public class Tower : Actor
     protected override void Awake()
     {
         base.Awake();
+        Initialize(actorId, actoryType);
     }
     public void Initialize(string TowerID, ActorType type)
     {

@@ -8,7 +8,12 @@ using UnityEngine;
 [Serializable]
 public class StageData
 {
-    public int lastStage = 1;
+    public int initialStageNumber = 1;
+    public int lastStageNumber = 10;
+    
+    public int currentStageNumber = 1;
+    public int clearStageNumber = 3;
+
     public List<string> normarMonsterPrefabsPath = new List<string>();
     public List<string> bossMonsterPrefabsPath = new List<string>();
 
@@ -36,5 +41,4 @@ public class StageData
         }
         return monsterPath[num-1];
     }
-
 }

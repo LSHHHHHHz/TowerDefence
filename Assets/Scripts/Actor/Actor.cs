@@ -10,6 +10,7 @@ public abstract class Actor : MonoBehaviour, IActor
     public DetectActor detectActor { get; private set; }
     public string actorId;
     public ActorType actoryType;
+
     protected virtual void Awake()
     {
         detectActor = GetComponent<DetectActor>();

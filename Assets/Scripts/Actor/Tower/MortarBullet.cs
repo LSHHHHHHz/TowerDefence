@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MortarBullet : MonoBehaviour , IBullet
+public class MortarBullet : MonoBehaviour , ITowerBasicAttack
 {
     public GameObject[] effects;
     Vector3 dir;
