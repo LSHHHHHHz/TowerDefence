@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class DieState : IState
 {
-    public void Enter(FSMController fsm)
+    public void Enter(Actor actor)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Exit(FSMController fsm)
+    public void Exit(Actor actor)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Update(FSMController fsm)
+    public void Update(Actor actor)
     {
         throw new System.NotImplementedException();
     }

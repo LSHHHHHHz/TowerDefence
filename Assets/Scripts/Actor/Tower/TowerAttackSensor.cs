@@ -12,7 +12,8 @@ public class TowerAttackSensor : MonoBehaviour
     [SerializeField] Transform firePos; // 공격 시작 지점
 
     TowerBaseAttack towerAttack;
-
+    bool isReadyToAttack = false;
+    public Actor findActor;
     private void Awake()
     {
         tower = GetComponent<Tower>();
@@ -31,10 +32,12 @@ public class TowerAttackSensor : MonoBehaviour
 
         if (tower.detectActor.targetActor != null)
         {
+            findActor = tower.detectActor.targetActor;
             towerAttack.StartAttack(tower.detectActor.targetActor);
         }
         else
         {
+            findActor = tower.detectActor.targetActor;
             towerAttack.StopAttack();
         }
     }
@@ -59,11 +62,13 @@ public class TowerAttackSensor : MonoBehaviour
 
             if (angleDif < 0.1f)
             {
-                towerAttack.SetReadyToAttack(true, tower.detectActor.targetActor.transform.position);
+                isReadyToAttack = true;
+                towerAttack.SetReadyToAttack(isReadyToAttack, tower.detectActor.targetActor.transform.position);
             }
             else
             {
-                towerAttack.SetReadyToAttack(false, Vector3.zero);
+                isReadyToAttack = false;
+                towerAttack.SetReadyToAttack(isReadyToAttack, Vector3.zero);
             }
         }
     }

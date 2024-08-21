@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    public void Enter(FSMController fsm)
+    public void Enter(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + " Attack Enter");
+        if (actor is Tower tower)
+        {
+            tower.anim.SetBool("IsAttack", true);
+        }
     }
 
-    public void Exit(FSMController fsm)
+    public void Exit(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + " Attack Exit");
+        if (actor is Tower tower)
+        {
+            tower.anim.SetBool("IsAttack", false);
+        }
     }
 
-    public void Update(FSMController fsm)
+    public void Update(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + " Attack 업데이트");
+        if (actor is Tower tower)
+        {
+            if(!tower.towerAttackSensor.findActor)
+            {
+                tower.fsmController.ChangeState(new IdleState());
+            }
+        }
     }
 }

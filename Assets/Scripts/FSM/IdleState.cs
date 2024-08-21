@@ -4,18 +4,45 @@ using UnityEngine;
 
 public class IdleState : IState
 {
-    public void Enter(FSMController fsm)
+    public void Enter(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + "에 진입 (Enter)");
+        if (actor is Tower tower)
+        {
+            tower.anim.SetBool("IsAttack", false);
+        }
+        if(actor is Monster monster)
+        {
+
+        }
     }
 
-    public void Exit(FSMController fsm)
+    public void Exit(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + "에서 나옴 (Exit)");
+        if (actor is Tower tower)
+        {
+
+        }
+        if (actor is Monster monster)
+        {
+
+        }
     }
 
-    public void Update(FSMController fsm)
+    public void Update(Actor actor)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(actor.name + " 업데이트");
+        if (actor is Tower tower)
+        {
+            if(tower.towerAttackSensor.findActor)
+            {
+                tower.fsmController.ChangeState(new AttackState());
+            }
+        }
+        if (actor is Monster monster)
+        {
+
+        }
     }
 }

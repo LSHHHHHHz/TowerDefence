@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class WalkState : IState
 {
-    public void Enter(FSMController fsm)
+    public void Enter(Actor actor)
     {
-        throw new System.NotImplementedException();
+        if(actor is Monster monster)
+        {
+            monster.anim.SetBool("IsWalk", true);
+        }
     }
 
-    public void Exit(FSMController fsm)
+    public void Exit(Actor actor)
     {
-        throw new System.NotImplementedException();
+        if (actor is Monster monster)
+        {
+            monster.anim.SetBool("IsWalk", false);
+        }
     }
 
-    public void Update(FSMController fsm)
+    public void Update(Actor actor)
     {
-        throw new System.NotImplementedException();
+        if (actor is Monster monster)
+        {
+            monster.fsmController.ChangeState(new GetHitState());
+        }
     }
 }

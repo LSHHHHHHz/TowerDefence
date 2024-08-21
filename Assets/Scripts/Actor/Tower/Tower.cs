@@ -6,10 +6,12 @@ public class Tower : Actor
 {
     public SetTowerDatas towerDatas { get; private set; }
     protected List<Monster> detectedMonsters;
+    public TowerAttackSensor towerAttackSensor;
     protected override void Awake()
     {
         base.Awake();
         Initialize(actorId, actoryType);
+        towerAttackSensor = GetComponent<TowerAttackSensor>();
     }
     public void Initialize(string TowerID, ActorType type)
     {
