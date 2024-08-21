@@ -6,7 +6,3 @@ public interface IActor
 {
     void ReceiveEvent(IEvent iEvent);
 }
-public interface IDetect
-{
-    void DetectActorsInRange(Vector3 center, float radius);
-}

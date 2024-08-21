@@ -47,12 +47,14 @@ public class Monster : Actor
     }
     public override void ReceiveEvent(IEvent ievent)
     {
-        throw new System.NotImplementedException();
+        if (ievent is SendDamageEvent damageEvent)
+        {
+            TakeDamage(damageEvent.damage);
+        }
     }
-
     public override void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(damage + " 데미지가 들어옴");
     }
     public override void DieActor()
     {

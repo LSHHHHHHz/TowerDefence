@@ -61,16 +61,15 @@ public class TowerBaseAttack : MonoBehaviour
     }
     void StartAttackAction()
     {
-        Vector3 attackDir = (targetPos - firePos.position).normalized;
-        FireBullet(firePos.position, attackDir, targetPos);
+        FireBullet(firePos.position, targetPos);
     }
-    public void FireBullet(Vector3 firePos, Vector3 dir, Vector3 targetPos)
+    public void FireBullet(Vector3 firePos, Vector3 targetPos)
     {
         BaseBullet bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<BaseBullet>();
         if (bullet != null)
         {
-            bullet.InitializedPos(firePos);
-            bullet.MoveTarget(dir, targetPos);
+            bullet.InitializedBullet(firePos, tower.towerDatas.Stats.attackDamage);
+            bullet.MoveTarget(targetPos);
         }
     }
 }

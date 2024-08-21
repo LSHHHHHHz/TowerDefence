@@ -5,10 +5,12 @@ using UnityEngine;
 public abstract class BaseBullet : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed;
-
-    public void InitializedPos(Vector3 firePos)
+    [SerializeField] protected int bulletDamage;
+    protected Vector3 targetPos;
+    public void InitializedBullet(Vector3 firePos, int damage)
     {
         transform.position = firePos;
+        bulletDamage = damage;
     }
-    public abstract void MoveTarget(Vector3 dir, Vector3 targetPos);
+    public abstract void MoveTarget(Vector3 targetPos);
 }

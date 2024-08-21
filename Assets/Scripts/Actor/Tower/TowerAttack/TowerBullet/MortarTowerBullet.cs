@@ -6,10 +6,19 @@ using UnityEngine;
 public class MortarTowerBullet : BaseBullet
 {
     [SerializeField] GameObject[] effects;
-    public override void MoveTarget(Vector3 dir, Vector3 targetPos)
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    public override void MoveTarget(Vector3 targetPos)
     {
         Debug.Log("ÃÑ¾Ë ÀÌµ¿ Áß");
-        StartCoroutine(MoveBullet(targetPos));
+        Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 2, targetPos.z);
+        this.targetPos = adjustPos;
+        StartCoroutine(MoveBullet(adjustPos));
     }
     IEnumerator MoveBullet(Vector3 targetPos)
     {
@@ -32,6 +41,16 @@ public class MortarTowerBullet : BaseBullet
         for (int i = 0; i < effects.Length; i++)
         {
             effects[i].SetActive(false);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Monster"))
+        {
+            SendDamageEvent damage = new SendDamageEvent(bulletDamage);
+            IActor actor = other.GetComponent<IActor>();
+            damage.ExcuteEvent(actor);
+            gameObject.SetActive(false);
         }
     }
 }

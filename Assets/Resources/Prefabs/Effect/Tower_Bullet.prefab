@@ -4921,7 +4921,9 @@ GameObject:
   - component: {fileID: 8642433867437144996}
   - component: {fileID: 1539299880361093595}
   - component: {fileID: 2053832657594506628}
-  - component: {fileID: 6871649002871996186}
+  - component: {fileID: 6547370147078368786}
+  - component: {fileID: 2334282786596892811}
+  - component: {fileID: 6647993496667144000}
   m_Layer: 0
   m_Name: Tower_Bullet
   m_TagString: Untagged
@@ -9746,7 +9748,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6871649002871996186
+--- !u!114 &6547370147078368786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9755,14 +9757,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 1342639138923540788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a1880712c1e424597426976b83d483, type: 3}
+  m_Script: {fileID: 11500000, guid: c096d3c811bdc2d468e7cbf6de4bc380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 5809789242992744694}
-  - {fileID: 3307003727108220374}
-  - {fileID: 3897560308280830648}
-  - {fileID: 1437685734071044452}
+  moveSpeed: 11
+  bulletDamage: 0
+  effects: []
+--- !u!136 &2334282786596892811
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342639138923540788}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6647993496667144000
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342639138923540788}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1437685734071044452
 GameObject:
   m_ObjectHideFlags: 0
