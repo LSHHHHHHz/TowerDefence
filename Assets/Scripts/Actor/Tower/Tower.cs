@@ -17,7 +17,7 @@ public class Tower : Actor
     {
         actorId = TowerID;
         actoryType = type;
-        towerDatas = GameData.instance.towerData.GetTowerStatusData(TowerID, type);
+        towerDatas = GameData.instance.towerData.GetTowerData(TowerID);
 
         if (towerDatas != null)
         {

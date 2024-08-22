@@ -44,15 +44,15 @@
     "towerData": {
         "normarTowerEntryDatas": [
             {
-                "actorID": "static11",
+                "actorID": "nor01",
                 "towerDatas": {}
             },
             {
-                "actorID": "static12",
+                "actorID": "nor02",
                 "towerDatas": {}
             },
             {
-                "actorID": "static13",
+                "actorID": "nor03",
                 "towerDatas": {}
             },
             {
@@ -367,5 +367,22 @@
                 "type": 0
             }
         ]
+    },
+    "shopData": {
+        "listTowerID": [
+            "nor11",
+            "nor21",
+            "nor31",
+            "cham11",
+            "cham21",
+            "cham31"
+        ]
+    },
+    "towerManagerData": {
+        "towerID": "",
+        "selectInfo": 0
+    },
+    "towerGroundData": {
+        "towerGrounds": []
     }
 }

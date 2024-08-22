@@ -29,12 +29,18 @@ public class GameData
     public TowerData towerData;
     public MonsterWarePointData monsterWarePointData;
     public TowerGroundManagerData groundData;
+    public TowerShopData shopData;
+    public TowerManagerData towerManagerData;
+    public TowerGroundData towerGroundData;
     public GameData()
     {
         stageData = new StageData();
         monsterData = new MonsterData();
         towerData = new TowerData();
         groundData = new TowerGroundManagerData();
+        shopData = new TowerShopData();
+        towerManagerData = new TowerManagerData();
+        towerGroundData = new TowerGroundData();
         Save();
     }
     [ContextMenu("Save To Json Data")]

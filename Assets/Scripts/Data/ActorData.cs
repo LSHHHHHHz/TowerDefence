@@ -278,15 +278,15 @@ public class TowerData
     }
     public void InitializeMonsterData()
     {
-        AddNormarTower("static11",
+        AddNormarTower("nor01",
             new NormarTowerProfileData("방어타워", "none", "Prefabs/Tower/Normar/BaseTower", ActorType.NormarTower, 5000, 3000, 30),
             new NormarTowerStatusData(500, 500, 1000, 0),
             new NormarTowerStatsData(10, 10, 5, 0, 10));
-        AddNormarTower("static12",
+        AddNormarTower("nor02",
             new NormarTowerProfileData("바어타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 60),
             new NormarTowerStatusData(1000, 1000, 2000, 0),
             new NormarTowerStatsData(20, 10, 5, 0, 10));
-        AddNormarTower("static13",
+        AddNormarTower("nor03",
             new NormarTowerProfileData("방어타워", "none", "Prefabs/Monster/LV1_Golem.prefab", ActorType.NormarTower, 5000, 3000, 90),
             new NormarTowerStatusData(1500, 1500, 3000, 0),
             new NormarTowerStatsData(30, 10, 5, 0, 10));
@@ -365,25 +365,30 @@ public class TowerData
             new ChamPionStatsData(100, 15, 3, 0, 10));
 
     }
-    public SetTowerDatas GetTowerStatusData(string towerID, ActorType type)
+    public SetTowerDatas GetTowerData(string towerID)
     {
         List<TowerEntryDatas> data = null;
-        switch (type)
+
+        if (towerID.Contains("nor"))
         {
-            case ActorType.NormarTower:
-                data = normarTowerEntryDatas;
-                break;
-            case ActorType.ChampionTower:
-                data = chapionTowerEntryDatas;
-                break;
+            data = normarTowerEntryDatas;
         }
-        foreach (var entry in data)
+        else if (towerID.Contains("cham"))
         {
-            if (entry.GetTowerID() == towerID)
+            data = chapionTowerEntryDatas;
+        }
+
+        if (data != null)
+        {
+            foreach (var entry in data)
             {
-                return entry.GetTowerData();
+                if (entry.GetTowerID() == towerID)
+                {
+                    return entry.GetTowerData();
+                }
             }
         }
+
         return null;
     }
 }
