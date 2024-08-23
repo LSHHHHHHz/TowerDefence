@@ -1,0 +1,406 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41bfc1f72264ad43909a54b025bd3cb, type: 3}
+  m_Name: GameEntityData
+  m_EditorClassIdentifier: 
+  profileEntity:
+  - dataID: nor01
+    name: "\uB178\uB9D0\uD0C0\uC6CC1"
+    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    iconPath: '"'
+  - dataID: nor02
+    name: "\uB178\uB9D0\uD0C0\uC6CC2"
+    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    iconPath: '"'
+  - dataID: nor03
+    name: "\uB178\uB9D0\uD0C0\uC6CC3"
+    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    iconPath: '"'
+  - dataID: nor11
+    name: "\uB178\uB9D0\uD0C0\uC6CC4"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor12
+    name: "\uB178\uB9D0\uD0C0\uC6CC5"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor13
+    name: "\uB178\uB9D0\uD0C0\uC6CC6"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor21
+    name: "\uB178\uB9D0\uD0C0\uC6CC7"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor22
+    name: "\uB178\uB9D0\uD0C0\uC6CC8"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor23
+    name: "\uB178\uB9D0\uD0C0\uC6CC9"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor31
+    name: "\uB178\uB9D0\uD0C0\uC6CC10"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor32
+    name: "\uB178\uB9D0\uD0C0\uC6CC11"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: nor33
+    name: "\uB178\uB9D0\uD0C0\uC6CC12"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham11
+    name: "\uCC54\uD504\uD0C0\uC6CC1"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham12
+    name: "\uCC54\uD504\uD0C0\uC6CC2"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham13
+    name: "\uCC54\uD504\uD0C0\uC6CC3"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham21
+    name: "\uCC54\uD504\uD0C0\uC6CC4"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham22
+    name: "\uCC54\uD504\uD0C0\uC6CC5"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham23
+    name: "\uCC54\uD504\uD0C0\uC6CC6"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham31
+    name: "\uCC54\uD504\uD0C0\uC6CC7"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham32
+    name: "\uCC54\uD504\uD0C0\uC6CC8"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: cham33
+    name: "\uCC54\uD504\uD0C0\uC6CC9"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon11
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon12
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon13
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon21
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1304"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon22
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1305"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon23
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1306"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon31
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1307"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon32
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1308"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: normon33
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1309"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon11
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon12
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon13
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon21
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1304"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon22
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1305"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon23
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1306"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon31
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1307"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon32
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1308"
+    prefabPath: '"'
+    iconPath: '"'
+  - dataID: bosmon33
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1309"
+    prefabPath: '"'
+    iconPath: '"'
+  actorStatusEntity:
+  - dataID: nor01
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor02
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor03
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor11
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor12
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor13
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor21
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor22
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor23
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor31
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor32
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: nor33
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham11
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham12
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham13
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham21
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham22
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham23
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham31
+    hp: 1000
+    attackDamage: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham32
+    hp: 2000
+    attackDamage: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: cham33
+    hp: 3000
+    attackDamage: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 5
+  - dataID: normon11
+    hp: 150
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon12
+    hp: 300
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon13
+    hp: 450
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon21
+    hp: 600
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon22
+    hp: 750
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon23
+    hp: 900
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon31
+    hp: 1050
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon32
+    hp: 1200
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: normon33
+    hp: 1350
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon11
+    hp: 1500
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon12
+    hp: 3000
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon13
+    hp: 4500
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon21
+    hp: 6000
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon22
+    hp: 7500
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon23
+    hp: 9000
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon31
+    hp: 10500
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon32
+    hp: 12000
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10
+  - dataID: bosmon33
+    hp: 13500
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    rotationSpeed: 10

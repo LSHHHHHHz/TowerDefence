@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     GameData gameData;
+    public GameEntityData gameEntityData;
     public SpawnManager monsterSpawn;
     public InputEventManager inputManager;
     public StageEventManager stageEventManager;
