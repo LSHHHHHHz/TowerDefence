@@ -25,8 +25,6 @@ public class GameData
         }
     }
     public StageData stageData;
-    public MonsterData monsterData;
-    public TowerData towerData;
     public MonsterWarePointData monsterWarePointData;
     public TowerGroundManagerData groundData;
     public TowerShopData shopData;
@@ -35,8 +33,6 @@ public class GameData
     public GameData()
     {
         stageData = new StageData();
-        monsterData = new MonsterData();
-        towerData = new TowerData();
         groundData = new TowerGroundManagerData();
         shopData = new TowerShopData();
         towerManagerData = new TowerManagerData();

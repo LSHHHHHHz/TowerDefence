@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour, IActor
 {
-    protected ActorStatus status;
-    protected ActorStats stats;
-    protected ActorProfileData profileData;
+    protected ActorStatusDB actorStatusDB;
+    protected ProfileDB profileDB;
+
     public FSMController fsmController { get; private set; }
     public Animator anim;
     public DetectActor detectActor { get; private set; }
@@ -18,7 +18,9 @@ public abstract class Actor : MonoBehaviour, IActor
         if (GetComponent<Animator>() != null)
         {
             anim = GetComponent<Animator>();
-        } 
+        }
+        actorStatusDB = GameManager.instance.gameEntityData.GetActorStatusDB(actorId);
+        profileDB = GameManager.instance.gameEntityData.GetProfileData(actorId);
         fsmController = new FSMController(this);
         fsmController.ChangeState(new IdleState());
         detectActor = GetComponent<DetectActor>();

@@ -13,9 +13,9 @@ public class StageMonsterInfoUI : MonoBehaviour
     [SerializeField] Text monsterHp;
     [SerializeField] ActorType monsterType;
 
-    public void SetMonsterData(SetMonsterDatas data)
+    public void SetMonsterData(string id)
     {
-        SetMonsterInfoUI(data.Profile.iconPath,data.Profile.actorName,data.Reward.rewardCoin,data.Reward.rewardExp,data.Status.maxHP);
+       SetMonsterInfoUI(data.Profile.iconPath,data.Profile.actorName,data.Reward.rewardCoin,data.Reward.rewardExp,data.Status.maxHP);
     }
     private void SetMonsterInfoUI(string path, string name, int coin, int exp, int hp)
     {

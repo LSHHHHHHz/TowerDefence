@@ -23,8 +23,8 @@ public class TowerAttackSensor : MonoBehaviour
     }
     private void Start()
     {
-        capsuleCollider.radius = tower.towerDatas.Stats.attackRange;
-        towerAttack.Initialize(firePos, tower);
+        capsuleCollider.radius = tower.towerStatus.attackRange;
+        towerAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackDamage);
     }
     private void Update()
     {
@@ -45,7 +45,7 @@ public class TowerAttackSensor : MonoBehaviour
     {
         if (tower.detectActor.targetActor == null)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, Time.deltaTime * tower.towerStatus.rotationSpeed);
         }
         else
         {
@@ -56,7 +56,7 @@ public class TowerAttackSensor : MonoBehaviour
             Quaternion currentRot = transform.rotation;
             Quaternion adjustedRot = Quaternion.Euler(currentRot.eulerAngles.x, rot.eulerAngles.y, currentRot.eulerAngles.z);
 
-            transform.rotation = Quaternion.Slerp(adjustedRot, rot, Time.deltaTime * tower.towerDatas.Stats.rotationSpeed);
+            transform.rotation = Quaternion.Slerp(adjustedRot, rot, Time.deltaTime * tower.towerStatus.rotationSpeed);
 
             float angleDif = Quaternion.Angle(transform.rotation, rot);
 

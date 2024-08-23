@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class Tower : Actor
 {
-    public SetTowerDatas towerDatas { get; private set; }
+    public TowerStatus towerStatus { get; private set; }
     protected List<Monster> detectedMonsters;
     public TowerAttackSensor towerAttackSensor;
     protected override void Awake()
     {
         base.Awake();
-        Initialize(actorId, actoryType);
+        Initialize(actorId);
         towerAttackSensor = GetComponent<TowerAttackSensor>();
     }
-    public void Initialize(string TowerID, ActorType type)
+    public void Initialize(string TowerID)
     {
-        actorId = TowerID;
-        actoryType = type;
-        towerDatas = GameData.instance.towerData.GetTowerData(TowerID);
-
-        if (towerDatas != null)
+        if (TowerID != "" && TowerID != null)
         {
-            profileData = towerDatas.Profile;
-            actoryType = towerDatas.Profile.type;
-            status = new TowerStatus(towerDatas.Status.curentHP, towerDatas.Status.maxHP, towerDatas.Status.currentExp, towerDatas.Status.currentExp);
-            stats = new TowerStats(towerDatas.Stats.attackDamage, towerDatas.Stats.attackRange, towerDatas.Stats.moveSpeed, towerDatas.Stats.attackSpeed);
-
+            actoryType = GameManager.instance.gameEntityData.GetActorType(actorStatusDB.type);
+            towerStatus = new TowerStatus(actorStatusDB.hp, actorStatusDB.rotationSpeed, actorStatusDB.attackDamage, actorStatusDB.attackRange, actorStatusDB.attackSpeed);
             ApplyTowerData();
         }
         else
@@ -35,13 +28,8 @@ public class Tower : Actor
     }
     private void ApplyTowerData()
     {
-        // 타워 프로필 데이터 적용
-        if (profileData != null)
-        {
-        }
-
         // 타워 상태 데이터 적용
-        if (status != null)
+        if (towerStatus != null)
         {
         }
     }
@@ -56,7 +44,7 @@ public class Tower : Actor
     }
     public void RecoveryHP(int recovery)
     {
-        status.currentHP += recovery;
+        towerStatus.currentHP += recovery;
     }
     public override void DieActor()
     {

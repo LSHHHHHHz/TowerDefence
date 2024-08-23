@@ -8,6 +8,7 @@ public class ActorStats
     public int attackRange { get; set; }
     public int attackSpeed { get;  set; }
     public int moveSpeed { get;  set; }
+    public int rotationSpeed {  get; set; }
     public void SetAttackDamage(int attackDamage)
     {
         this.attackDamage = attackDamage;
@@ -40,21 +41,22 @@ public class ActorStats
 }
 public class MonsterStats : ActorStats
 {
-    public MonsterStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
+    public MonsterStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed, int rotationSpeed)
     {
         this.attackDamage = attackDamage;
         this.attackRange = attackRange;
         this.moveSpeed = moveSpeed;
         this.attackSpeed = attackSpeed;
+        this.rotationSpeed = rotationSpeed;
     }
 }
 public class TowerStats : ActorStats
 {
-    public TowerStats(int attackDamage, int attackRange, int moveSpeed, int attackSpeed)
+    public TowerStats(int attackDamage, int attackRange, int attackSpeed, int rotationSpeed)
     {
         this.attackDamage = attackDamage;
         this.attackRange = attackRange;
-        this.moveSpeed = moveSpeed;
         this.attackSpeed = attackSpeed;
+        this.rotationSpeed = rotationSpeed;
     }
 }

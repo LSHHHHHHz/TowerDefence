@@ -7,19 +7,21 @@ public class TowerBaseAttack : MonoBehaviour
     Coroutine attackCoroutine;
     float attackDelay;
     float initializedAttackDelay;
+    int attackDamage;
     [SerializeField] string bulletPrefabPath;
 
     Transform firePos;
     Tower tower;
+    
 
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
 
-    public void Initialize(Transform firePos, Tower tower)
+    public void Initialize(Transform firePos, int attackSpeed, int damage)
     {
         this.firePos = firePos;
-        this.tower = tower;
-        initializedAttackDelay = tower.towerDatas.Stats.attackSpeed;
+        initializedAttackDelay = attackSpeed;
+        attackDamage = damage;
     }
     public void StartAttack(IActor targetActor)
     {
@@ -68,7 +70,7 @@ public class TowerBaseAttack : MonoBehaviour
         BaseBullet bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<BaseBullet>();
         if (bullet != null)
         {
-            bullet.InitializedBullet(firePos, tower.towerDatas.Stats.attackDamage);
+            bullet.InitializedBullet(firePos, attackDamage);
             bullet.MoveTarget(targetPos);
         }
     }

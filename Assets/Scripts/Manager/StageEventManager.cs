@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//이벤트 삭제 및 string 변경
 public class StageEventManager
 {
     public GameData gameData;
     public Action<int,string, ActorType> stageEvent;
     public Action<int> checkStageNumEvent; 
-    public Action<SetMonsterDatas> currentStageNormarMonsterEvent;
-    public Action<SetMonsterDatas> currentStageBossMonsterEvent;
+    public Action<string> currentStageNormarMonsterEvent;
+    public Action<string> currentStageBossMonsterEvent;
     public StageEventManager(GameData gameData)
     {
         this.gameData = gameData;
@@ -21,9 +22,7 @@ public class StageEventManager
     }
     public void ResetStageEvent(string stageMonsterId)
     {
-        SetMonsterDatas setNormarMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActorType.NormarMonster);
-        SetMonsterDatas setBossMonsterDatas = gameData.monsterData.GetMonsterStatusData(stageMonsterId, ActorType.BossMonster);
-        currentStageNormarMonsterEvent?.Invoke(setNormarMonsterDatas);
-        currentStageBossMonsterEvent?.Invoke(setBossMonsterDatas);
+        currentStageNormarMonsterEvent?.Invoke(stageMonsterId);
+        currentStageBossMonsterEvent?.Invoke(stageMonsterId);
     }
 }

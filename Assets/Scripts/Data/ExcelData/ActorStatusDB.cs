@@ -10,4 +10,6 @@ public class ActorStatusDB
     public int attackSpeed;
     public int attackRange;
     public int rotationSpeed;
+    public int moveSpeed;
+    public string type;
 }

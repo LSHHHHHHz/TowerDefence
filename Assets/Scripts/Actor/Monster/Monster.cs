@@ -5,22 +5,18 @@ using UnityEngine;
 
 public class Monster : Actor
 {
-    protected SetMonsterDatas monsterData;
+    protected MonsterStatus monsterStatus;
     protected override void Awake()
     {
         base.Awake();
+        Initialize(actorId);
     }
-    public void Initialize(string monsterID, ActorType type)
+    public void Initialize(string monsterID)
     {
-        monsterData = GameData.instance.monsterData.GetMonsterStatusData(monsterID, type);
-
-        if (monsterData != null)
+        if (monsterID != "" && monsterID != null)
         {
-            profileData = monsterData.Profile;
-            actoryType = monsterData.Profile.type;
-            status = new MonsterStatus(monsterData.Status.maxHP, 0);
-            stats = new MonsterStats(monsterData.Stats.attackDamage, monsterData.Stats.attackRange, monsterData.Stats.moveSpeed, monsterData.Stats.attackSpeed);
-
+            actoryType = GameManager.instance.gameEntityData.GetActorType(actorStatusDB.type);
+            monsterStatus = new MonsterStatus(actorStatusDB.hp, actorStatusDB.rotationSpeed, actorStatusDB.moveSpeed);
             ApplyMonsterData();
         }
         else
@@ -30,18 +26,8 @@ public class Monster : Actor
     }
     private void ApplyMonsterData()
     {
-        // 몬스터 프로필 데이터 적용
-        if (profileData != null)
-        {
-        }
-
         // 몬스터 상태 데이터 적용
-        if (status != null)
-        {
-        }
-
-        // 몬스터 보상 데이터 적용
-        if (monsterData != null)
+        if (monsterStatus != null)
         {
         }
     }
@@ -54,7 +40,7 @@ public class Monster : Actor
     }
     public override void TakeDamage(int damage)
     {
-        Debug.Log(damage + " 데미지가 들어옴");
+        monsterStatus.TakeDamage(damage);
     }
     public override void DieActor()
     {
