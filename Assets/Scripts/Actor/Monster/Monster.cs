@@ -16,6 +16,7 @@ public class Monster : Actor
     public void Initialize()
     {
         actoryType = GameManager.instance.gameEntityData.GetActorType(monsterStatusDB.type);
+        detectActor.Initialized(actoryType);
         monsterStatus = new MonsterStatus(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
         ApplyMonsterData();
     }

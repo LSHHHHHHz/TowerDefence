@@ -20,8 +20,7 @@ public abstract class Actor : MonoBehaviour, IActor
         profileDB = GameManager.instance.gameEntityData.GetProfileDB(actorId);
         fsmController = new FSMController(this);
         fsmController.ChangeState(new IdleState());
-        detectActor = GetComponent<DetectActor>();
-        detectActor.Initialized(actoryType);
+        detectActor = GetComponent<DetectActor>();        
     }
     protected void Update()
     {

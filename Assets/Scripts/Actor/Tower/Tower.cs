@@ -18,6 +18,7 @@ public class Tower : Actor
     public void Initialize()
     {
         actoryType = GameManager.instance.gameEntityData.GetActorType(towerStatusDB.type);
+        detectActor.Initialized(actoryType);
         towerStatus = new TowerStatus(towerStatusDB.hp, towerStatusDB.rotationSpeed, towerStatusDB.attackDamage, towerStatusDB.attackRange, towerStatusDB.attackSpeed);
         ApplyTowerData();
     }
