@@ -30,19 +30,19 @@ public class TowerDragHandler : MonoBehaviour
     void OnTowerSelected(string towerId, SelectInfo info)
     {
         Debug.Log("타워 데이터 선택됨");
-        string path = GameData.instance.towerData.GetTowerData(towerId).Profile.prefabPath;
-        if(info == SelectInfo.Shop)
-        {
-            tower = PoolManager.instance.GetObjectFromPool(path).GetComponent<Tower>();
-        }
-        else if(info == SelectInfo.Field)
-        {
+        //string path = GameData.instance.towerData.GetTowerData(towerId).Profile.prefabPath;
+        //if(info == SelectInfo.Shop)
+        //{
+        //    tower = PoolManager.instance.GetObjectFromPool(path).GetComponent<Tower>();
+        //}
+        //else if(info == SelectInfo.Field)
+        //{
 
-        }
-        else
-        {
-            return;
-        }
+        //}
+        //else
+        //{
+        //    return;
+        //}
 
         DragTower();
     }

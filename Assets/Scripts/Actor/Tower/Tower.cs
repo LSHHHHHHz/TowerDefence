@@ -5,26 +5,21 @@ using UnityEngine;
 public class Tower : Actor
 {
     public TowerStatus towerStatus { get; private set; }
+    protected TowerStatusDB towerStatusDB;
     protected List<Monster> detectedMonsters;
     public TowerAttackSensor towerAttackSensor;
     protected override void Awake()
     {
         base.Awake();
-        Initialize(actorId);
+        towerStatusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(actorId);
+        Initialize();
         towerAttackSensor = GetComponent<TowerAttackSensor>();
     }
-    public void Initialize(string TowerID)
+    public void Initialize()
     {
-        if (TowerID != "" && TowerID != null)
-        {
-            actoryType = GameManager.instance.gameEntityData.GetActorType(actorStatusDB.type);
-            towerStatus = new TowerStatus(actorStatusDB.hp, actorStatusDB.rotationSpeed, actorStatusDB.attackDamage, actorStatusDB.attackRange, actorStatusDB.attackSpeed);
-            ApplyTowerData();
-        }
-        else
-        {
-            Debug.LogError("타워 데이터 없음 ID: " + TowerID);
-        }
+        actoryType = GameManager.instance.gameEntityData.GetActorType(towerStatusDB.type);
+        towerStatus = new TowerStatus(towerStatusDB.hp, towerStatusDB.rotationSpeed, towerStatusDB.attackDamage, towerStatusDB.attackRange, towerStatusDB.attackSpeed);
+        ApplyTowerData();
     }
     private void ApplyTowerData()
     {

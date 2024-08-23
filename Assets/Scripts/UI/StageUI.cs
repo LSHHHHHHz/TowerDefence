@@ -17,13 +17,14 @@ public class StageUI : MonoBehaviour
     private void Awake()
     {
         gameData = GameData.instance;
+        selectMonsterStageType = ActorType.NormarMonster;
         UpdateStageUI();
     }
     private void OnEnable()
     {
         GameManager.instance.stageEventManager.currentStageNormarMonsterEvent += normarMonsterInfoUI.SetMonsterData;
         GameManager.instance.stageEventManager.currentStageBossMonsterEvent += bossMonsterInfoUI.SetMonsterData;
-        GameManager.instance.stageEventManager.ResetStageEvent(gameData.stageData.currentStageNumber.ToString());
+        GameManager.instance.stageEventManager.ResetStageEvent(GameManager.instance.gameEntityData.GetMonsterIdByStage(gameData.stageData.currentStageNumber, ActorType.NormarMonster));
     }
     private void OnDisable()
     {

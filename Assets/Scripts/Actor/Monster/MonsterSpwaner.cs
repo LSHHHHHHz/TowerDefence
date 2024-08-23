@@ -52,7 +52,6 @@ public class MonsterSpwaner : MonoBehaviour
             GameObject monsterObj = PoolManager.instance.GetObjectFromPool(prefabIconPath);
             monsterObj.gameObject.SetActive(false);
             Monster monster = monsterObj.GetComponent<Monster>();
-            monster.Initialize(currentSpawnStage.ToString(), currentSpawnType);
             if (monster == null)
             {
                 Debug.Log("ÇÁ¸®Æé ºÒ·¯¿À±â ¾ÈµÊ");

@@ -7,9 +7,10 @@ using UnityEngine;
 public class GameEntityData : ScriptableObject
 {
 	public List<ProfileDB> profileEntity;
-	public List<ActorStatusDB> actorStatusEntity; 
+	public List<TowerStatusDB> towerStatusEntity;
+	public List<MonsterStatusDB> monsterStatusEntity;
 
-	public ProfileDB GetProfileData(string id)
+	public ProfileDB GetProfileDB(string id)
 	{
 		foreach (ProfileDB profile in profileEntity)
 		{
@@ -21,19 +22,43 @@ public class GameEntityData : ScriptableObject
 		Debug.LogError("맞는 아이디 없음");
 		return null;
     }
-	public ActorStatusDB GetActorStatusDB(string id)
+	public TowerStatusDB GetTowerStatusDB(string id)
 	{
-		foreach (ActorStatusDB actor in actorStatusEntity)
+		foreach (TowerStatusDB tower in towerStatusEntity)
 		{
-			if (id == actor.dataID)
+			if (id == tower.dataID)
 			{
-				return actor;
+				return tower;
 			}
 		}
         Debug.LogError("맞는 아이디 없음");
         return null;
-	}
-	public ActorType GetActorType(string type)
+    }
+    public MonsterStatusDB GetMonsterStatusDB(string id)
+    {
+        foreach (MonsterStatusDB monster in monsterStatusEntity)
+        {
+            if (id == monster.dataID)
+            {
+                return monster;
+            }
+        }
+        Debug.LogError("맞는 아이디 없음");
+        return null;
+    }
+    public string GetMonsterIdByStage(int stage, ActorType type)
+    {
+        foreach (MonsterStatusDB monster in monsterStatusEntity)
+        {
+            if(stage == monster.stage && type == ActorType.NormarMonster)
+            {
+                return monster.dataID;
+            }
+        }
+        Debug.LogError("맞는 아이디 없음");
+        return null;
+    }
+    public ActorType GetActorType(string type)
 	{
         if (type == "NormarTower")
         {

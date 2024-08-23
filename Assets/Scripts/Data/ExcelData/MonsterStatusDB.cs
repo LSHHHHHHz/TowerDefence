@@ -1,15 +1,12 @@
 using System;
-using UnityEngine.UIElements.Experimental;
-
 [Serializable]
-public class ActorStatusDB 
+public class MonsterStatusDB
 {
     public string dataID;
     public int hp;
-    public int attackDamage;
-    public int attackSpeed;
-    public int attackRange;
     public int rotationSpeed;
     public int moveSpeed;
     public string type;
+    public int stage;
+    public int coin;
 }

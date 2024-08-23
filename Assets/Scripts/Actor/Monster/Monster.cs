@@ -6,23 +6,18 @@ using UnityEngine;
 public class Monster : Actor
 {
     protected MonsterStatus monsterStatus;
+    protected MonsterStatusDB monsterStatusDB;
     protected override void Awake()
     {
         base.Awake();
-        Initialize(actorId);
+        monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
+        Initialize();
     }
-    public void Initialize(string monsterID)
+    public void Initialize()
     {
-        if (monsterID != "" && monsterID != null)
-        {
-            actoryType = GameManager.instance.gameEntityData.GetActorType(actorStatusDB.type);
-            monsterStatus = new MonsterStatus(actorStatusDB.hp, actorStatusDB.rotationSpeed, actorStatusDB.moveSpeed);
-            ApplyMonsterData();
-        }
-        else
-        {
-            Debug.LogError("데이터 없음 ID: " + monsterID);
-        }
+        actoryType = GameManager.instance.gameEntityData.GetActorType(monsterStatusDB.type);
+        monsterStatus = new MonsterStatus(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
+        ApplyMonsterData();
     }
     private void ApplyMonsterData()
     {

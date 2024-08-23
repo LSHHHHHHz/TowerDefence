@@ -20,7 +20,7 @@ public class TowerGround : MonoBehaviour
         {
             t.gameObject.SetActive(false);
         }
-        string path = GameManager.instance.gameEntityData.GetProfileData(towerID).prefabPath;
+        string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
         GameObject obj = Resources.Load<GameObject>(path);
         Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
         foreach(Tower t in towers)
