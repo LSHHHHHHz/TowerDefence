@@ -6,14 +6,14 @@ public class ActorStatus
 {
     public int currentHP { get; set;}
     public int maxHP { get; set;}   
-    public int rotationSpeed { get; set; }
+    public int rotationSpeed { get; set; } // original speed 
     public void TakeDamage(int amount)
     {
         this.currentHP -= amount;
     }
-    public void SetRotationSpeed(int amount)
+    public void AddRotationSpeed(int amount)
     {
-        this.rotationSpeed += rotationSpeed;
+        this.rotationSpeed += amount;
     }    
 }
 public class MonsterStatus : ActorStatus

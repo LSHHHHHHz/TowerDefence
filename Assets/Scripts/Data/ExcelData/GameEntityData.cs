@@ -6,31 +6,31 @@ using UnityEngine;
 [ExcelAsset]
 public class GameEntityData : ScriptableObject
 {
-	public List<ProfileDB> profileEntity;
-	public List<TowerStatusDB> towerStatusEntity;
-	public List<MonsterStatusDB> monsterStatusEntity;
+    public List<ProfileDB> profileEntity;
+    public List<TowerStatusDB> towerStatusEntity;
+    public List<MonsterStatusDB> monsterStatusEntity;
 
-	public ProfileDB GetProfileDB(string id)
-	{
-		foreach (ProfileDB profile in profileEntity)
-		{
-			if(id == profile.dataID)
-			{
-				return profile;
-			}
-		}
-		Debug.LogError("맞는 아이디 없음");
-		return null;
+    public ProfileDB GetProfileDB(string id)
+    {
+        foreach (ProfileDB profile in profileEntity)
+        {
+            if (id == profile.dataID)
+            {
+                return profile;
+            }
+        }
+        Debug.LogError("맞는 아이디 없음");
+        return null;
     }
-	public TowerStatusDB GetTowerStatusDB(string id)
-	{
-		foreach (TowerStatusDB tower in towerStatusEntity)
-		{
-			if (id == tower.dataID)
-			{
-				return tower;
-			}
-		}
+    public TowerStatusDB GetTowerStatusDB(string id)
+    {
+        foreach (TowerStatusDB tower in towerStatusEntity)
+        {
+            if (id == tower.dataID)
+            {
+                return tower;
+            }
+        }
         Debug.LogError("맞는 아이디 없음");
         return null;
     }
@@ -46,11 +46,11 @@ public class GameEntityData : ScriptableObject
         Debug.LogError("맞는 아이디 없음");
         return null;
     }
-    public string GetMonsterIdByStage(int stage, ActorType type)
+    public string GetMonsterIdByStage(int stage, string type)
     {
         foreach (MonsterStatusDB monster in monsterStatusEntity)
         {
-            if(stage == monster.stage && type == ActorType.NormarMonster)
+            if (stage == monster.stage && type == monster.type)
             {
                 return monster.dataID;
             }
@@ -59,7 +59,7 @@ public class GameEntityData : ScriptableObject
         return null;
     }
     public ActorType GetActorType(string type)
-	{
+    {
         if (type == "NormarTower")
         {
             return ActorType.NormarTower;

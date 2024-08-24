@@ -13,18 +13,17 @@ public class StageUI : MonoBehaviour
     [SerializeField] Image selectNormarStageBackGround;
     [SerializeField] Image selectBossStageBackGround;
 
-    ActorType selectMonsterStageType;
+    string selectMonsterStageType;
     private void Awake()
     {
         gameData = GameData.instance;
-        selectMonsterStageType = ActorType.NormarMonster;
-        UpdateStageUI();
+        selectMonsterStageType = "NormarMonster";
     }
     private void OnEnable()
     {
         GameManager.instance.stageEventManager.currentStageNormarMonsterEvent += normarMonsterInfoUI.SetMonsterData;
         GameManager.instance.stageEventManager.currentStageBossMonsterEvent += bossMonsterInfoUI.SetMonsterData;
-        GameManager.instance.stageEventManager.ResetStageEvent(GameManager.instance.gameEntityData.GetMonsterIdByStage(gameData.stageData.currentStageNumber, ActorType.NormarMonster));
+        UpdateStageUI();
     }
     private void OnDisable()
     {
@@ -35,7 +34,7 @@ public class StageUI : MonoBehaviour
     {
         if (gameData.stageData.currentStageNumber > gameData.stageData.initialStageNumber)
         {
-            gameData.stageData.currentStageNumber--;
+            gameData.stageData.StageDown();
             UpdateStageUI();
         }
     }
@@ -43,26 +42,27 @@ public class StageUI : MonoBehaviour
     {
         if (gameData.stageData.currentStageNumber < gameData.stageData.clearStageNumber)
         {
-            gameData.stageData.currentStageNumber++;
+            gameData.stageData.StageUP();
             UpdateStageUI();
         }
     }
     void UpdateStageUI()
     {
         stageText.text = "Stage " + gameData.stageData.currentStageNumber.ToString();
-        GameManager.instance.stageEventManager.ResetStageEvent(gameData.stageData.currentStageNumber.ToString());
+        GameManager.instance.stageEventManager.ResetStageEvent(GameManager.instance.gameEntityData.GetMonsterIdByStage(gameData.stageData.currentStageNumber, "NormarMonster"),ActorType.NormarMonster);
+        GameManager.instance.stageEventManager.ResetStageEvent(GameManager.instance.gameEntityData.GetMonsterIdByStage(gameData.stageData.currentStageNumber, "BossMonster"),ActorType.BossMonster);
     }
     public void SelectNormarStage()
     {
         selectNormarStageBackGround.enabled = true;
         selectBossStageBackGround.enabled = false;
-        selectMonsterStageType = ActorType.NormarMonster;
+        selectMonsterStageType = "NormarMonster";
     }
     public void SelectBossStage()
     {
         selectNormarStageBackGround.enabled = false;
         selectBossStageBackGround.enabled = true;
-        selectMonsterStageType = ActorType.BossMonster;
+        selectMonsterStageType = "BossMonster";
     }
     public void StartStage()
     {

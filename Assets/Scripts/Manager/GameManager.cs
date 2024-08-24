@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         }
         gameData = GameData.instance;
         inputManager = new InputEventManager();
-        stageEventManager = new StageEventManager(gameData);
+        stageEventManager = new StageEventManager();
         towerGroundEventManager = new TowerGroundEventManager();
     }
     private void Update()

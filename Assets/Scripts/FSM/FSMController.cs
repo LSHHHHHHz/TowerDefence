@@ -5,11 +5,11 @@ using UnityEngine;
 public class FSMController
 {
     Actor actor;
+    IState currentState;
     public FSMController(Actor actor)
     {
         this.actor = actor;
     }
-    IState currentState;
     public void ChangeState(IState newState)
     {
         currentState?.Exit(actor);

@@ -26,25 +26,23 @@ public class MonsterSpwaner : MonoBehaviour
     {
         GameManager.instance.stageEventManager.stageEvent -= StartSpawnMonster;
     }
-    public void StartSpawnMonster(int stageNum, string prefabIconPath, ActorType type)
+    public void StartSpawnMonster(string prefabIconPath, string type)
     {
         int maxSpawnCount = 0;
-        currentSpawnStage = stageNum;
-        currentSpawnType = type;
         switch (type)
         {
-            case ActorType.NormarMonster:
+            case "NormarMonster":
                 maxSpawnCount = normarMonsterCount;
                 spawnTime = 0.1f;
                 break;
-            case ActorType.BossMonster:
+            case "BossMonster":
                 maxSpawnCount = bossMonsterCount;
                 spawnTime = 1f;
                 break;
         }
-        spawnCoroutine = StartCoroutine(SpawnMonster(prefabIconPath, maxSpawnCount, type));
+        spawnCoroutine = StartCoroutine(SpawnMonster(prefabIconPath, maxSpawnCount));
     }
-    IEnumerator SpawnMonster(string prefabIconPath, int spawnCount, ActorType type)
+    IEnumerator SpawnMonster(string prefabIconPath, int spawnCount)
     {
         int count = 0;
         while (count < spawnCount)

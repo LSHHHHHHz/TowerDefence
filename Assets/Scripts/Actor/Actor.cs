@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour, IActor
 {
+    public ActorStatus status;
     protected ProfileDB profileDB;
     public FSMController fsmController { get; private set; }
     public Animator anim;

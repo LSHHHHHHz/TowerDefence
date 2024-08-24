@@ -3,13 +3,7 @@
         "initialStageNumber": 1,
         "lastStageNumber": 10,
         "currentStageNumber": 1,
-        "clearStageNumber": 3,
-        "normarMonsterPrefabsPath": [
-            "Prefabs/Monster/Normar/LV1_Golem",
-            "Prefabs/Monster/Normar/LV2_Golem",
-            "Prefabs/Monster/Normar/LV3_Golem"
-        ],
-        "bossMonsterPrefabsPath": []
+        "clearStageNumber": 3
     },
     "monsterWarePointData": {},
     "groundData": {

@@ -3,27 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//이벤트 삭제 및 string 변경
 public class StageEventManager
 {
-    public GameData gameData;
-    public Action<int,string, ActorType> stageEvent;
+    public Action<string, string> stageEvent;
     public Action<int> checkStageNumEvent; 
     public Action<ProfileDB, MonsterStatusDB> currentStageNormarMonsterEvent;
     public Action<ProfileDB, MonsterStatusDB> currentStageBossMonsterEvent;
-    public StageEventManager(GameData gameData)
-    {
-        this.gameData = gameData;
-    }
-    public void StartStageEvent(int stageNum, ActorType type)
+    public void StartStageEvent(int stageNum, string type)
     {
         string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(stageNum, type);
-        string prefabPath = gameData.stageData.GetMonsterObj(stageNum, type);
-        stageEvent?.Invoke(stageNum,prefabPath, type);
+        string prefabPath = GameManager.instance.gameEntityData.GetProfileDB(id).prefabPath;
+        stageEvent?.Invoke(prefabPath, type);
     }
-    public void ResetStageEvent(string stageMonsterId)
+    public void ResetStageEvent(string stageMonsterId, ActorType type)
     {
-        currentStageNormarMonsterEvent?.Invoke(GameManager.instance.gameEntityData.GetProfileDB(stageMonsterId), GameManager.instance.gameEntityData.GetMonsterStatusDB(stageMonsterId));
-        currentStageBossMonsterEvent?.Invoke(GameManager.instance.gameEntityData.GetProfileDB(stageMonsterId), GameManager.instance.gameEntityData.GetMonsterStatusDB(stageMonsterId));
+        if (type == ActorType.NormarMonster)
+        {
+            currentStageNormarMonsterEvent?.Invoke(GameManager.instance.gameEntityData.GetProfileDB(stageMonsterId), GameManager.instance.gameEntityData.GetMonsterStatusDB(stageMonsterId));
+        }
+        if (type == ActorType.BossMonster)
+        {
+            currentStageBossMonsterEvent?.Invoke(GameManager.instance.gameEntityData.GetProfileDB(stageMonsterId), GameManager.instance.gameEntityData.GetMonsterStatusDB(stageMonsterId));
+        }
     }
 }

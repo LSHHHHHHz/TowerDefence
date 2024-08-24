@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f3e51b115b3a6498a1ff03a800a0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorId: 
+  anim: {fileID: 0}
+  actorId: normon11
   actoryType: 0
 --- !u!114 &-2401613055372810153
 MonoBehaviour:

@@ -99,7 +99,7 @@ MonoBehaviour:
     iconPath: '"'
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Normar/LV1_Golem
     iconPath: '"'
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
