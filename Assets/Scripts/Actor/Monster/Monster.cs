@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
@@ -7,6 +8,7 @@ public class Monster : Actor
 {
     protected MonsterStatus monsterStatus;
     protected MonsterStatusDB monsterStatusDB;
+    public event Action<int,int> onDamagedAction;
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +39,7 @@ public class Monster : Actor
     public override void TakeDamage(int damage)
     {
         monsterStatus.TakeDamage(damage);
+        onDamagedAction?.Invoke(monsterStatus.maxHP, damage);
     }
     public override void DieActor()
     {

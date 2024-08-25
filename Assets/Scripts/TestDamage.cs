@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class TestTower2 : MonoBehaviour
 {
-    public DamageDataManager damageDataManager;
+    public DamageDataManager2 damageDataManager;
 
     public void TakeDamage(int amount)
     {
@@ -11,7 +11,7 @@ public class TestTower2 : MonoBehaviour
         damageDataManager.OnTowerDamaged(amount, damagePosition);
     }
 }
-public class DamageDataManager : MonoBehaviour
+public class DamageDataManager2 : MonoBehaviour
 {
     public GameObject damagePopupPrefab;
 

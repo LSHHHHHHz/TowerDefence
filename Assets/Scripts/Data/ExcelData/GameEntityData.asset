@@ -103,11 +103,11 @@ MonoBehaviour:
     iconPath: '"'
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Normar/LV2_Golem
     iconPath: '"'
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Normar/LV3_Golem
     iconPath: '"'
   - dataID: normon21
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1304"
@@ -135,15 +135,15 @@ MonoBehaviour:
     iconPath: '"'
   - dataID: bosmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Boss/LV1_Golem
     iconPath: '"'
   - dataID: bosmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Boss/LV2_Golem
     iconPath: '"'
   - dataID: bosmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
-    prefabPath: '"'
+    prefabPath: Prefabs/Monster/Boss/LV3_Golem
     iconPath: '"'
   - dataID: bosmon21
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1304"
