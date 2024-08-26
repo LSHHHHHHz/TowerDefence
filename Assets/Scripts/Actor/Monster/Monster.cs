@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Monster : Actor
 {
+    protected FSMController<Monster> fsmController;
     protected MonsterStatus monsterStatus;
     protected MonsterStatusDB monsterStatusDB;
     public event Action<int,int> onDamagedAction;
@@ -13,7 +14,13 @@ public class Monster : Actor
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
-        Initialize();
+        Initialize(); 
+        fsmController = new FSMController<Monster>(this);
+        fsmController.ChangeState(new WalkState());
+    }
+    protected void Update()
+    {
+        fsmController.FSMUpdate();
     }
     public void Initialize()
     {

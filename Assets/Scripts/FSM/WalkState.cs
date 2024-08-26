@@ -2,29 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkState : IState
+public class WalkState : IState<Monster>
 {
-    public void Enter(Actor actor)
+    public void Enter(Monster actor)
     {
-        if(actor is Monster monster)
-        {
-            monster.anim.SetBool("IsWalk", true);
-        }
+        actor.anim.SetBool("IsWalk", true);
     }
 
-    public void Exit(Actor actor)
+    public void Exit(Monster actor)
     {
-        if (actor is Monster monster)
-        {
-            monster.anim.SetBool("IsWalk", false);
-        }
+        actor.anim.SetBool("IsWalk", false);
     }
 
-    public void Update(Actor actor)
+    public void Update(Monster actor)
     {
-        if (actor is Monster monster)
-        {
-            monster.fsmController.ChangeState(new GetHitState());
-        }
     }
 }

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FSMController
+public class FSMController<T> where T : Actor
 {
-    Actor actor;
-    IState currentState;
-    public FSMController(Actor actor)
+    private T actor;
+    IState<T> currentState;
+    public FSMController(T actor)
     {
         this.actor = actor;
     }
-    public void ChangeState(IState newState)
+    public void ChangeState(IState<T> newState)
     {
         currentState?.Exit(actor);
         currentState = newState;

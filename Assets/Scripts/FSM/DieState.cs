@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DieState : IState
+public class DieState : IState<Monster>
 {
-    public void Enter(Actor actor)
+    public void Enter(Monster actor)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Exit(Actor actor)
+    public void Exit(Monster actor)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Update(Actor actor)
+    public void Update(Monster actor)
     {
         throw new System.NotImplementedException();
     }

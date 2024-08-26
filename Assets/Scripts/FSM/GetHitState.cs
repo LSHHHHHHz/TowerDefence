@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetHitState : IState
+public class GetHitState : IState<Monster>
 {
-    public void Enter(Actor actor)
+    public void Enter(Monster actor)
     {
         actor.anim.SetTrigger("GetHit");
-        actor.fsmController.ChangeState(new WalkState());
     }
 
-    public void Exit(Actor actor)
+    public void Exit(Monster actor)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Update(Actor actor)
+    public void Update(Monster actor)
     {
         throw new System.NotImplementedException();
     }

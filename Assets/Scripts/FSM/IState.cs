@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IState
+public interface IState<T> where T : Actor
 {
-    void Enter(Actor actor);
-    void Update(Actor actor);
-    void Exit(Actor actor);
-
+    void Enter(T actor);
+    void Update(T actor);
+    void Exit(T actor);
 }

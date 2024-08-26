@@ -8,12 +8,15 @@ public class Tower : Actor
     protected TowerStatusDB towerStatusDB;
     protected List<Monster> detectedMonsters;
     public TowerAttackSensor towerAttackSensor;
+    protected FSMController<Tower> fsmController;
     protected override void Awake()
     {
         base.Awake();
         towerStatusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(actorId);
         Initialize();
         towerAttackSensor = GetComponent<TowerAttackSensor>();
+        fsmController = new FSMController<Tower>(this);
+        fsmController.ChangeState(new IdleState());
     }
     public void Initialize()
     {
