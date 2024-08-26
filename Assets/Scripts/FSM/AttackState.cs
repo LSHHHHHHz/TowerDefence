@@ -2,35 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : IState
+public class AttackState : IState<Tower>
 {
-    public void Enter(Actor actor)
+    public void Enter(Tower actor)
     {
         Debug.Log(actor.name + " Attack Enter");
-        if (actor is Tower tower)
-        {
-            tower.anim.SetBool("IsAttack", true);
-        }
     }
 
-    public void Exit(Actor actor)
+    public void Exit(Tower actor)
     {
         Debug.Log(actor.name + " Attack Exit");
-        if (actor is Tower tower)
-        {
-            tower.anim.SetBool("IsAttack", false);
-        }
     }
 
-    public void Update(Actor actor)
+    public void Update(Tower actor)
     {
         Debug.Log(actor.name + " Attack 업데이트");
-        if (actor is Tower tower)
-        {
-            if(!tower.towerAttackSensor.findActor)
-            {
-                tower.fsmController.ChangeState(new IdleState());
-            }
-        }
     }
 }
