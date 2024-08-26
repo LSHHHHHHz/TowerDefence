@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class SelectFieldTower : MonoBehaviour
 {
     Tower selectTower;
+    private void Update()
+    {
+        SelectTower();
+    }
     void SelectTower() //마우스 클릭 시 그라운드 위에 있는 타워 검색
     {
-        if (Input.GetMouseButton(0) && selectTower != null)
+        if (Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] hits = Physics.RaycastAll(ray);

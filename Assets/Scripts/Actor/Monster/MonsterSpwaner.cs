@@ -8,7 +8,6 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class MonsterSpwaner : MonoBehaviour
 {
-    [SerializeField] string startColor;
     private int currentSpawnStage;
     private ActorType currentSpawnType;
     private int normarMonsterCount = 10;
@@ -57,7 +56,6 @@ public class MonsterSpwaner : MonoBehaviour
             }
 
             MonsterMove monsterMove = monster.GetComponent<MonsterMove>();
-            monsterMove.monsterStartColor = startColor;
             monsterObj.gameObject.SetActive(true); 
             monsterList.Add(monster);
 

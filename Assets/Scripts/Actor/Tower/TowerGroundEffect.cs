@@ -11,8 +11,12 @@ public class TowerGroundEffect : MonoBehaviour
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        originColor = meshRenderer.material.color;
         meshRenderer.material.color = originColor;
-        effect = Instantiate(effectPrefab, transform);
+        if (effectPrefab != null)
+        {
+            effect = Instantiate(effectPrefab, transform);
+        }
     }
     private void OnEnable()
     {
@@ -35,7 +39,7 @@ public class TowerGroundEffect : MonoBehaviour
     {
         if (tower != null)
         {
-            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = Color.black;
+            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = originColor;
         }
     }
     public void ChangeGroundColorInTower()

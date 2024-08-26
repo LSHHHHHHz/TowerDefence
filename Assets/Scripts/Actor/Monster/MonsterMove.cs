@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    public string monsterStartColor;
-    List<Vector3> monsterMovePos;
-    int warePointIndex = 0;
+    [SerializeField] GameObject warePoint;
+    List<Vector3> monsterMovePos = new List<Vector3>();
     Vector3 targetPos;
+    int warePointIndex = 0;
     Quaternion targetRot;
     float rotateSpeed = 10;
     float moveSpeed = 5;
-    GameData gameData;
     private void Awake()
     {
-        gameData = GameData.instance;
+        SetMovePos();
     }
     private void OnEnable()
     {
         warePointIndex = 0;
-        if (monsterStartColor != "")
-        {
-            monsterMovePos = gameData.monsterWarePointData.GetWarePointPos(monsterStartColor);
-            targetPos = monsterMovePos[warePointIndex];
-            transform.position = targetPos;
-        }
+        targetPos = monsterMovePos[warePointIndex];
+        transform.position = targetPos;
     }
     private void Update()
     {
@@ -33,11 +28,20 @@ public class MonsterMove : MonoBehaviour
             MoveMonster();
         }
     }
+    void SetMovePos()
+    {
+        for (int i = 0; i < warePoint.transform.childCount; i++)
+        {
+            monsterMovePos.Add(warePoint.transform.GetChild(i).transform.position);
+        }
+    }
     void MoveMonster()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.5f)
         {
             warePointIndex++;
+            Debug.Log("warePointIndex" + warePointIndex);
+            Debug.Log("monsterMovePos.Count" + monsterMovePos.Count);
             if (warePointIndex < monsterMovePos.Count)
             {
                 targetPos = monsterMovePos[warePointIndex];

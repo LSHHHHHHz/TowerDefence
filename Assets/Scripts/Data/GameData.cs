@@ -25,7 +25,6 @@ public class GameData
         }
     }
     public StageData stageData;
-    public MonsterWarePointData monsterWarePointData;
     public TowerGroundManagerData groundData;
     public TowerShopData shopData;
     public TowerManagerData towerManagerData;

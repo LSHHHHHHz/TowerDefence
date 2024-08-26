@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d1b2c908741b4d926ec15a305099a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterStartColor: 
+  warePoint: {fileID: 5365474259375795116, guid: 654a37e56a330de4dbca05f4b9810735, type: 3}
 --- !u!114 &-5875837482385746331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,12 +185,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088141474560473952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee701aaf087e6314a8308cde8fbe3169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustX: 0
-  adjustY: 0
-  adjustZ: 0
   HpBarPrefab: {fileID: 164497322924736754, guid: ed8b602819ab6ad4fabdbc13d4fd3dec, type: 3}

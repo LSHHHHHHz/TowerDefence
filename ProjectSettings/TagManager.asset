@@ -9,6 +9,7 @@ TagManager:
   - CamearaMove
   - CameraBoundary
   - SetTowerGround
+  - Ground
   layers:
   - Default
   - TransparentFX
