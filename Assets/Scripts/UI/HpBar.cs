@@ -8,7 +8,7 @@ public class HpBar : MonoBehaviour
     //맥스 HP가 필요
     //HP가 설정되어 있지 않을때와 되어있을 때
     //데이터가 들어오면 HP바를 깎음
-
+    [SerializeField] Monster monster;
     [SerializeField] Image hpBarImage;
     Camera mainCamera = null;
     int maxHP = 0;
@@ -29,9 +29,9 @@ public class HpBar : MonoBehaviour
     {
         hpBarImage.fillAmount = (currentHp - amount) / maxHP;
     }
-    private void LastUpdate()
+    private void Update()
     {
-        transform.LookAt(mainCamera.transform);
+        transform.position = monster.gameObject.transform.position + new Vector3(0,10,0);
     }
 
 }
