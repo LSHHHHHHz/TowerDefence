@@ -8,16 +8,15 @@ using static UnityEditor.PlayerSettings;
 
 public class MouseSensor : MonoBehaviour
 {
-    public TowerGround groundColor;
-    public TowerGround dragTowerGround;
-    public TowerGround dropTowerGround;
+    public TowerGround detectedTowerGround;
+    public string detectedTowerID;
     public Tower dragTower;
     public Tower dropTower;
-    HaveTowerData haveTower;
 
     private void Update()
     {
-        SelectTower();
+        MouseButtonDown();
+        MouseButtonUP();
         ScreenToRayUseMouse();
         MoveTower();
     }
@@ -36,29 +35,48 @@ public class MouseSensor : MonoBehaviour
                 dragTower.transform.position = adjustPoint;
             }
         }
-        if (Input.GetMouseButtonUp(0) && dragTower != null) //마우스를 놓았을 때 초기화
-        {
-            //새로운 곳에 배치가 되지 않으면 기존 위치로 다시 이동
-            dragTower = null;
-            haveTower = HaveTowerData.None;
-        }
     }
-    void SelectTower()
+    void MouseButtonDown()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-            foreach (RaycastHit hit in hits)
+            if (detectedTowerGround != null && detectedTowerGround.currentTower != null)
             {
-                TowerGround ground = hit.collider.gameObject.GetComponent<TowerGround>();
-                if(ground != null)
-                {
-                    dragTower = ground.currentTower;
-                    ground.currentTower = null;
-                }
+                dragTower = detectedTowerGround.currentTower;
+                detectedTowerID = detectedTowerGround.currentTowerID;
+                detectedTowerGround.currentTower = null;
+            }
+            else
+            {
+                Debug.Log("그라운드에 타워가 없음");
+                return;
             }
         }
+    }
+    void MouseButtonUP()
+    {
+        if (Input.GetMouseButtonUp(0) && dragTower != null)//드래그 중인 타워가 있으면서
+        {
+            // Ground에 타워가 있는 경우
+            if (detectedTowerGround.currentTower != null)
+            {
+                //타워의 ID가 같을 경우 (윗 레벨로 업그레이드)
+
+                //타워의 ID가 다를 경우 (위치 교환)
+            }
+            //Ground에 타워가 없는 경우
+            else
+            {
+                detectedTowerGround.towerGroundData.SetTower(detectedTowerID, ActorType.ChampionTower); //타입도 코드로 작성
+                //detectedTowerGround.currentTower = dragTower;
+                //detectedTowerGround.currentTower.transform.position = detectedTowerGround.transform.position + new Vector3(0,1,0);
+                dragTower = null;
+            }
+        }
+    }
+    void PickUpTower()
+    {
+
     }
     void ScreenToRayUseMouse()
     {
@@ -72,21 +90,21 @@ public class MouseSensor : MonoBehaviour
 
             if (towerGround != null && !towerGround.ISHasTower()) //타워가 배치되어 있지 않을 때
             {
-                GameManager.instance.towerGroundEventManager.MouseExit(groundColor);
-                groundColor = towerGround;
+                GameManager.instance.towerGroundEventManager.MouseExit(this.detectedTowerGround);
+                this.detectedTowerGround = towerGround;
                 isFindGround = true;
-                GameManager.instance.towerGroundEventManager.MouseEnter(groundColor);
+                GameManager.instance.towerGroundEventManager.MouseEnter(this.detectedTowerGround);
                 break;
             }
             if (towerGround != null && towerGround.ISHasTower())//타워가 배치되어 있을 때
             {
-                GameManager.instance.towerGroundEventManager.MouseExit(groundColor);
+                GameManager.instance.towerGroundEventManager.MouseExit(this.detectedTowerGround);
             }
         }
         if (!isFindGround) //어떠한 것도 검출되어있지 않다면 원상복귀
         {
-            GameManager.instance.towerGroundEventManager.MouseExit(groundColor);
-            groundColor = null;
+            GameManager.instance.towerGroundEventManager.MouseExit(detectedTowerGround);
+            detectedTowerGround = null;
         }
     }
 }

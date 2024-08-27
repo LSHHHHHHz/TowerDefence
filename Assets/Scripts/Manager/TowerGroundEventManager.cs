@@ -17,6 +17,14 @@ public class TowerGroundEventManager
     {
         onMouseExit?.Invoke(tower);
     }
+    public void DragTowerGround()
+    {
+
+    }
+    public void DropTowerGround()
+    {
+
+    }
     public void TowerOnGround(Tower tower)
     {
         towerOnGround?.Invoke(tower);

@@ -6,8 +6,9 @@ using UnityEngine;
 public class TowerGround : MonoBehaviour 
 {
     public TowerOnGroundData towerGroundData;
-    List<Tower> towers = new List<Tower>();
+    List<Tower> hasTowers = new List<Tower>();
     public Tower currentTower;
+    public string currentTowerID;
     public bool isHasTower { get; private set; }
     private void Start()
     {
@@ -16,20 +17,21 @@ public class TowerGround : MonoBehaviour
     }
     public void DropTower(string towerID, ActorType type)
     {
-        foreach (Tower t in towers)
+        foreach (Tower t in hasTowers)
         {
             t.gameObject.SetActive(false);
         }
         string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
+        currentTowerID = towerID;
         GameObject obj = Resources.Load<GameObject>(path);
         Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
-        foreach(Tower t in towers)
+        foreach(Tower t in hasTowers)
         {
             if(t == tower)
             {
                 currentTower = t;
                 currentTower.gameObject.SetActive(true);
-                towers.Add(currentTower);
+                hasTowers.Add(currentTower);
                 break;
             }
         }

@@ -7,10 +7,19 @@ using UnityEngine;
 [Serializable]
 public class TowerOnGroundData 
 {
+    public int groundNumber;
     public string towerID;
     public ActorType type;
     public event Action resetTowerData;
     public event Action<string,ActorType> setTowerData;
+    public void SetGroundNumger(int groundNumber)
+    {
+        this.groundNumber = groundNumber;
+    }
+    public int GetGroundNumber()
+    {
+        return groundNumber;
+    }
     public void SetTower(string  towerID , ActorType type)
     {
         this.towerID = towerID;
@@ -48,28 +57,22 @@ public class TowerOnGroundData
 [Serializable]
 public class TowerGroundManagerData 
 {
-    [SerializeField] private List<TowerOnGroundData> _towerGroundDatas;
-    public TowerGroundManagerData()
-    {
-        InitializeSlots(58);
-    }
-    public List<TowerOnGroundData> towerGroundDatas
+    public List<TowerOnGroundData> towerGroundDatas;
+    private static TowerGroundManagerData _instance;
+
+    public static TowerGroundManagerData instance
     {
         get
         {
-            return _towerGroundDatas;
-        }
-        private set
-        {
-            _towerGroundDatas = value;
+            if (_instance == null)
+            {
+                _instance = new TowerGroundManagerData();
+            }
+            return _instance;
         }
     }
-    public void InitializeSlots(int count)
+    private TowerGroundManagerData()
     {
-        _towerGroundDatas = new List<TowerOnGroundData>(count);
-        for (int i = 0; i < count; i++)
-        {
-            _towerGroundDatas.Add(new TowerOnGroundData());
-        }
+        towerGroundDatas = new List<TowerOnGroundData>();
     }
 }

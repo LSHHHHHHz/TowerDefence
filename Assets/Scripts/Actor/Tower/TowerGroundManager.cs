@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class TowerGroundManager : MonoBehaviour
 {
-    TowerGroundManagerData groundData;
-    public List<TowerGround> towerGroundList = new List<TowerGround>();
+    public static TowerGroundManager instance;
     private void Awake()
     {
-        groundData = GameData.instance.groundData;
+        instance = this;
         for (int i = 0; i < transform.childCount; i++)
         {
             TowerGround towerGround = transform.GetChild(i).GetComponent<TowerGround>();
             if (towerGround != null && towerGround.gameObject.name == "TowerGround")
             {
-                towerGroundList.Add(towerGround);
-                //groundData.towerGroundDatas[i].setTowerData += towerGround.DropTower;
-               // groundData.towerGroundDatas[i].resetTowerData += towerGround.RemoveTower;
+                TowerOnGroundData groundData = new TowerOnGroundData();
+                groundData.towerID = "";
+                groundData.type = ActorType.None;
+                towerGround.towerGroundData = groundData;
+                TowerGroundManagerData.instance.towerGroundDatas.Add(groundData);
+                TowerGroundManagerData.instance.towerGroundDatas[i].SetGroundNumger(i);
+                groundData.setTowerData += towerGround.DropTower;
+                groundData.resetTowerData += towerGround.RemoveTower;
             }
         }
+    }
+    public string SetTower(int num)
+    {
+        for(int i =0; i< TowerGroundManagerData.instance.towerGroundDatas.Count; i++)
+        {
+            if(TowerGroundManagerData.instance.towerGroundDatas[i].groundNumber == num)
+            {
+                return TowerGroundManagerData.instance.towerGroundDatas[i].towerID;
+            }
+        }
+        return null;
     }
 }

@@ -15,15 +15,15 @@ MonoBehaviour:
   profileEntity:
   - dataID: nor01
     name: "\uB178\uB9D0\uD0C0\uC6CC1"
-    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    prefabPath: Prefabs/Tower/Character/FireTower
     iconPath: '"'
   - dataID: nor02
     name: "\uB178\uB9D0\uD0C0\uC6CC2"
-    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    prefabPath: Prefabs/Monster/LV1_Golem
     iconPath: '"'
   - dataID: nor03
     name: "\uB178\uB9D0\uD0C0\uC6CC3"
-    prefabPath: Prefabs/Monster/LV1_Golem.prefab
+    prefabPath: Prefabs/Monster/LV1_Golem
     iconPath: '"'
   - dataID: nor11
     name: "\uB178\uB9D0\uD0C0\uC6CC4"
