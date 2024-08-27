@@ -13,26 +13,16 @@ public class TowerGroundManager : MonoBehaviour
             TowerGround towerGround = transform.GetChild(i).GetComponent<TowerGround>();
             if (towerGround != null && towerGround.gameObject.name == "TowerGround")
             {
-                TowerOnGroundData groundData = new TowerOnGroundData();
-                groundData.towerID = "";
-                groundData.type = ActorType.None;
+                TowerGroundData groundData = new TowerGroundData();
                 towerGround.towerGroundData = groundData;
                 TowerGroundManagerData.instance.towerGroundDatas.Add(groundData);
-                TowerGroundManagerData.instance.towerGroundDatas[i].SetGroundNumger(i);
+
+                TowerData towerData = new TowerData();
+                TowerGroundManagerData.instance.towerGroundDatas[i].towerData = towerData;
+                TowerGroundManagerData.instance.towerGroundDatas[i].towerData.towerID = "nor01"; //테스트중
                 groundData.setTowerData += towerGround.DropTower;
                 groundData.resetTowerData += towerGround.RemoveTower;
             }
         }
-    }
-    public string SetTower(int num)
-    {
-        for(int i =0; i< TowerGroundManagerData.instance.towerGroundDatas.Count; i++)
-        {
-            if(TowerGroundManagerData.instance.towerGroundDatas[i].groundNumber == num)
-            {
-                return TowerGroundManagerData.instance.towerGroundDatas[i].towerID;
-            }
-        }
-        return null;
     }
 }

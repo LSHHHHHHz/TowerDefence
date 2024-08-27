@@ -8,8 +8,10 @@ public class TowerGroundEffect : MonoBehaviour
     Color originColor = Color.black;
     [SerializeField] GameObject effectPrefab;
     GameObject effect;
+    TowerGround towerGround;
     void Awake()
     {
+        towerGround = GetComponent<TowerGround>();
         meshRenderer = GetComponent<MeshRenderer>();
         originColor = meshRenderer.material.color;
         meshRenderer.material.color = originColor;
@@ -20,26 +22,26 @@ public class TowerGroundEffect : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameManager.instance.towerGroundEventManager.onMouseEnter += ChangeGroundColorEnterMouse;
-        GameManager.instance.towerGroundEventManager.onMouseExit += ChangeGroundColorExitMouse;
+        towerGround.towerGroundData.enterTowerGround += ChangeGroundColorEnterMouse;
+        towerGround.towerGroundData.exitTowerGround += ChangeGroundColorExitMouse;
     }
     private void OnDisable()
     {
-        GameManager.instance.towerGroundEventManager.onMouseEnter -= ChangeGroundColorEnterMouse;
-        GameManager.instance.towerGroundEventManager.onMouseExit -= ChangeGroundColorExitMouse;
+        towerGround.towerGroundData.enterTowerGround -= ChangeGroundColorEnterMouse;
+        towerGround.towerGroundData.exitTowerGround -= ChangeGroundColorExitMouse;
     }
-    public void ChangeGroundColorEnterMouse(TowerGround tower)
+    public void ChangeGroundColorEnterMouse(TowerGroundData data)
     {
-        if (tower != null)
+        if (data != null && data == towerGround.towerGroundData)
         {
-            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = new Color(255, 222, 13);
+            meshRenderer.material.color = new Color(255, 222, 13);
         }
     }
-    public void ChangeGroundColorExitMouse(TowerGround tower)
+    public void ChangeGroundColorExitMouse(TowerGroundData data)
     {
-        if (tower != null)
+        if (data != null)
         {
-            tower.GetComponent<TowerGroundEffect>().GetComponent<MeshRenderer>().material.color = originColor;
+            meshRenderer.material.color = originColor;
         }
     }
     public void ChangeGroundColorInTower()

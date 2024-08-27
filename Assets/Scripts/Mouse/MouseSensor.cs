@@ -2,17 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class MouseSensor : MonoBehaviour
 {
-    public TowerGround detectedTowerGround;
+    public TowerGroundData detectedTowerGroundData;
+    public TowerData detectedTowerData;
+
     public string detectedTowerID;
     public Tower dragTower;
-    public Tower dropTower;
-
+    public TowerData dropTower;
+    private void Awake()
+    {
+        detectedTowerData = null;
+        dragTower = new Tower();
+    }
     private void Update()
     {
         MouseButtonDown();
@@ -22,7 +26,7 @@ public class MouseSensor : MonoBehaviour
     }
     void MoveTower()
     {
-        if (dragTower != null) //타워가 있다면 해당 타워 마우스랑 같이 이동
+        if (dragTower != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -38,13 +42,15 @@ public class MouseSensor : MonoBehaviour
     }
     void MouseButtonDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && detectedTowerData.towerID == null)
         {
-            if (detectedTowerGround != null && detectedTowerGround.currentTower != null)
+            if (detectedTowerGroundData != null && detectedTowerGroundData.towerData.towerID != "")
             {
-                dragTower = detectedTowerGround.currentTower;
-                detectedTowerID = detectedTowerGround.currentTowerID;
-                detectedTowerGround.currentTower = null;
+                detectedTowerData = detectedTowerGroundData.towerData;
+                detectedTowerGroundData.RemoveTower();
+
+                //dragTower.towerData = detectedTowerGroundData.towerData;
+                //detectedTowerID = dragTower.towerData.towerID;
             }
             else
             {
@@ -55,28 +61,24 @@ public class MouseSensor : MonoBehaviour
     }
     void MouseButtonUP()
     {
-        if (Input.GetMouseButtonUp(0) && dragTower != null)//드래그 중인 타워가 있으면서
+        if(detectedTowerGroundData == null)
         {
-            // Ground에 타워가 있는 경우
-            if (detectedTowerGround.currentTower != null)
-            {
-                //타워의 ID가 같을 경우 (윗 레벨로 업그레이드)
+            return;
+        }
 
-                //타워의 ID가 다를 경우 (위치 교환)
-            }
-            //Ground에 타워가 없는 경우
-            else
+        if (Input.GetMouseButtonUp(0) && detectedTowerData.towerID != null) //무언가 이동 중이라면
+        {
+            //현재 그라운드데이터에 타워가 있는 경우
+              //같은 좋류, 레벨의 타워라면
+              //다른 종류의 타워라면
+
+            //현재 그라운드에티어에 타워가 없는 경우
+            if(detectedTowerGroundData.towerData.towerID == null )
             {
-                detectedTowerGround.towerGroundData.SetTower(detectedTowerID, ActorType.ChampionTower); //타입도 코드로 작성
-                //detectedTowerGround.currentTower = dragTower;
-                //detectedTowerGround.currentTower.transform.position = detectedTowerGround.transform.position + new Vector3(0,1,0);
-                dragTower = null;
+                detectedTowerGroundData.towerData = detectedTowerData;
+                detectedTowerData = null;
             }
         }
-    }
-    void PickUpTower()
-    {
-
     }
     void ScreenToRayUseMouse()
     {
@@ -88,23 +90,32 @@ public class MouseSensor : MonoBehaviour
         {
             TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
 
-            if (towerGround != null && !towerGround.ISHasTower()) //타워가 배치되어 있지 않을 때
+            if (towerGround != null && !towerGround.ISHasTower())
             {
-                GameManager.instance.towerGroundEventManager.MouseExit(this.detectedTowerGround);
-                this.detectedTowerGround = towerGround;
+                if (detectedTowerGroundData != null)
+                {
+                    detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
+                }
+                this.detectedTowerGroundData = towerGround.towerGroundData;
+
                 isFindGround = true;
-                GameManager.instance.towerGroundEventManager.MouseEnter(this.detectedTowerGround);
+                detectedTowerGroundData.EnterTowerGround(detectedTowerGroundData);
                 break;
             }
-            if (towerGround != null && towerGround.ISHasTower())//타워가 배치되어 있을 때
+            if (towerGround != null && towerGround.ISHasTower())
             {
-                GameManager.instance.towerGroundEventManager.MouseExit(this.detectedTowerGround);
+                detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
             }
         }
-        if (!isFindGround) //어떠한 것도 검출되어있지 않다면 원상복귀
+
+        if (!isFindGround)
         {
-            GameManager.instance.towerGroundEventManager.MouseExit(detectedTowerGround);
-            detectedTowerGround = null;
+            if (detectedTowerGroundData != null)
+            {
+                detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
+            }
+            detectedTowerGroundData = null;
+
         }
     }
 }

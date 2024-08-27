@@ -3,61 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
 [Serializable]
-public class TowerOnGroundData 
+public class TowerGroundData
 {
-    public int groundNumber;
-    public string towerID;
-    public ActorType type;
+    public TowerData towerData;
     public event Action resetTowerData;
-    public event Action<string,ActorType> setTowerData;
-    public void SetGroundNumger(int groundNumber)
+    public event Action<TowerData> setTowerData;
+    public event Action<TowerGroundData> enterTowerGround;
+    public event Action<TowerGroundData> exitTowerGround;
+    public void SetTower(TowerData towerData)
     {
-        this.groundNumber = groundNumber;
-    }
-    public int GetGroundNumber()
-    {
-        return groundNumber;
-    }
-    public void SetTower(string  towerID , ActorType type)
-    {
-        this.towerID = towerID;
-        this.type = type;
-        setTowerData?.Invoke(this.towerID, this.type);
+        this.towerData = towerData;
+        setTowerData?.Invoke(this.towerData);
     }
     public void RemoveTower()
     {
-        towerID = null;
+        towerData = null;
         resetTowerData?.Invoke();
     }
-    public void ChangeTowerPosition(TowerOnGroundData dragTower, TowerOnGroundData dropTower)
+    public void EnterTowerGround(TowerGroundData data)
     {
-        TowerOnGroundData temp = null;
-        temp = dragTower;
-        dragTower = dropTower;
-        dropTower = temp;
-        dragTower.SetTower(dragTower.towerID, dragTower.type);
-        dropTower.SetTower(dropTower.towerID, dropTower.type);
+        enterTowerGround?.Invoke(data);
     }
-    public void ChangeTowerPosition2(TowerOnGroundData dragTower, TowerOnGroundData dropTower)
+    public void ExitTowerGround(TowerGroundData data)
     {
-        string tempTowerID = dragTower.towerID;
-        ActorType tempType = dragTower.type;
+        exitTowerGround?.Invoke(data);
+    }
 
-        dragTower.towerID = dropTower.towerID;
-        dragTower.type = dropTower.type;
-        dragTower.setTowerData?.Invoke(dragTower.towerID, dragTower.type);
+    public void ChangeTowerPosition(TowerGroundData dragTowerData, TowerGroundData dropTowerData)
+    {
+    }
+    public void MergeTower()
+    {
 
-        dropTower.towerID = tempTowerID;
-        dropTower.type = tempType;
-        dropTower.setTowerData?.Invoke(dropTower.towerID, dropTower.type);
     }
 }
 [Serializable]
 public class TowerGroundManagerData 
 {
-    public List<TowerOnGroundData> towerGroundDatas;
+    public List<TowerGroundData> towerGroundDatas;
     private static TowerGroundManagerData _instance;
 
     public static TowerGroundManagerData instance
@@ -73,6 +57,18 @@ public class TowerGroundManagerData
     }
     private TowerGroundManagerData()
     {
-        towerGroundDatas = new List<TowerOnGroundData>();
+        towerGroundDatas = new List<TowerGroundData>();
+    }
+}
+[Serializable]
+public class TowerData
+{
+    public string towerID;
+    public int level;
+    public ActorType type;
+    //상태도 여기서 관리할지 추후에 생각필요
+    public void UpgradeTower()
+    {
+        //타워 업그레이드 데이터 갖고있어야함       
     }
 }

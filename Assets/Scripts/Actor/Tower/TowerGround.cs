@@ -5,18 +5,15 @@ using UnityEngine;
 
 public class TowerGround : MonoBehaviour 
 {
-    public TowerOnGroundData towerGroundData;
+    public TowerGroundData towerGroundData; //타워 그라운드가 데이터를 들고있는게 맞나
     List<Tower> hasTowers = new List<Tower>();
     public Tower currentTower;
     public string currentTowerID;
     public bool isHasTower { get; private set; }
-    private void Start()
+    public void DropTower(TowerData data)
     {
-        towerGroundData.setTowerData += DropTower;
-        towerGroundData.resetTowerData += RemoveTower;
-    }
-    public void DropTower(string towerID, ActorType type)
-    {
+        string towerID = data.towerID;
+        ActorType type = data.type;
         foreach (Tower t in hasTowers)
         {
             t.gameObject.SetActive(false);
