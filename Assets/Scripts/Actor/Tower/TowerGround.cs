@@ -6,20 +6,32 @@ using UnityEngine;
 public class TowerGround : MonoBehaviour 
 {
     public TowerGroundData towerGroundData; //타워 그라운드가 데이터를 들고있는게 맞나
-    List<Tower> hasTowers = new List<Tower>();
+    TowerGroundEffect towerGroundEffect;
+    [SerializeField]List<Tower> hasTowers = new List<Tower>();
     public Tower currentTower;
     public string currentTowerID;
     public bool isHasTower { get; private set; }
-    public void DropTower(TowerData data)
+    private void Awake()
     {
+        towerGroundEffect = GetComponent<TowerGroundEffect>();
+    }
+    public void DropTower(TowerGroundData groundData, TowerData data)
+    {
+        if(groundData != towerGroundData)
+        {
+            return;
+        }
         string towerID = data.towerID;
         ActorType type = data.type;
+        if (!hasTowers.Contains(currentTower))
+        {
+            hasTowers.Add(currentTower);
+        }
         foreach (Tower t in hasTowers)
         {
             t.gameObject.SetActive(false);
         }
         string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
-        currentTowerID = towerID;
         GameObject obj = Resources.Load<GameObject>(path);
         Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
         foreach(Tower t in hasTowers)
@@ -28,7 +40,7 @@ public class TowerGround : MonoBehaviour
             {
                 currentTower = t;
                 currentTower.gameObject.SetActive(true);
-                hasTowers.Add(currentTower);
+                currentTower.towerData = data;
                 break;
             }
         }
@@ -42,5 +54,19 @@ public class TowerGround : MonoBehaviour
     public bool ISHasTower()
     {
         return isHasTower;
+    }
+    public void OnEnterGround(TowerGroundData data)
+    {
+        if (data != null && data == towerGroundData)
+        {
+            towerGroundEffect.ChangeGroundColorEnterMouse();
+        }
+    }
+    public void OnExitGround(TowerGroundData data)
+    {
+        if (data != null && data == towerGroundData)
+        {
+            towerGroundEffect.ChangeGroundColorExitMouse();
+        }
     }
 }

@@ -4,18 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class MouseSensor : MonoBehaviour
+public class MouseInteraction : MonoBehaviour
 {
-    public TowerGroundData detectedTowerGroundData;
-    public TowerData detectedTowerData;
-
-    public string detectedTowerID;
+    TowerEventHandler towerEventHandler;
     public Tower dragTower;
     public TowerData dropTower;
     private void Awake()
     {
-        detectedTowerData = null;
-        dragTower = new Tower();
+        towerEventHandler = TowerGroundManager.instance.towerEventHandler;
     }
     private void Update()
     {
@@ -42,15 +38,12 @@ public class MouseSensor : MonoBehaviour
     }
     void MouseButtonDown()
     {
-        if (Input.GetMouseButtonDown(0) && detectedTowerData.towerID == null)
+        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData.towerID == null) // 선택된 타워 데이터가 없는 경우
         {
-            if (detectedTowerGroundData != null && detectedTowerGroundData.towerData.towerID != "")
+            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData.towerID != "")
             {
-                detectedTowerData = detectedTowerGroundData.towerData;
-                detectedTowerGroundData.RemoveTower();
-
-                //dragTower.towerData = detectedTowerGroundData.towerData;
-                //detectedTowerID = dragTower.towerData.towerID;
+                towerEventHandler.detectedTowerData = towerEventHandler.detectedTowerGroundData.towerData;
+                towerEventHandler.detectedTowerGroundData.RemoveTower();
             }
             else
             {
@@ -61,27 +54,32 @@ public class MouseSensor : MonoBehaviour
     }
     void MouseButtonUP()
     {
-        if(detectedTowerGroundData == null)
+        if(towerEventHandler.detectedTowerGroundData == null)
         {
             return;
         }
 
-        if (Input.GetMouseButtonUp(0) && detectedTowerData.towerID != null) //무언가 이동 중이라면
+        if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedTowerData.towerID != null) //무언가 이동 중이라면
         {
             //현재 그라운드데이터에 타워가 있는 경우
               //같은 좋류, 레벨의 타워라면
               //다른 종류의 타워라면
 
             //현재 그라운드에티어에 타워가 없는 경우
-            if(detectedTowerGroundData.towerData.towerID == null )
+            if(towerEventHandler.detectedTowerGroundData.towerData.towerID == null )
             {
-                detectedTowerGroundData.towerData = detectedTowerData;
-                detectedTowerData = null;
+                towerEventHandler.SetTower(towerEventHandler.detectedTowerGroundData, towerEventHandler.detectedTowerData);
+                towerEventHandler.detectedTowerGroundData.towerData = towerEventHandler.detectedTowerData;
+                towerEventHandler.detectedTowerData = null;
             }
         }
     }
     void ScreenToRayUseMouse()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+
+        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits = Physics.RaycastAll(ray);
         bool isFindGround = false;
@@ -90,32 +88,27 @@ public class MouseSensor : MonoBehaviour
         {
             TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
 
-            if (towerGround != null && !towerGround.ISHasTower())
+            if (towerGround != null)
             {
-                if (detectedTowerGroundData != null)
+                if (towerEventHandler.detectedTowerGroundData != null)
                 {
-                    detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
+                    towerEventHandler.ExitTowerGround(towerEventHandler.detectedTowerGroundData);
                 }
-                this.detectedTowerGroundData = towerGround.towerGroundData;
+                towerEventHandler.detectedTowerGroundData = towerGround.towerGroundData;
 
                 isFindGround = true;
-                detectedTowerGroundData.EnterTowerGround(detectedTowerGroundData);
+                towerEventHandler.EnterTowerGround(towerEventHandler.detectedTowerGroundData);
                 break;
-            }
-            if (towerGround != null && towerGround.ISHasTower())
-            {
-                detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
             }
         }
 
         if (!isFindGround)
         {
-            if (detectedTowerGroundData != null)
+            if (towerEventHandler.detectedTowerGroundData != null)
             {
-                detectedTowerGroundData.ExitTowerGround(detectedTowerGroundData);
+                towerEventHandler.ExitTowerGround(towerEventHandler.detectedTowerGroundData);
             }
-            detectedTowerGroundData = null;
-
+            towerEventHandler.detectedTowerGroundData = null;
         }
     }
 }

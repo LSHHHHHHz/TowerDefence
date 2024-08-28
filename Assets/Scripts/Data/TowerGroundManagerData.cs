@@ -7,35 +7,13 @@ using UnityEngine;
 public class TowerGroundData
 {
     public TowerData towerData;
-    public event Action resetTowerData;
-    public event Action<TowerData> setTowerData;
-    public event Action<TowerGroundData> enterTowerGround;
-    public event Action<TowerGroundData> exitTowerGround;
     public void SetTower(TowerData towerData)
     {
         this.towerData = towerData;
-        setTowerData?.Invoke(this.towerData);
     }
     public void RemoveTower()
     {
         towerData = null;
-        resetTowerData?.Invoke();
-    }
-    public void EnterTowerGround(TowerGroundData data)
-    {
-        enterTowerGround?.Invoke(data);
-    }
-    public void ExitTowerGround(TowerGroundData data)
-    {
-        exitTowerGround?.Invoke(data);
-    }
-
-    public void ChangeTowerPosition(TowerGroundData dragTowerData, TowerGroundData dropTowerData)
-    {
-    }
-    public void MergeTower()
-    {
-
     }
 }
 [Serializable]

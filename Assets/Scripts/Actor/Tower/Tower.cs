@@ -9,22 +9,7 @@ public class Tower : Actor
     protected List<Monster> detectedMonsters;
     public TowerAttackSensor towerAttackSensor;
     protected FSMController<Tower> fsmController;
-    private TowerData _towerData;
-    public TowerData towerData
-    {
-        get
-        {
-            if (_towerData == null)
-            {
-                _towerData = new TowerData();
-            }
-            return _towerData;
-        }
-        set
-        {
-            _towerData = value;
-        }
-    }
+    public TowerData towerData;
     protected override void Awake()
     {
         base.Awake();
