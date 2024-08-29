@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class MouseInteraction : MonoBehaviour
 {
+    public GameObject towerPopupPrefab;
+    public RectTransform popupTransform;
+    TowerManagerPopup towerPopup;
+
     TowerEventHandler towerEventHandler;
     public Tower dragTower;
     public TowerData dropTower;
@@ -73,15 +77,10 @@ public class MouseInteraction : MonoBehaviour
     }
     void MouseButtonUP()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-
-        }
         if (towerEventHandler.detectedCurrentTowerGroundData == null)
         {
             return;
         }
-
         if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedSelectTowerData != null) //무언가 이동 중이라면
         {
             //현재 그라운드데이터에 타워가 있는 경우
@@ -99,14 +98,9 @@ public class MouseInteraction : MonoBehaviour
     }
     void ScreenToRayUseMouse()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-
-        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits = Physics.RaycastAll(ray);
         bool isFindGround = false;
-
         foreach (RaycastHit hit in hits)
         {
             TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
@@ -124,7 +118,13 @@ public class MouseInteraction : MonoBehaviour
                 break;
             }
         }
-
+        if(isFindGround && towerEventHandler.detectedCurrentTowerGroundData.towerData != null) //여기서 팝업 생성
+        {
+            if(towerPopup != null)
+            {
+                towerPopup = Instantiate(towerPopupPrefab, popupTransform).GetComponent<TowerManagerPopup>();
+            }
+        }
         if (!isFindGround)
         {
             if (towerEventHandler.detectedCurrentTowerGroundData != null)
