@@ -17,7 +17,7 @@ public class TowerGround : MonoBehaviour
     }
     public void DropTower(TowerGroundData groundData, TowerData data)
     {
-        if(groundData != towerGroundData)
+        if(groundData != towerGroundData || data.towerID == null)
         {
             return;
         }
