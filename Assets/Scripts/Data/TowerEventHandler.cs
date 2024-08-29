@@ -14,10 +14,10 @@ public class TowerEventHandler
     public event Action onResetTowerData;
     public event Action<TowerGroundData> onEnterTowerGround;
     public event Action<TowerGroundData> onExitTowerGround;
+
     public TowerEventHandler()
     {
-        detectedTowerGroundData = new TowerGroundData();
-        detectedTowerData = new TowerData();
+        detectedTowerData = null;
     }
     public void SetTower(TowerGroundData groundData, TowerData towerData)
     {

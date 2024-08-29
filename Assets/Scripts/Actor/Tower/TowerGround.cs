@@ -23,7 +23,7 @@ public class TowerGround : MonoBehaviour
         }
         string towerID = data.towerID;
         ActorType type = data.type;
-        if (!hasTowers.Contains(currentTower))
+        if (!hasTowers.Contains(currentTower) && currentTower != null)
         {
             hasTowers.Add(currentTower);
         }

@@ -20,9 +20,9 @@ public class TowerGroundManager : MonoBehaviour
                 TowerGroundManagerData.instance.towerGroundDatas.Add(groundData);
 
                 //테스트 중
-                TowerData towerData = new TowerData();
-                groundData.towerData = towerData;
-                groundData.towerData.towerID = "nor01"; //테스트중
+              //  TowerData towerData = new TowerData();
+               // groundData.towerData = towerData;
+               // groundData.towerData.towerID = "nor01"; //테스트중
                 //테스트 중
 
                 towerEventHandler.onSetTowerData += towerGround.DropTower;

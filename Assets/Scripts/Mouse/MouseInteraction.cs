@@ -38,9 +38,24 @@ public class MouseInteraction : MonoBehaviour
     }
     void MouseButtonDown()
     {
-        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData.towerID == null) // 선택된 타워 데이터가 없는 경우
+        bool isClick = false;
+        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData == null) // 선택된 타워 데이터가 없는 경우
         {
-            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData.towerID != "")
+            isClick = true;
+            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData != null)
+            {
+                towerEventHandler.detectedTowerData = towerEventHandler.detectedTowerGroundData.towerData;
+                towerEventHandler.detectedTowerGroundData.RemoveTower();
+            }
+            else
+            {
+                Debug.Log("그라운드에 타워가 없음");
+                return;
+            }
+        }
+        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData != null && !isClick) // 선택된 타워 데이터가 있는 경우
+        {
+            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData != null)
             {
                 towerEventHandler.detectedTowerData = towerEventHandler.detectedTowerGroundData.towerData;
                 towerEventHandler.detectedTowerGroundData.RemoveTower();
@@ -54,19 +69,23 @@ public class MouseInteraction : MonoBehaviour
     }
     void MouseButtonUP()
     {
-        if(towerEventHandler.detectedTowerGroundData == null)
+        if (Input.GetMouseButtonUp(0))
+        {
+
+        }
+        if (towerEventHandler.detectedTowerGroundData == null)
         {
             return;
         }
 
-        if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedTowerData.towerID != null) //무언가 이동 중이라면
+        if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedTowerData != null) //무언가 이동 중이라면
         {
             //현재 그라운드데이터에 타워가 있는 경우
-              //같은 좋류, 레벨의 타워라면
-              //다른 종류의 타워라면
+            //같은 좋류, 레벨의 타워라면
+            //다른 종류의 타워라면
 
             //현재 그라운드에티어에 타워가 없는 경우
-            if(towerEventHandler.detectedTowerGroundData.towerData.towerID == null )
+            if (towerEventHandler.detectedTowerGroundData.towerData.towerID == null)
             {
                 towerEventHandler.SetTower(towerEventHandler.detectedTowerGroundData, towerEventHandler.detectedTowerData);
                 towerEventHandler.detectedTowerGroundData.towerData = towerEventHandler.detectedTowerData;
@@ -76,7 +95,7 @@ public class MouseInteraction : MonoBehaviour
     }
     void ScreenToRayUseMouse()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
         }

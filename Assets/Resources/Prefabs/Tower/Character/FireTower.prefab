@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 4617159174555797635}
   - component: {fileID: 7956510232081707431}
   - component: {fileID: 5836492126985964413}
+  - component: {fileID: -3985832937764473060}
   m_Layer: 0
   m_Name: FireTower
   m_TagString: Untagged
@@ -524,13 +525,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  actorId: 
+  actorId: nor01
   actoryType: 0
   towerAttackSensor: {fileID: 0}
   towerData:
     towerID: 
     level: 0
     type: 0
+--- !u!114 &-3985832937764473060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844593010782088553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d01fa03be611d49a74e8dad4ab8521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetActor: {fileID: 0}
+  actorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5194061682864471403
 GameObject:
   m_ObjectHideFlags: 0
