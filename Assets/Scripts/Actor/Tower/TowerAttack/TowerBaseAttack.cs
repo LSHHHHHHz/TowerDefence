@@ -10,14 +10,16 @@ public class TowerBaseAttack : MonoBehaviour
     float initializedAttackDelay;
     int attackDamage;
     [SerializeField] string bulletPrefabPath;
-    [SerializeField] float resetTime =2;
-    [SerializeField] float animationTime = 0.2f;
-
+    [SerializeField] float resetTime = 0.2f; // 공격 후 초기화 시간
+    public bool isAttackAction;
     Transform firePos;
-    Tower tower;
     private bool isReadyToAttack = false;
-    public bool isAttackAction = false;
     private Vector3 targetPos;
+
+    private void Update()
+    {
+        Debug.LogError(isAttackAction);
+    }
     public void Initialize(Transform firePos, int attackSpeed, int damage)
     {
         this.firePos = firePos;
@@ -28,7 +30,7 @@ public class TowerBaseAttack : MonoBehaviour
     {
         if (isReadyToAttack && attackCoroutine == null)
         {
-            attackCoroutine = StartCoroutine(AttackCorutine(targetActor));
+            attackCoroutine = StartCoroutine(AttackCoroutine(targetActor));
         }
     }
     public void StopAttack()
@@ -38,8 +40,8 @@ public class TowerBaseAttack : MonoBehaviour
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
+        isAttackAction = false; 
     }
-
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
     {
         isReadyToAttack = ready;
@@ -48,39 +50,34 @@ public class TowerBaseAttack : MonoBehaviour
             this.targetPos = targetPos;
         }
     }
-    IEnumerator AttackCorutine(IActor targetActor)
+    IEnumerator AttackCoroutine(IActor targetActor)
     {
         while (targetActor != null)
         {
             attackDelay -= Time.deltaTime;
             if (attackDelay <= 0)
             {
-                isAttackAction = true;
-                StartAttackAction();
-                attackDelay = initializedAttackDelay;
+                StartAttackAction(); 
+                yield return new WaitForSeconds(resetTime); 
+                isAttackAction = false; 
+                attackDelay = initializedAttackDelay; 
             }
             yield return null;
-        }      
-        StopAttack();
+        }
+        StopAttack(); 
     }
     void StartAttackAction()
     {
+        isAttackAction = true; 
         FireBullet(firePos.position, targetPos);
     }
     public void FireBullet(Vector3 firePos, Vector3 targetPos)
     {
-        //공격 모션 취하는 시간만큼 시간 설정
         BaseBullet bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<BaseBullet>();
         if (bullet != null)
         {
             bullet.InitializedBullet(firePos, attackDamage);
             bullet.MoveTarget(targetPos);
-            StartCoroutine(ResetAttackAction(resetTime));
         }
-    }
-    IEnumerator ResetAttackAction(float resetTime)
-    {
-        yield return new WaitForSeconds(resetTime);
-        isAttackAction = false;
     }
 }

@@ -18,7 +18,7 @@ public class AttackState : IState<Tower>
     public void Update(Tower tower)
     {
         Debug.Log(tower.name + " Attack Update");
-        if(tower.towerAttackSensor.isReadyToAttack && tower.towerAttackSensor.towerAttack.isAttackAction)
+        if(tower.towerAttackSensor.isReadyToAttack && tower.towerAttackSensor.towerBaseAttack.isAttackAction)
         {
             tower.anim.SetBool("IsAttack", true);
         }

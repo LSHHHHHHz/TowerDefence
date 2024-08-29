@@ -43,6 +43,7 @@ public class TowerStatus :ActorStatus
         this.attackDamage = attackDamage;
         this.attackRange = attackRagne;
         this.attackSpeed = attackSpeed;
+        this.rotationSpeed = rotationSpeed;
     }
     public void SetAttackDamage(int amount)
     {

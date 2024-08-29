@@ -11,7 +11,7 @@ public class TowerAttackSensor : MonoBehaviour
 
     [SerializeField] Transform firePos; // 공격 시작 지점
 
-    public TowerBaseAttack towerAttack { get; private set; }
+    public TowerBaseAttack towerBaseAttack;
     public bool isReadyToAttack = false;
     public Actor findActor;
     private void Awake()
@@ -19,12 +19,12 @@ public class TowerAttackSensor : MonoBehaviour
         tower = GetComponent<Tower>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
-        towerAttack = GetComponent<TowerBaseAttack>();
+        towerBaseAttack = GetComponent<TowerBaseAttack>();
     }
     private void Start()
     {
         capsuleCollider.radius = tower.towerStatus.attackRange;
-        towerAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackDamage);
+        towerBaseAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackDamage);
     }
     private void Update()
     {
@@ -33,12 +33,12 @@ public class TowerAttackSensor : MonoBehaviour
         if (tower.detectActor.targetActor != null)
         {
             findActor = tower.detectActor.targetActor;
-            towerAttack.StartAttack(tower.detectActor.targetActor);
+            towerBaseAttack.StartAttack(tower.detectActor.targetActor);
         }
         else
         {
             findActor = tower.detectActor.targetActor;
-            towerAttack.StopAttack();
+            towerBaseAttack.StopAttack();
         }
     }
     private void RotateToward()
@@ -63,12 +63,12 @@ public class TowerAttackSensor : MonoBehaviour
             if (angleDif < 0.1f)
             {
                 isReadyToAttack = true;
-                towerAttack.SetReadyToAttack(isReadyToAttack, tower.detectActor.targetActor.transform.position);
+                towerBaseAttack.SetReadyToAttack(isReadyToAttack, tower.detectActor.targetActor.transform.position);
             }
             else
             {
                 isReadyToAttack = false;
-                towerAttack.SetReadyToAttack(isReadyToAttack, Vector3.zero);
+                towerBaseAttack.SetReadyToAttack(isReadyToAttack, Vector3.zero);
             }
         }
     }
