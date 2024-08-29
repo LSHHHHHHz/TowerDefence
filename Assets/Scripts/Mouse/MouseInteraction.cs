@@ -112,7 +112,7 @@ public class MouseInteraction : MonoBehaviour
                     towerEventHandler.ExitTowerGround(towerEventHandler.detectedCurrentTowerGroundData);
                 }
                 towerEventHandler.detectedCurrentTowerGroundData = towerGround.towerGroundData;
-
+                 
                 isFindGround = true;
                 towerEventHandler.EnterTowerGround(towerEventHandler.detectedCurrentTowerGroundData);
                 break;
@@ -120,9 +120,13 @@ public class MouseInteraction : MonoBehaviour
         }
         if(isFindGround && towerEventHandler.detectedCurrentTowerGroundData.towerData != null) //여기서 팝업 생성
         {
-            if(towerPopup != null)
+            if(towerPopup == null)
             {
                 towerPopup = Instantiate(towerPopupPrefab, popupTransform).GetComponent<TowerManagerPopup>();
+            }
+            else
+            {
+
             }
         }
         if (!isFindGround)
