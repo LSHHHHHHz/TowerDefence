@@ -7,8 +7,9 @@ using UnityEngine.UIElements;
 [Serializable] //유니티에서 보기 위해 사용
 public class TowerEventHandler
 {
-    public TowerGroundData detectedTowerGroundData;
-    public TowerData detectedTowerData;
+    public TowerGroundData detectedCurrentTowerGroundData;
+    public TowerGroundData detectedSelectTowerGroundData;
+    public TowerData detectedSelectTowerData;
 
     public event Action<TowerGroundData, TowerData> onSetTowerData;
     public event Action onResetTowerData;
@@ -17,7 +18,7 @@ public class TowerEventHandler
 
     public TowerEventHandler()
     {
-        detectedTowerData = null;
+        detectedSelectTowerData = null;
     }
     public void SetTower(TowerGroundData groundData, TowerData towerData)
     {

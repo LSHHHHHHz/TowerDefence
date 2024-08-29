@@ -9,7 +9,7 @@ public class MouseInteraction : MonoBehaviour
     TowerEventHandler towerEventHandler;
     public Tower dragTower;
     public TowerData dropTower;
-    private void Awake()
+    private void Start()
     {
         towerEventHandler = TowerGroundManager.instance.towerEventHandler;
     }
@@ -38,14 +38,18 @@ public class MouseInteraction : MonoBehaviour
     }
     void MouseButtonDown()
     {
+        //여기 에러 잡아야함
+        //마우스 광클릭 했을 때 null이 나올때가 있고 아닐 때가 있음
+        Debug.Log(towerEventHandler.detectedSelectTowerData);
         bool isClick = false;
-        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData == null) // 선택된 타워 데이터가 없는 경우
+        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedSelectTowerData == null) // 선택된 타워 데이터가 없는 경우
         {
             isClick = true;
-            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData != null)
+            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
             {
-                towerEventHandler.detectedTowerData = towerEventHandler.detectedTowerGroundData.towerData;
-                towerEventHandler.detectedTowerGroundData.RemoveTower();
+                towerEventHandler.detectedSelectTowerGroundData = towerEventHandler.detectedCurrentTowerGroundData; //클릭 시 이전 데이터를 저장하기 위한 용도
+                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+                towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
             }
             else
             {
@@ -53,12 +57,12 @@ public class MouseInteraction : MonoBehaviour
                 return;
             }
         }
-        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedTowerData != null && !isClick) // 선택된 타워 데이터가 있는 경우
+        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedSelectTowerData != null && !isClick) // 선택된 타워 데이터가 있는 경우
         {
-            if (towerEventHandler.detectedTowerGroundData != null && towerEventHandler.detectedTowerGroundData.towerData != null)
+            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
             {
-                towerEventHandler.detectedTowerData = towerEventHandler.detectedTowerGroundData.towerData;
-                towerEventHandler.detectedTowerGroundData.RemoveTower();
+                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+                towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
             }
             else
             {
@@ -73,23 +77,23 @@ public class MouseInteraction : MonoBehaviour
         {
 
         }
-        if (towerEventHandler.detectedTowerGroundData == null)
+        if (towerEventHandler.detectedCurrentTowerGroundData == null)
         {
             return;
         }
 
-        if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedTowerData != null) //무언가 이동 중이라면
+        if (Input.GetMouseButtonUp(0) && towerEventHandler.detectedSelectTowerData != null) //무언가 이동 중이라면
         {
             //현재 그라운드데이터에 타워가 있는 경우
             //같은 좋류, 레벨의 타워라면
             //다른 종류의 타워라면
 
             //현재 그라운드에티어에 타워가 없는 경우
-            if (towerEventHandler.detectedTowerGroundData.towerData.towerID == null)
+            if (towerEventHandler.detectedCurrentTowerGroundData.towerData.towerID == null)
             {
-                towerEventHandler.SetTower(towerEventHandler.detectedTowerGroundData, towerEventHandler.detectedTowerData);
-                towerEventHandler.detectedTowerGroundData.towerData = towerEventHandler.detectedTowerData;
-                towerEventHandler.detectedTowerData = null;
+                towerEventHandler.SetTower(towerEventHandler.detectedCurrentTowerGroundData, towerEventHandler.detectedSelectTowerData);
+                towerEventHandler.detectedCurrentTowerGroundData.towerData = towerEventHandler.detectedSelectTowerData;
+                towerEventHandler.detectedSelectTowerData = null;
             }
         }
     }
@@ -109,25 +113,25 @@ public class MouseInteraction : MonoBehaviour
 
             if (towerGround != null)
             {
-                if (towerEventHandler.detectedTowerGroundData != null)
+                if (towerEventHandler.detectedCurrentTowerGroundData != null)
                 {
-                    towerEventHandler.ExitTowerGround(towerEventHandler.detectedTowerGroundData);
+                    towerEventHandler.ExitTowerGround(towerEventHandler.detectedCurrentTowerGroundData);
                 }
-                towerEventHandler.detectedTowerGroundData = towerGround.towerGroundData;
+                towerEventHandler.detectedCurrentTowerGroundData = towerGround.towerGroundData;
 
                 isFindGround = true;
-                towerEventHandler.EnterTowerGround(towerEventHandler.detectedTowerGroundData);
+                towerEventHandler.EnterTowerGround(towerEventHandler.detectedCurrentTowerGroundData);
                 break;
             }
         }
 
         if (!isFindGround)
         {
-            if (towerEventHandler.detectedTowerGroundData != null)
+            if (towerEventHandler.detectedCurrentTowerGroundData != null)
             {
-                towerEventHandler.ExitTowerGround(towerEventHandler.detectedTowerGroundData);
+                towerEventHandler.ExitTowerGround(towerEventHandler.detectedCurrentTowerGroundData);
             }
-            towerEventHandler.detectedTowerGroundData = null;
+            towerEventHandler.detectedCurrentTowerGroundData = null;
         }
     }
 }

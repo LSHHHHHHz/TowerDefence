@@ -9,7 +9,6 @@ public class TowerGround : MonoBehaviour
     TowerGroundEffect towerGroundEffect;
     [SerializeField]List<Tower> hasTowers = new List<Tower>();
     public Tower currentTower;
-    public string currentTowerID;
     public bool isHasTower { get; private set; }
     private void Awake()
     {
