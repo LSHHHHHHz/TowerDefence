@@ -14,161 +14,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profileEntity:
   - dataID: nor01
-    name: "\uB178\uB9D0\uD0C0\uC6CC1"
-    prefabPath: Prefabs/Tower/Character/FireTower
-    iconPath: '"'
+    name: "\uD558\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/MortarTower
+    iconPath: 
+    projectilePath: Prefabs/Projectile/TowerProjectile
   - dataID: nor02
-    name: "\uB178\uB9D0\uD0C0\uC6CC2"
+    name: "\uC911\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
     prefabPath: Prefabs/Monster/LV1_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: Prefabs/Projectile/TowerProjectile
   - dataID: nor03
-    name: "\uB178\uB9D0\uD0C0\uC6CC3"
+    name: "\uACE0\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
     prefabPath: Prefabs/Monster/LV1_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: Prefabs/Projectile/TowerProjectile
   - dataID: nor11
-    name: "\uB178\uB9D0\uD0C0\uC6CC4"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/FireTower1
+    iconPath: 
+    projectilePath: Prefabs/Projectile/FireProjectile
   - dataID: nor12
-    name: "\uB178\uB9D0\uD0C0\uC6CC5"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/FireTower2
+    iconPath: 
+    projectilePath: Prefabs/Projectile/FireProjectile
   - dataID: nor13
-    name: "\uB178\uB9D0\uD0C0\uC6CC6"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/FireTower3
+    iconPath: 
+    projectilePath: Prefabs/Projectile/FireProjectile
   - dataID: nor21
-    name: "\uB178\uB9D0\uD0C0\uC6CC7"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/IceTower1
+    iconPath: 
+    projectilePath: Prefabs/Projectile/IceProjectile
   - dataID: nor22
-    name: "\uB178\uB9D0\uD0C0\uC6CC8"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/IceTower2
+    iconPath: 
+    projectilePath: Prefabs/Projectile/IceProjectile
   - dataID: nor23
-    name: "\uB178\uB9D0\uD0C0\uC6CC9"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/IceTower3
+    iconPath: 
+    projectilePath: Prefabs/Projectile/IceProjectile
   - dataID: nor31
-    name: "\uB178\uB9D0\uD0C0\uC6CC10"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/LightTower1
+    iconPath: 
+    projectilePath: Prefabs/Projectile/LightningProjectile
   - dataID: nor32
-    name: "\uB178\uB9D0\uD0C0\uC6CC11"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/LightTower2
+    iconPath: 
+    projectilePath: Prefabs/Projectile/LightningProjectile
   - dataID: nor33
-    name: "\uB178\uB9D0\uD0C0\uC6CC12"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham11
-    name: "\uCC54\uD504\uD0C0\uC6CC1"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham12
-    name: "\uCC54\uD504\uD0C0\uC6CC2"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham13
-    name: "\uCC54\uD504\uD0C0\uC6CC3"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham21
-    name: "\uCC54\uD504\uD0C0\uC6CC4"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham22
-    name: "\uCC54\uD504\uD0C0\uC6CC5"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham23
-    name: "\uCC54\uD504\uD0C0\uC6CC6"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham31
-    name: "\uCC54\uD504\uD0C0\uC6CC7"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham32
-    name: "\uCC54\uD504\uD0C0\uC6CC8"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: cham33
-    name: "\uCC54\uD504\uD0C0\uC6CC9"
-    prefabPath: '"'
-    iconPath: '"'
+    name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Character/LightTower3
+    iconPath: 
+    projectilePath: Prefabs/Projectile/LightningProjectile
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Normar/LV1_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: Prefabs/Projectile/LightningProjectile
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Normar/LV2_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: 
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Normar/LV3_Golem
-    iconPath: '"'
-  - dataID: normon21
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1304"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: normon22
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1305"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: normon23
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1306"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: normon31
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1307"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: normon32
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1308"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: normon33
-    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1309"
-    prefabPath: '"'
-    iconPath: '"'
+    iconPath: 
+    projectilePath: 
   - dataID: bosmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Boss/LV1_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: 
   - dataID: bosmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Boss/LV2_Golem
-    iconPath: '"'
+    iconPath: 
+    projectilePath: 
   - dataID: bosmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Boss/LV3_Golem
-    iconPath: '"'
-  - dataID: bosmon21
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1304"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: bosmon22
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1305"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: bosmon23
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1306"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: bosmon31
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1307"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: bosmon32
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1308"
-    prefabPath: '"'
-    iconPath: '"'
-  - dataID: bosmon33
-    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1309"
-    prefabPath: '"'
-    iconPath: '"'
+    iconPath: 
+    projectilePath: 
   towerStatusEntity:
   - dataID: nor01
     hp: 1000
@@ -254,69 +188,6 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
-  - dataID: cham11
-    hp: 1000
-    attackDamage: 10
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham12
-    hp: 2000
-    attackDamage: 20
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham13
-    hp: 3000
-    attackDamage: 30
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham21
-    hp: 1000
-    attackDamage: 10
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham22
-    hp: 2000
-    attackDamage: 20
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham23
-    hp: 3000
-    attackDamage: 30
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham31
-    hp: 1000
-    attackDamage: 10
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham32
-    hp: 2000
-    attackDamage: 20
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
-  - dataID: cham33
-    hp: 3000
-    attackDamage: 30
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: ChampTower
   monsterStatusEntity:
   - dataID: normon11
     hp: 150
@@ -339,48 +210,6 @@ MonoBehaviour:
     type: NormarMonster
     stage: 3
     coin: 30
-  - dataID: normon21
-    hp: 600
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 4
-    coin: 40
-  - dataID: normon22
-    hp: 750
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 5
-    coin: 50
-  - dataID: normon23
-    hp: 900
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 6
-    coin: 60
-  - dataID: normon31
-    hp: 1050
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 7
-    coin: 70
-  - dataID: normon32
-    hp: 1200
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 8
-    coin: 80
-  - dataID: normon33
-    hp: 1350
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: NormarMonster
-    stage: 9
-    coin: 90
   - dataID: bosmon11
     hp: 1500
     rotationSpeed: 10
@@ -402,45 +231,3 @@ MonoBehaviour:
     type: BossMonster
     stage: 3
     coin: 300
-  - dataID: bosmon21
-    hp: 6000
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 4
-    coin: 400
-  - dataID: bosmon22
-    hp: 7500
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 5
-    coin: 500
-  - dataID: bosmon23
-    hp: 9000
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 6
-    coin: 600
-  - dataID: bosmon31
-    hp: 10500
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 7
-    coin: 700
-  - dataID: bosmon32
-    hp: 12000
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 8
-    coin: 800
-  - dataID: bosmon33
-    hp: 13500
-    rotationSpeed: 10
-    moveSpeed: 5
-    type: BossMonster
-    stage: 9
-    coin: 900

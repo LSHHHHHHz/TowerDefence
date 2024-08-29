@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour, IActor
 {
     public ActorStatus status;
-    protected ProfileDB profileDB;
+    public ProfileDB profileDB { get; private set; }
     public Animator anim;
     public DetectActor detectActor { get; private set; }
     public string actorId;

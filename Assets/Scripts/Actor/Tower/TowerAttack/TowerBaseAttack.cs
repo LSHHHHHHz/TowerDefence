@@ -1,24 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class TowerBaseAttack : MonoBehaviour
 {
     Coroutine attackCoroutine;
-    float attackDelay;
+    Coroutine reduceAttackDelayCoroutine;
+    public float attackDelay;
     float initializedAttackDelay;
     int attackDamage;
-    [SerializeField] string bulletPrefabPath;
+    public string projectilePath;
     [SerializeField] float resetTime = 0.2f; // 공격 후 초기화 시간
-    public bool isAttackAction;
+    public bool isAttackAction; //애니메이션할때 필요
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
-
-    private void Update()
+    private void Start()
     {
-        Debug.LogError(isAttackAction);
+        projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
     }
     public void Initialize(Transform firePos, int attackSpeed, int damage)
     {
@@ -40,10 +41,27 @@ public class TowerBaseAttack : MonoBehaviour
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
+        if (reduceAttackDelayCoroutine == null)
+        {
+            reduceAttackDelayCoroutine = StartCoroutine(ReduceAttackDelay());
+        }
         isAttackAction = false; 
+    }
+    IEnumerator ReduceAttackDelay()
+    {
+        while (isAttackAction == false && attackDelay > 0)
+        {
+            attackDelay -= Time.deltaTime;
+            yield return null; 
+        }
     }
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
     {
+        if (reduceAttackDelayCoroutine != null)
+        {
+            StopCoroutine(reduceAttackDelayCoroutine);
+            reduceAttackDelayCoroutine = null;
+        }
         isReadyToAttack = ready;
         if (ready)
         {
@@ -69,15 +87,15 @@ public class TowerBaseAttack : MonoBehaviour
     void StartAttackAction()
     {
         isAttackAction = true; 
-        FireBullet(firePos.position, targetPos);
+        FireProjectile(firePos.position, targetPos);
     }
-    public void FireBullet(Vector3 firePos, Vector3 targetPos)
+    public void FireProjectile(Vector3 firePos, Vector3 targetPos)
     {
-        BaseBullet bullet = PoolManager.instance.GetObjectFromPool(bulletPrefabPath).GetComponent<BaseBullet>();
-        if (bullet != null)
+        BaseProjectile projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
+        if (projectile != null)
         {
-            bullet.InitializedBullet(firePos, attackDamage);
-            bullet.MoveTarget(targetPos);
+            projectile.InitializedBullet(firePos, attackDamage);
+            projectile.MoveTarget(targetPos);
         }
     }
 }

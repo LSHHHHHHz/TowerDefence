@@ -7,4 +7,5 @@ public class ProfileDB
     public string name;
     public string prefabPath;
     public string iconPath;
+    public string projectilePath;
 }
