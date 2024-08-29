@@ -11,8 +11,8 @@ public class TowerAttackSensor : MonoBehaviour
 
     [SerializeField] Transform firePos; // 공격 시작 지점
 
-    TowerBaseAttack towerAttack;
-    bool isReadyToAttack = false;
+    public TowerBaseAttack towerAttack { get; private set; }
+    public bool isReadyToAttack = false;
     public Actor findActor;
     private void Awake()
     {

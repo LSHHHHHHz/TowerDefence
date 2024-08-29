@@ -7,8 +7,8 @@ public class Tower : Actor
     public TowerStatus towerStatus { get; private set; }
     protected TowerStatusDB towerStatusDB;
     protected List<Monster> detectedMonsters;
-    public TowerAttackSensor towerAttackSensor;
-    protected FSMController<Tower> fsmController;
+    public TowerAttackSensor towerAttackSensor { get; private set; }
+    public FSMController<Tower> fsmController { get; private set; }
     public TowerData towerData;
     protected override void Awake()
     {
@@ -18,6 +18,10 @@ public class Tower : Actor
         towerAttackSensor = GetComponent<TowerAttackSensor>();
         fsmController = new FSMController<Tower>(this);
         fsmController.ChangeState(new IdleState());
+    }
+    protected void Update()
+    {
+        fsmController.FSMUpdate();
     }
     public void Initialize()
     {

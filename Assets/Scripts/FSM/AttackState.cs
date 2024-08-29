@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class AttackState : IState<Tower>
 {
-    public void Enter(Tower actor)
+    public void Enter(Tower tower)
     {
-        Debug.Log(actor.name + " Attack Enter");
+        Debug.Log(tower.name + " Attack Enter");
     }
 
-    public void Exit(Tower actor)
+    public void Exit(Tower tower)
     {
-        Debug.Log(actor.name + " Attack Exit");
+        Debug.Log(tower.name + " Attack Exit");
+        tower.anim.SetBool("IsAttack", false);
     }
 
-    public void Update(Tower actor)
+    public void Update(Tower tower)
     {
-        Debug.Log(actor.name + " Attack 업데이트");
+        Debug.Log(tower.name + " Attack Update");
+        if(tower.towerAttackSensor.isReadyToAttack && tower.towerAttackSensor.towerAttack.isAttackAction)
+        {
+            tower.anim.SetBool("IsAttack", true);
+        }
+        else
+        {
+            tower.anim.SetBool("IsAttack", false);
+        }
     }
 }

@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class IdleState : IState<Tower>
 {
-    public void Enter(Tower actor)
+    public void Enter(Tower tower)
     {
+        Debug.Log(tower.name + " : IdleState Enter");
     }
 
-    public void Exit(Tower actor)
+    public void Exit(Tower tower)
     {
-        Debug.Log(actor.name + "¿¡¼­ ³ª¿È (Exit)");
-       
+        Debug.Log(tower.name + " : IdleState Exit");       
     }
 
-    public void Update(Tower actor)
+    public void Update(Tower tower)
     {
+        if(tower.detectActor != null && tower.detectActor.targetActor != null)
+        {
+            tower.fsmController.ChangeState(new AttackState());
+        }
     }
 }
