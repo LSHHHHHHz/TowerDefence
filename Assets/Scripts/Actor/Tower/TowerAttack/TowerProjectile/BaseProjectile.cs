@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class BaseProjectile : MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected int bulletDamage;
+    [SerializeField] protected float projectileMoveSpeed;
+    [SerializeField] protected int attackDamage;
     protected Vector3 targetPos;
     public void InitializedBullet(Vector3 firePos, int damage)
     {
         transform.position = firePos;
-        bulletDamage = damage;
+        attackDamage = damage;
     }
     public abstract void MoveTarget(Vector3 targetPos);
 }

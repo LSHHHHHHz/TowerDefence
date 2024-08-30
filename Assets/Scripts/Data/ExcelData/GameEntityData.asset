@@ -77,7 +77,7 @@ MonoBehaviour:
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Normar/LV1_Golem
     iconPath: 
-    projectilePath: Prefabs/Projectile/LightningProjectile
+    projectilePath: 
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Normar/LV2_Golem
