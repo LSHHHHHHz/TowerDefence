@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6089660679943031110}
   - component: {fileID: 2268563412161374792}
   - component: {fileID: 3351698432116150872}
-  - component: {fileID: 7276501753882755839}
   - component: {fileID: 1253072009558227413}
+  - component: {fileID: -4037657106643528214}
   m_Layer: 0
   m_Name: LightningProjectile
   m_TagString: Untagged
@@ -107,21 +107,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7276501753882755839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332813135959415371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c096d3c811bdc2d468e7cbf6de4bc380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 55
-  bulletDamage: 0
-  effects: []
 --- !u!54 &1253072009558227413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,3 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4037657106643528214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332813135959415371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3bd40f4b46a39478c7808417ec0fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 8407850317558832785, guid: 298f716714f2968488e7f338e973298b, type: 3}

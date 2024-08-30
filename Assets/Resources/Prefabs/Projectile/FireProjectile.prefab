@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6089660679943031110}
   - component: {fileID: 2268563412161374792}
   - component: {fileID: 3351698432116150872}
-  - component: {fileID: 7276501753882755839}
   - component: {fileID: 1253072009558227413}
+  - component: {fileID: -6333926712479977053}
   m_Layer: 0
   m_Name: FireProjectile
   m_TagString: Untagged
@@ -107,21 +107,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7276501753882755839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332813135959415371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c096d3c811bdc2d468e7cbf6de4bc380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 55
-  bulletDamage: 0
-  effects: []
 --- !u!54 &1253072009558227413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,3 +134,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6333926712479977053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332813135959415371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eefd7600d3bb744d89654feb4b4e73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileMoveSpeed: 0
+  towerAttackmount: 0
+  hitEffectPrefab: {fileID: 5049182641937956729, guid: 5c1815c0cc4bd0f4abb4a62d9242e153, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseHitEffect : MonoBehaviour
 {
     protected int effectStatusAmount;
-    public void InitializePos(Vector3 pos, int amount )
+    public void Initialize(Vector3 pos, int amount )
     {
         transform.position = pos;
         effectStatusAmount = amount;

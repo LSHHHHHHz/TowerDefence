@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,26 +8,34 @@ public class IceHitEffect : BaseHitEffect
     CapsuleCollider capsuleCollider;
 
     float currentRadius = 1f;
-
     float startRadius = 1f;
     float maxRadius = 20;
     float duration = 1f;
 
     float elapsedTime = 0f;
     float activeObjTime = 2.5f;
+    Coroutine activeObjCoroutine;
+
+    event Action<int> clearData;
     private void Awake()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
     private void OnEnable()
     {
+        elapsedTime = 0;
+        currentRadius = startRadius;
+        capsuleCollider.radius = startRadius;
         StartCoroutine(OnEnableObject(activeObjTime));
     }
     private void OnDisable()
     {
-        elapsedTime = 0;
-        currentRadius = startRadius;
-        capsuleCollider.radius = startRadius;
+        if (activeObjCoroutine != null)
+        {
+            StopCoroutine(activeObjCoroutine);
+        }
+        clearData?.Invoke(effectStatusAmount);
+        clearData = null;
     }
     private void Update()
     {
@@ -55,21 +64,13 @@ public class IceHitEffect : BaseHitEffect
         if (other.CompareTag("Monster"))
         {
             SendSlowDebuffEvent slow = new SendSlowDebuffEvent(effectStatusAmount);
-            IActor actor = other.GetComponent<IActor>();
-            if (actor != null)
-            {
-                actor.ReceiveEvent(slow);
-            }
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Monster"))
-        {
             Monster actor = other.GetComponent<Monster>();
             if (actor != null)
             {
-                actor.TakeOutSlowDebuff(effectStatusAmount);
+                actor.ReceiveEvent(slow); 
+                
+                clearData -= actor.TakeOutSlowDebuff;
+                clearData += actor.TakeOutSlowDebuff;
             }
         }
     }

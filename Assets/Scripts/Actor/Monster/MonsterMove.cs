@@ -12,8 +12,6 @@ public class MonsterMove : MonoBehaviour
     Vector3 targetPos;
     int warePointIndex = 0;
     Quaternion targetRot;
-    float rotateSpeed = 10;
-    float moveSpeed = 5;
     private void Awake()
     {
         monster = GetComponent<Monster>();

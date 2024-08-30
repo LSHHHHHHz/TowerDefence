@@ -18,7 +18,6 @@ public class CameraMove : MonoBehaviour
     Vector3 lastPos;
     Quaternion lastRot;
 
-    bool isCameraRot = false;
     bool isContactBoundary = false;
     bool isOriginPos = true;
     bool wasOriginPos = false;

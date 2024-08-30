@@ -42,7 +42,7 @@ public class AttributeTowerProjectile : BaseProjectile
             {
                 hitEffect.gameObject.SetActive(true);
             }
-            hitEffect.InitializePos(transform.position, towerAttackmount);
+            hitEffect.Initialize(transform.position, towerAttackmount);
             gameObject.SetActive(false);
         }
     }

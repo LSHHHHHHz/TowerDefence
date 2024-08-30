@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MortarTowerProjectile : BaseProjectile
 {
-    [SerializeField] GameObject[] effects;
     private void Update()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.1f) //공격을 했는데 몬스터에 맞지 않을 수도 있기 때문에 거리상으로 투사체를 비활성화

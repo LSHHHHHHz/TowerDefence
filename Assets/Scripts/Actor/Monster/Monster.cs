@@ -9,7 +9,7 @@ public class Monster : Actor
     protected FSMController<Monster> fsmController;
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
-    public event Action<int,int> onDamagedAction;
+    public event Action<int, int> onDamagedAction;
 
     List<int> monsterSlowDebuffList = new List<int>();
     int currentSlowDebuff = 1;
@@ -17,13 +17,22 @@ public class Monster : Actor
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
-        Initialize(); 
+        Initialize();
         fsmController = new FSMController<Monster>(this);
         fsmController.ChangeState(new WalkState());
     }
     protected void Update()
     {
         fsmController.FSMUpdate();
+    }
+    private void OnEnable()
+    {
+
+    }
+    private void OnDisable()
+    {
+        monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
+        currentSlowDebuff = 1;
     }
     public void Initialize()
     {
@@ -45,7 +54,7 @@ public class Monster : Actor
         {
             TakeDamage(damageEvent.damage);
         }
-        if(ievent is SendSlowDebuffEvent slowDebuffEvent)
+        if (ievent is SendSlowDebuffEvent slowDebuffEvent)
         {
             TakeSlowDebuff(slowDebuffEvent.slowDebuffAmount);
         }
@@ -74,7 +83,7 @@ public class Monster : Actor
         {
             currentSlowDebuff = 1;
         }
-        monsterStatus.SetMoveSpeed(1 / currentSlowDebuff);
+        monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
     }
     public void TakeOutSlowDebuff(int amount)
     {
@@ -98,7 +107,7 @@ public class Monster : Actor
             {
                 currentSlowDebuff = 1;
             }
-            monsterStatus.SetMoveSpeed(1 / currentSlowDebuff);
+            monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
         }
     }
     public override void DieActor()
