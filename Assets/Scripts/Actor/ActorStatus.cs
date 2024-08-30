@@ -28,26 +28,26 @@ public class MonsterStatus : ActorStatus
     }
     public void SetMoveSpeed(int amount)
     {
-        moveSpeed += amount;
+        moveSpeed = amount;
     }
 }
 public class TowerStatus :ActorStatus
 {
-    public int attackDamage { get; set; }
+    public int attackStatusAmount { get; set; }
     public int attackRange { get; set; }
     public int attackSpeed { get; set; }
-    public TowerStatus(int hp, int rotationSpeed, int attackDamage, int attackRagne, int attackSpeed)
+    public TowerStatus(int hp, int rotationSpeed, int amount, int attackRagne, int attackSpeed)
     {
         this.currentHP = hp;
         this.maxHP = hp;
-        this.attackDamage = attackDamage;
+        this.attackStatusAmount = amount;
         this.attackRange = attackRagne;
         this.attackSpeed = attackSpeed;
         this.rotationSpeed = rotationSpeed;
     }
     public void SetAttackDamage(int amount)
     {
-        attackDamage += amount;
+        attackStatusAmount += amount;
     }
 
     public void SetAttackRange(int amount)

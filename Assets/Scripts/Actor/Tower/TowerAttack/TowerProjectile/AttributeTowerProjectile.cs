@@ -19,11 +19,11 @@ public class AttributeTowerProjectile : BaseProjectile
         Debug.Log("ÃÑ¾Ë ÀÌµ¿ Áß");
         Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 2, targetPos.z);
         this.targetPos = adjustPos;
-        StartCoroutine(MoveBullet(adjustPos));
+        StartCoroutine(MoveProjectile(adjustPos));
     }
-    IEnumerator MoveBullet(Vector3 targetPos)
+    IEnumerator MoveProjectile(Vector3 targetPos)
     {
-        while (Vector3.Distance(transform.position, targetPos) > 0.01f) 
+        while (Vector3.Distance(transform.position, targetPos) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileMoveSpeed * Time.deltaTime);
             yield return null;
@@ -37,12 +37,13 @@ public class AttributeTowerProjectile : BaseProjectile
             if (hitEffect == null)
             {
                 hitEffect = Instantiate(hitEffectPrefab, PoolManager.instance.transform).GetComponent<BaseHitEffect>();
-                hitEffect.InitializePos(transform.position);
             }
             else
             {
-                hitEffect.InitializePos(transform.position);
+                hitEffect.gameObject.SetActive(true);
             }
+            hitEffect.InitializePos(transform.position, towerAttackmount);
+            gameObject.SetActive(false);
         }
     }
 }

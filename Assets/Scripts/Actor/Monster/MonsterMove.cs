@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
+    public int CheckSpeed;
+    Monster monster;
     [SerializeField] GameObject warePoint;
     List<Vector3> monsterMovePos = new List<Vector3>();
     Vector3 targetPos;
@@ -13,6 +16,7 @@ public class MonsterMove : MonoBehaviour
     float moveSpeed = 5;
     private void Awake()
     {
+        monster = GetComponent<Monster>();
         SetMovePos();
     }
     private void OnEnable()
@@ -52,11 +56,11 @@ public class MonsterMove : MonoBehaviour
                 return;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
-
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed);
+        CheckSpeed = monster.monsterStatus.moveSpeed;// 지워야함
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotateSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * monster.monsterStatus.rotationSpeed);
     }
 }

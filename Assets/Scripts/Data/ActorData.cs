@@ -21,7 +21,7 @@ public enum ActorType
 //}
 //public class ActorStatsData
 //{
-//    public int attackDamage;
+//    public int attackStatusAmount;
 //    public int attackRange;
 //    public int attackSpeed;
 //    public int moveSpeed;
@@ -189,7 +189,7 @@ public enum ActorType
 //{
 //    public NormarMonsterStatsData(int damage, int range, int attackSpeed, int moveSpeed, float rotationSpeed)
 //    {
-//        this.attackDamage = damage;
+//        this.attackStatusAmount = damage;
 //        this.attackRange = range;
 //        this.attackSpeed = attackSpeed;
 //        this.moveSpeed = moveSpeed;
@@ -230,7 +230,7 @@ public enum ActorType
 //{
 //    public BossMonsterStatsData(int damage, int range, int attackSpeed, int moveSpeed, float rotationSpeed)
 //    {
-//        this.attackDamage = damage;
+//        this.attackStatusAmount = damage;
 //        this.attackRange = range;
 //        this.attackSpeed = attackSpeed;
 //        this.moveSpeed = moveSpeed;
@@ -451,7 +451,7 @@ public enum ActorType
 //{
 //    public NormarTowerStatsData(int damage, int range, int attackSpeed, int moveSpeed, float rotationSpeed)
 //    {
-//        this.attackDamage = damage;
+//        this.attackStatusAmount = damage;
 //        this.attackRange = range;
 //        this.attackSpeed = attackSpeed;
 //        this.moveSpeed = moveSpeed;
@@ -488,7 +488,7 @@ public enum ActorType
 //{
 //    public ChamPionStatsData(int damage, int range, int attackSpeed, int moveSpeed, float rotationSpeed)
 //    {
-//        this.attackDamage = damage;
+//        this.attackStatusAmount = damage;
 //        this.attackRange = range;
 //        this.attackSpeed = attackSpeed;
 //        this.moveSpeed = moveSpeed;

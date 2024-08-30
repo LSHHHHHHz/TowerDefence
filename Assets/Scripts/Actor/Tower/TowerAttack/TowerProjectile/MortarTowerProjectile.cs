@@ -8,7 +8,7 @@ public class MortarTowerProjectile : BaseProjectile
     [SerializeField] GameObject[] effects;
     private void Update()
     {
-        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
+        if (Vector3.Distance(transform.position, targetPos) < 0.1f) //공격을 했는데 몬스터에 맞지 않을 수도 있기 때문에 거리상으로 투사체를 비활성화
         {
             gameObject.SetActive(false);
         }
@@ -18,9 +18,9 @@ public class MortarTowerProjectile : BaseProjectile
         Debug.Log("총알 이동 중");
         Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 2, targetPos.z);
         this.targetPos = adjustPos;
-        StartCoroutine(MoveBullet(adjustPos));
+        StartCoroutine(MoveProjectile(adjustPos));
     }
-    IEnumerator MoveBullet(Vector3 targetPos)
+    IEnumerator MoveProjectile(Vector3 targetPos)
     {
         while (Vector3.Distance(transform.position, targetPos) > 0.01f) 
         {
@@ -33,9 +33,12 @@ public class MortarTowerProjectile : BaseProjectile
     {
         if(other.CompareTag("Monster"))
         {
-            SendDamageEvent damage = new SendDamageEvent(attackDamage);
+            SendDamageEvent damage = new SendDamageEvent(towerAttackmount);
             IActor actor = other.GetComponent<IActor>();
-            damage.ExcuteEvent(actor);
+            if (actor != null)
+            {
+                damage.ExcuteEvent(actor);
+            }
             gameObject.SetActive(false);
         }
     }

@@ -10,7 +10,7 @@ public class TowerBaseAttack : MonoBehaviour
     Coroutine reduceAttackDelayCoroutine;
     public float attackDelay;
     float initializedAttackDelay;
-    int attackDamage;
+    int attackAmount;
     public string projectilePath;
     [SerializeField] float resetTime = 0.2f; // 공격 후 초기화 시간
     public bool isAttackAction; //애니메이션할때 필요
@@ -21,11 +21,11 @@ public class TowerBaseAttack : MonoBehaviour
     {
         projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
     }
-    public void Initialize(Transform firePos, int attackSpeed, int damage)
+    public void Initialize(Transform firePos, int attackSpeed, int amount)
     {
         this.firePos = firePos;
         initializedAttackDelay = attackSpeed;
-        attackDamage = damage;
+        attackAmount = amount;
     }
     public void StartAttack(IActor targetActor)
     {
@@ -94,7 +94,7 @@ public class TowerBaseAttack : MonoBehaviour
         BaseProjectile projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
         if (projectile != null)
         {
-            projectile.InitializedBullet(firePos, attackDamage);
+            projectile.InitializedBullet(firePos, attackAmount);
             projectile.MoveTarget(targetPos);
         }
     }

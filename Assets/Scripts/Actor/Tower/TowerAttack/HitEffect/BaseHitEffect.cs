@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class BaseHitEffect : MonoBehaviour
 {
-    [SerializeField] GameObject hitEffectPrefab;
-
-    public void InitializePos(Vector3 pos)
+    protected int effectStatusAmount;
+    public void InitializePos(Vector3 pos, int amount )
     {
         transform.position = pos;
+        effectStatusAmount = amount;
     }
-    public abstract void PlayImpantEffect(int amount);
+    public abstract void PlayImpactEffect();
 }

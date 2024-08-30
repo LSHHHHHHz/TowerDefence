@@ -24,7 +24,7 @@ public class TowerAttackSensor : MonoBehaviour
     private void Start()
     {
         capsuleCollider.radius = tower.towerStatus.attackRange;
-        towerBaseAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackDamage);
+        towerBaseAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackStatusAmount); 
     }
     private void Update()
     {

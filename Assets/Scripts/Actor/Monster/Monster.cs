@@ -7,9 +7,12 @@ using UnityEngine;
 public class Monster : Actor
 {
     protected FSMController<Monster> fsmController;
-    protected MonsterStatus monsterStatus;
-    protected MonsterStatusDB monsterStatusDB;
+    public MonsterStatus monsterStatus { get; private set; }
+    public MonsterStatusDB monsterStatusDB { get; private set; }
     public event Action<int,int> onDamagedAction;
+
+    List<int> monsterSlowDebuffList = new List<int>();
+    int currentSlowDebuff = 1;
     protected override void Awake()
     {
         base.Awake();
@@ -42,11 +45,61 @@ public class Monster : Actor
         {
             TakeDamage(damageEvent.damage);
         }
+        if(ievent is SendSlowDebuffEvent slowDebuffEvent)
+        {
+            TakeSlowDebuff(slowDebuffEvent.slowDebuffAmount);
+        }
     }
     public override void TakeDamage(int damage)
     {
         monsterStatus.TakeDamage(damage);
         onDamagedAction?.Invoke(monsterStatus.maxHP, damage);
+    }
+    public void TakeSlowDebuff(int amount)
+    {
+        monsterSlowDebuffList.Add(amount);
+
+        if (monsterSlowDebuffList.Count > 0)
+        {
+            currentSlowDebuff = monsterSlowDebuffList[0];
+            for (int i = 1; i < monsterSlowDebuffList.Count; i++)
+            {
+                if (monsterSlowDebuffList[i] > currentSlowDebuff)
+                {
+                    currentSlowDebuff = monsterSlowDebuffList[i];
+                }
+            }
+        }
+        else
+        {
+            currentSlowDebuff = 1;
+        }
+        monsterStatus.SetMoveSpeed(1 / currentSlowDebuff);
+    }
+    public void TakeOutSlowDebuff(int amount)
+    {
+        if (monsterSlowDebuffList.Contains(amount))
+        {
+            monsterSlowDebuffList.Remove(amount);
+
+            if (monsterSlowDebuffList.Count > 0)
+            {
+                currentSlowDebuff = monsterSlowDebuffList[0];
+
+                for (int i = 1; i < monsterSlowDebuffList.Count; i++)
+                {
+                    if (monsterSlowDebuffList[i] > currentSlowDebuff)
+                    {
+                        currentSlowDebuff = monsterSlowDebuffList[i];
+                    }
+                }
+            }
+            else
+            {
+                currentSlowDebuff = 1;
+            }
+            monsterStatus.SetMoveSpeed(1 / currentSlowDebuff);
+        }
     }
     public override void DieActor()
     {
