@@ -7,6 +7,18 @@ public class AttributeTowerProjectile : BaseProjectile
 {
     [SerializeField] GameObject hitEffectPrefab;
     BaseHitEffect hitEffect;
+    SphereCollider sphereCollider;
+    MeshRenderer meshRenderer;
+    private void Awake()
+    {
+        sphereCollider = GetComponent<SphereCollider>();
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+    private void OnEnable()
+    {
+        sphereCollider.enabled = true;
+        meshRenderer.enabled = true;
+    }
     private void Update()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.1f)
@@ -43,7 +55,8 @@ public class AttributeTowerProjectile : BaseProjectile
                 hitEffect.gameObject.SetActive(true);
             }
             hitEffect.Initialize(transform.position, towerAttackmount);
-            gameObject.SetActive(false);
+            sphereCollider.enabled = false;
+            meshRenderer.enabled = false;
         }
     }
 }

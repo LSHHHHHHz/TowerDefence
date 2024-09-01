@@ -30,10 +30,6 @@ public class FireHitEffect : BaseHitEffect
             StopCoroutine(objCoroutine);
         }
     }
-    public override void PlayImpactEffect()
-    {
-
-    }
     IEnumerator OnEnableColliderTime(float activeColliderTime)
     {
         yield return new WaitForSeconds(activeColliderTime);

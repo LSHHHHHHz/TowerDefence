@@ -6,8 +6,9 @@ public class GetHitState : IState<Monster>
 {
     public void Enter(Monster monster)
     {
-        Debug.Log(monster.name + " : GetHitState Enter");
+        Debug.LogError(monster.name + " : GetHitState Enter");
         monster.anim.SetTrigger("GetHit");
+        monster.fsmController.ChangeState(new WalkState());
     }
 
     public void Exit(Monster monster)

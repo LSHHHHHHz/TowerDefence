@@ -46,7 +46,7 @@ public class IceHitEffect : BaseHitEffect
         yield return new WaitForSeconds(activeTime);
         gameObject.SetActive(false);
     }
-    public override void PlayImpactEffect()
+    public void PlayImpactEffect()
     {
         elapsedTime += Time.deltaTime;
 
@@ -59,18 +59,24 @@ public class IceHitEffect : BaseHitEffect
         }
         capsuleCollider.radius = currentRadius;
     }
+
+    // 디버프 지속시간 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
         {
             SendSlowDebuffEvent slow = new SendSlowDebuffEvent(effectStatusAmount);
-            Monster actor = other.GetComponent<Monster>();
-            if (actor != null)
+            IActor actor = other.GetComponent<IActor>();
+            actor.ReceiveEvent(slow); //수정필요
+
+            if(actor is Monster monster)
+            if (monster != null)
             {
-                actor.ReceiveEvent(slow); 
+                    monster.ReceiveEvent(slow); 
                 
-                clearData -= actor.TakeOutSlowDebuff;
-                clearData += actor.TakeOutSlowDebuff;
+                clearData -= monster.TakeOutSlowDebuff;
+                clearData += monster.TakeOutSlowDebuff;
             }
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Monster : Actor
 {
-    protected FSMController<Monster> fsmController;
+    public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
     public event Action<int, int> onDamagedAction;
@@ -63,6 +63,7 @@ public class Monster : Actor
     {
         monsterStatus.TakeDamage(damage);
         onDamagedAction?.Invoke(monsterStatus.maxHP, damage);
+        fsmController.ChangeState(new GetHitState());
     }
     public void TakeSlowDebuff(int amount)
     {

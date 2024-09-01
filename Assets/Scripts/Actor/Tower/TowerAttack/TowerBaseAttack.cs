@@ -89,12 +89,14 @@ public class TowerBaseAttack : MonoBehaviour
         isAttackAction = true; 
         FireProjectile(firePos.position, targetPos);
     }
+
+    //이 투사체가 공유가 되니 문제가 되는 상황임
     public void FireProjectile(Vector3 firePos, Vector3 targetPos)
     {
         BaseProjectile projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
         if (projectile != null)
         {
-            projectile.InitializedBullet(firePos, attackAmount);
+            projectile.InitializedProjectile(firePos, attackAmount);
             projectile.MoveTarget(targetPos);
         }
     }

@@ -31,9 +31,6 @@ public class LightHitEffect : BaseHitEffect
         }
     }
 
-    public override void PlayImpactEffect()
-    {
-    }
 
     IEnumerator OnEnableColliderTime(float activeColliderTime)
     {

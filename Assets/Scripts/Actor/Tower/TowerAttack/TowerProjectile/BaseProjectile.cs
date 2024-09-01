@@ -7,7 +7,7 @@ public abstract class BaseProjectile : MonoBehaviour
     protected float projectileMoveSpeed =10;
     protected int towerAttackmount;
     protected Vector3 targetPos;
-    public void InitializedBullet(Vector3 firePos, int amount)
+    public void InitializedProjectile(Vector3 firePos, int amount)
     {
         transform.position = firePos - new Vector3(0,0.5f,0);
         towerAttackmount = amount;

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 [Serializable] //유니티에서 보기 위해 사용
-public class TowerEventHandler
+public class TowerEventHandler //분기X
 {
     public TowerGroundData detectedCurrentTowerGroundData;
     public TowerGroundData detectedSelectTowerGroundData;

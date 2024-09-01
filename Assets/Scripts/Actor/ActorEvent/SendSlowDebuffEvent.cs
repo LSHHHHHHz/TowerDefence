@@ -4,7 +4,7 @@ using UnityEngine;
 public class SendSlowDebuffEvent : IEvent
 {
     public int slowDebuffAmount;
-
+    public int duration;
     public SendSlowDebuffEvent( int amount)
     {
         this.slowDebuffAmount = amount;

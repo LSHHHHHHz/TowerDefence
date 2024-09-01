@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ public class MouseInteraction : MonoBehaviour
     public RectTransform popupTransform;
     TowerManagerPopup towerPopup;
 
-    TowerEventHandler towerEventHandler;
+    TowerEventHandler towerEventHandler; // 타워관련 이벤트 쏘는 역할
     public Tower dragTower;
     public TowerData dropTower;
     private void Start()
@@ -63,6 +64,7 @@ public class MouseInteraction : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedSelectTowerData != null && !isClick) // 선택된 타워 데이터가 있는 경우
         {
+            OnSelectFieldTower(towerEventHandler.detectedSelectTowerData);
             if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
             {
                 towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
@@ -75,6 +77,28 @@ public class MouseInteraction : MonoBehaviour
             }
         }
     }
+
+    // field 선택했을때
+    public void OnSelectFieldTower(TowerData towerData)
+    {
+        if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
+        {
+            towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+            towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
+        }
+        else
+        {
+            Debug.Log("그라운드에 타워가 없음");
+            return;
+        }
+    }
+
+    // 상점 선택했을때
+    public void OnSelectShopTower(TowerData towerData)
+    {
+        
+    }
+
     void MouseButtonUP()
     {
         if (towerEventHandler.detectedCurrentTowerGroundData == null)
