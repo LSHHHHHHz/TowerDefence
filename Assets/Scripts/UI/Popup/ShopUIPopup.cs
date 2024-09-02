@@ -10,18 +10,29 @@ public class ShopUIPopup : MonoBehaviour
     [SerializeField] RectTransform slotsContents;
     TowerShopData shopData;
     TowerManager towerManager;
-    event Action<GameObject> buyObject;
+    event Action<GameObject, TowerData> buyTowerObject;
+    event Action isBuingTower;
     private void Awake()
     {
         shopData = GameData.instance.shopData;
         towerManager = GameData.instance.towerManager;
         InitializeShopUI();
     }
+    private void OnEnable()
+    {
+        buyTowerObject += towerManager.BuyTower;
+        isBuingTower += MouseInteraction.instance.BuingTower;
+    }
+    private void OnDisable()
+    {
+        buyTowerObject -= towerManager.BuyTower;
+        isBuingTower -= MouseInteraction.instance.BuingTower;
+    }
     void InitializeShopUI()
     {
-        for(int i =0; i < shopData.listTowerID.Count; i++)
+        for (int i = 0; i < shopData.listTowerID.Count; i++)
         {
-            ShopSlotUI slotUI = Instantiate(prefab,slotsContents).GetComponent<ShopSlotUI>();
+            ShopSlotUI slotUI = Instantiate(prefab, slotsContents).GetComponent<ShopSlotUI>();
             TowerData data = new TowerData();
             data.towerID = shopData.listTowerID[i];
             data.status = GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]);
@@ -32,16 +43,16 @@ public class ShopUIPopup : MonoBehaviour
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
-                towerManager.RefreshTowerData();
-                towerManager.RegisterTowerData(captureData, true);
-                InstantiateObj(prfabPath);
+                InstantiateObj(prfabPath, captureData);
+                isBuingTower?.Invoke();
                 ClosePopup();
             });
         }
     }
-    void InstantiateObj(string path)
+    void InstantiateObj(string path, TowerData data)
     {
-       GameObject obj = PoolManager.instance.GetObjectFromPool(path);
+        GameObject obj = PoolManager.instance.GetObjectFromPool(path);
+        buyTowerObject?.Invoke(obj, data);
     }
     void ClosePopup()
     {

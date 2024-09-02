@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TowerGround : MonoBehaviour 
 {
-    public TowerGroundData towerGroundData; //타워 그라운드가 데이터를 들고있는게 맞나
+    public TowerGroundData towerGroundData; 
     TowerGroundEffect towerGroundEffect;
     [SerializeField]List<Tower> hasTowers = new List<Tower>();
     public Tower currentTower;
@@ -40,6 +40,7 @@ public class TowerGround : MonoBehaviour
                 currentTower = t;
                 currentTower.gameObject.SetActive(true);
                 currentTower.towerData = data;
+                towerGroundData = groundData;
                 break;
             }
         }

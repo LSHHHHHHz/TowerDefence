@@ -15,5 +15,7 @@
             "nor33"
         ]
     },
-    "towerManager": {}
+    "towerManager": {
+        "towerData": []
+    }
 }

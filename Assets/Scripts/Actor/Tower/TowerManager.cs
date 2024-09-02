@@ -7,33 +7,44 @@ using UnityEngine;
 public class TowerManager
 {
     private const int maxSize = 2;
-    Queue<TowerData> towerData = new Queue<TowerData>();
-    bool isSelectTower = false;
-    GameObject buyTowerObj = null;
-    public void RegisterTowerData(TowerData data, bool isBuyShop)
+    public List<TowerData> towerData = new List<TowerData>();
+
+    public GameObject buyTowerObj { get; set; }
+    public TowerData buyTowerData { get; private set; }
+    public event Action<GameObject, TowerData> onTowerBuy;
+    public void RegisterTowerData(TowerData data)
     {
-        if(isSelectTower)
-        {
-            return;
-        }
-        isSelectTower = isBuyShop;
         if (towerData.Count >= maxSize)
         {
-            towerData.Dequeue();
+            towerData.RemoveAt(0);
         }
-        towerData.Enqueue(data);
+        towerData.Add(data);
         Debug.LogError("towerData °³¼ö : " + towerData.Count);
     }
     public void RefreshTowerData()
     {
-        isSelectTower = false;
-        towerData.Clear();
+        towerData.Clear(); 
+    }
+    public void BuyTower(GameObject buyTowerObj, TowerData towerData)
+    {
+        this.buyTowerObj = buyTowerObj;
+        this.buyTowerData = towerData;
+        onTowerBuy?.Invoke(buyTowerObj, buyTowerData);
+    }
+    public void BuyTowerDropOnGround()
+    {
+        RefreshTowerData();
+        if (buyTowerObj != null)
+        {
+            buyTowerObj.SetActive(false);
+            buyTowerObj = null;
+        }
     }
     public TowerData GetTowerData()
     {
         if (towerData.Count > 0)
         {
-            return towerData.Peek();
+            return towerData[0]; 
         }
         else
         {
