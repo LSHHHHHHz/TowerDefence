@@ -43,6 +43,7 @@ public class TowerData
 {
     public string towerID;
     public int level;
+    public TowerStatusDB status;
     public ActorType type;
     //상태도 여기서 관리할지 추후에 생각필요
     public void UpgradeTower()

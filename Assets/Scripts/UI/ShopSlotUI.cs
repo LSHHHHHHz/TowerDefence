@@ -8,13 +8,14 @@ public class ShopSlotUI : MonoBehaviour
 {
     [SerializeField] Image towerImage;
     [SerializeField] Text towerPrice;
+    public TowerData towerData;
     private void Awake()
     {
         
     }
-    public void InitializeShopUI(string path, int price)
+    public void InitializeShopUI(string towerImagePath, int towerPrice)
     {
-        towerImage.sprite = Resources.Load<Sprite>(path);
-        towerPrice.text = price.ToString();
+        towerImage.sprite = Resources.Load<Sprite>(towerImagePath);
+        this.towerPrice.text = towerPrice.ToString();
     }
 }

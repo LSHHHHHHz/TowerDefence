@@ -10,13 +10,12 @@
             "nor11",
             "nor21",
             "nor31",
-            "cham11",
-            "cham21",
-            "cham31"
+            "nor31",
+            "nor32",
+            "nor33"
         ]
     },
-    "towerManagerData": {
-        "towerID": "",
-        "selectInfo": 0
+    "towerManager": {
+        "instanceID": 0
     }
 }

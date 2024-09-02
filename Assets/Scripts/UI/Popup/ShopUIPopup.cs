@@ -9,23 +9,35 @@ public class ShopUIPopup : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;
     TowerShopData shopData;
-    TowerManagerData towerManagerData;
+    TowerManager towerManager;
     private void Awake()
     {
         shopData = GameData.instance.shopData;
-        towerManagerData = GameData.instance.towerManagerData;
-        InitilizedShopUI();
+        towerManager = GameData.instance.towerManager;
+        InitializeShopUI();
     }
-    void InitilizedShopUI()
+    void InitializeShopUI()
     {
         for(int i =0; i < shopData.listTowerID.Count; i++)
         {
             ShopSlotUI slotUI = Instantiate(prefab,slotsContents).GetComponent<ShopSlotUI>();
+            TowerData data = new TowerData();
+            data.towerID = shopData.listTowerID[i];
+            data.status = GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]);
+            data.type = GameManager.instance.gameEntityData.GetActorType(GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]).type);
+            TowerData captureData = data;
+            slotUI.InitializeShopUI(GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).iconPath, GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).buyTowerPrice);
             Button slotButton = slotUI.GetComponent<Button>();
-            int index = i;
-            slotButton.onClick.AddListener(() => towerManagerData.AddTower(shopData.listTowerID[index], SelectInfo.Shop));
+            slotButton.onClick.AddListener(() =>
+            {
+                towerManager.RefreshTowerData();
+                towerManager.RegisterTowerData(captureData, true);
+                ClosePopup();
+            });
         }
     }
+    void ClosePopup()
+    {
+        gameObject.SetActive(false);
+    }
 }
-
-

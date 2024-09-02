@@ -20,8 +20,8 @@ public class TowerShopData
         listTowerID.Add("nor11");
         listTowerID.Add("nor21");
         listTowerID.Add("nor31");
-        listTowerID.Add("cham11");
-        listTowerID.Add("cham21");
-        listTowerID.Add("cham31");
+        listTowerID.Add("nor31");
+        listTowerID.Add("nor32");
+        listTowerID.Add("nor33");
     }
 }

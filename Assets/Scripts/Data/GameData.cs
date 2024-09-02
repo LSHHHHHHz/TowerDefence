@@ -26,12 +26,12 @@ public class GameData
     }
     public StageData stageData;
     public TowerShopData shopData;
-    public TowerManagerData towerManagerData;
+    public TowerManager towerManager;
     public GameData()
     {
         stageData = new StageData();
         shopData = new TowerShopData();
-        towerManagerData = new TowerManagerData();
+        towerManager = new TowerManager();
         Save();
     }
     [ContextMenu("Save To Json Data")]
