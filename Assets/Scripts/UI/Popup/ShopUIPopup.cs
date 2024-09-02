@@ -10,6 +10,7 @@ public class ShopUIPopup : MonoBehaviour
     [SerializeField] RectTransform slotsContents;
     TowerShopData shopData;
     TowerManager towerManager;
+    event Action<GameObject> buyObject;
     private void Awake()
     {
         shopData = GameData.instance.shopData;
@@ -27,14 +28,20 @@ public class ShopUIPopup : MonoBehaviour
             data.type = GameManager.instance.gameEntityData.GetActorType(GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]).type);
             TowerData captureData = data;
             slotUI.InitializeShopUI(GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).iconPath, GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).buyTowerPrice);
+            string prfabPath = GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).prefabPath;
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
                 towerManager.RefreshTowerData();
                 towerManager.RegisterTowerData(captureData, true);
+                InstantiateObj(prfabPath);
                 ClosePopup();
             });
         }
+    }
+    void InstantiateObj(string path)
+    {
+       GameObject obj = PoolManager.instance.GetObjectFromPool(path);
     }
     void ClosePopup()
     {

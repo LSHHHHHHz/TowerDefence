@@ -18,8 +18,8 @@ public class MouseInteraction : MonoBehaviour
     public event Action<TowerGroundData> dragTower;
     public event Action<TowerGroundData> dropTower;
 
-    private bool isDragg = false;
-    private bool popupOpened = false;
+    public event Action openPopupInfo;
+    public event Action closePopupInfo;
     private void Start()
     {
         towerGroundManager = TowerGroundManager.instance;
@@ -88,7 +88,6 @@ public class MouseInteraction : MonoBehaviour
     {
          if (Input.GetMouseButton(0))
         {
-            MoveTower();
             Debug.LogError("MouseButton : ¸¶¿ì½º µå·¡±× Áß");
         }
     }
@@ -100,17 +99,9 @@ public class MouseInteraction : MonoBehaviour
             Debug.LogError("MouseButtonUp : ¸¶¿ì½º ¶ç¿öÁü");
         }
     }
-    void MoveTower()
+    void MoveTower(GameObject obj)
     {
-    }
-    void OpenPopup()
-    {
-        Debug.Log("ÆË¾÷ ¿­±â");
-    }
 
-    void ClosePopup()
-    {
-        Debug.Log("ÆË¾÷ ´Ý±â");
     }
 }
 //public class MouseInteraction : MonoBehaviour

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [Serializable]
-public class TowerManager : MonoBehaviour 
+public class TowerManager
 {
     private const int maxSize = 2;
     Queue<TowerData> towerData = new Queue<TowerData>();
     bool isSelectTower = false;
+    GameObject buyTowerObj = null;
     public void RegisterTowerData(TowerData data, bool isBuyShop)
     {
         if(isSelectTower)
