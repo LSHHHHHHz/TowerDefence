@@ -9,7 +9,7 @@ public class ShopUIPopup : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;
     TowerShopData shopData;
-    TowerManager towerManager;
+    TowerPlacementManager towerManager;
     event Action<GameObject, TowerData> buyTowerObject;
     event Action isBuingTower;
     private void Awake()

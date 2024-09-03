@@ -41,6 +41,7 @@ public class TowerGround : MonoBehaviour
                 currentTower.gameObject.SetActive(true);
                 currentTower.towerData = data;
                 towerGroundData = groundData;
+                towerGroundData.towerData = data;
                 break;
             }
         }

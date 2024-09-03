@@ -13,8 +13,7 @@ public class TowerGroundManager : MonoBehaviour
     public event Action<TowerGroundData, TowerData> setTower;
     public event Action removeTower;
     public TowerGroundData detectedTowerGroundData = new TowerGroundData();
-    public TowerGroundData firstSelectedTowerGroundData = new TowerGroundData();
-    public TowerGroundData secondSelectTowerGroundData = new TowerGroundData();
+    private TowerGround currentSelectedGround;
     private void Awake()
     {
         instance = this;
@@ -22,7 +21,6 @@ public class TowerGroundManager : MonoBehaviour
     private void Start()
     {
         mouseInteraction = MouseInteraction.instance;
-        mouseInteraction.selectFirstTowerGround += RegisterTowerData;
         for (int i = 0; i < transform.childCount; i++)
         {
             TowerGround towerGround = transform.GetChild(i).GetComponent<TowerGround>();
@@ -41,28 +39,22 @@ public class TowerGroundManager : MonoBehaviour
     }
     public void SetTower(TowerGroundData groundData, TowerData towerData)
     {
-        groundData.SetTower(towerData);
+        if (groundData != null && towerData != null)
+        {
+            groundData.SetTower(towerData);
+        }
     }
     public void RemoveTower(TowerGroundData groundData)
     {
         groundData.RemoveTower();
         removeTower?.Invoke();
     }
-    public void RegisterTowerData(TowerGroundData data)
+    public void SetCurrentSelectedGround(TowerGround towerGround)
     {
-        if (!string.IsNullOrEmpty(data.towerData.towerID))
-        {
-            firstSelectedTowerGroundData = data;
-        }
-        else
-        {
-            Debug.LogError("여기서 하... 어떻게하지 하호 ㅠ");
-            return;
-        }
+        currentSelectedGround = towerGround; 
     }
-    public void UnregisterTowerData()
+    public bool IsSameGroundSelected(TowerGround towerGround)
     {
-        firstSelectedTowerGroundData = null;
-        secondSelectTowerGroundData = null;
+        return currentSelectedGround == towerGround; 
     }
 }

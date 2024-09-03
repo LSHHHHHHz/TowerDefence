@@ -4,22 +4,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class TowerManager
+public class TowerPlacementManager
 {
     private const int maxSize = 2;
     public List<TowerData> towerData = new List<TowerData>();
-
     public GameObject buyTowerObj { get; set; }
     public TowerData buyTowerData { get; private set; }
-    public event Action<GameObject, TowerData> onTowerBuy;
+    public event Action clickTwoTower;
+    public event Action<bool> canMergeTower;
     public void RegisterTowerData(TowerData data)
     {
         if (towerData.Count >= maxSize)
         {
             towerData.RemoveAt(0);
         }
-        towerData.Add(data);
-        Debug.LogError("towerData 개수 : " + towerData.Count);
+        if (data != null)
+        {
+            towerData.Add(data);
+        }
+        else
+        {
+            return;
+        }
+        if(towerData.Count == maxSize)
+        {
+            clickTwoTower?.Invoke();
+            bool canMerge = towerData[0] == towerData[1];
+            canMergeTower?.Invoke(canMerge);
+        }
     }
     public void RefreshTowerData()
     {
@@ -29,7 +41,6 @@ public class TowerManager
     {
         this.buyTowerObj = buyTowerObj;
         this.buyTowerData = towerData;
-        onTowerBuy?.Invoke(buyTowerObj, buyTowerData);
     }
     public void BuyTowerDropOnGround()
     {
@@ -38,18 +49,6 @@ public class TowerManager
         {
             buyTowerObj.SetActive(false);
             buyTowerObj = null;
-        }
-    }
-    public TowerData GetTowerData()
-    {
-        if (towerData.Count > 0)
-        {
-            return towerData[0]; 
-        }
-        else
-        {
-            Debug.LogError("타워데이터 없음");
-            return null;
         }
     }
 }

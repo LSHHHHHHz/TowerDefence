@@ -1,15 +1,13 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MouseInteraction : MonoBehaviour
 {
     public static MouseInteraction instance;
     TowerGroundManager towerGroundManager;
-    TowerManager towerManager;
+    TowerPlacementManager towerPlaceManager;
 
     public GameObject towerPopupPrefab;
     public RectTransform popupTransform;
@@ -18,17 +16,18 @@ public class MouseInteraction : MonoBehaviour
     public event Action<TowerGroundData> inMouseOnGround;
     public event Action<TowerGroundData> outMouseOnGround;
 
-    public event Action<TowerGroundData> selectFirstTowerGround;
-    public event Action<TowerGroundData> selectSecondTowerGround;
-    public event Action onFieldTowerDrop;
-    public event Action<bool> possibleMergeTower;
+    event Action<TowerGround> selectTowerGround;
+    public event Action<TowerData> selectTowerData;
+    event Action clearData;
+    bool isMouseOnGround = false;
+    bool hasTwoSlectedTower = false;
+    bool isMergeTower = false;
+    bool isSameTowerGround = false;
+    bool isclickTowerGround = false;
 
-    public event Action<TowerGroundData, TowerData> dropBuyTower;
-    public event Action onBuyTowerDropped;
-    bool isBuingTower = false;
-
-    public event Action openPopupInfo;
-    public event Action closePopupInfo;
+    public event Action<TowerGroundData, TowerData> dropBuyTower;//
+    event Action onBuyTowerDropped;//
+    bool isBuingTower = false;//
     private void Awake()
     {
         instance = this;
@@ -36,18 +35,24 @@ public class MouseInteraction : MonoBehaviour
     private void Start()
     {
         towerGroundManager = TowerGroundManager.instance;
-        towerManager = GameData.instance.towerManager;
-        onBuyTowerDropped += towerManager.BuyTowerDropOnGround;
+        towerPlaceManager = GameData.instance.towerManager;
+        onBuyTowerDropped += towerPlaceManager.BuyTowerDropOnGround;
+        selectTowerData += towerPlaceManager.RegisterTowerData;
+        clearData += towerPlaceManager.BuyTowerDropOnGround;
+        selectTowerGround += towerGroundManager.SetCurrentSelectedGround;
+        towerPlaceManager.clickTwoTower += SelectedTwoTower;
+        towerPlaceManager.canMergeTower += CanMergeTower;
     }
     private void Update()
     {
-        ScreenToRayUseMouse();
+        //Debug.LogError(isclickTowerGround);
+        //Debug.LogError("isSamaeTowerGround : " + isSameTowerGround);
         MouseButtonDown();
-        MouseButtonDrag();
-        MouseButtonUP();
-        if (towerManager.buyTowerObj != null)
+        ScreenToRayUseMouse();
+        MouseButtonUp();
+        if (towerPlaceManager.buyTowerObj != null)
         {
-            MoveBuyTower(towerManager.buyTowerObj);
+            MoveBuyTower(towerPlaceManager.buyTowerObj);
         }
     }
     void ScreenToRayUseMouse()
@@ -57,22 +62,32 @@ public class MouseInteraction : MonoBehaviour
         bool isFindGround = false;
         foreach (RaycastHit hit in hits)
         {
-            if (!hit.collider.CompareTag("UI"))
+            if (IsPointerInUI())
             {
-                //towerGroundManager.firstSelectedTowerGroundData = null;
+                isMouseOnGround = false;
+                break;
             }
-            TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
 
+            TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
             if (towerGround != null)
             {
+                if (isclickTowerGround)
+                {
+                    isSameTowerGround = towerGroundManager.IsSameGroundSelected(towerGround);
+                    Debug.LogError("isSamaeTowerGround : " + isSameTowerGround);
+                    towerGroundManager.SetCurrentSelectedGround(towerGround);
+                }
+
                 if (towerGroundManager.detectedTowerGroundData != null)
                 {
                     outMouseOnGround?.Invoke(towerGroundManager.detectedTowerGroundData);
+                    isMouseOnGround = false;
                 }
                 towerGroundManager.detectedTowerGroundData = towerGround.towerGroundData;
 
                 isFindGround = true;
                 inMouseOnGround?.Invoke(towerGroundManager.detectedTowerGroundData);
+                isMouseOnGround = true;
                 break;
             }
         }
@@ -92,70 +107,95 @@ public class MouseInteraction : MonoBehaviour
             if (towerGroundManager.detectedTowerGroundData != null)
             {
                 outMouseOnGround?.Invoke(towerGroundManager.detectedTowerGroundData);
+                isMouseOnGround = false;
             }
             towerGroundManager.detectedTowerGroundData = null;
         }
     }
+
+    bool IsPointerInUI()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+        return results.Count > 0;
+    }
     void MouseButtonDown()
     {
-        //처음 필드 타워 선택
-        if (Input.GetMouseButtonDown(0) && string.IsNullOrEmpty(towerGroundManager.firstSelectedTowerGroundData.towerData.towerID) &&towerManager.buyTowerObj == null
-            && towerGroundManager.detectedTowerGroundData != null           )
-        {
-            selectFirstTowerGround?.Invoke(towerGroundManager.detectedTowerGroundData);
-            return;
-        }
-        //두번째 필드 타워 선택
-        if (Input.GetMouseButtonDown(0) && towerGroundManager.firstSelectedTowerGroundData!= null && !string.IsNullOrEmpty(towerGroundManager.firstSelectedTowerGroundData.towerData.towerID)
-            && towerGroundManager.detectedTowerGroundData != null && towerGroundManager.detectedTowerGroundData.towerData != null)
-        {
-            //첫번째 선택된 타워와 두번째 선택된 타워가 같다면
-            if (towerGroundManager.firstSelectedTowerGroundData.towerData.towerID == towerGroundManager.detectedTowerGroundData.towerData.towerID)
-            {
-                towerGroundManager.UnregisterTowerData();
-                Debug.LogError("같으면 합체");
-            }
-            //첫번째 선택된 타워와 두번째 선택된 타워가 다르다면
-            else
-            {
-                towerGroundManager.UnregisterTowerData();
-                Debug.LogError("다르면 반환");
-                return;
-            }
-        }
-    }
-    void MouseButtonDrag()
-    {
-        if (Input.GetMouseButton(0))
-        {
-           // Debug.LogError("MouseButton : 마우스 드래그 중");
-        }
-    }
-
-    void MouseButtonUP()
-    {
         //상점
-        if (Input.GetMouseButtonUp(0) && towerManager.buyTowerObj != null && !isBuingTower)
+        if (Input.GetMouseButtonDown(0) && isBuingTower && isMouseOnGround)
         {
-            dropBuyTower?.Invoke(towerGroundManager.detectedTowerGroundData, towerManager.buyTowerData);
+            dropBuyTower?.Invoke(towerGroundManager.detectedTowerGroundData, towerPlaceManager.buyTowerData);
             onBuyTowerDropped?.Invoke();
-        }
             isBuingTower = false;
-        //필드
-        if (!Input.GetMouseButtonUp(0) && towerGroundManager.firstSelectedTowerGroundData != null)
+        }
+        //필드 타워 선택
+        if (Input.GetMouseButtonDown(0) && !isBuingTower && isMouseOnGround)
         {
+            if (!isclickTowerGround)
+            {
+                isclickTowerGround = true;
+                selectTowerData?.Invoke(towerGroundManager.detectedTowerGroundData.towerData);
+                if (towerGroundManager.detectedTowerGroundData.towerData == null)
+                {
+                    hasTwoSlectedTower = false;
+                }
+            }
+        }
+        //선택된 타워가 두개가 있을 경우
+        if (Input.GetMouseButtonDown(0) && !isBuingTower && isMouseOnGround && hasTwoSlectedTower && !isSameTowerGround)
+        {
+            if (!isclickTowerGround)
+            {
+                isclickTowerGround = true;
+                //첫번째 선택된 타워와 두번째 선택된 타워가 같다면
+                if (isMergeTower)
+                {
+                    Debug.LogError("합체");
+                }
+                //첫번째 선택된 타워와 두번째 선택된 타워가 다르다면
+                else
+                {
+                    Debug.LogError("합체못함");
+                }
+            }
+        }
+        //그라운드가 아닌 곳에서 클릭하면 초기화
+        if (Input.GetMouseButtonDown(0) && !isMouseOnGround && towerGroundManager.detectedTowerGroundData == null)
+        {
+            if (!isclickTowerGround)
+            {
+                isclickTowerGround = true;
+            }
 
         }
+    }
+    void MouseButtonUp()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            isclickTowerGround = false;
+        }
+    }
+    private void CanMergeTower(bool canMerge)
+    {
+        isMergeTower = canMerge;
+    }
+    public void SelectedTwoTower()
+    {
+        hasTwoSlectedTower = true;
     }
     public void BuingTower()
     {
         isBuingTower = true;
     }
-
     public void MoveBuyTower(GameObject obj)
     {
-        Vector3 mousePosition = CurrentMousePos(); 
-        obj.transform.position = mousePosition;     
+        Vector3 mousePosition = CurrentMousePos();
+        obj.transform.position = mousePosition;
     }
     public Vector3 CurrentMousePos()
     {
