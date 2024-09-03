@@ -10,6 +10,7 @@ public class Tower : Actor
     public TowerAttackSensor towerAttackSensor { get; private set; }
     public FSMController<Tower> fsmController { get; private set; }
     public TowerData towerData;
+    public bool triggerStartAttack;
     protected override void Awake()
     {
         base.Awake();

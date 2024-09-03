@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TowerBaseAttack : MonoBehaviour
 {
+    Tower tower;
     Coroutine attackCoroutine;
     Coroutine reduceAttackDelayCoroutine;
     public float attackDelay;
@@ -17,6 +18,10 @@ public class TowerBaseAttack : MonoBehaviour
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
+    private void Awake()
+    {
+        tower = GetComponent<Tower>();  
+    }
     private void Start()
     {
         projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
@@ -86,8 +91,11 @@ public class TowerBaseAttack : MonoBehaviour
     }
     void StartAttackAction()
     {
-        isAttackAction = true; 
-        FireProjectile(firePos.position, targetPos);
+        isAttackAction = true;
+        if (tower.triggerStartAttack)
+        {
+            FireProjectile(firePos.position, targetPos);
+        }
     }
 
     //이 투사체가 공유가 되니 문제가 되는 상황임

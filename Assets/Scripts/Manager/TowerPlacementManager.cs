@@ -22,10 +22,6 @@ public class TowerPlacementManager
         {
             towerData.Add(data);
         }
-        else
-        {
-            return;
-        }
         if(towerData.Count == maxSize)
         {
             clickTwoTower?.Invoke();

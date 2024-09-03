@@ -49,18 +49,15 @@ public class TowerAttackSensor : MonoBehaviour
         }
         else
         {
-            Vector3 dir = (tower.detectActor.actorPosition - transform.position).normalized;
+            Vector3 dir = (tower.detectActor.targetPosition - transform.position).normalized;
             dir.y = 0;
             Quaternion rot = Quaternion.LookRotation(dir);
 
-            Quaternion currentRot = transform.rotation;
-            Quaternion adjustedRot = Quaternion.Euler(currentRot.eulerAngles.x, rot.eulerAngles.y, currentRot.eulerAngles.z);
-
-            transform.rotation = Quaternion.Slerp(adjustedRot, rot, Time.deltaTime * tower.towerStatus.rotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerStatus.rotationSpeed * 2);
 
             float angleDif = Quaternion.Angle(transform.rotation, rot);
 
-            if (angleDif < 0.1f)
+            if (angleDif < 0.3f)
             {
                 isReadyToAttack = true;
                 towerBaseAttack.SetReadyToAttack(isReadyToAttack, tower.detectActor.targetActor.transform.position);

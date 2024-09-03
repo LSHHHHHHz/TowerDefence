@@ -19,6 +19,7 @@ public class MouseInteraction : MonoBehaviour
     event Action<TowerGround> selectTowerGround;
     public event Action<TowerData> selectTowerData;
     event Action clearData;
+    TowerGround clickTowerGround;
     bool isMouseOnGround = false;
     bool hasTwoSlectedTower = false;
     bool isMergeTower = false;
@@ -39,6 +40,7 @@ public class MouseInteraction : MonoBehaviour
         onBuyTowerDropped += towerPlaceManager.BuyTowerDropOnGround;
         selectTowerData += towerPlaceManager.RegisterTowerData;
         clearData += towerPlaceManager.BuyTowerDropOnGround;
+        clearData += towerGroundManager.ClearData;        
         selectTowerGround += towerGroundManager.SetCurrentSelectedGround;
         towerPlaceManager.clickTwoTower += SelectedTwoTower;
         towerPlaceManager.canMergeTower += CanMergeTower;
@@ -71,13 +73,7 @@ public class MouseInteraction : MonoBehaviour
             TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
             if (towerGround != null)
             {
-                if (isclickTowerGround)
-                {
-                    isSameTowerGround = towerGroundManager.IsSameGroundSelected(towerGround);
-                    Debug.LogError("isSamaeTowerGround : " + isSameTowerGround);
-                    towerGroundManager.SetCurrentSelectedGround(towerGround);
-                }
-
+                this.clickTowerGround = towerGround;
                 if (towerGroundManager.detectedTowerGroundData != null)
                 {
                     outMouseOnGround?.Invoke(towerGroundManager.detectedTowerGroundData);
@@ -132,45 +128,40 @@ public class MouseInteraction : MonoBehaviour
             onBuyTowerDropped?.Invoke();
             isBuingTower = false;
         }
+        if (Input.GetMouseButtonDown(0) && !isclickTowerGround)
+        {
+            isSameTowerGround = towerGroundManager.IsSameGroundSelected(clickTowerGround);
+            towerGroundManager.SetCurrentSelectedGround(clickTowerGround);
+            isclickTowerGround = true;
+        }
         //필드 타워 선택
         if (Input.GetMouseButtonDown(0) && !isBuingTower && isMouseOnGround)
         {
-            if (!isclickTowerGround)
+            selectTowerData?.Invoke(towerGroundManager.detectedTowerGroundData.towerData);
+            if (towerGroundManager.detectedTowerGroundData.towerData == null)
             {
-                isclickTowerGround = true;
-                selectTowerData?.Invoke(towerGroundManager.detectedTowerGroundData.towerData);
-                if (towerGroundManager.detectedTowerGroundData.towerData == null)
-                {
-                    hasTwoSlectedTower = false;
-                }
+                hasTwoSlectedTower = false;
             }
         }
         //선택된 타워가 두개가 있을 경우
         if (Input.GetMouseButtonDown(0) && !isBuingTower && isMouseOnGround && hasTwoSlectedTower && !isSameTowerGround)
         {
-            if (!isclickTowerGround)
+            //첫번째 선택된 타워와 두번째 선택된 타워가 같다면
+            if (isMergeTower)
             {
-                isclickTowerGround = true;
-                //첫번째 선택된 타워와 두번째 선택된 타워가 같다면
-                if (isMergeTower)
-                {
-                    Debug.LogError("합체");
-                }
-                //첫번째 선택된 타워와 두번째 선택된 타워가 다르다면
-                else
-                {
-                    Debug.LogError("합체못함");
-                }
+                Debug.LogError("합체");
             }
+            //첫번째 선택된 타워와 두번째 선택된 타워가 다르다면
+            else
+            {
+                Debug.LogError("합체못함");
+            }
+
         }
         //그라운드가 아닌 곳에서 클릭하면 초기화
         if (Input.GetMouseButtonDown(0) && !isMouseOnGround && towerGroundManager.detectedTowerGroundData == null)
         {
-            if (!isclickTowerGround)
-            {
-                isclickTowerGround = true;
-            }
-
+            clearData?.Invoke();
         }
     }
     void MouseButtonUp()

@@ -7,12 +7,12 @@ public class DetectActor : MonoBehaviour
     bool isOntriggerEnter = false;
     string findActorTag;
     public Actor targetActor;
-    public Vector3 actorPosition;
+    public Vector3 targetPosition;
     private void Update()
     {
         if (targetActor != null)
         {
-            actorPosition = targetActor.transform.position;
+            targetPosition = targetActor.transform.position;
         }
     }
     public void Initialized(ActorType type)

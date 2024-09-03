@@ -57,4 +57,8 @@ public class TowerGroundManager : MonoBehaviour
     {
         return currentSelectedGround == towerGround; 
     }
+    public void ClearData()
+    {
+        currentSelectedGround = null;
+    }
 }
