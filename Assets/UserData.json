@@ -1,9 +1,8 @@
 {
     "stageData": {
-        "initialStageNumber": 1,
-        "lastStageNumber": 10,
-        "currentStageNumber": 1,
-        "clearStageNumber": 3
+        "currentStageNumber": 0,
+        "monsterCount": 0,
+        "monsterType": ""
     },
     "shopData": {
         "listTowerID": [

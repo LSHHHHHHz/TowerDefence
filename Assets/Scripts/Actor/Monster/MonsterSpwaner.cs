@@ -8,11 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class MonsterSpwaner : MonoBehaviour
 {
-    private int currentSpawnStage;
-    private ActorType currentSpawnType;
-    private int normarMonsterCount = 10;
-    private int bossMonsterCount = 2;
-    float spawnTime;
+    float monsterSpawnTime;
 
     List<Monster> monsterList = new List<Monster>();
     Coroutine spawnCoroutine;
@@ -25,18 +21,18 @@ public class MonsterSpwaner : MonoBehaviour
     {
         GameManager.instance.stageEventManager.stageEvent -= StartSpawnMonster;
     }
-    public void StartSpawnMonster(string prefabIconPath, string type)
+    public void StartSpawnMonster(string prefabIconPath, string type, int count)
     {
         int maxSpawnCount = 0;
         switch (type)
         {
             case "NormarMonster":
-                maxSpawnCount = normarMonsterCount;
-                spawnTime = 0.1f;
+                maxSpawnCount = count;
+                monsterSpawnTime = 0.3f;
                 break;
             case "BossMonster":
-                maxSpawnCount = bossMonsterCount;
-                spawnTime = 1f;
+                maxSpawnCount = count;
+                monsterSpawnTime = 1f;
                 break;
         }
         spawnCoroutine = StartCoroutine(SpawnMonster(prefabIconPath, maxSpawnCount));
@@ -60,7 +56,7 @@ public class MonsterSpwaner : MonoBehaviour
             monsterList.Add(monster);
 
             count++;
-            yield return new WaitForSeconds(spawnTime);
+            yield return new WaitForSeconds(monsterSpawnTime);
         }
     }
     public void UnregisterSapwnMonster()

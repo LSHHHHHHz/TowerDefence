@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     GameData gameData;
     public GameEntityData gameEntityData;
     public StageEventManager stageEventManager;
+    public MonsterSpwaner monsterSpwaner;
     public Player player;
     private void Awake()
     {
