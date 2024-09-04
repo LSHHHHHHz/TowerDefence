@@ -8,9 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     GameData gameData;
     public GameEntityData gameEntityData;
-    public SpawnManager monsterSpawn;
-    public InputEventManager inputManager;
     public StageEventManager stageEventManager;
+    public Player player;
     private void Awake()
     {
         if (instance == null)
@@ -24,11 +23,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         gameData = GameData.instance;
-        inputManager = new InputEventManager();
         stageEventManager = new StageEventManager();
-    }
-    private void Update()
-    {
-        inputManager.UpdateInput();
     }
 }

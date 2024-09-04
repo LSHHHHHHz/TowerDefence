@@ -51,8 +51,4 @@ public class Tower : Actor
     {
         towerStatus.currentHP += recovery;
     }
-    public override void DieActor()
-    {
-        throw new System.NotImplementedException();
-    }
 }

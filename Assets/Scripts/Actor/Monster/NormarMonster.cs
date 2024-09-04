@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class NormarMonster : Monster
 {
-    public override void DieActor()
-    {
-        throw new System.NotImplementedException();
-    }
 }

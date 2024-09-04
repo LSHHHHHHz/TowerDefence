@@ -33,6 +33,7 @@ public class Monster : Actor
     {
         monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
         currentSlowDebuff = 1;
+        GiveCoinToPlayer();
     }
     public void Initialize()
     {
@@ -111,8 +112,14 @@ public class Monster : Actor
             monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
         }
     }
-    public override void DieActor()
+    private void DieMonser()
     {
-        throw new System.NotImplementedException();
+    }
+    private void GiveCoinToPlayer()
+    {
+        if (player != null)
+        {
+            player.GetCoin(monsterStatusDB.coin);
+        }
     }
 }

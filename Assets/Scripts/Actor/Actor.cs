@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour, IActor
 {
+    protected Player player;
     public ActorStatus status;
     public ProfileDB profileDB { get; private set; }
     public Animator anim;
@@ -14,6 +15,7 @@ public abstract class Actor : MonoBehaviour, IActor
 
     protected virtual void Awake()
     {
+        player = GameManager.instance.player;
         if (GetComponent<Animator>() != null)
         {
             anim = GetComponent<Animator>();
@@ -22,6 +24,5 @@ public abstract class Actor : MonoBehaviour, IActor
         detectActor = GetComponent<DetectActor>();        
     }    
     public abstract void ReceiveEvent(IEvent ievent);
-    public abstract void TakeDamage(int damage);
-    public abstract void DieActor();    
+    public abstract void TakeDamage(int damage);        
 }

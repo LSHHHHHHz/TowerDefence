@@ -13,8 +13,4 @@ public class NormarTower : Tower
     {
         throw new System.NotImplementedException();
     }
-    public override void DieActor()
-    {
-        throw new System.NotImplementedException();
-    }
 }
