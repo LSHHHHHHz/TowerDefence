@@ -6,10 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    GameData gameData;
+    public GameData gameData;
     public GameEntityData gameEntityData;
+    public StageManager stageManager;
     public StageEventManager stageEventManager;
-    public MonsterSpwaner monsterSpwaner;
     public Player player;
     private void Awake()
     {

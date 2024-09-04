@@ -267,3 +267,28 @@ MonoBehaviour:
     type: BossMonster
     stage: 3
     coin: 300
+  stageEntity:
+  - stage: 1
+    dataID: normon11
+    spawnCount: 100
+    type: NormarMonster
+  - stage: 2
+    dataID: normon12
+    spawnCount: 100
+    type: NormarMonster
+  - stage: 3
+    dataID: normon13
+    spawnCount: 100
+    type: NormarMonster
+  - stage: 1
+    dataID: bosmon11
+    spawnCount: 2
+    type: BossMonster
+  - stage: 2
+    dataID: bosmon12
+    spawnCount: 2
+    type: BossMonster
+  - stage: 3
+    dataID: bosmon13
+    spawnCount: 2
+    type: BossMonster

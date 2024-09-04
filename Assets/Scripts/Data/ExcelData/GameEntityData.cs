@@ -9,7 +9,7 @@ public class GameEntityData : ScriptableObject
     public List<ProfileDB> profileEntity;
     public List<TowerStatusDB> towerStatusEntity;
     public List<MonsterStatusDB> monsterStatusEntity;
-
+    public List<StageDB> stageEntity;
     public ProfileDB GetProfileDB(string id)
     {
         foreach (ProfileDB profile in profileEntity)
@@ -44,6 +44,18 @@ public class GameEntityData : ScriptableObject
             }
         }
         Debug.LogError("맞는 아이디 없음");
+        return null;
+    }
+    public StageDB GetStageDB(int stageNum, string type)
+    {
+        foreach(StageDB stage in stageEntity)
+        {
+            if(stageNum == stage.stage && type == stage.type)
+            {
+                return stage;
+            }
+        }
+        Debug.LogError("맞는 스테이지 데이터 없음");
         return null;
     }
     public string GetMonsterIdByStage(int stage, string type)

@@ -15,6 +15,7 @@ public class StatusPanelUI : MonoBehaviour
         GameData.instance.playerStatus.playerHpChanged += UpdateCurrentHpUI;
         GameData.instance.playerCurrency.coinChanged += UpdateCoinUI;
         GameData.instance.playerCurrency.diaChanged += UpdateDiaUI;
+        GameManager.instance.stageManager.updateMonsterCount += UpdateMonsterCountUI;
         Initialized();
     }
     private void OnDisable()
@@ -22,6 +23,7 @@ public class StatusPanelUI : MonoBehaviour
         GameData.instance.playerStatus.playerHpChanged -= UpdateCurrentHpUI;
         GameData.instance.playerCurrency.coinChanged -= UpdateCoinUI;
         GameData.instance.playerCurrency.diaChanged -= UpdateDiaUI;
+        GameManager.instance.stageManager.updateMonsterCount -= UpdateMonsterCountUI;
     }
     private void Initialized()
     {
@@ -32,7 +34,7 @@ public class StatusPanelUI : MonoBehaviour
     }
     public void UpdateMonsterCountUI()
     {
-        remainMonsterCountText.text = 11.ToString();
+        remainMonsterCountText.text = GameManager.instance.stageManager.currentStageMonsterCount.ToString();
     }
     public void UpdateCurrentHpUI()
     {

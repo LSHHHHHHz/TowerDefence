@@ -2,7 +2,7 @@
     "stageData": {
         "currentStageNumber": 0,
         "monsterCount": 0,
-        "monsterType": ""
+        "stageType": ""
     },
     "shopData": {
         "listTowerID": [

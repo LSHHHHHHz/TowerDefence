@@ -10,13 +10,9 @@ public class StageData
 {
     public int currentStageNumber;
     public int monsterCount;
-    public string monsterType;
+    public string stageType;
 
-    public void StageUP()
-    {
-        currentStageNumber++;
-    }
-    public void StageDown()
+    public void DeathMonster()
     {
         currentStageNumber--;
     }

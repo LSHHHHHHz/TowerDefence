@@ -14,12 +14,14 @@ public class MonsterSpwaner : MonoBehaviour
     Coroutine spawnCoroutine;
     private void OnEnable()
     {
-       GameManager.instance.stageEventManager.stageEvent += StartSpawnMonster;
+        GameManager.instance.stageEventManager.stageEvent += StartSpawnMonster;
+        GameManager.instance.stageEventManager.endStage += UnregisterSapwnMonster;
     }
 
     private void OnDisable()
     {
         GameManager.instance.stageEventManager.stageEvent -= StartSpawnMonster;
+        GameManager.instance.stageEventManager.endStage -= UnregisterSapwnMonster;
     }
     public void StartSpawnMonster(string prefabIconPath, string type, int count)
     {
@@ -43,7 +45,7 @@ public class MonsterSpwaner : MonoBehaviour
         while (count < spawnCount)
         {
             GameObject monsterObj = PoolManager.instance.GetObjectFromPool(prefabIconPath);
-            monsterObj.gameObject.SetActive(false);
+            //monsterObj.gameObject.SetActive(false);
             Monster monster = monsterObj.GetComponent<Monster>();
             if (monster == null)
             {
@@ -52,7 +54,7 @@ public class MonsterSpwaner : MonoBehaviour
             }
 
             MonsterMove monsterMove = monster.GetComponent<MonsterMove>();
-            monsterObj.gameObject.SetActive(true); 
+            //monsterObj.gameObject.SetActive(true); 
             monsterList.Add(monster);
 
             count++;

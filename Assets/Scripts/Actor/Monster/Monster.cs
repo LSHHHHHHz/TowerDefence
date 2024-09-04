@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Monster : Actor
 {
+    public event Action onMonsterDeath;
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
@@ -27,13 +29,15 @@ public class Monster : Actor
     }
     private void OnEnable()
     {
-
+        onMonsterDeath += GameManager.instance.stageManager.DeathMonster;
     }
     private void OnDisable()
     {
         monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
         currentSlowDebuff = 1;
-        GiveCoinToPlayer();
+        DieMonser();
+        Debug.LogError("와오");
+        onMonsterDeath -= GameManager.instance.stageManager.DeathMonster;
     }
     public void Initialize()
     {
@@ -114,6 +118,8 @@ public class Monster : Actor
     }
     private void DieMonser()
     {
+        onMonsterDeath?.Invoke();
+        GiveCoinToPlayer();
     }
     private void GiveCoinToPlayer()
     {

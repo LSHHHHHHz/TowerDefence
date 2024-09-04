@@ -6,23 +6,29 @@ using UnityEngine.Playables;
 
 public class StageManager : MonoBehaviour
 {
-    public event Action<string, string> startStageEvent;
+    StageDB stageDB;
+    public event Action updateMonsterCount;
     int currentStage = 1;
-    int clearMonsterCount = 0;
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
-
-    int stageNormarMonsterCount = 100;
-    int stageBossMonsterCount = 2;
-    int currentStageMonsterCount;
-    string currentActorType;
+    bool startStge =false;
+    int clearMonsterCount = 0;
+    public int currentStageMonsterCount { get; private set; }
+    string currentActorType = "NormarMonster";
     private void Update()
     {
-        CheckStageClear();
+        if (startStge)
+        {
+            CheckStageClear();
+        }
     }
-    public void StartStage(int stage, string type)
+    public void StartStage()
     {
-        GameManager.instance.stageEventManager.StartStage(currentStage, currentActorType, currentStageMonsterCount);
+        startStge = true;
+        stageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
+        GameManager.instance.stageEventManager.StartStage(stageDB.stage, stageDB.type, stageDB.spawnCount);
+        currentStageMonsterCount = stageDB.spawnCount;
+        updateMonsterCount?.Invoke();
     }
     void CheckStageClear()
     {
@@ -45,11 +51,13 @@ public class StageManager : MonoBehaviour
         isClearStage = false;
         Debug.LogError("다음 스테이지 시작!");
         ChangeStageInfo(currentActorType);
-        StartStage(currentStage, currentActorType);
+        GameManager.instance.stageEventManager.EndStage();
+        StartStage();
     }
-    void UnRegisterSapwnMonster()
+    public void DeathMonster()
     {
-
+        currentStageMonsterCount--;
+        updateMonsterCount?.Invoke();
     }
     void ChangeStageInfo(string type)
     {
@@ -58,11 +66,9 @@ public class StageManager : MonoBehaviour
         {
             case "NormarMonster":
                 currentActorType = "BossMonster";
-                currentStageMonsterCount = stageBossMonsterCount;
                 break;
             case "BossMonster":
                 currentActorType = "NormarMonster";
-                currentStageMonsterCount = stageNormarMonsterCount;
                 break;
         }
     }
