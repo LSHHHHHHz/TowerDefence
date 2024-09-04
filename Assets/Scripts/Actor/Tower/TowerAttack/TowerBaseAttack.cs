@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class TowerBaseAttack : MonoBehaviour
 {
-    Tower tower;
     Coroutine attackCoroutine;
     Coroutine reduceAttackDelayCoroutine;
     public float attackDelay;
@@ -14,14 +13,11 @@ public class TowerBaseAttack : MonoBehaviour
     int attackAmount;
     public string projectilePath;
     [SerializeField] float resetTime = 0.2f; // 공격 후 초기화 시간
-    public bool isAttackAction; //애니메이션할때 필요
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
-    private void Awake()
-    {
-        tower = GetComponent<Tower>();  
-    }
+    public event Action isAttackActionFalse;
+    public event Action isAttackActionTrue;
     private void Start()
     {
         projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
@@ -50,11 +46,10 @@ public class TowerBaseAttack : MonoBehaviour
         {
             reduceAttackDelayCoroutine = StartCoroutine(ReduceAttackDelay());
         }
-        isAttackAction = false; 
     }
     IEnumerator ReduceAttackDelay()
     {
-        while (isAttackAction == false && attackDelay > 0)
+        while (attackDelay > 0)
         {
             attackDelay -= Time.deltaTime;
             yield return null; 
@@ -75,6 +70,7 @@ public class TowerBaseAttack : MonoBehaviour
     }
     IEnumerator AttackCoroutine(IActor targetActor)
     {
+        isAttackActionTrue?.Invoke();
         while (targetActor != null)
         {
             attackDelay -= Time.deltaTime;
@@ -82,20 +78,16 @@ public class TowerBaseAttack : MonoBehaviour
             {
                 StartAttackAction(); 
                 yield return new WaitForSeconds(resetTime); 
-                isAttackAction = false; 
                 attackDelay = initializedAttackDelay; 
             }
             yield return null;
         }
-        StopAttack(); 
+        StopAttack();
     }
     void StartAttackAction()
     {
-        isAttackAction = true;
-        if (tower.triggerStartAttack)
-        {
-            FireProjectile(firePos.position, targetPos);
-        }
+        isAttackActionFalse?.Invoke();
+        FireProjectile(firePos.position, targetPos);
     }
 
     //이 투사체가 공유가 되니 문제가 되는 상황임

@@ -14,7 +14,7 @@ public class IdleState : IState<Tower>
 
     public void Update(Tower tower)
     {   
-        if(tower.detectActor != null && tower.detectActor.targetActor != null)
+        if(tower.detectActor != null && tower.detectActor.targetActor != null && tower.towerAttackSensor.isReadyToAttack)
         {
             tower.fsmController.ChangeState(new AttackState());
         }

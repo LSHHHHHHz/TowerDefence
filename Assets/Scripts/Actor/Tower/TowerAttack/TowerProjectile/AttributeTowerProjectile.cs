@@ -28,7 +28,6 @@ public class AttributeTowerProjectile : BaseProjectile
     }
     public override void MoveTarget(Vector3 targetPos)
     {
-        Debug.Log("총알 이동 중");
         Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 2, targetPos.z);
         this.targetPos = adjustPos;
         StartCoroutine(MoveProjectile(adjustPos));
@@ -40,7 +39,6 @@ public class AttributeTowerProjectile : BaseProjectile
             transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileMoveSpeed * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("타겟 위치에 도달");
     }
     private void OnTriggerEnter(Collider other)
     {
