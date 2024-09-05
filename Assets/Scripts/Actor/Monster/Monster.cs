@@ -70,7 +70,7 @@ public class Monster : Actor
         monsterStatus.TakeDamage(damage);
         onDamagedAction?.Invoke(monsterStatus.maxHP, damage);    
         updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
-
+        monsterStatus.currentHP = 0;
         if (monsterStatus.currentHP <= 0)
         {
             DieMonster();

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
-    public int CheckSpeed;
     Monster monster;
     [SerializeField] GameObject warePoint;
     List<Vector3> monsterMovePos = new List<Vector3>();
@@ -54,8 +53,7 @@ public class MonsterMove : MonoBehaviour
                 return;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed * 10);
-        CheckSpeed = monster.monsterStatus.moveSpeed;// 지워야함
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed);
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
