@@ -7,12 +7,12 @@ using UnityEngine.UIElements;
 public class HpBarGenerator : MonoBehaviour
 {
     //타입에 따라 크기 변경
-    [SerializeField] HpBar HpBarPrefab = null;
+    [SerializeField] TestHPHP HpBarPrefab = null;
     Monster monster;
     Canvas mainCanvas = null;
     Camera mainCamera = null;
     Transform HpBarTransform;
-    HpBar hpbar;
+    TestHPHP hpbar;
     void Start()
     {
         monster = GetComponent<Monster>();
@@ -21,7 +21,7 @@ public class HpBarGenerator : MonoBehaviour
         HpBarTransform = GameObject.Find("HpBarTransform").transform;
         if (hpbar == null)
         {
-            hpbar = Instantiate(HpBarPrefab, HpBarTransform).GetComponent<HpBar>();
+            hpbar = Instantiate(HpBarPrefab, HpBarTransform).GetComponent<TestHPHP>();
         }
         monster.onDamagedAction += OnDamaged;
     }

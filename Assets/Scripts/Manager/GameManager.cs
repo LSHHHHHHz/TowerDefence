@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public GameData gameData;
     public GameEntityData gameEntityData;
     public StageManager stageManager;
-    public StageEventManager stageEventManager;
     public Player player;
     private void Awake()
     {
@@ -24,6 +23,5 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         gameData = GameData.instance;
-        stageEventManager = new StageEventManager();
     }
 }

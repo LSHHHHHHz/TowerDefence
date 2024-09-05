@@ -3,35 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HpBar : MonoBehaviour
+public class HPBar : MonoBehaviour
 {
-    //맥스 HP가 필요
-    //HP가 설정되어 있지 않을때와 되어있을 때
-    //데이터가 들어오면 HP바를 깎음
-    [SerializeField] Monster monster;
-    [SerializeField] Image hpBarImage;
-    Camera mainCamera = null;
-    int maxHP = 0;
-    int currentHp = 0;
-    private void Awake()
+    public Image fillAmountImage;
+    public float testMaxHP;
+    public float testCurrentHP;
+    public float test;
+    public void UpdateFillAmount(float maxHp, float currentHp)
     {
-        mainCamera = Camera.main;
+        fillAmountImage.fillAmount = currentHp / maxHp;
+        testCurrentHP = currentHp;
+        testMaxHP = maxHp;
+        test = currentHp / maxHp;
+        Debug.LogError("들어오나");
     }
-    public void OnDamaged(int hp)
+    private void LateUpdate()
     {
-        if(maxHP ==0)
-        {
-            maxHP = hp;
-            currentHp = hp;
-        }
-    }
-    public void StatusHpBar(int amount)
-    {
-        hpBarImage.fillAmount = (currentHp - amount) / maxHP;
-    }
-    private void Update()
-    {
-        transform.position = monster.gameObject.transform.position + new Vector3(0,10,0);
-    }
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraUp = Camera.main.transform.up;
 
+        transform.rotation = Quaternion.LookRotation(cameraForward, cameraUp);
+    }
 }

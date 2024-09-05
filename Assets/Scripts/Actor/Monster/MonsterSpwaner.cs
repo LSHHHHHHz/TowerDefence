@@ -14,14 +14,14 @@ public class MonsterSpwaner : MonoBehaviour
     Coroutine spawnCoroutine;
     private void OnEnable()
     {
-        GameManager.instance.stageEventManager.stageEvent += StartSpawnMonster;
-        GameManager.instance.stageEventManager.endStage += UnregisterSapwnMonster;
+        EventManager.instance.onSpawnMonster += StartSpawnMonster;
+        EventManager.instance.onAllDestoryMonster += UnregisterSpawnMonster;
     }
 
     private void OnDisable()
     {
-        GameManager.instance.stageEventManager.stageEvent -= StartSpawnMonster;
-        GameManager.instance.stageEventManager.endStage -= UnregisterSapwnMonster;
+        EventManager.instance.onSpawnMonster -= StartSpawnMonster;
+        EventManager.instance.onAllDestoryMonster -= UnregisterSpawnMonster;
     }
     public void StartSpawnMonster(string prefabIconPath, string type, int count)
     {
@@ -61,14 +61,19 @@ public class MonsterSpwaner : MonoBehaviour
             yield return new WaitForSeconds(monsterSpawnTime);
         }
     }
-    public void UnregisterSapwnMonster()
+    public void UnregisterSpawnMonster()
     {
         if (spawnCoroutine != null)
         {
             StopCoroutine(spawnCoroutine);
             foreach (Monster monster in monsterList)
             {
-                monster.gameObject.SetActive(false);
+                if (monster.gameObject.activeSelf)
+                {
+                    Debug.LogError("UnregisterSpawnMonster");
+                    EventManager.instance.KilledMonster();
+                    monster.gameObject.SetActive(false);
+                }
             }
             monsterList.Clear();
         }

@@ -54,7 +54,7 @@ public class MonsterMove : MonoBehaviour
                 return;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed * 10);
         CheckSpeed = monster.monsterStatus.moveSpeed;// 지워야함
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0;

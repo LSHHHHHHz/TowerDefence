@@ -8,13 +8,15 @@ using UnityEngine;
 public class Monster : Actor
 {
     public event Action onMonsterDeath;
+    event Action<float, float> updateHpBar;
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
     public event Action<int, int> onDamagedAction;
-
     List<int> monsterSlowDebuffList = new List<int>();
     int currentSlowDebuff = 1;
+    HPBar hpBar;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +24,8 @@ public class Monster : Actor
         Initialize();
         fsmController = new FSMController<Monster>(this);
         fsmController.ChangeState(new WalkState());
+        hpBar = GetComponentInChildren<HPBar>();
+        updateHpBar += hpBar.UpdateFillAmount;
     }
     protected void Update()
     {
@@ -29,15 +33,12 @@ public class Monster : Actor
     }
     private void OnEnable()
     {
-        onMonsterDeath += GameManager.instance.stageManager.DeathMonster;
     }
     private void OnDisable()
     {
         monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
         currentSlowDebuff = 1;
-        DieMonser();
         Debug.LogError("와오");
-        onMonsterDeath -= GameManager.instance.stageManager.DeathMonster;
     }
     public void Initialize()
     {
@@ -67,8 +68,18 @@ public class Monster : Actor
     public override void TakeDamage(int damage)
     {
         monsterStatus.TakeDamage(damage);
-        onDamagedAction?.Invoke(monsterStatus.maxHP, damage);
-        fsmController.ChangeState(new GetHitState());
+        onDamagedAction?.Invoke(monsterStatus.maxHP, damage);    
+        updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
+
+        if (monsterStatus.currentHP <= 0)
+        {
+            DieMonster();
+            fsmController.ChangeState(new DieState());
+        }
+        else
+        {
+            fsmController.ChangeState(new GetHitState());
+        }
     }
     public void TakeSlowDebuff(int amount)
     {
@@ -116,9 +127,10 @@ public class Monster : Actor
             monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
         }
     }
-    private void DieMonser()
+    private void DieMonster()
     {
-        onMonsterDeath?.Invoke();
+        EventManager.instance.KilledMonster();
+        gameObject.SetActive(false);        
         GiveCoinToPlayer();
     }
     private void GiveCoinToPlayer()

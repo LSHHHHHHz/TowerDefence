@@ -7,7 +7,6 @@ using UnityEngine.Playables;
 public class StageManager : MonoBehaviour
 {
     StageDB stageDB;
-    public event Action updateMonsterCount;
     int currentStage = 1;
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
@@ -22,13 +21,25 @@ public class StageManager : MonoBehaviour
             CheckStageClear();
         }
     }
+    private void OnEnable()
+    {
+        EventManager.instance.onKilledMonster += DeathMonster;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onKilledMonster -= DeathMonster;
+    }
     public void StartStage()
     {
         startStge = true;
         stageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
-        GameManager.instance.stageEventManager.StartStage(stageDB.stage, stageDB.type, stageDB.spawnCount);
+
+        string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(stageDB.stage, stageDB.type);
+        string prefabPath = GameManager.instance.gameEntityData.GetProfileDB(id).prefabPath;
+
         currentStageMonsterCount = stageDB.spawnCount;
-        updateMonsterCount?.Invoke();
+        EventManager.instance.StartStage(prefabPath, stageDB.type, currentStageMonsterCount);
+        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);
     }
     void CheckStageClear()
     {
@@ -51,13 +62,13 @@ public class StageManager : MonoBehaviour
         isClearStage = false;
         Debug.LogError("다음 스테이지 시작!");
         ChangeStageInfo(currentActorType);
-        GameManager.instance.stageEventManager.EndStage();
+        EventManager.instance.EndStage();
         StartStage();
     }
     public void DeathMonster()
     {
         currentStageMonsterCount--;
-        updateMonsterCount?.Invoke();
+        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);
     }
     void ChangeStageInfo(string type)
     {

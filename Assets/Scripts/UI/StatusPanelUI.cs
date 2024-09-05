@@ -12,40 +12,40 @@ public class StatusPanelUI : MonoBehaviour
 
     private void OnEnable()
     {
-        GameData.instance.playerStatus.playerHpChanged += UpdateCurrentHpUI;
-        GameData.instance.playerCurrency.coinChanged += UpdateCoinUI;
-        GameData.instance.playerCurrency.diaChanged += UpdateDiaUI;
-        GameManager.instance.stageManager.updateMonsterCount += UpdateMonsterCountUI;
+        EventManager.instance.onPlayerHpChanged += UpdateCurrentHpUI;
+        EventManager.instance.onPlayerCoinChanged += UpdateCoinUI;
+        EventManager.instance.onPlayerDiaChanged += UpdateDiaUI;
+        EventManager.instance.onStageMonsterCountChanged += UpdateMonsterCountUI;
         Initialized();
     }
     private void OnDisable()
     {
-        GameData.instance.playerStatus.playerHpChanged -= UpdateCurrentHpUI;
-        GameData.instance.playerCurrency.coinChanged -= UpdateCoinUI;
-        GameData.instance.playerCurrency.diaChanged -= UpdateDiaUI;
-        GameManager.instance.stageManager.updateMonsterCount -= UpdateMonsterCountUI;
+        EventManager.instance.onPlayerHpChanged -= UpdateCurrentHpUI;
+        EventManager.instance.onPlayerCoinChanged -= UpdateCoinUI;
+        EventManager.instance.onPlayerDiaChanged -= UpdateDiaUI;
+        EventManager.instance.onStageMonsterCountChanged -= UpdateMonsterCountUI;
     }
     private void Initialized()
     {
-        UpdateMonsterCountUI();
-        UpdateCurrentHpUI();
-        UpdateCoinUI();
-        UpdateDiaUI();
+        UpdateMonsterCountUI(GameManager.instance.stageManager.currentStageMonsterCount);
+        UpdateCurrentHpUI(GameManager.instance.player.status.playerHP);
+        UpdateCoinUI(GameManager.instance.player.currency.playerCoin);
+        UpdateDiaUI(GameManager.instance.player.currency.playerDia);
     }
-    public void UpdateMonsterCountUI()
+    public void UpdateMonsterCountUI(int currentMonsterCount)
     {
-        remainMonsterCountText.text = GameManager.instance.stageManager.currentStageMonsterCount.ToString();
+        remainMonsterCountText.text = currentMonsterCount.ToString();
     }
-    public void UpdateCurrentHpUI()
+    public void UpdateCurrentHpUI(int currentHP)
     {
-        playerCurrentHpText.text = GameData.instance.playerStatus.BringPlayerHP().ToString();
+        playerCurrentHpText.text = currentHP.ToString();
     }
-    public void UpdateCoinUI()
+    public void UpdateCoinUI(int currentCoin)
     {
-        playerCoinText.text = GameData.instance.playerCurrency.BringPlayerCoin().ToString();
+        playerCoinText.text = currentCoin.ToString();
     }
-    public void UpdateDiaUI()
+    public void UpdateDiaUI(int currentDia)
     {
-        playerDiaText.text = GameData.instance.playerCurrency.BringPlayerDia().ToString();
+        playerDiaText.text = currentDia.ToString();
     }
 }

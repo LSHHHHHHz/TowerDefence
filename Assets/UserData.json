@@ -17,6 +17,11 @@
     "towerManager": {
         "towerData": []
     },
-    "playerCurrency": {},
-    "playerStatus": {}
+    "playerCurrency": {
+        "playerCoin": 0,
+        "playerDia": 1000
+    },
+    "playerStatus": {
+        "playerHP": 30
+    }
 }

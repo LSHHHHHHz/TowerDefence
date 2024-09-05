@@ -6,57 +6,41 @@ using UnityEngine;
 [Serializable]
 public class PlayerCurrency
 {
-    int playerCoin = 0;
-    int playerDia = 1000;
-    public event Action coinChanged;
-    public event Action diaChanged;
+    public int playerCoin = 0;
+    public int playerDia = 1000;
     public void GetCoin(int amount)
     {
         playerCoin += amount;
-        coinChanged?.Invoke();
+        EventManager.instance.PlayerCoinChanged(playerCoin);
     }
     public void SpendCoin(int amount)
     {
         playerCoin -= amount;
-        coinChanged?.Invoke();
-    }
-    public int BringPlayerCoin()
-    {
-        return playerCoin;
+        EventManager.instance.PlayerCoinChanged(playerCoin);
     }
     public void GetDia(int amount)
     {
         playerDia += amount;
-        diaChanged?.Invoke();  
+        EventManager.instance.PlayerDiaChanged(playerDia);
     }
     public void SpendDia(int amount)
     {
         playerDia -= amount;
-        diaChanged?.Invoke();
+        EventManager.instance.PlayerDiaChanged(playerDia);
     }
-    public int BringPlayerDia()
-    {
-        return playerDia;
-    }
-
 }
 [Serializable]
 public class PlayerStatus
 {
-    int playerHP = 30;
-    public event Action playerHpChanged;
+    public int playerHP = 30;
     public void GetHP(int amount)
     {
         playerHP += amount;
-        playerHpChanged?.Invoke();
+        EventManager.instance.PlayerHpChanged(playerHP);
     }
-    public void ReduceHP(int amount)
+    public void ReduceHP()
     {
-        playerHP -= amount;
-        playerHpChanged?.Invoke();
-    }
-    public int BringPlayerHP()
-    {
-        return playerHP;
+        playerHP --;
+        EventManager.instance.PlayerHpChanged(playerHP);
     }
 }
