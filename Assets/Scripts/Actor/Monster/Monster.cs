@@ -64,6 +64,10 @@ public class Monster : Actor
             TakeSlowDebuff(slowDebuffEvent.slowDebuffAmount);
         }
     }
+    public void TestHp()
+    {
+        monsterStatus.currentHP = 0;
+    }
     public override void TakeDamage(int damage)
     {
         monsterStatus.TakeDamage(damage); 
@@ -127,8 +131,7 @@ public class Monster : Actor
     private void DieMonster()
     {
         EventManager.instance.KilledMonster();
-        gameObject.SetActive(false);        
-        GiveCoinToPlayer();
+        GiveCoinToPlayer(); 
     }
     private void GiveCoinToPlayer()
     {
