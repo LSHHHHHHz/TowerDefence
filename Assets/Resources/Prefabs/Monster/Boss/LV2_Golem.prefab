@@ -308,7 +308,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3192697540457985008}
   - component: {fileID: 1190376458748201318}
-  - component: {fileID: -5234218724057509170}
+  - component: {fileID: -5243650773435072163}
+  - component: {fileID: -922525123140569946}
+  - component: {fileID: 4067946973836926430}
+  - component: {fileID: -2946371363225700906}
+  - component: {fileID: -1681109343289051219}
   m_Layer: 0
   m_Name: LV2_Golem
   m_TagString: Monster
@@ -355,7 +359,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &-5234218724057509170
+--- !u!114 &-5243650773435072163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074832612367734740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d1b2c908741b4d926ec15a305099a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warePoint: {fileID: 5365474259375795116, guid: 654a37e56a330de4dbca05f4b9810735, type: 3}
+--- !u!114 &-922525123140569946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074832612367734740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cc9f0f10226dc4fa34bd831e8e96d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  actorId: bosmon12
+  actoryType: 0
+--- !u!114 &4067946973836926430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074832612367734740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d01fa03be611d49a74e8dad4ab8521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetActor: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+--- !u!136 &-2946371363225700906
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,6 +424,33 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!54 &-1681109343289051219
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074832612367734740}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2378473875818571939
 GameObject:
   m_ObjectHideFlags: 0

@@ -373,7 +373,7 @@ PrefabInstance:
       addedObject: {fileID: 5407502721076502967}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5875837482385746331}
+      addedObject: {fileID: -4040611512211781165}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2401613055372810153}
@@ -401,9 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d1b2c908741b4d926ec15a305099a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckSpeed: 0
   warePoint: {fileID: 5365474259375795116, guid: 654a37e56a330de4dbca05f4b9810735, type: 3}
---- !u!114 &-5875837482385746331
+--- !u!114 &-4040611512211781165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,11 +411,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1088141474560473952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f3e51b115b3a6498a1ff03a800a0fa, type: 3}
+  m_Script: {fileID: 11500000, guid: a4cc9f0f10226dc4fa34bd831e8e96d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  actorId: normon11
+  actorId: bosmon11
   actoryType: 0
 --- !u!114 &-2401613055372810153
 MonoBehaviour:

@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class MonsterSpwaner : MonoBehaviour
+public class MonsterSpawner : MonoBehaviour
 {
     float monsterSpawnTime;
 
@@ -30,7 +30,7 @@ public class MonsterSpwaner : MonoBehaviour
         {
             case "NormarMonster":
                 maxSpawnCount = count;
-                monsterSpawnTime = 0.3f;
+                monsterSpawnTime = 0.1f;
                 break;
             case "BossMonster":
                 maxSpawnCount = count;

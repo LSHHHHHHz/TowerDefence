@@ -12,7 +12,6 @@ public class Monster : Actor
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
-    public event Action<int, int> onDamagedAction;
     List<int> monsterSlowDebuffList = new List<int>();
     int currentSlowDebuff = 1;
     HPBar hpBar;
@@ -67,10 +66,8 @@ public class Monster : Actor
     }
     public override void TakeDamage(int damage)
     {
-        monsterStatus.TakeDamage(damage);
-        onDamagedAction?.Invoke(monsterStatus.maxHP, damage);    
+        monsterStatus.TakeDamage(damage); 
         updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
-        monsterStatus.currentHP = 0;
         if (monsterStatus.currentHP <= 0)
         {
             DieMonster();

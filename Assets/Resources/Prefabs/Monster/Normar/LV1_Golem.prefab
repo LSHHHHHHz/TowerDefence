@@ -379,9 +379,6 @@ PrefabInstance:
       addedObject: {fileID: 6520485265671279446}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7502716235618210660}
-    - targetCorrespondingSourceObject: {fileID: 100004, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -1837190630012153578}
   m_SourcePrefab: {fileID: 100100000, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
 --- !u!1 &1088141474560473952 stripped
@@ -401,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d1b2c908741b4d926ec15a305099a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckSpeed: 0
   warePoint: {fileID: 5365474259375795116, guid: 654a37e56a330de4dbca05f4b9810735, type: 3}
 --- !u!114 &-5875837482385746331
 MonoBehaviour:
@@ -455,19 +451,6 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &-7502716235618210660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088141474560473952}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee701aaf087e6314a8308cde8fbe3169, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HpBarPrefab: {fileID: 164497322924736754, guid: ed8b602819ab6ad4fabdbc13d4fd3dec, type: 3}
 --- !u!54 &-1837190630012153578
 Rigidbody:
   m_ObjectHideFlags: 0

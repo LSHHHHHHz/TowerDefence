@@ -72,7 +72,6 @@ public class StageManager : MonoBehaviour
     }
     void ChangeStageInfo(string type)
     {
-        currentStage++;
         switch (type)
         {
             case "NormarMonster":
@@ -80,6 +79,7 @@ public class StageManager : MonoBehaviour
                 break;
             case "BossMonster":
                 currentActorType = "NormarMonster";
+                currentStage++;
                 break;
         }
     }
