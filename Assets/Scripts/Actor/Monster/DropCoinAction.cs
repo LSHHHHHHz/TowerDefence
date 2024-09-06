@@ -13,12 +13,16 @@ public class DropCoinAction : MonoBehaviour
     {
         originPos = transform.position;
         originRot = transform.rotation;
+        //transform.rotation = Quaternion.Euler(0, 1010, 0);
+        Quaternion targetRotation = Quaternion.Euler(0, 1010, 0);
+        transform.rotation = targetRotation;
+        Debug.LogError(" Quaternion.Euler(0, 1080, 0); : " +transform.rotation.eulerAngles);
     }
     private void OnEnable()
     {
         transform.position = originPos;
         transform.rotation = originRot;
-        StartCoroutine(HandleCoinActive());
+        //StartCoroutine(HandleCoinActive());
     }
     private void OnDisable()
     {
@@ -36,8 +40,9 @@ public class DropCoinAction : MonoBehaviour
         {
             float t = elapsedTime / duration;
             transform.position = Vector3.Lerp(startPos, targetPos, t);
-            transform.rotation = Quaternion.Lerp(startRot, targetRot, t);
-
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+            Debug.LogError("transform.position : "+ transform.position);
+            Debug.LogError("transform.rotation : " + transform.rotation);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
