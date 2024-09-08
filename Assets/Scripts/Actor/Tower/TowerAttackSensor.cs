@@ -15,9 +15,13 @@ public class TowerAttackSensor : MonoBehaviour
     public bool isReadyToAttack = false;
     public Actor findActor;
     bool isAttack = false;
+
+    public DetectActor detectActor;
     private void Awake()
     {
         tower = GetComponent<Tower>();
+
+        detectActor = GetComponent<DetectActor>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
         towerBaseAttack = GetComponent<TowerBaseAttack>();
@@ -33,6 +37,10 @@ public class TowerAttackSensor : MonoBehaviour
     {
         RotateToward();
 
+        if(detectActor.detectedActor != null )
+        {
+            //직접 사용
+        }
         if (tower.detectActor.targetActor != null && tower.triggerStartAttack && !isAttack)
         {         
             findActor = tower.detectActor.targetActor;

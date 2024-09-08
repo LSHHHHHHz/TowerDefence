@@ -17,8 +17,9 @@ public class IceHitEffect : BaseHitEffect
     Coroutine activeObjCoroutine;
 
     event Action<int> clearData;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
     private void OnEnable()
@@ -34,7 +35,7 @@ public class IceHitEffect : BaseHitEffect
         {
             StopCoroutine(activeObjCoroutine);
         }
-        clearData?.Invoke(effectStatusAmount);
+        clearData?.Invoke(combatEffectAmount);
         clearData = null;
     }
     private void Update()
@@ -66,7 +67,7 @@ public class IceHitEffect : BaseHitEffect
     {
         if (other.CompareTag("Monster"))
         {
-            SendSlowDebuffEvent slow = new SendSlowDebuffEvent(effectStatusAmount);
+            SendSlowDebuffEvent slow = new SendSlowDebuffEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
             actor.ReceiveEvent(slow); //수정필요
 

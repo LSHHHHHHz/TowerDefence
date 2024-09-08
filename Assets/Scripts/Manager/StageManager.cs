@@ -68,7 +68,7 @@ public class StageManager : MonoBehaviour
     public void DeathMonster()
     {
         currentStageMonsterCount--;
-        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);
+        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);        
     }
     void ChangeStageInfo(string type)
     {

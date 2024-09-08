@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
     {
         coinImage = GetComponent<Image>();
         originColor = coinImage.color;
-        originLocalPos = transform.localPosition;  
+        originLocalPos = transform.localPosition;
     }
     private void OnEnable()
     {

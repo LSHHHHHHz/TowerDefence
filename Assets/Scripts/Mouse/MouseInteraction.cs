@@ -137,6 +137,7 @@ public class MouseInteraction : MonoBehaviour
         //필드 타워 선택
         if (Input.GetMouseButtonDown(0) && !isBuingTower && isMouseOnGround)
         {
+            EventManager.instance.SelectTowerData(towerGroundManager.detectedTowerGroundData.towerData);//예시
             selectTowerData?.Invoke(towerGroundManager.detectedTowerGroundData.towerData);
             if (towerGroundManager.detectedTowerGroundData.towerData == null)
             {

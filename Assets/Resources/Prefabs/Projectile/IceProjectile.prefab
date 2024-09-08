@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eefd7600d3bb744d89654feb4b4e73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffectPrefab: {fileID: 734778015735379543, guid: 161adf3eba7005445a65594fe9295a9f, type: 3}
+  hitEffectPrefabPath: Prefabs/Projectile/Tower_IceEffectSkill

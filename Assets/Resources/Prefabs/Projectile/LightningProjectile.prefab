@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3bd40f4b46a39478c7808417ec0fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffectPrefab: {fileID: 8407850317558832785, guid: 298f716714f2968488e7f338e973298b, type: 3}
+  hitEffectPrefabPath: Prefabs/Projectile/Tower_LightEffectSkill

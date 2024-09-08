@@ -146,6 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eefd7600d3bb744d89654feb4b4e73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileMoveSpeed: 0
-  towerAttackmount: 0
-  hitEffectPrefab: {fileID: 5049182641937956729, guid: 5c1815c0cc4bd0f4abb4a62d9242e153, type: 3}
+  hitEffectPrefabPath: Prefabs/Projectile/Tower_FireEffectSkill

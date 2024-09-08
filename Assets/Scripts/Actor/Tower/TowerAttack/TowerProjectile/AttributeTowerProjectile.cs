@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttributeTowerProjectile : BaseProjectile
 {
-    [SerializeField] GameObject hitEffectPrefab;
+    [SerializeField] string hitEffectPrefabPath;
     BaseHitEffect hitEffect;
     SphereCollider sphereCollider;
     MeshRenderer meshRenderer;
@@ -44,15 +44,11 @@ public class AttributeTowerProjectile : BaseProjectile
     {
         if (other.CompareTag("Monster"))
         {
-            if (hitEffect == null)
+            hitEffect = PoolManager.instance.GetObjectFromPool(hitEffectPrefabPath).GetComponent<BaseHitEffect>();
+            if (hitEffect != null)
             {
-                hitEffect = Instantiate(hitEffectPrefab, PoolManager.instance.transform).GetComponent<BaseHitEffect>();
+                hitEffect.Initialize(targetPos, towerAttackmount);
             }
-            else
-            {
-                hitEffect.gameObject.SetActive(true);
-            }
-            hitEffect.Initialize(transform.position, towerAttackmount);
             sphereCollider.enabled = false;
             meshRenderer.enabled = false;
         }

@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class DieState : IState<Monster>
 {
-    public void Enter(Monster actor)
+    float duration = 1;
+    float elapsedTime;
+    public void Enter(Monster monster)
+    {
+        monster.anim.SetBool("IsDie", true);
+        monster.SetMonsterSpeed(0);
+        elapsedTime = 0;
+    }
+
+    public void Exit(Monster monster)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Exit(Monster actor)
+    public void Update(Monster monster)
     {
-        throw new System.NotImplementedException();
-    }
+        elapsedTime += Time.deltaTime;
 
-    public void Update(Monster actor)
-    {
-        throw new System.NotImplementedException();
+        if (elapsedTime >= duration)
+        {
+            monster.gameObject.SetActive(false); 
+        }
     }
 }

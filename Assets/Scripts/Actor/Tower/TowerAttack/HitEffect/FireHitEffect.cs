@@ -9,8 +9,9 @@ public class FireHitEffect : BaseHitEffect
     float activeObjTime = 4f;
     private Coroutine colliderCoroutine;
     private Coroutine objCoroutine;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
     private void OnEnable()
@@ -44,7 +45,7 @@ public class FireHitEffect : BaseHitEffect
     {
         if (other.CompareTag("Monster"))
         {
-            SendDamageEvent damage = new SendDamageEvent(effectStatusAmount);
+            SendDamageEvent damage = new SendDamageEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
             if (actor != null)
             {

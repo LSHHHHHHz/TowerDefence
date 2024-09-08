@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
 public class EventManager
 {
     private static EventManager _instance;
@@ -25,6 +24,14 @@ public class EventManager
     public event Action<string, string, int> onSpawnMonster;
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
+
+
+    public event Action<TowerData> ontSelectTowerData;
+    public void SelectTowerData(TowerData data)
+    {
+        ontSelectTowerData?.Invoke(data);
+        //¿¹½Ã
+    }
     public void PlayerHpChanged(int amount)
     {
         onPlayerHpChanged?.Invoke(amount);

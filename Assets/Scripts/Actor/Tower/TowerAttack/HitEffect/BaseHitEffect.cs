@@ -5,11 +5,16 @@ using UnityEngine;
 
 public abstract class BaseHitEffect : MonoBehaviour
 {
-    protected int effectStatusAmount;
+    protected Vector3 originPos;
+    protected int combatEffectAmount;
     protected Action effectOnDisEnable;
+    protected virtual void Awake()
+    {
+        originPos = transform.position;
+    }
     public void Initialize(Vector3 pos, int amount)
     {
-        transform.position = pos;
-        effectStatusAmount = amount;
+        transform.position = new Vector3(pos.x, originPos.y, pos.z);
+        combatEffectAmount = amount;
     }
 }

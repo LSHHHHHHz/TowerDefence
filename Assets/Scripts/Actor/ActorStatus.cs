@@ -18,15 +18,15 @@ public class ActorStatus
 }
 public class MonsterStatus : ActorStatus
 {
-    public int moveSpeed { get; set; }
-    public MonsterStatus(int hp, int rotationSpeed, int moveSpeed)
+    public float moveSpeed { get; set; }
+    public MonsterStatus(int hp, int rotationSpeed, float moveSpeed)
     {
         currentHP = hp;
         maxHP = hp;
         this.rotationSpeed = rotationSpeed;
         this.moveSpeed = moveSpeed;
     }
-    public void SetMoveSpeed(int amount)
+    public void SetMoveSpeed(float amount)
     {
         moveSpeed = amount;
     }

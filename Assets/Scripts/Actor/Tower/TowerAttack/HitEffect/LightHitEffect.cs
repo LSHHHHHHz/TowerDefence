@@ -9,8 +9,9 @@ public class LightHitEffect : BaseHitEffect
     float activeObjTime = 1.2f;
     private Coroutine colliderCoroutine;
     private Coroutine objCoroutine;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
     private void OnEnable()
@@ -49,7 +50,7 @@ public class LightHitEffect : BaseHitEffect
         if (other.CompareTag("Monster"))
         {
             // 빛 효과에 따른 이벤트 처리
-            SendDamageEvent damage = new SendDamageEvent(effectStatusAmount);
+            SendDamageEvent damage = new SendDamageEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
             if (actor != null)
             {

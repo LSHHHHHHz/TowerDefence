@@ -7,24 +7,20 @@ using UnityEngine;
 
 public class Monster : Actor
 {
-    public event Action onMonsterDeath;
-    event Action<float, float> updateHpBar;
+    public event Action<Monster> onMonsterDeath;
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
     List<int> monsterSlowDebuffList = new List<int>();
     int currentSlowDebuff = 1;
-    HPBar hpBar;
-
+    InMonsterCanvas monsterCanvas;
     protected override void Awake()
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
         Initialize();
         fsmController = new FSMController<Monster>(this);
-        fsmController.ChangeState(new WalkState());
-        hpBar = GetComponentInChildren<HPBar>();
-        updateHpBar += hpBar.UpdateFillAmount;
+        monsterCanvas = GetComponent<InMonsterCanvas>();        
     }
     protected void Update()
     {
@@ -32,6 +28,7 @@ public class Monster : Actor
     }
     private void OnEnable()
     {
+        fsmController.ChangeState(new WalkState());
     }
     private void OnDisable()
     {
@@ -42,9 +39,10 @@ public class Monster : Actor
     public void Initialize()
     {
         actoryType = GameManager.instance.gameEntityData.GetActorType(monsterStatusDB.type);
-        detectActor.Initialized(actoryType);
+       //¿¹½Ã detectActor.Initialized(actoryType);
         monsterStatus = new MonsterStatus(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
         ApplyMonsterData();
+        monsterStatus.currentHP = 40;
     }
     private void ApplyMonsterData()
     {
@@ -64,14 +62,10 @@ public class Monster : Actor
             TakeSlowDebuff(slowDebuffEvent.slowDebuffAmount);
         }
     }
-    public void TestHp()
-    {
-        monsterStatus.currentHP = 0;
-    }
     public override void TakeDamage(int damage)
     {
-        monsterStatus.TakeDamage(damage); 
-        updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
+        monsterStatus.TakeDamage(damage);
+        monsterCanvas.updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
         if (monsterStatus.currentHP <= 0)
         {
             DieMonster();
@@ -125,12 +119,18 @@ public class Monster : Actor
             {
                 currentSlowDebuff = 1;
             }
-            monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
+            SetMonsterSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
         }
+    }
+    public void SetMonsterSpeed(float amount)
+    {
+        monsterStatus.SetMoveSpeed(amount);
     }
     private void DieMonster()
     {
         EventManager.instance.KilledMonster();
+        monsterCanvas.OnEnableCoin();
+        onMonsterDeath?.Invoke(this);
         GiveCoinToPlayer(); 
     }
     private void GiveCoinToPlayer()
