@@ -20,7 +20,6 @@ public class EventManager
     public event Action<int> onPlayerHpChanged;
     public event Action<int> onPlayerCoinChanged;
     public event Action<int> onPlayerDiaChanged;
-    public event Action<int> onStageMonsterCountChanged;
     public event Action<string, string, int> onSpawnMonster;
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
@@ -30,23 +29,6 @@ public class EventManager
     public void SelectTowerData(TowerData data)
     {
         ontSelectTowerData?.Invoke(data);
-        //¿¹½Ã
-    }
-    public void PlayerHpChanged(int amount)
-    {
-        onPlayerHpChanged?.Invoke(amount);
-    }
-    public void PlayerCoinChanged(int amount)
-    {
-        onPlayerCoinChanged?.Invoke(amount);
-    }
-    public void PlayerDiaChanged(int amount)
-    {
-        onPlayerDiaChanged?.Invoke(amount);
-    }
-    public void StageMonsterCountChanged(int amount)
-    {
-        onStageMonsterCountChanged?.Invoke(amount);
     }
     public void StartStage(string prefabPath, string type, int count)
     {

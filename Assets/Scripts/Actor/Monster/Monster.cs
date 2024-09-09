@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class Monster : Actor
 {
@@ -11,14 +13,20 @@ public class Monster : Actor
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterStatus monsterStatus { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
+    public CapsuleCollider monsterCollider { get; set; }
     List<int> monsterSlowDebuffList = new List<int>();
     int currentSlowDebuff = 1;
+    int originHP;
+    float originSpeed;
     InMonsterCanvas monsterCanvas;
     protected override void Awake()
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
+        monsterCollider = GetComponent<CapsuleCollider>();
         Initialize();
+        originHP = monsterStatusDB.hp;
+        originSpeed = monsterStatusDB.moveSpeed;
         fsmController = new FSMController<Monster>(this);
         monsterCanvas = GetComponent<InMonsterCanvas>();        
     }
@@ -28,18 +36,21 @@ public class Monster : Actor
     }
     private void OnEnable()
     {
+        ActorManager<Monster>.instnace.RegisterActor(this);
+        monsterStatus.currentHP = originHP;
+        monsterCollider.enabled = true;
+        SetMonsterSpeed(originSpeed);
         fsmController.ChangeState(new WalkState());
     }
     private void OnDisable()
     {
+        ActorManager<Monster>.instnace.UnregisterActor(this);
         monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
         currentSlowDebuff = 1;
-        Debug.LogError("와오");
     }
     public void Initialize()
     {
         actoryType = GameManager.instance.gameEntityData.GetActorType(monsterStatusDB.type);
-       //예시 detectActor.Initialized(actoryType);
         monsterStatus = new MonsterStatus(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
         ApplyMonsterData();
         monsterStatus.currentHP = 40;
@@ -137,7 +148,7 @@ public class Monster : Actor
     {
         if (player != null)
         {
-            player.GetCoin(monsterStatusDB.coin);
+            player.GetCoin(monsterStatusDB.rewardCoin);
         }
     }
 }

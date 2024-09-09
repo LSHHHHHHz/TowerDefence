@@ -15,13 +15,11 @@ public class MonsterSpawner : MonoBehaviour
     private void OnEnable()
     {
         EventManager.instance.onSpawnMonster += StartSpawnMonster;
-        EventManager.instance.onAllDestoryMonster += UnregisterSpawnMonster;
     }
 
     private void OnDisable()
     {
         EventManager.instance.onSpawnMonster -= StartSpawnMonster;
-        EventManager.instance.onAllDestoryMonster -= UnregisterSpawnMonster;
     }
     public void StartSpawnMonster(string prefabIconPath, string type, int count)
     {
@@ -45,18 +43,13 @@ public class MonsterSpawner : MonoBehaviour
         while (count < spawnCount)
         {
             GameObject monsterObj = PoolManager.instance.GetObjectFromPool(prefabIconPath);
-            //monsterObj.gameObject.SetActive(false);
             Monster monster = monsterObj.GetComponent<Monster>();
             if (monster == null)
             {
                 Debug.Log("ÇÁ¸®Æé ºÒ·¯¿À±â ¾ÈµÊ");
                 yield break;
             }
-
-            MonsterMove monsterMove = monster.GetComponent<MonsterMove>();
-            //monsterObj.gameObject.SetActive(true); 
             monsterList.Add(monster);
-
             count++;
             yield return new WaitForSeconds(monsterSpawnTime);
         }

@@ -8,5 +8,5 @@ public class MonsterStatusDB
     public int moveSpeed;
     public string type;
     public int stage;
-    public int coin;
+    public int rewardCoin;
 }

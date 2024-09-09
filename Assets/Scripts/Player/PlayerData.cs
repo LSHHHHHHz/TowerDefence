@@ -8,39 +8,42 @@ public class PlayerCurrency
 {
     public int playerCoin = 0;
     public int playerDia = 1000;
+    public event Action<int> onPlayerCoinChanged;
+    public event Action<int> onPlayerDiaChanged;
     public void GetCoin(int amount)
     {
         playerCoin += amount;
-        EventManager.instance.PlayerCoinChanged(playerCoin);
+        onPlayerCoinChanged?.Invoke(playerCoin);
     }
     public void SpendCoin(int amount)
     {
         playerCoin -= amount;
-        EventManager.instance.PlayerCoinChanged(playerCoin);
+        onPlayerCoinChanged?.Invoke(playerCoin);
     }
     public void GetDia(int amount)
     {
         playerDia += amount;
-        EventManager.instance.PlayerDiaChanged(playerDia);
+        onPlayerDiaChanged?.Invoke(playerDia);
     }
     public void SpendDia(int amount)
     {
         playerDia -= amount;
-        EventManager.instance.PlayerDiaChanged(playerDia);
+        onPlayerDiaChanged?.Invoke(playerDia);
     }
 }
 [Serializable]
 public class PlayerStatus
 {
     public int playerHP = 30;
+    public Action<int> onPlayerHPChanged;
     public void GetHP(int amount)
     {
         playerHP += amount;
-        EventManager.instance.PlayerHpChanged(playerHP);
+        onPlayerHPChanged?.Invoke(playerHP);
     }
-    public void ReduceHP()
+    public void ReduceHP(int amount)
     {
-        playerHP --;
-        EventManager.instance.PlayerHpChanged(playerHP);
+        playerHP -= amount;
+        onPlayerHPChanged?.Invoke(playerHP);
     }
 }

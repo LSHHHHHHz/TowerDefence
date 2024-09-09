@@ -10,12 +10,13 @@ public class DieState : IState<Monster>
     {
         monster.anim.SetBool("IsDie", true);
         monster.SetMonsterSpeed(0);
+        monster.monsterCollider.enabled = false;
         elapsedTime = 0;
     }
 
     public void Exit(Monster monster)
     {
-        throw new System.NotImplementedException();
+        monster.anim.SetBool("IsDie", false);
     }
 
     public void Update(Monster monster)

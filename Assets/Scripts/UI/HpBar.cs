@@ -15,7 +15,6 @@ public class HPBar : MonoBehaviour
         testCurrentHP = currentHp;
         testMaxHP = maxHp;
         test = currentHp / maxHp;
-        Debug.LogError("들어오나");
     }
     private void LateUpdate()
     {

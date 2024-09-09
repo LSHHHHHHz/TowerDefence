@@ -6,7 +6,9 @@ using UnityEngine.Playables;
 
 public class StageManager : MonoBehaviour
 {
-    StageDB stageDB;
+    StageDB currentStageDB;
+    StageDB currentNormarMonsterDB;
+    StageDB currentBossMonsterDB;
     int currentStage = 1;
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
@@ -18,9 +20,17 @@ public class StageManager : MonoBehaviour
     public Action<int, string,int,int,string,int,int> onInitializedStage;
     public Action<string> onUpdateCurrentMonsterTypeIconPath;
     public Action<int> onUpdateCurrentMonsterCount;
+    private void Awake()
+    {
+        currentStageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
+        currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
+        currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");
+    }
     private void Start()
     {
-
+        onInitializedStage?.Invoke(currentStage, currentNormarMonsterDB.iconPath, currentNormarMonsterDB.monsterHP, currentNormarMonsterDB.rewardCoin,
+                                    currentBossMonsterDB.iconPath, currentBossMonsterDB.monsterHP, currentBossMonsterDB.rewardCoin);
+        onUpdateCurrentMonsterTypeIconPath?.Invoke(currentStageDB.iconPath);
     }
     private void Update()
     {
@@ -40,14 +50,20 @@ public class StageManager : MonoBehaviour
     public void StartStage()
     {
         startStage = true;
-        stageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
+        currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
+        currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");
+        onInitializedStage?.Invoke(currentStage, currentNormarMonsterDB.iconPath, currentNormarMonsterDB.monsterHP, currentNormarMonsterDB.rewardCoin,
+                                   currentBossMonsterDB.iconPath, currentBossMonsterDB.monsterHP, currentBossMonsterDB.rewardCoin);
 
-        string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(stageDB.stage, stageDB.type);
+        currentStageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
+        string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(currentStageDB.stage, currentStageDB.type);
         string prefabPath = GameManager.instance.gameEntityData.GetProfileDB(id).prefabPath;
 
-        currentStageMonsterCount = stageDB.spawnCount;
-        EventManager.instance.StartStage(prefabPath, stageDB.type, currentStageMonsterCount);
-        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);
+        currentStageMonsterCount = currentStageDB.spawnCount;
+
+        EventManager.instance.StartStage(prefabPath, currentStageDB.type, currentStageMonsterCount);
+        onUpdateCurrentMonsterCount?.Invoke(currentStageMonsterCount);
+        onUpdateCurrentMonsterTypeIconPath?.Invoke(currentStageDB.iconPath);
     }
     void CheckStageClear()
     {
@@ -76,7 +92,7 @@ public class StageManager : MonoBehaviour
     public void UpdateCurrentMonsterCount()
     {
         currentStageMonsterCount--;
-        EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);        
+        onUpdateCurrentMonsterCount?.Invoke(currentStageMonsterCount);
     }
     void ChangeStageInfo(string type)
     {

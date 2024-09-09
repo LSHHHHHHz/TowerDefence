@@ -21,13 +21,13 @@ public class TowerAttackSensor : MonoBehaviour
     {
         tower = GetComponent<Tower>();
 
-        detectActor = tower.detectActor;
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
         towerBaseAttack = GetComponent<TowerBaseAttack>();
     }
     private void Start()
     {
+        detectActor = tower.detectActor;
         capsuleCollider.radius = tower.towerStatus.attackRange;
         towerBaseAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackStatusAmount);
         towerBaseAttack.isAttackActionFalse += CheckAttackFalse;

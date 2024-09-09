@@ -5,36 +5,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStatusPanelUI : MonoBehaviour
 {
-    [SerializeField] Text remainMonsterCountText;
+    Player player;
     [SerializeField] Text playerCurrentHpText;
     [SerializeField] Text playerCoinText;
     [SerializeField] Text playerDiaText;
-
+    private void Awake()
+    {
+        player = GameManager.instance.player;
+    }
     private void OnEnable()
     {
-        EventManager.instance.onPlayerHpChanged += UpdateCurrentHpUI;
-        EventManager.instance.onPlayerCoinChanged += UpdateCoinUI;
-        EventManager.instance.onPlayerDiaChanged += UpdateDiaUI;
-        EventManager.instance.onStageMonsterCountChanged += UpdateMonsterCountUI;
+        player.status.onPlayerHPChanged += UpdateCurrentHpUI;
+        player.currency.onPlayerCoinChanged += UpdateCoinUI;
+        player.currency.onPlayerDiaChanged += UpdateDiaUI;
         Initialized();
     }
     private void OnDisable()
     {
-        EventManager.instance.onPlayerHpChanged -= UpdateCurrentHpUI;
-        EventManager.instance.onPlayerCoinChanged -= UpdateCoinUI;
-        EventManager.instance.onPlayerDiaChanged -= UpdateDiaUI;
-        EventManager.instance.onStageMonsterCountChanged -= UpdateMonsterCountUI;
+        player.status.onPlayerHPChanged -= UpdateCurrentHpUI;
+        player.currency.onPlayerCoinChanged -= UpdateCoinUI;
+        player.currency.onPlayerDiaChanged -= UpdateDiaUI;
     }
     private void Initialized()
     {
-        UpdateMonsterCountUI(GameManager.instance.stageManager.currentStageMonsterCount);
         UpdateCurrentHpUI(GameManager.instance.player.status.playerHP);
         UpdateCoinUI(GameManager.instance.player.currency.playerCoin);
         UpdateDiaUI(GameManager.instance.player.currency.playerDia);
-    }
-    public void UpdateMonsterCountUI(int currentMonsterCount)
-    {
-        remainMonsterCountText.text = currentMonsterCount.ToString();
     }
     public void UpdateCurrentHpUI(int currentHP)
     {

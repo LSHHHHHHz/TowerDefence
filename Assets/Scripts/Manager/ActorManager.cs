@@ -17,7 +17,7 @@ public class ActorManager<T> where T : Actor
             return _instnace;
         }
     }
-    public List<T> actors;
+    public List<T> actors = new List<T>();
 
     public void RegisterActor(T actor)
     {

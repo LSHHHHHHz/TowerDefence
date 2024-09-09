@@ -35,8 +35,8 @@ public class Player : MonoBehaviour
     {
         status.GetHP(amount);
     }
-    public void ReduceHp()
+    public void ReduceHp(int amount)
     {
-        status.ReduceHP();
+        status.ReduceHP(amount);
     }
 }

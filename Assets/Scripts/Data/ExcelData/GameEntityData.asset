@@ -16,129 +16,129 @@ MonoBehaviour:
   - dataID: nor01
     name: "\uD558\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/MortarTower
-    iconPath: 
     projectilePath: Prefabs/Projectile/TowerProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor02
     name: "\uC911\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
     prefabPath: Prefabs/Monster/LV1_Golem
-    iconPath: 
     projectilePath: Prefabs/Projectile/TowerProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor03
     name: "\uACE0\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
     prefabPath: Prefabs/Monster/LV1_Golem
-    iconPath: 
     projectilePath: Prefabs/Projectile/TowerProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor11
     name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower1
-    iconPath: 
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor12
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower2
-    iconPath: 
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor13
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower3
-    iconPath: 
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor21
     name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower1
-    iconPath: 
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor22
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower2
-    iconPath: 
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor23
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower3
-    iconPath: 
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor31
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower1
-    iconPath: 
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor32
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower2
-    iconPath: 
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: nor33
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower3
-    iconPath: 
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Normar/LV1_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Normar/LV2_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Normar/LV3_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: bosmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Boss/LV1_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: bosmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Boss/LV2_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   - dataID: bosmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Boss/LV3_Golem
-    iconPath: 
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
+    iconPath: 
   towerStatusEntity:
   - dataID: nor01
     hp: 1000
@@ -231,64 +231,82 @@ MonoBehaviour:
     moveSpeed: 5
     type: NormarMonster
     stage: 1
-    coin: 10
+    rewardCoin: 10
   - dataID: normon12
     hp: 300
     rotationSpeed: 10
     moveSpeed: 5
     type: NormarMonster
     stage: 2
-    coin: 20
+    rewardCoin: 20
   - dataID: normon13
     hp: 450
     rotationSpeed: 10
     moveSpeed: 5
     type: NormarMonster
     stage: 3
-    coin: 30
+    rewardCoin: 30
   - dataID: bosmon11
     hp: 1500
     rotationSpeed: 10
     moveSpeed: 5
     type: BossMonster
     stage: 1
-    coin: 100
+    rewardCoin: 100
   - dataID: bosmon12
     hp: 3000
     rotationSpeed: 10
     moveSpeed: 5
     type: BossMonster
     stage: 2
-    coin: 200
+    rewardCoin: 200
   - dataID: bosmon13
     hp: 4500
     rotationSpeed: 10
     moveSpeed: 5
     type: BossMonster
     stage: 3
-    coin: 300
+    rewardCoin: 300
   stageEntity:
   - stage: 1
     dataID: normon11
     spawnCount: 100
     type: NormarMonster
+    iconPath: IconImage/Normar1
+    monsterHP: 150
+    rewardCoin: 10
   - stage: 2
     dataID: normon12
     spawnCount: 100
     type: NormarMonster
+    iconPath: IconImage/Normar2
+    monsterHP: 300
+    rewardCoin: 20
   - stage: 3
     dataID: normon13
     spawnCount: 100
     type: NormarMonster
+    iconPath: IconImage/Normar3
+    monsterHP: 450
+    rewardCoin: 30
   - stage: 1
     dataID: bosmon11
     spawnCount: 2
     type: BossMonster
+    iconPath: IconImage/Boss1
+    monsterHP: 1500
+    rewardCoin: 100
   - stage: 2
     dataID: bosmon12
     spawnCount: 2
     type: BossMonster
+    iconPath: IconImage/Boss2
+    monsterHP: 3000
+    rewardCoin: 200
   - stage: 3
     dataID: bosmon13
     spawnCount: 2
     type: BossMonster
+    iconPath: IconImage/Boss3
+    monsterHP: 4500
+    rewardCoin: 300

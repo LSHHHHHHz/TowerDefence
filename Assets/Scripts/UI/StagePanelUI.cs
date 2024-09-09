@@ -25,23 +25,23 @@ public class StagePanelUI : MonoBehaviour
     void UpdateStageInfo(int num, string normarMonsterIconPath, int normarMonsterHP, int normarMonsterRewardCoin,
                                     string bossMonsterIconPath, int bossMonsterHP, int bossMonsterRewardCoin)
     {
-        stageNumberText.text = num.ToString();
+        stageNumberText.text = "Stage : " + num.ToString();
 
         normarMonsterImage.sprite = Resources.Load<Sprite>(normarMonsterIconPath);
-        this.normarMonsterHp.text = normarMonsterHP.ToString();
-        this.normarMonsterRewardCoin.text = normarMonsterRewardCoin.ToString();
+        this.normarMonsterHp.text = "Ã¼·Â : " + normarMonsterHP.ToString();
+        this.normarMonsterRewardCoin.text ="ÄÚÀÎ È¹µæ·® : " + normarMonsterRewardCoin.ToString();
 
         bossMonsterImage.sprite = Resources.Load<Sprite>(bossMonsterIconPath);
-        this.bossMonsterHp.text = bossMonsterHP.ToString();
-        this.bossMonsterRewardCoin.text = bossMonsterRewardCoin.ToString();
+        this.bossMonsterHp.text = "Ã¼·Â : " +bossMonsterHP.ToString();
+        this.bossMonsterRewardCoin.text = "ÄÚÀÎ È¹µæ·® : " + bossMonsterRewardCoin.ToString();
 
     }
     void UpdateRemainMonsterImage(string path)
     {
         remainMonsterImage.sprite = Resources.Load<Sprite>(path);
     }
-    void UpdateRemainMonsterCount(int count)
+    void UpdateRemainMonsterCount(int remainMonsterCount)
     {
-        remainmonsterRemainCount.text = count.ToString();
+        remainmonsterRemainCount.text = "¸ó½ºÅÍ ¼ö : " + remainMonsterCount.ToString();
     }
 }

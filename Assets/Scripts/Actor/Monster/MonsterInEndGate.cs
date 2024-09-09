@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterEndGate : MonoBehaviour
+public class MonsterInEndGate : MonoBehaviour
 {
+    Player player;
+    private void Awake()
+    {
+        player = GameManager.instance.player;   
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
@@ -13,6 +18,9 @@ public class MonsterEndGate : MonoBehaviour
             if (monster != null)
             {
                 Debug.LogError("MonsterEndGate");
+                ActorManager<Monster>.instnace.UnregisterActor(monster);
+                EventManager.instance.KilledMonster();
+                player.ReduceHp(1);
                 monster.gameObject.SetActive(false);
             }
         }
