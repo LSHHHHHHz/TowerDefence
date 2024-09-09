@@ -70,8 +70,6 @@ public class MonsterSpawner : MonoBehaviour
             {
                 if (monster.gameObject.activeSelf)
                 {
-                    Debug.LogError("UnregisterSpawnMonster");
-                    EventManager.instance.KilledMonster();
                     monster.gameObject.SetActive(false);
                 }
             }

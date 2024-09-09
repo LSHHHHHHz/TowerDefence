@@ -10,28 +10,36 @@ public class StageManager : MonoBehaviour
     int currentStage = 1;
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
-    bool startStge =false;
+    bool startStage =false;
     int clearMonsterCount = 0;
     public int currentStageMonsterCount { get; private set; }
     string currentActorType = "NormarMonster";
+
+    public Action<int, string,int,int,string,int,int> onInitializedStage;
+    public Action<string> onUpdateCurrentMonsterTypeIconPath;
+    public Action<int> onUpdateCurrentMonsterCount;
+    private void Start()
+    {
+
+    }
     private void Update()
     {
-        if (startStge)
+        if (startStage)
         {
             CheckStageClear();
         }
     }
     private void OnEnable()
     {
-        EventManager.instance.onKilledMonster += DeathMonster;
+        EventManager.instance.onKilledMonster += UpdateCurrentMonsterCount;
     }
     private void OnDisable()
     {
-        EventManager.instance.onKilledMonster -= DeathMonster;
+        EventManager.instance.onKilledMonster -= UpdateCurrentMonsterCount;
     }
     public void StartStage()
     {
-        startStge = true;
+        startStage = true;
         stageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
 
         string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(stageDB.stage, stageDB.type);
@@ -65,7 +73,7 @@ public class StageManager : MonoBehaviour
         EventManager.instance.EndStage();
         StartStage();
     }
-    public void DeathMonster()
+    public void UpdateCurrentMonsterCount()
     {
         currentStageMonsterCount--;
         EventManager.instance.StageMonsterCountChanged(currentStageMonsterCount);        

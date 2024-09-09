@@ -14,7 +14,6 @@ public class MonsterEndGate : MonoBehaviour
             {
                 Debug.LogError("MonsterEndGate");
                 monster.gameObject.SetActive(false);
-                EventManager.instance.KilledMonster();
             }
         }
     }
