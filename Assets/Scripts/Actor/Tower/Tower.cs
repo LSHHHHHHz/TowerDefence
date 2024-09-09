@@ -9,11 +9,13 @@ public class Tower : Actor
     protected List<Monster> detectedMonsters;
     public TowerAttackSensor towerAttackSensor { get; private set; }
     public FSMController<Tower> fsmController { get; private set; }
+    public ActorDetector<Monster> detectActor { get; private set; }
     public TowerData towerData;
     public bool triggerStartAttack;
     protected override void Awake()
     {
         base.Awake();
+        detectActor = GetComponent<ActorDetector<Monster>>();
         towerStatusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(actorId);
         Initialize();
         towerAttackSensor = GetComponent<TowerAttackSensor>();

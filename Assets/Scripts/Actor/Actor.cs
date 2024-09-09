@@ -9,7 +9,6 @@ public abstract class Actor : MonoBehaviour, IActor
     public ActorStatus status;
     public ProfileDB profileDB { get; private set; }
     public Animator anim;
-    public DetectActor detectActor { get; private set; }
     public string actorId;
     public ActorType actoryType;
 
@@ -21,7 +20,6 @@ public abstract class Actor : MonoBehaviour, IActor
             anim = GetComponent<Animator>();
         }       
         profileDB = GameManager.instance.gameEntityData.GetProfileDB(actorId);        
-        detectActor = GetComponent<DetectActor>();        
     }    
     public abstract void ReceiveEvent(IEvent ievent);
     public abstract void TakeDamage(int damage);        

@@ -16,12 +16,12 @@ public class TowerAttackSensor : MonoBehaviour
     public Actor findActor;
     bool isAttack = false;
 
-    public DetectActor detectActor;
+    public ActorDetector<Monster> detectActor;
     private void Awake()
     {
         tower = GetComponent<Tower>();
 
-        detectActor = GetComponent<DetectActor>();
+        detectActor = tower.detectActor;
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
         towerBaseAttack = GetComponent<TowerBaseAttack>();
@@ -37,7 +37,7 @@ public class TowerAttackSensor : MonoBehaviour
     {
         RotateToward();
 
-        if(detectActor.detectedActor != null )
+        if(detectActor.targetActor != null )
         {
             //직접 사용
         }
@@ -61,7 +61,7 @@ public class TowerAttackSensor : MonoBehaviour
         }
         else
         {
-            Vector3 dir = (tower.detectActor.targetPosition - transform.position).normalized;
+            Vector3 dir = (tower.detectActor.targetActor.transform.position - transform.position).normalized;
             dir.y = 0;
             Quaternion rot = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerStatus.rotationSpeed * 20);
