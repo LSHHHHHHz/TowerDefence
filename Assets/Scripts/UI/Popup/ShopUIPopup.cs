@@ -8,13 +8,13 @@ public class ShopUIPopup : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;
-    TowerShopData shopData;
     TowerPlacementManager towerManager;
+    List<ShopDB> shopDB;
     event Action<GameObject, TowerData> buyTowerObject;
     event Action isBuingTower;
     private void Awake()
     {
-        shopData = GameData.instance.shopData;
+        shopDB = GameManager.instance.gameEntityData.shopEntity;
         towerManager = GameData.instance.towerManager;
         InitializeShopUI();
     }
@@ -30,19 +30,20 @@ public class ShopUIPopup : MonoBehaviour
     }
     void InitializeShopUI()
     {
-        for (int i = 0; i < shopData.listTowerID.Count; i++)
+        for (int i = 0; i < shopDB.Count; i++)
         {
             ShopSlotUI slotUI = Instantiate(prefab, slotsContents).GetComponent<ShopSlotUI>();
             TowerData data = new TowerData();
-            data.towerID = shopData.listTowerID[i];
-            data.status = GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]);
-            data.type = GameManager.instance.gameEntityData.GetActorType(GameManager.instance.gameEntityData.GetTowerStatusDB(shopData.listTowerID[i]).type);
+            data.towerID = shopDB[i].dataID;
+            data.status = GameManager.instance.gameEntityData.GetTowerStatusDB(shopDB[i].dataID);
+            data.type = GameManager.instance.gameEntityData.GetActorType(GameManager.instance.gameEntityData.GetTowerStatusDB(shopDB[i].dataID).type);
             TowerData captureData = data;
-            slotUI.InitializeShopUI(GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).iconPath, GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).buyTowerPrice);
-            string prfabPath = GameManager.instance.gameEntityData.GetProfileDB(shopData.listTowerID[i]).prefabPath;
+            slotUI.InitializeShopUI(shopDB[i].iconPath, shopDB[i].price);
+            string prfabPath = shopDB[i].iconPath;
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
+                //여기서 마우스 인터렉션이랑 상호작용 필요
                 InstantiateObj(prfabPath, captureData);
                 isBuingTower?.Invoke();
                 ClosePopup();

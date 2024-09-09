@@ -141,22 +141,8 @@ MonoBehaviour:
     iconPath: 
   towerStatusEntity:
   - dataID: nor01
-    hp: 1000
+    hp: 500
     attackDamage: 10
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: NormarTower
-  - dataID: nor02
-    hp: 2000
-    attackDamage: 20
-    attackSpeed: 5
-    attackRange: 5
-    rotationSpeed: 5
-    type: NormarTower
-  - dataID: nor03
-    hp: 3000
-    attackDamage: 30
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -310,3 +296,34 @@ MonoBehaviour:
     iconPath: IconImage/Boss3
     monsterHP: 4500
     rewardCoin: 300
+  shopEntity:
+  - dataID: nor01
+    price: 100
+    iconPath: IconImage/BaseTower
+  - dataID: nor11
+    price: 100
+    iconPath: IconImage/FireTowerLv1
+  - dataID: nor12
+    price: 500
+    iconPath: IconImage/FireTowerLv2
+  - dataID: nor13
+    price: 1000
+    iconPath: IconImage/FireTowerLv3
+  - dataID: nor21
+    price: 100
+    iconPath: IconImage/IceTowerLv1
+  - dataID: nor22
+    price: 500
+    iconPath: IconImage/IceTowerLv2
+  - dataID: nor23
+    price: 1000
+    iconPath: IconImage/IceTowerLv3
+  - dataID: nor31
+    price: 100
+    iconPath: IconImage/LightTowerLv1
+  - dataID: nor32
+    price: 500
+    iconPath: IconImage/LightTowerLv2
+  - dataID: nor33
+    price: 1000
+    iconPath: IconImage/LightTowerLv3

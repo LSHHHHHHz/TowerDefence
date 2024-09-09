@@ -4,16 +4,6 @@
         "monsterCount": 0,
         "stageType": ""
     },
-    "shopData": {
-        "listTowerID": [
-            "nor11",
-            "nor21",
-            "nor31",
-            "nor31",
-            "nor32",
-            "nor33"
-        ]
-    },
     "towerManager": {
         "towerData": []
     },

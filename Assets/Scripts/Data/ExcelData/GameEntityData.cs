@@ -10,6 +10,7 @@ public class GameEntityData : ScriptableObject
     public List<TowerStatusDB> towerStatusEntity;
     public List<MonsterStatusDB> monsterStatusEntity;
     public List<StageDB> stageEntity;
+    public List<ShopDB> shopEntity;
     public ProfileDB GetProfileDB(string id)
     {
         foreach (ProfileDB profile in profileEntity)
