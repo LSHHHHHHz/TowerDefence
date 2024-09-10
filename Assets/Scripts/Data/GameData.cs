@@ -25,13 +25,11 @@ public class GameData
         }
     }
     public StageData stageData;
-    public TowerPlacementManager towerManager;
     public PlayerCurrency playerCurrency;
     public PlayerStatus playerStatus;
     public GameData()
     {
         stageData = new StageData();
-        towerManager = new TowerPlacementManager();
         playerCurrency = new PlayerCurrency();
         playerStatus = new PlayerStatus();
         Save();

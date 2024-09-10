@@ -428,10 +428,10 @@ GameObject:
   - component: {fileID: 1043503553385121572}
   - component: {fileID: -4268487992270566378}
   - component: {fileID: 2951035891242986957}
-  - component: {fileID: -4305273542570480555}
   - component: {fileID: -3794855827099049624}
   - component: {fileID: 7266158200232356352}
   - component: {fileID: 5100547281330252218}
+  - component: {fileID: 3853041046607338607}
   m_Layer: 0
   m_Name: IceTower3
   m_TagString: Untagged
@@ -524,21 +524,10 @@ MonoBehaviour:
       attackRange: 0
       rotationSpeed: 0
       type: 
+      level: 0
+      elementaProperties: 
     type: 0
---- !u!114 &-4305273542570480555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3672825079004920434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d01fa03be611d49a74e8dad4ab8521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetActor: {fileID: 0}
-  actorPosition: {x: 0, y: 0, z: 0}
+  triggerStartAttack: 0
 --- !u!114 &-3794855827099049624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +544,7 @@ MonoBehaviour:
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
   findActor: {fileID: 0}
+  detectActor: {fileID: 0}
 --- !u!114 &7266158200232356352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +560,6 @@ MonoBehaviour:
   attackDelay: 0
   projectilePath: 
   resetTime: 0.2
-  isAttackAction: 0
 --- !u!136 &5100547281330252218
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -594,6 +583,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3853041046607338607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672825079004920434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953a9e4c4837cb4685979ac9de5d3dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetActor: {fileID: 0}
+  detectedActors: []
+  intervalTime: 0.05
+  detectionRange: 5
 --- !u!1 &4089789657686638127
 GameObject:
   m_ObjectHideFlags: 0

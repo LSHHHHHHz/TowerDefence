@@ -133,6 +133,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 0
+    elementaProperties: base
   - dataID: nor11
     hp: 1000
     attackDamage: 10
@@ -140,6 +142,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 1
+    elementaProperties: fire
   - dataID: nor12
     hp: 2000
     attackDamage: 20
@@ -147,6 +151,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 2
+    elementaProperties: fire
   - dataID: nor13
     hp: 3000
     attackDamage: 30
@@ -154,6 +160,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 3
+    elementaProperties: fire
   - dataID: nor21
     hp: 1000
     attackDamage: 10
@@ -161,6 +169,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 1
+    elementaProperties: ice
   - dataID: nor22
     hp: 2000
     attackDamage: 20
@@ -168,6 +178,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 2
+    elementaProperties: ice
   - dataID: nor23
     hp: 3000
     attackDamage: 30
@@ -175,6 +187,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 3
+    elementaProperties: ice
   - dataID: nor31
     hp: 1000
     attackDamage: 10
@@ -182,6 +196,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 1
+    elementaProperties: light
   - dataID: nor32
     hp: 2000
     attackDamage: 20
@@ -189,6 +205,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 2
+    elementaProperties: light
   - dataID: nor33
     hp: 3000
     attackDamage: 30
@@ -196,6 +214,8 @@ MonoBehaviour:
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
+    level: 3
+    elementaProperties: light
   monsterStatusEntity:
   - dataID: normon11
     hp: 150

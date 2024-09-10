@@ -7,9 +7,16 @@ using UnityEngine;
 public class TowerGroundData
 {
     public TowerData towerData;
-    public void SetTower(TowerData towerData)
+    public int towerGroundNum;
+    public event Action<TowerGroundData, TowerData> onGround;
+    public void SetTowerNum(int towerGroundNum)
+    {
+        this.towerGroundNum = towerGroundNum;
+    }
+    public void SetTower(TowerGroundData groundData, TowerData towerData)
     {
         this.towerData = towerData;
+        onGround?.Invoke(this, this.towerData);
     }
     public void RemoveTower()
     {

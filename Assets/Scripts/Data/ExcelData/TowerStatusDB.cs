@@ -10,4 +10,6 @@ public class TowerStatusDB
     public int attackRange;
     public int rotationSpeed;
     public string type;
+    public int level;
+    public string elementaProperties;
 }

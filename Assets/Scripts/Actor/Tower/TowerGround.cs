@@ -5,27 +5,25 @@ using UnityEngine;
 
 public class TowerGround : MonoBehaviour 
 {
-    public TowerGroundData towerGroundData; 
+    public TowerGroundData towerGroundData;
     TowerGroundEffect towerGroundEffect;
-    [SerializeField]List<Tower> hasTowers = new List<Tower>();
+    List<Tower> hasTowers;
     public Tower currentTower;
     public bool isHasTower { get; private set; }
     private void Awake()
     {
+        hasTowers = new List<Tower>();
         towerGroundEffect = GetComponent<TowerGroundEffect>();
     }
     public void DropTower(TowerGround groundData, TowerData data)
-    {
-        if(groundData.towerGroundData != towerGroundData || data.towerID == null)
+    {       
+        if(groundData.towerGroundData.towerGroundNum != towerGroundData.towerGroundNum || data.towerID == null)
         {
             return;
         }
+        Debug.LogError("¸î¹ø");
         string towerID = data.towerID;
-        ActorType type = data.type;
-        if (!hasTowers.Contains(currentTower) && currentTower != null)
-        {
-            hasTowers.Add(currentTower);
-        }
+        ActorType type = data.type;        
         foreach (Tower t in hasTowers)
         {
             t.gameObject.SetActive(false);
@@ -33,7 +31,12 @@ public class TowerGround : MonoBehaviour
         string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
         GameObject obj = Resources.Load<GameObject>(path);
         Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
-        foreach(Tower t in hasTowers)
+        currentTower = tower;
+        if (!hasTowers.Contains(currentTower))
+        {
+            hasTowers.Add(currentTower);
+        }
+        foreach (Tower t in hasTowers)
         {
             if(t == tower)
             {

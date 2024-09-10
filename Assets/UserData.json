@@ -4,9 +4,6 @@
         "monsterCount": 0,
         "stageType": ""
     },
-    "towerManager": {
-        "towerData": []
-    },
     "playerCurrency": {
         "playerCoin": 0,
         "playerDia": 1000
