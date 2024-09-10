@@ -14,9 +14,9 @@ public class TowerGround : MonoBehaviour
     {
         towerGroundEffect = GetComponent<TowerGroundEffect>();
     }
-    public void DropTower(TowerGroundData groundData, TowerData data)
+    public void DropTower(TowerGround groundData, TowerData data)
     {
-        if(groundData != towerGroundData || data.towerID == null)
+        if(groundData.towerGroundData != towerGroundData || data.towerID == null)
         {
             return;
         }
@@ -40,7 +40,6 @@ public class TowerGround : MonoBehaviour
                 currentTower = t;
                 currentTower.gameObject.SetActive(true);
                 currentTower.towerData = data;
-                towerGroundData = groundData;
                 towerGroundData.towerData = data;
                 break;
             }
@@ -56,16 +55,16 @@ public class TowerGround : MonoBehaviour
     {
         return isHasTower;
     }
-    public void OnEnterGround(TowerGroundData data)
+    public void OnEnterGround(TowerGround ground)
     {
-        if (data != null && data == towerGroundData)
+        if (ground != null && ground == this)
         {
             towerGroundEffect.ChangeGroundColorEnterMouse();
         }
     }
-    public void OnExitGround(TowerGroundData data)
+    public void OnExitGround(TowerGround ground)
     {
-        if (data != null && data == towerGroundData)
+        if (ground != null && ground == this)
         {
             towerGroundEffect.ChangeGroundColorExitMouse();
         }

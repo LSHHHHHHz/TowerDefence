@@ -49,10 +49,10 @@ using UnityEngine;
 //        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedSelectTowerData == null) // 선택된 타워 데이터가 없는 경우
 //        {
 //            isClick = true;
-//            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
+//            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData != null)
 //            {
 //                towerEventHandler.detectedSelectTowerGroundData = towerEventHandler.detectedCurrentTowerGroundData; //클릭 시 이전 데이터를 저장하기 위한 용도
-//                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+//                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData;
 //                towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
 //            }
 //            else
@@ -64,9 +64,9 @@ using UnityEngine;
 //        if (Input.GetMouseButtonDown(0) && towerEventHandler.detectedSelectTowerData != null && !isClick) // 선택된 타워 데이터가 있는 경우
 //        {
 //            OnSelectFieldTower(towerEventHandler.detectedSelectTowerData);
-//            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
+//            if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData != null)
 //            {
-//                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+//                towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData;
 //                towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
 //            }
 //            else
@@ -78,11 +78,11 @@ using UnityEngine;
 //    }
 
 //    // field 선택했을때
-//    public void OnSelectFieldTower(TowerData towerData)
+//    public void OnSelectFieldTower(TowerData boughtShopTowerData)
 //    {
-//        if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.towerData != null)
+//        if (towerEventHandler.detectedCurrentTowerGroundData != null && towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData != null)
 //        {
-//            towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.towerData;
+//            towerEventHandler.detectedSelectTowerData = towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData;
 //            towerEventHandler.detectedCurrentTowerGroundData.RemoveTower();
 //        }
 //        else
@@ -93,7 +93,7 @@ using UnityEngine;
 //    }
 
 //    // 상점 선택했을때
-//    public void OnSelectShopTower(TowerData towerData)
+//    public void OnSelectShopTower(TowerData boughtShopTowerData)
 //    {
 
 //    }
@@ -111,10 +111,10 @@ using UnityEngine;
 //            //다른 종류의 타워라면
 
 //            //현재 그라운드에티어에 타워가 없는 경우
-//            if (towerEventHandler.detectedCurrentTowerGroundData.towerData.towerID == null)
+//            if (towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData.towerID == null)
 //            {
 //                towerEventHandler.SetTower(towerEventHandler.detectedCurrentTowerGroundData, towerEventHandler.detectedSelectTowerData);
-//                towerEventHandler.detectedCurrentTowerGroundData.towerData = towerEventHandler.detectedSelectTowerData;
+//                towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData = towerEventHandler.detectedSelectTowerData;
 //                towerEventHandler.detectedSelectTowerData = null;
 //            }
 //        }
@@ -141,7 +141,7 @@ using UnityEngine;
 //                break;
 //            }
 //        }
-//        if (isFindGround && towerEventHandler.detectedCurrentTowerGroundData.towerData != null) //여기서 팝업 생성
+//        if (isFindGround && towerEventHandler.detectedCurrentTowerGroundData.boughtShopTowerData != null) //여기서 팝업 생성
 //        {
 //            if (towerPopup == null)
 //            {

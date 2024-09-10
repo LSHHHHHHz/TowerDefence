@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameData gameData;
     public GameEntityData gameEntityData;
     public StageManager stageManager;
+    public DraggableTower draggableTower;
+    public MouseInteraction mouseInteraction;
     public Player player;
     private void Awake()
     {

@@ -14,22 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profileEntity:
   - dataID: nor01
-    name: "\uD558\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
-    prefabPath: Prefabs/Tower/Character/MortarTower
-    projectilePath: Prefabs/Projectile/TowerProjectile
-    buyTowerPrice: 10
-    sellTowerPrice: 5
-    iconPath: 
-  - dataID: nor02
-    name: "\uC911\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
-    prefabPath: Prefabs/Monster/LV1_Golem
-    projectilePath: Prefabs/Projectile/TowerProjectile
-    buyTowerPrice: 10
-    sellTowerPrice: 5
-    iconPath: 
-  - dataID: nor03
-    name: "\uACE0\uAE09\uCD1D\uC54C\uD0C0\uC6CC"
-    prefabPath: Prefabs/Monster/LV1_Golem
+    name: "\uAE30\uBCF8\uD0C0\uC6CC"
+    prefabPath: Prefabs/Tower/Normar/BaseTower
     projectilePath: Prefabs/Projectile/TowerProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5

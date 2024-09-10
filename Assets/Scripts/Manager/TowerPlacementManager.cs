@@ -40,11 +40,6 @@ public class TowerPlacementManager
     {
         towerData.Clear(); 
     }
-    public void BuyTower(GameObject buyTowerObj, TowerData towerData)
-    {
-        this.buyTowerObj = buyTowerObj;
-        this.buyTowerData = towerData;
-    }
     public void BuyTowerDropOnGround()
     {
         RefreshTowerData();

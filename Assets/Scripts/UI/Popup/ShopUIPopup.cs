@@ -8,25 +8,22 @@ public class ShopUIPopup : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;
-    TowerPlacementManager towerManager;
+    DraggableTower draggableTower;
     List<ShopDB> shopDB;
-    event Action<GameObject, TowerData> buyTowerObject;
-    event Action isBuingTower;
+    event Action<TowerData> isBuingTower;
     private void Awake()
     {
         shopDB = GameManager.instance.gameEntityData.shopEntity;
-        towerManager = GameData.instance.towerManager;
+        draggableTower = GameManager.instance.draggableTower;
         InitializeShopUI();
     }
     private void OnEnable()
     {
-        buyTowerObject += towerManager.BuyTower;
-        isBuingTower += MouseInteraction.instance.BuingTower;
+        isBuingTower += draggableTower.GetTower;
     }
     private void OnDisable()
     {
-        buyTowerObject -= towerManager.BuyTower;
-        isBuingTower -= MouseInteraction.instance.BuingTower;
+        isBuingTower -= draggableTower.GetTower;
     }
     void InitializeShopUI()
     {
@@ -43,17 +40,11 @@ public class ShopUIPopup : MonoBehaviour
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
-                //여기서 마우스 인터렉션이랑 상호작용 필요
-                InstantiateObj(prfabPath, captureData);
-                isBuingTower?.Invoke();
+                isBuingTower?.Invoke(captureData);
+                EventManager.instance.BuyShopTower();
                 ClosePopup();
             });
         }
-    }
-    void InstantiateObj(string path, TowerData data)
-    {
-        GameObject obj = PoolManager.instance.GetObjectFromPool(path);
-        buyTowerObject?.Invoke(obj, data);
     }
     void ClosePopup()
     {

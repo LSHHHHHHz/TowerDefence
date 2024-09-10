@@ -12,7 +12,6 @@ public class TowerGroundManager : MonoBehaviour
 
     public event Action<TowerGroundData, TowerData> setTower;
     public event Action removeTower;
-    public TowerGroundData detectedTowerGroundData = new TowerGroundData();
     private TowerGround currentSelectedGround;
     private void Awake()
     {
@@ -30,24 +29,11 @@ public class TowerGroundManager : MonoBehaviour
                 towerGround.towerGroundData = groundData;
                 TowerGroundManagerData.instance.towerGroundDatas.Add(groundData);
 
-                mouseInteraction.dropBuyTower += towerGround.DropTower;
-                mouseInteraction.dropBuyTower += SetTower;
+                mouseInteraction.dropBuyTowerOnGround += towerGround.DropTower;
                 mouseInteraction.inMouseOnGround += towerGround.OnEnterGround;
                 mouseInteraction.outMouseOnGround += towerGround.OnExitGround;
             }
         }
-    }
-    public void SetTower(TowerGroundData groundData, TowerData towerData)
-    {
-        if (groundData != null && towerData != null)
-        {
-            groundData.SetTower(towerData);
-        }
-    }
-    public void RemoveTower(TowerGroundData groundData)
-    {
-        groundData.RemoveTower();
-        removeTower?.Invoke();
     }
     public void SetCurrentSelectedGround(TowerGround towerGround)
     {

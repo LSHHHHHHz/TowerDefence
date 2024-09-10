@@ -17,15 +17,13 @@ public class EventManager
             return _instance;
         }
     }
-    public event Action<int> onPlayerHpChanged;
-    public event Action<int> onPlayerCoinChanged;
-    public event Action<int> onPlayerDiaChanged;
     public event Action<string, string, int> onSpawnMonster;
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
 
-
     public event Action<TowerData> ontSelectTowerData;
+    public event Action onDropTower;
+    public event Action onBuyShopTower;
     public void SelectTowerData(TowerData data)
     {
         ontSelectTowerData?.Invoke(data);
@@ -33,6 +31,14 @@ public class EventManager
     public void StartStage(string prefabPath, string type, int count)
     {
         onSpawnMonster?.Invoke(prefabPath, type, count);
+    }
+    public void DropTowerForDraggableTowerClearData()
+    {
+        onDropTower?.Invoke();
+    }
+    public void BuyShopTower()
+    {
+        onBuyShopTower?.Invoke();
     }
     public void EndStage()
     {
