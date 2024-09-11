@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-public class ShopUIPopup : MonoBehaviour
+public class ShopPopup : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;

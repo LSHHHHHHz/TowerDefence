@@ -637,6 +637,7 @@ RectTransform:
   - {fileID: 1546543173}
   - {fileID: 2010642989}
   - {fileID: 1382933259}
+  - {fileID: 110995044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1025,6 +1026,107 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1619558185565566, guid: 1d9cc67243350f643b8c562ed0503c49, type: 3}
   m_PrefabInstance: {fileID: 813076537}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &110995043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110995044}
+  - component: {fileID: 110995047}
+  - component: {fileID: 110995046}
+  - component: {fileID: 110995045}
+  m_Layer: 5
+  m_Name: HUDUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &110995044
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110995043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1731640846}
+  m_Father: {fileID: 58472190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 420, y: 460}
+  m_SizeDelta: {x: 400, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &110995045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110995043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 80, y: 80}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &110995046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110995043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3764706}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &110995047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110995043}
+  m_CullTransparentMesh: 1
 --- !u!1 &116167668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1619558185565566, guid: 1d9cc67243350f643b8c562ed0503c49, type: 3}
@@ -1331,8 +1433,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &176144900
 MeshCollider:
@@ -1552,8 +1656,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &204993872
 MeshCollider:
@@ -3719,8 +3825,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &398806733
 MeshCollider:
@@ -4340,8 +4448,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &493048902
 MeshCollider:
@@ -4792,8 +4902,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &553130596
 MeshCollider:
@@ -6829,8 +6941,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &795465201
 MeshCollider:
@@ -7114,8 +7228,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &801993645
 MeshCollider:
@@ -7250,8 +7366,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &813076542
 MeshCollider:
@@ -7931,8 +8049,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &867129507
 MeshCollider:
@@ -8194,6 +8314,7 @@ RectTransform:
   - {fileID: 1008747819}
   - {fileID: 1291355028}
   - {fileID: 1954779435}
+  - {fileID: 1235286516}
   m_Father: {fileID: 1546543173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8447,8 +8568,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &888706089
 MeshCollider:
@@ -8740,8 +8863,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &903553472
 MeshCollider:
@@ -8806,8 +8931,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &909701171
 MeshCollider:
@@ -8872,8 +8999,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &917605578
 MeshCollider:
@@ -9026,8 +9155,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &920295665
 MeshCollider:
@@ -9162,8 +9293,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &926140307
 MeshCollider:
@@ -9590,8 +9723,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &961748603
 MeshCollider:
@@ -9748,8 +9883,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &968165906
 MeshCollider:
@@ -10073,8 +10210,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &989916315
 MeshCollider:
@@ -10934,8 +11073,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1084085556
 MeshCollider:
@@ -11245,8 +11386,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1100485948
 MeshCollider:
@@ -11381,8 +11524,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1115738216
 MeshCollider:
@@ -11517,8 +11662,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1121699750
 MeshCollider:
@@ -11653,8 +11800,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1135990066
 MeshCollider:
@@ -11789,8 +11938,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1146501689
 MeshCollider:
@@ -11935,8 +12086,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1151857109
 MeshCollider:
@@ -12071,8 +12224,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1162233139
 MeshCollider:
@@ -12233,8 +12388,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1171518730
 MeshCollider:
@@ -12619,8 +12776,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1188077622
 MeshCollider:
@@ -12755,8 +12914,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1197833756
 MeshCollider:
@@ -13144,6 +13305,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233765661}
   m_CullTransparentMesh: 0
+--- !u!1 &1235286515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235286516}
+  - component: {fileID: 1235286519}
+  - component: {fileID: 1235286518}
+  - component: {fileID: 1235286517}
+  m_Layer: 5
+  m_Name: CountDownPopup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1235286516
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235286515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1836800395}
+  m_Father: {fileID: 877440295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 137.5, y: 95.6}
+  m_SizeDelta: {x: 70, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1235286517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235286515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7924731b8e8a240ae9b136c2d96fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDownText: {fileID: 1836800396}
+--- !u!114 &1235286518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235286515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dcdc43f7a0ad67b4ab3e3db38233dfae, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1235286519
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235286515}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1242482855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13717,8 +13968,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1271662076
 MeshCollider:
@@ -14396,8 +14649,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1302885859
 MeshCollider:
@@ -14908,8 +15163,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1342472162
 MeshCollider:
@@ -15564,8 +15821,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1371557539
 MeshCollider:
@@ -16336,8 +16595,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1442101606
 MeshCollider:
@@ -16498,8 +16759,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1465848095
 MeshCollider:
@@ -16710,8 +16973,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1484587760
 MeshCollider:
@@ -16930,8 +17195,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1504876997
 MeshCollider:
@@ -17224,8 +17491,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1521738276
 MeshCollider:
@@ -17425,6 +17694,126 @@ MonoBehaviour:
   bossMonsterRewardCoin: {fileID: 1664688119}
   remainMonsterImage: {fileID: 1282228724}
   remainmonsterRemainCount: {fileID: 1813865235}
+--- !u!1 &1553325916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553325917}
+  - component: {fileID: 1553325920}
+  - component: {fileID: 1553325919}
+  - component: {fileID: 1553325918}
+  m_Layer: 5
+  m_Name: OpenShop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1553325917
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553325916}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731640846}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1553325918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553325916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1553325919}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1553325919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553325916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 18faf426d460ece49970252ef5e8a56d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1553325920
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553325916}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1558955494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17719,8 +18108,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1569973062
 MeshCollider:
@@ -17855,8 +18246,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1594699767
 MeshCollider:
@@ -18017,8 +18410,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1616000793
 MeshCollider:
@@ -18070,6 +18465,7 @@ GameObject:
   - component: {fileID: 1616786055}
   - component: {fileID: 1616786056}
   - component: {fileID: 1616786057}
+  - component: {fileID: 1616786058}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18094,8 +18490,6 @@ MonoBehaviour:
       currentStageNumber: 0
       monsterCount: 0
       stageType: 
-    towerManager:
-      towerData: []
     playerCurrency:
       playerCoin: 0
       playerDia: 1000
@@ -18135,6 +18529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPopupPrefab: {fileID: 0}
   popupTransform: {fileID: 0}
+  detectedTowerGround: {fileID: 0}
+  clickTowerGround: {fileID: 0}
 --- !u!114 &1616786054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18177,6 +18573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297c1f4f696b7434aa1fb48e4c526231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countDownPopup: {fileID: 0}
 --- !u!114 &1616786057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18189,6 +18586,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bac09bd6c7c074ca6e07ce94452c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1616786058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616786048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8053dd3c816acf144a253a9703685785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopPopup: {fileID: 2010642992}
 --- !u!1001 &1621072993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18634,8 +19044,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1630647770
 MeshCollider:
@@ -18845,8 +19257,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1642362801
 MeshCollider:
@@ -19342,8 +19756,6 @@ MonoBehaviour:
       currentStageNumber: 1
       monsterCount: 0
       stageType: 
-    towerManager:
-      towerData: []
     playerCurrency:
       playerCoin: 0
       playerDia: 1000
@@ -19568,8 +19980,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1730117783
 MeshCollider:
@@ -19606,6 +20020,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 0}
+--- !u!1 &1731640845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731640846}
+  - component: {fileID: 1731640848}
+  - component: {fileID: 1731640847}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1731640846
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731640845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1553325917}
+  m_Father: {fileID: 110995044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1731640847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731640845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1982749273, guid: 85703ee0d52ea0d479ea35a4259a0b41, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1731640848
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731640845}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1734670650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19704,8 +20194,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1734670655
 MeshCollider:
@@ -19840,8 +20332,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1737927310
 MeshCollider:
@@ -20064,8 +20558,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1750234918
 MeshCollider:
@@ -20130,8 +20626,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1755897434
 MeshCollider:
@@ -20347,8 +20845,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1783645011
 MeshCollider:
@@ -20800,6 +21300,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4482437886289408, guid: 1d9cc67243350f643b8c562ed0503c49, type: 3}
   m_PrefabInstance: {fileID: 1828739475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1836800394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836800395}
+  - component: {fileID: 1836800397}
+  - component: {fileID: 1836800396}
+  m_Layer: 5
+  m_Name: CountDownText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1836800395
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836800394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1235286516}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1836800396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836800394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 3
+--- !u!222 &1836800397
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836800394}
+  m_CullTransparentMesh: 1
 --- !u!1 &1838107294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1619558185565566, guid: 1d9cc67243350f643b8c562ed0503c49, type: 3}
@@ -20828,8 +21407,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1838107298
 MeshCollider:
@@ -21330,8 +21911,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1866141807
 MeshCollider:
@@ -21664,8 +22247,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1902891335
 MeshCollider:
@@ -21870,8 +22455,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1910077620
 MeshCollider:
@@ -22006,8 +22593,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1915600166
 MeshCollider:
@@ -22168,8 +22757,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1920661346
 MeshCollider:
@@ -22488,8 +23079,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1946630076
 MeshCollider:
@@ -22631,8 +23224,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1961030673
 MeshCollider:
@@ -22767,8 +23362,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1963671445
 MeshCollider:
@@ -22999,8 +23596,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &1982504178
 MeshCollider:
@@ -23161,8 +23760,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2005019174
 MeshCollider:
@@ -23807,8 +24408,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2040985446
 MeshCollider:
@@ -24070,8 +24673,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2056192978
 MeshCollider:
@@ -24302,8 +24907,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2067759115
 MeshCollider:
@@ -24534,8 +25141,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2079459505
 MeshCollider:
@@ -24933,8 +25542,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2114873816
 MeshCollider:
@@ -25165,8 +25776,10 @@ MonoBehaviour:
         attackRange: 0
         rotationSpeed: 0
         type: 
+        level: 0
+        elementaProperties: 
       type: 0
-  hasTowers: []
+    towerGroundNum: 0
   currentTower: {fileID: 0}
 --- !u!64 &2145407278
 MeshCollider:

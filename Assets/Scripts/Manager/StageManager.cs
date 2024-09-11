@@ -9,6 +9,7 @@ public class StageManager : MonoBehaviour
     StageDB currentStageDB;
     StageDB currentNormarMonsterDB;
     StageDB currentBossMonsterDB;
+    public CountDownPopup countDownPopup;
     int currentStage = 1;
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
@@ -25,6 +26,7 @@ public class StageManager : MonoBehaviour
         currentStageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
         currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
         currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");
+        countDownPopup = FindObjectOfType<CountDownPopup>();
     }
     private void Start()
     {
@@ -42,10 +44,12 @@ public class StageManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.instance.onKilledMonster += UpdateCurrentMonsterCount;
+        countDownPopup.onPossibleNextStage += StartNextStage;
     }
     private void OnDisable()
     {
         EventManager.instance.onKilledMonster -= UpdateCurrentMonsterCount;
+        countDownPopup.onPossibleNextStage -= StartNextStage;
     }
     public void StartStage()
     {
@@ -70,24 +74,16 @@ public class StageManager : MonoBehaviour
         if (currentStageMonsterCount <= clearMonsterCount && !isClearStage)
         {
             isClearStage = true;
-            StartCoroutine(HandleStageClear());
+            countDownPopup.gameObject.SetActive(true);
         }
-    }
-    IEnumerator HandleStageClear()
-    {
-        Debug.LogError("스테이지 클리어!");
-
-        yield return new WaitForSeconds(stageClearAfterElapsedTime);
-
-        StartNextStage();
     }
     void StartNextStage()
     {
-        isClearStage = false;
-        Debug.LogError("다음 스테이지 시작!");
+        Debug.Log("다음 스테이지 시작!");
         ChangeStageInfo(currentActorType);
         EventManager.instance.EndStage();
         StartStage();
+        isClearStage = false;
     }
     public void UpdateCurrentMonsterCount()
     {
