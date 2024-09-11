@@ -8,9 +8,9 @@ public class MouseInteraction : MonoBehaviour
 {
     public static MouseInteraction instance;
 
-    public GameObject towerPopupPrefab;
-    public RectTransform popupTransform;
-    TowerManagerPopup towerPopup;
+    public GameObject towerStatusPopupPrefab;
+    public RectTransform towerStatusPopupTransform;
+    TowerStatusPopup towerStatusPopup;
 
     GameObject dragObj;
     public TowerGround detectedTowerGround;
@@ -24,6 +24,8 @@ public class MouseInteraction : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        towerStatusPopup = Instantiate(towerStatusPopupPrefab,towerStatusPopupTransform).GetComponent<TowerStatusPopup>();
+        towerStatusPopup.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -72,9 +74,9 @@ public class MouseInteraction : MonoBehaviour
         }
         if (isFindGround && detectedTowerGround.towerGroundData.towerData != null) //여기서 팝업 생성
         {
-            if (towerPopup == null)
+            if (towerStatusPopup == null)
             {
-                //towerPopup = Instantiate(towerPopupPrefab, popupTransform).GetComponent<TowerManagerPopup>();
+                //towerStatusPopup = Instantiate(towerPopupPrefab, popupTransform).GetComponent<TowerManagerPopup>();
             }
             else
             {
