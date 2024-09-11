@@ -21,7 +21,6 @@ public class TowerGround : MonoBehaviour
         {
             return;
         }
-        Debug.LogError("¸î¹ø");
         string towerID = data.towerID;
         ActorType type = data.type;        
         foreach (Tower t in hasTowers)
