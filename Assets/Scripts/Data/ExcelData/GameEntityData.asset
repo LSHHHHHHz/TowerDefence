@@ -19,114 +19,115 @@ MonoBehaviour:
     projectilePath: Prefabs/Projectile/TowerProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/BaseTower
   - dataID: nor11
     name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower1
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/FireTowerLv1
   - dataID: nor12
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower2
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/FireTowerLv2
   - dataID: nor13
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/FireTower3
     projectilePath: Prefabs/Projectile/FireProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/FireTowerLv3
   - dataID: nor21
     name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower1
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/IceTowerLv1
   - dataID: nor22
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower2
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/IceTowerLv2
   - dataID: nor23
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/IceTower3
     projectilePath: Prefabs/Projectile/IceProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/IceTowerLv3
   - dataID: nor31
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower1
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/LightTowerLv1
   - dataID: nor32
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower2
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/LightTowerLv2
   - dataID: nor33
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     prefabPath: Prefabs/Tower/Character/LightTower3
     projectilePath: Prefabs/Projectile/LightningProjectile
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/LightTowerLv3
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Normar/LV1_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Normar1
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Normar/LV2_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Normar2
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Normar/LV3_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Normar3
   - dataID: bosmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Boss/LV1_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Boss1
   - dataID: bosmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Boss/LV2_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Boss2
   - dataID: bosmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Boss/LV3_Golem
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: 
+    iconPath: IconImage/Boss3
   towerStatusEntity:
   - dataID: nor01
+    name: "\uAE30\uBCF8\uD0C0\uC6CC"
     hp: 500
     attackDamage: 10
     attackSpeed: 5
@@ -135,7 +136,10 @@ MonoBehaviour:
     type: NormarTower
     level: 0
     elementaProperties: base
+    randomNum: 0
+    towerTypePath: IconImage/NormarTowerType
   - dataID: nor11
+    name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     hp: 1000
     attackDamage: 10
     attackSpeed: 5
@@ -144,7 +148,10 @@ MonoBehaviour:
     type: NormarTower
     level: 1
     elementaProperties: fire
+    randomNum: 0
+    towerTypePath: IconImage/FireTowerType
   - dataID: nor12
+    name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     hp: 2000
     attackDamage: 20
     attackSpeed: 5
@@ -153,7 +160,10 @@ MonoBehaviour:
     type: NormarTower
     level: 2
     elementaProperties: fire
+    randomNum: 0
+    towerTypePath: IconImage/FireTowerType
   - dataID: nor13
+    name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     hp: 3000
     attackDamage: 30
     attackSpeed: 5
@@ -162,7 +172,10 @@ MonoBehaviour:
     type: NormarTower
     level: 3
     elementaProperties: fire
+    randomNum: 0
+    towerTypePath: IconImage/FireTowerType
   - dataID: nor21
+    name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 1000
     attackDamage: 10
     attackSpeed: 5
@@ -171,7 +184,10 @@ MonoBehaviour:
     type: NormarTower
     level: 1
     elementaProperties: ice
+    randomNum: 1
+    towerTypePath: IconImage/LightTowerType
   - dataID: nor22
+    name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 2000
     attackDamage: 20
     attackSpeed: 5
@@ -180,7 +196,10 @@ MonoBehaviour:
     type: NormarTower
     level: 2
     elementaProperties: ice
+    randomNum: 1
+    towerTypePath: IconImage/LightTowerType
   - dataID: nor23
+    name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 3000
     attackDamage: 30
     attackSpeed: 5
@@ -189,7 +208,10 @@ MonoBehaviour:
     type: NormarTower
     level: 3
     elementaProperties: ice
+    randomNum: 1
+    towerTypePath: IconImage/LightTowerType
   - dataID: nor31
+    name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 1000
     attackDamage: 10
     attackSpeed: 5
@@ -198,7 +220,10 @@ MonoBehaviour:
     type: NormarTower
     level: 1
     elementaProperties: light
+    randomNum: 2
+    towerTypePath: IconImage/IceTowerType
   - dataID: nor32
+    name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 2000
     attackDamage: 20
     attackSpeed: 5
@@ -207,7 +232,10 @@ MonoBehaviour:
     type: NormarTower
     level: 2
     elementaProperties: light
+    randomNum: 2
+    towerTypePath: IconImage/IceTowerType
   - dataID: nor33
+    name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 3000
     attackDamage: 30
     attackSpeed: 5
@@ -216,6 +244,8 @@ MonoBehaviour:
     type: NormarTower
     level: 3
     elementaProperties: light
+    randomNum: 2
+    towerTypePath: IconImage/IceTowerType
   monsterStatusEntity:
   - dataID: normon11
     hp: 150

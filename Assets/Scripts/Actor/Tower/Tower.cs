@@ -7,7 +7,7 @@ public class Tower : Actor
     public TowerStatus towerStatus { get; private set; }
     protected TowerStatusDB towerStatusDB;
     protected List<Monster> detectedMonsters;
-    public TowerAttackSensor towerAttackSensor { get; private set; }
+    public TowerAttackSensor towerAttackSensor { get; set; }
     public FSMController<Tower> fsmController { get; private set; }
     public ActorDetector<Monster> detectActor { get; private set; }
     public TowerData towerData;

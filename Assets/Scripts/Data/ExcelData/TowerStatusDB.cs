@@ -4,6 +4,7 @@ using System;
 public class TowerStatusDB 
 {
     public string dataID;
+    public string name;
     public int hp;
     public int attackDamage;
     public int attackSpeed;
@@ -12,4 +13,6 @@ public class TowerStatusDB
     public string type;
     public int level;
     public string elementaProperties;
+    public int randomNum;
+    public string towerTypePath;
 }

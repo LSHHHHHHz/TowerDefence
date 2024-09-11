@@ -17,43 +17,50 @@ public class TowerGround : MonoBehaviour
     }
     public void DropTower(TowerGround groundData, TowerData data)
     {       
-        if(groundData.towerGroundData.towerGroundNum != towerGroundData.towerGroundNum || data.towerID == null)
+        bool hasSameData = false;
+        //데이터가 없는게 들어오면 비활성화
+        if(groundData.towerGroundData.towerGroundNum == towerGroundData.towerGroundNum && data == null)
+        {
+            foreach (Tower t in hasTowers)
+            {
+                t.gameObject.SetActive(false);
+            }
+            isHasTower = false;
+            return;
+        }
+        //선택된 그라운드 아니면 return
+        if (groundData.towerGroundData.towerGroundNum != towerGroundData.towerGroundNum || data.towerID == null)
         {
             return;
         }
-        string towerID = data.towerID;
-        ActorType type = data.type;        
+        //저장된 모든 Tower 비활성화
         foreach (Tower t in hasTowers)
         {
             t.gameObject.SetActive(false);
         }
-        string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
-        GameObject obj = Resources.Load<GameObject>(path);
-        Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
-        currentTower = tower;
-        if (!hasTowers.Contains(currentTower))
-        {
-            hasTowers.Add(currentTower);
-        }
+        string towerID = data.towerID;
         foreach (Tower t in hasTowers)
         {
-            if(t == tower)
+            if(t.towerData.towerID == towerID)
             {
-                currentTower = t;
-                currentTower.gameObject.SetActive(true);
-                currentTower.towerData = data;
-                towerGroundData.towerData = data;
-                break;
+                t.gameObject.SetActive(true);
+                t.towerData = data;
+                hasSameData = true;
             }
+        }
+        if (!hasSameData)
+        {
+            string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
+            GameObject obj = Resources.Load<GameObject>(path);
+            Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
+            currentTower = tower;
+            hasTowers.Add(currentTower);
+            currentTower.towerData = data;
+            towerGroundData.towerData = data;
         }
         isHasTower = true;
     }
-    public void RemoveTower()
-    {
-        currentTower?.gameObject.SetActive(false);
-        isHasTower = false;
-    }
-    public bool ISHasTower()
+    public bool IsHasTower()
     {
         return isHasTower;
     }

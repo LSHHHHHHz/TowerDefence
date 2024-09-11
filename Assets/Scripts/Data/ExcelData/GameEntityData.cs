@@ -35,6 +35,30 @@ public class GameEntityData : ScriptableObject
         Debug.LogError("맞는 아이디 없음");
         return null;
     }
+    public TowerStatusDB GetTowerStatusDB(int lv, int num)
+    {
+        foreach (TowerStatusDB tower in towerStatusEntity)
+        {
+            if (lv == tower.level && num == tower.randomNum)
+            {
+                return tower;
+            }
+        }
+        Debug.LogError("맞는 아이디 없음");
+        return null;
+    }
+    public TowerData GetUpgradeTowerData(TowerData data)
+    {
+        TowerData towerData = new TowerData();
+        int nextLevel = data.status.level + 1;
+        int randomNum = UnityEngine.Random.Range(0, 3);
+        TowerStatusDB statusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(nextLevel, randomNum);
+        string towerID = statusDB.dataID;
+
+        towerData.towerID = towerID;
+        towerData.status = statusDB;
+        return towerData;
+    }
     public MonsterStatusDB GetMonsterStatusDB(string id)
     {
         foreach (MonsterStatusDB monster in monsterStatusEntity)

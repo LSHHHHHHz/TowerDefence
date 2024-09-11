@@ -14,17 +14,19 @@ public class MouseInteraction : MonoBehaviour
 
     GameObject dragObj;
     public TowerGround detectedTowerGround;
-    public TowerGround clickTowerGround;
+    public TowerGround firstClickTowerGround;
+    public TowerGround secondSelecttowerGround;
     TowerData boughtShopTowerData;
-    public event Action<TowerGround, TowerData> dropBuyTowerOnGround;
+    public event Action<TowerGround, TowerData> dropTowerOnGround;
     public event Action<TowerGround> inMouseOnGround;
     public event Action<TowerGround> outMouseOnGround;
     bool isBuingTower = false;//
     bool isMouseOnGround = false;
+    bool isClickedGround = false;
     private void Awake()
     {
         instance = this;
-        towerStatusPopup = Instantiate(towerStatusPopupPrefab,towerStatusPopupTransform).GetComponent<TowerStatusPopup>();
+        towerStatusPopup = Instantiate(towerStatusPopupPrefab, towerStatusPopupTransform).GetComponent<TowerStatusPopup>();
         towerStatusPopup.gameObject.SetActive(false);
     }
     private void Start()
@@ -61,8 +63,6 @@ public class MouseInteraction : MonoBehaviour
                 {
                     outMouseOnGround?.Invoke(detectedTowerGround);
                     isMouseOnGround = false;
-                    //detectedTowerGround = null;
-                    // detectedTowerGround.towerGroundData = towerGround.towerGroundData;
                 }
                 detectedTowerGround = null;//
                 detectedTowerGround = towerGround;
@@ -72,21 +72,19 @@ public class MouseInteraction : MonoBehaviour
                 break;
             }
         }
-        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null) //여기서 팝업 생성
+        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null && detectedTowerGround.IsHasTower()) //여기서 팝업 생성
         {
-            if (towerStatusPopup == null)
-            {
-                //towerStatusPopup = Instantiate(towerPopupPrefab, popupTransform).GetComponent<TowerManagerPopup>();
-            }
-            else
-            {
-
-            }
+            towerStatusPopup.gameObject.SetActive(true);
+            towerStatusPopup.UpdatePopupData(detectedTowerGround.towerGroundData.towerData);
         }
         if (!isFindGround)
         {
             if (detectedTowerGround != null && detectedTowerGround.towerGroundData != null)
             {
+                if(!isClickedGround)
+                {
+                    towerStatusPopup.gameObject.SetActive(false);
+                }
                 outMouseOnGround?.Invoke(detectedTowerGround);
                 isMouseOnGround = false;
             }
@@ -108,75 +106,82 @@ public class MouseInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            TowerGround secondSelecttowerGround = null;
             // 구매한 타워가 없고 그라운드 내 마우스가 있으며 선택된 타워그라운드가 없을 때(처음 데이터 선택)
-            if (!isBuingTower && isMouseOnGround && clickTowerGround == null)
+            if (!isBuingTower && isMouseOnGround && firstClickTowerGround == null)
             {
+                isClickedGround = true;
                 if (detectedTowerGround != null)
                 {
-                    clickTowerGround = detectedTowerGround;
-                    if (clickTowerGround.towerGroundData.towerData == null)
+                    firstClickTowerGround = detectedTowerGround;
+                    if (firstClickTowerGround.towerGroundData.towerData == null)
                     {
-                        clickTowerGround = null;
+                        firstClickTowerGround = null;
                     }
                 }
                 // Base타워 일 때
-                if (!isBuingTower && isMouseOnGround && clickTowerGround != null
-                    && clickTowerGround.towerGroundData != null
-                    && clickTowerGround.towerGroundData.towerData != null
-                    && clickTowerGround.towerGroundData.towerData.towerID == "nor01")
+                if (!isBuingTower && isMouseOnGround && firstClickTowerGround != null
+                    && firstClickTowerGround.towerGroundData != null
+                    && firstClickTowerGround.towerGroundData.towerData != null
+                    && firstClickTowerGround.towerGroundData.towerData.towerID == "nor01")
                 {
                     Debug.Log("팝업 띄우고 바로 랜덤 돌릴 수 있게");
-                    clickTowerGround = null;
+                    //isClickedGround = true;
+                    firstClickTowerGround = null;
                 }
             }
             // 구매한 타워가 없고 그라운드 내 마우스가 있으며 선택된 타워그라운드가 없을 때(기존 선택된 데이터가 있을 때)
-            else if (!isBuingTower && isMouseOnGround && clickTowerGround != null)
+            else if (!isBuingTower && isMouseOnGround && firstClickTowerGround != null)
             {
+                isClickedGround = true;
                 if (detectedTowerGround != null)
                 {
                     secondSelecttowerGround = detectedTowerGround;
-                    if (clickTowerGround.towerGroundData.towerData == null)
+                    if (firstClickTowerGround.towerGroundData.towerData == null)
                     {
                         secondSelecttowerGround = null;
                     }
-                }                
+                }
                 // 첫 번째 선택된 타워와 두 번째 선택된 타워가 다를 때
                 if (!isBuingTower && isMouseOnGround && secondSelecttowerGround != null
                     && secondSelecttowerGround.towerGroundData != null
                     && secondSelecttowerGround.towerGroundData.towerData != null)
                 {
-                    if (clickTowerGround.towerGroundData.towerGroundNum != secondSelecttowerGround.towerGroundData.towerGroundNum)
+                    if (firstClickTowerGround.towerGroundData.towerGroundNum != secondSelecttowerGround.towerGroundData.towerGroundNum)
                     {
-                        if (clickTowerGround.towerGroundData.towerData.status.elementaProperties == secondSelecttowerGround.towerGroundData.towerData.status.elementaProperties &&
-                            clickTowerGround.towerGroundData.towerData.status.level == secondSelecttowerGround.towerGroundData.towerData.status.level)
+                        if (firstClickTowerGround.towerGroundData.towerData.status.elementaProperties == secondSelecttowerGround.towerGroundData.towerData.status.elementaProperties &&
+                            firstClickTowerGround.towerGroundData.towerData.status.level == secondSelecttowerGround.towerGroundData.towerData.status.level)
                         {
                             Debug.Log("타입과 레벨 같음 ! UI에서 합체 버튼 활성화");
+                            dropTowerOnGround?.Invoke(secondSelecttowerGround,
+                                GameManager.instance.gameEntityData.GetUpgradeTowerData(secondSelecttowerGround.towerGroundData.towerData));
+                            dropTowerOnGround?.Invoke(firstClickTowerGround, null);
+                            return;
                         }
                         else
                         {
-                            Debug.Log("타입 또는 레벨이 다름 ! 꺼지게");
+                            Debug.Log("타입 또는 레벨이 다름 ! 꺼지게 삐삐 소리");
                         }
-                        clickTowerGround = null;
+                        firstClickTowerGround = null;
+                        secondSelecttowerGround = null;
                     }
                 }
-            }            
+            }
             // 그라운드가 아닌 곳에서 클릭하면 초기화
             else if (!isBuingTower && !isMouseOnGround)
             {
-                clickTowerGround = null;
+                isClickedGround = false;
+                firstClickTowerGround = null;
             }
             // 상점에서 타워를 드랍할 때
             else if (isBuingTower && isMouseOnGround)
             {
-                dropBuyTowerOnGround?.Invoke(detectedTowerGround, boughtShopTowerData);
+                dropTowerOnGround?.Invoke(detectedTowerGround, boughtShopTowerData);
                 EventManager.instance.DropTowerForDraggableTowerClearData(); // DraggableTower에서 선택된 데이터 초기화
                 boughtShopTowerData = null;
                 isBuingTower = false;
             }
         }
     }
-
     void MouseButtonUp()
     {
         if (Input.GetMouseButtonUp(0))

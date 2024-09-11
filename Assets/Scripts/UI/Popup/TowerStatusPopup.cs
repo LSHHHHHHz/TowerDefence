@@ -16,12 +16,8 @@ public class TowerStatusPopup : MonoBehaviour
     [SerializeField] Image towerTypeImage;
     [SerializeField] Text towerTpyeNameText;
     [SerializeField] Text towerLV;
-    [SerializeField] Text towerDamageUpPriceTextForCoin;
-    [SerializeField] Text towerDamageUPPriceTextForDia;        
-    [SerializeField] Text towerSellPrice;
     [SerializeField] Text towerCurrentAttackDamage;        
     [SerializeField] Text towerCurrentAttackSpeed;
-    [SerializeField] Image possibleTowerMergeImage;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -36,57 +32,21 @@ public class TowerStatusPopup : MonoBehaviour
     {
         StopAllCoroutines();
     }
-    public void SetPopupData(string typePath, string typeName, int lv, int damageUpPriceForCoin, int damageUpPriceForDia, int sellPrice, int currentAttackDamage, int currentAttackSpeed)
+    public void UpdatePopupData(TowerData data)
     {
-        Sprite towerSprite = Resources.Load<Sprite>(typePath);
+        Sprite towerSprite = Resources.Load<Sprite>(data.status.towerTypePath);
         if (towerSprite != null)
         {
             towerTypeImage.sprite = towerSprite;
         }
         else
         {
-            Debug.LogWarning("경로 없음 " + typePath);
+            Debug.LogWarning("경로 없음 " + data.status.towerTypePath);
         }
-        towerTpyeNameText.text = typeName;                     
-        towerLV.text = "LV : " + lv.ToString();                
-        towerDamageUpPriceTextForCoin.text = damageUpPriceForCoin.ToString(); 
-        towerDamageUPPriceTextForDia.text = damageUpPriceForDia.ToString();  
-        towerSellPrice.text =  sellPrice.ToString();    
-        towerCurrentAttackDamage.text = "Damage: " + currentAttackDamage.ToString(); 
-        towerCurrentAttackSpeed.text = "Speed: " + currentAttackSpeed.ToString();
-    }
-    public void UpdataPopupData(string typeName, int lv, int damageUpPriceForCoin, int damageUpPriceForDia, int sellPrice, int currentAttackDamage, int currentAttackSpeed)
-    {
-        towerTpyeNameText.text = typeName;
-        towerLV.text = "LV : " + lv.ToString();
-        towerDamageUpPriceTextForCoin.text = damageUpPriceForCoin.ToString();
-        towerDamageUPPriceTextForDia.text = damageUpPriceForDia.ToString();
-        towerSellPrice.text = sellPrice.ToString();
-        towerCurrentAttackDamage.text = "Damage: " + currentAttackDamage.ToString();
-        towerCurrentAttackSpeed.text = "Speed: " + currentAttackSpeed.ToString();
-    }
-    public void UpdatePossibleMergeTower(bool possible)
-    {
-        if (possible)
-        {
-            possibleTowerMergeImage.color = new Color(0, 0, 1);
-        }
-        else
-        {
-            possibleTowerMergeImage.color = new Color(1, 0, 0);
-        }
-        isPossibleMerge = possible;
-    }
-    public void ClickMergeTower()
-    {
-        if(isPossibleMerge)
-        {
-            //타워 부분에다가 이벤트 처리
-        }
-        else
-        {
-            //삐삐 소리
-        }
+        towerTpyeNameText.text = data.status.name;                     
+        towerLV.text = "LV : " + data.status.level.ToString(); 
+        towerCurrentAttackDamage.text = "Damage: " + data.status.attackDamage.ToString(); 
+        towerCurrentAttackSpeed.text = "Speed: " + data.status.attackSpeed.ToString();
     }
     IEnumerator ActiveTowerPopup()
     {

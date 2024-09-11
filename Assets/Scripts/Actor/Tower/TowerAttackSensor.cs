@@ -15,7 +15,7 @@ public class TowerAttackSensor : MonoBehaviour
     public bool isReadyToAttack = false;
     public Actor findActor;
     bool isAttack = false;
-
+    public bool isDropTower;
     public ActorDetector<Monster> detectActor;
     private void Awake()
     {
@@ -24,6 +24,7 @@ public class TowerAttackSensor : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
         towerBaseAttack = GetComponent<TowerBaseAttack>();
+
     }
     private void Start()
     {
@@ -33,23 +34,29 @@ public class TowerAttackSensor : MonoBehaviour
         towerBaseAttack.isAttackActionFalse += CheckAttackFalse;
         towerBaseAttack.isAttackActionTrue += CheckAttackTrue;
     }
+    private void OnEnable()
+    {
+        EventManager.instance.onDropTower += SetTowerOnGround;
+    }
+    private void OnDisable()
+    {
+        EventManager.instance.onDropTower -= SetTowerOnGround;
+    }
     private void Update()
     {
-        RotateToward();
-
-        if(detectActor.targetActor != null )
+        if (isDropTower)
         {
-            //직접 사용
-        }
-        if (tower.detectActor.targetActor != null && tower.triggerStartAttack && !isAttack)
-        {         
-            findActor = tower.detectActor.targetActor;
-            towerBaseAttack.StartAttack(tower.detectActor.targetActor);
-        }
-        else
-        {
-            findActor = tower.detectActor.targetActor;
-            towerBaseAttack.StopAttack();
+            RotateToward();
+            if (tower.detectActor.targetActor != null && tower.triggerStartAttack && !isAttack)
+            {
+                findActor = tower.detectActor.targetActor;
+                towerBaseAttack.StartAttack(tower.detectActor.targetActor);
+            }
+            else
+            {
+                findActor = tower.detectActor.targetActor;
+                towerBaseAttack.StopAttack();
+            }
         }
     }
     private void RotateToward()
@@ -78,6 +85,10 @@ public class TowerAttackSensor : MonoBehaviour
                 towerBaseAttack.SetReadyToAttack(isReadyToAttack, Vector3.zero);
             }
         }
+    }
+    void SetTowerOnGround()
+    {
+        isDropTower = true;
     }
     void CheckAttackTrue()
     {

@@ -21,13 +21,8 @@ public class EventManager
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
 
-    public event Action<TowerData> ontSelectTowerData;
     public event Action onDropTower;
     public event Action onBuyShopTower;
-    public void SelectTowerData(TowerData data)
-    {
-        ontSelectTowerData?.Invoke(data);
-    }
     public void StartStage(string prefabPath, string type, int count)
     {
         onSpawnMonster?.Invoke(prefabPath, type, count);

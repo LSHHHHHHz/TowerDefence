@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -632,7 +632,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1517432549}
   - {fileID: 513810438}
   - {fileID: 1546543173}
   - {fileID: 2010642989}
@@ -1397,6 +1396,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -1405,6 +1405,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -1620,6 +1622,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -1628,6 +1631,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -3666,6 +3671,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -3674,6 +3680,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -4088,6 +4096,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -4096,6 +4105,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -4542,6 +4553,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -4550,6 +4562,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -6502,6 +6516,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -6510,6 +6525,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -6789,6 +6806,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -6797,6 +6815,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -6927,6 +6947,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -6935,6 +6956,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -7383,6 +7406,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -7391,6 +7415,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -7902,6 +7928,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -7910,6 +7937,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -8197,6 +8226,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -8205,6 +8235,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -8265,6 +8297,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -8273,6 +8306,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -8333,6 +8368,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -8341,6 +8377,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -8489,6 +8527,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -8497,6 +8536,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -8627,6 +8668,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -8635,6 +8677,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -9057,6 +9101,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -9065,6 +9110,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -9217,6 +9264,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -9225,6 +9273,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -9544,6 +9594,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -9552,6 +9603,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -10028,7 +10081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1067086084
 Transform:
   m_ObjectHideFlags: 0
@@ -10043,6 +10096,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2660725792112133690}
+  - {fileID: 1674786911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069035018
@@ -10330,6 +10384,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -10338,6 +10393,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -10564,6 +10621,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -10572,6 +10630,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -10702,6 +10762,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -10710,6 +10771,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -10840,6 +10903,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -10848,6 +10912,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -10978,6 +11044,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -10986,6 +11053,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -11116,6 +11185,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -11124,6 +11194,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -11264,6 +11336,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -11272,6 +11345,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -11402,6 +11477,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -11410,6 +11486,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -11566,6 +11644,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -11574,6 +11653,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -11954,6 +12035,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -11962,6 +12044,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -12092,6 +12176,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -12100,6 +12185,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -13146,6 +13233,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -13154,6 +13242,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -13750,6 +13840,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -13758,6 +13849,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -14108,6 +14201,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -14116,6 +14210,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -14766,6 +14862,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -14774,6 +14871,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -15540,6 +15639,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -15548,6 +15648,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -15704,6 +15806,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -15712,6 +15815,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -15918,6 +16023,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -15926,6 +16032,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -16061,6 +16169,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -16069,6 +16178,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -16208,11 +16319,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: dac1f6a026468af46b8928893e3eea27, type: 3}
---- !u!224 &1517432549 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-  m_PrefabInstance: {fileID: 249131921584794076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1521738271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16305,6 +16411,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -16313,6 +16420,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -16598,7 +16707,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616786058}
         m_TargetAssemblyTypeName: PopupManager, Assembly-CSharp
-        m_MethodName: OpenShoPopup
+        m_MethodName: OpenShopPopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16934,6 +17043,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -16942,6 +17052,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -17072,6 +17184,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -17080,6 +17193,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -17236,6 +17351,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -17244,6 +17360,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -17362,7 +17480,8 @@ MonoBehaviour:
   towerStatusPopupPrefab: {fileID: 361290013395715983, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
   towerStatusPopupTransform: {fileID: 349102392}
   detectedTowerGround: {fileID: 0}
-  clickTowerGround: {fileID: 0}
+  firstClickTowerGround: {fileID: 0}
+  secondSelecttowerGround: {fileID: 0}
 --- !u!114 &1616786054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17795,6 +17914,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -17803,6 +17923,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -17933,6 +18055,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -17941,6 +18064,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -18175,6 +18300,11 @@ MonoBehaviour:
   detectedActors: []
   intervalTime: 0.1
   detectionRange: 5
+--- !u!4 &1674786911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4617159174555797635, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
+  m_PrefabInstance: {fileID: 1788186782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1676606083
 GameObject:
   m_ObjectHideFlags: 0
@@ -18581,6 +18711,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -18589,6 +18720,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -18719,6 +18852,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -18727,6 +18861,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -18857,6 +18993,7 @@ MonoBehaviour:
       towerID: nor01
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -18865,6 +19002,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -19083,6 +19222,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -19091,6 +19231,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -19151,6 +19293,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -19159,6 +19302,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -19289,6 +19434,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -19297,6 +19443,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -19437,7 +19585,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1067086084}
     m_Modifications:
     - target: {fileID: -8308975808925649023, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
       propertyPath: m_Radius
@@ -19461,15 +19609,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4617159174555797635, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4617159174555797635, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4617159174555797635, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4617159174555797635, guid: efd96c11ad1f5614c8e25073af646ddf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19851,6 +19999,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -19859,6 +20008,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -20355,6 +20506,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -20363,6 +20515,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -20691,6 +20845,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -20699,6 +20854,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -20899,6 +21056,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -20907,6 +21065,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -21037,6 +21197,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -21045,6 +21206,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -21201,6 +21364,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -21209,6 +21373,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -21523,6 +21689,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -21531,6 +21698,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -21668,6 +21837,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -21676,6 +21846,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -21806,6 +21978,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -21814,6 +21987,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -22040,6 +22215,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -22048,6 +22224,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -22204,6 +22382,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -22212,6 +22391,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -22269,7 +22450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2010642989
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22655,6 +22836,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -22663,6 +22845,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -22798,6 +22982,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -22806,6 +22991,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -23032,6 +23219,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -23040,6 +23228,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -23266,6 +23456,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -23274,6 +23465,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -23667,6 +23860,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -23675,6 +23869,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -23901,6 +24097,7 @@ MonoBehaviour:
       towerID: 
       status:
         dataID: 
+        name: 
         hp: 0
         attackDamage: 0
         attackSpeed: 0
@@ -23909,6 +24106,8 @@ MonoBehaviour:
         type: 
         level: 0
         elementaProperties: 
+        randomNum: 0
+        towerTypePath: 
       type: 0
     towerGroundNum: 0
   currentTower: {fileID: 0}
@@ -24043,103 +24242,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: dac1f6a026468af46b8928893e3eea27, type: 3}
---- !u!1001 &249131921584794076
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 58472190}
-    m_Modifications:
-    - target: {fileID: 361290013395715983, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_Name
-      value: TowerStatusPopup
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -280
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522754832917378048, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
 --- !u!4 &2660725792112133690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5636052213998315414, guid: e58341c3d567cb84db183d9664722b8d, type: 3}
@@ -24217,4 +24319,3 @@ SceneRoots:
   - {fileID: 1692680571}
   - {fileID: 277802081}
   - {fileID: 1335402881}
-  - {fileID: 1788186782}
