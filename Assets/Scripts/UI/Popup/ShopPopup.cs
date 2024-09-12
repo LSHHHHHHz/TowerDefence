@@ -6,24 +6,29 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ShopPopup : MonoBehaviour
 {
+    Player player;
     [SerializeField] GameObject prefab;
     [SerializeField] RectTransform slotsContents;
     DraggableTower draggableTower;
     List<ShopDB> shopDB;
-    event Action<TowerData> isBuingTower;
+    event Action<TowerData> onBuingTower;
+    event Action<int> onPlayerBuingTower;
     private void Awake()
     {
+        player = GameManager.instance.player;
         shopDB = GameManager.instance.gameEntityData.shopEntity;
         draggableTower = GameManager.instance.draggableTower;
         InitializeShopUI();
     }
     private void OnEnable()
     {
-        isBuingTower += draggableTower.GetTower;
+        onBuingTower += draggableTower.GetTower;
+        onPlayerBuingTower += player.SpendCoin;
     }
     private void OnDisable()
     {
-        isBuingTower -= draggableTower.GetTower;
+        onBuingTower -= draggableTower.GetTower;
+        onPlayerBuingTower -= player.SpendCoin;
     }
     void InitializeShopUI()
     {
@@ -40,8 +45,17 @@ public class ShopPopup : MonoBehaviour
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
-                isBuingTower?.Invoke(captureData);
-                EventManager.instance.BuyShopTower();
+                if(player.PlayerHasCoin() - captureData.status.expenseTowerCoin > 0)
+                {
+                    player.SpendCoin(captureData.status.expenseTowerCoin);
+                    onBuingTower?.Invoke(captureData);
+                    EventManager.instance.BuyShopTower();
+                    ClosePopup();
+                }
+                else
+                {
+                    Debug.Log("플레이어 돈 부족");
+                }
                 ClosePopup();
             });
         }

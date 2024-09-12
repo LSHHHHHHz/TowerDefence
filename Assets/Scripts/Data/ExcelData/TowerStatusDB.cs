@@ -15,4 +15,5 @@ public class TowerStatusDB
     public string elementaProperties;
     public int randomNum;
     public string towerTypePath;
+    public int expenseTowerCoin;
 }

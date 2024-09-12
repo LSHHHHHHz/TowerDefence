@@ -5,7 +5,7 @@
         "stageType": ""
     },
     "playerCurrency": {
-        "playerCoin": 0,
+        "playerCoin": 500,
         "playerDia": 1000
     },
     "playerStatus": {

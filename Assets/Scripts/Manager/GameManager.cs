@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public StageManager stageManager;
     public DraggableTower draggableTower;
     public MouseInteraction mouseInteraction;
+    public GameOverManager gameOverManager;
     public Player player;
     private void Awake()
     {

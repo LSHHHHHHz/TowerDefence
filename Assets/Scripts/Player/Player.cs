@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class Player : MonoBehaviour 
@@ -22,6 +23,10 @@ public class Player : MonoBehaviour
     public void SpendCoin(int amount)
     {
         currency.SpendCoin(amount);
+    }
+    public int PlayerHasCoin()
+    {
+        return currency.playerCoin;
     }
     public void GetDia(int amount)
     {

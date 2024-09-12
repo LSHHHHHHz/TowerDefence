@@ -22,23 +22,15 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        playerDeathFadeImage.gameObject.SetActive(false);
+        restartTextRectTransform.anchoredPosition = restartTextOriginPos;
         restartButton.gameObject.SetActive(false);
         restartButton.onClick.AddListener(() =>
         {
+            ResetObj();
             //스테이지 재시작
         });
-    }
-    private void OnEnable()
-    {
-        restartTextRectTransform.anchoredPosition = restartTextOriginPos;
-    }
-    private void OnDisable()
-    {
-        playerDeathFadeImage.enabled = false;
+
         playerDeathFadeImage.gameObject.SetActive(false);
-        restartButton.gameObject.SetActive(false);
-        isRestartText = false;
     }
     public void DeathPlayer()
     {
@@ -73,5 +65,13 @@ public class GameOverManager : MonoBehaviour
         sequence.Append(restartTextRectTransform.DOAnchorPos(restartTextTargetPos, 0.2f));
 
         sequence.AppendCallback(() => restartButton.gameObject.SetActive(true));
+    }
+    void ResetObj()
+    {
+        restartButton.gameObject.SetActive(false);
+        isRestartText = false;
+        restartTextRectTransform.anchoredPosition = restartTextOriginPos;
+        playerDeathFadeImage.gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class PlayerCurrency
 {
-    public int playerCoin = 0;
+    public int playerCoin = 500;
     public int playerDia = 1000;
     public event Action<int> onPlayerCoinChanged;
     public event Action<int> onPlayerDiaChanged;

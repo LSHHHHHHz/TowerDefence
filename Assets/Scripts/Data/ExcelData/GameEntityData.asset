@@ -138,6 +138,7 @@ MonoBehaviour:
     elementaProperties: base
     randomNum: 0
     towerTypePath: IconImage/NormarTowerType
+    expenseTowerCoin: 100
   - dataID: nor11
     name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     hp: 1000
@@ -150,6 +151,7 @@ MonoBehaviour:
     elementaProperties: fire
     randomNum: 0
     towerTypePath: IconImage/FireTowerType
+    expenseTowerCoin: 100
   - dataID: nor12
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     hp: 2000
@@ -162,6 +164,7 @@ MonoBehaviour:
     elementaProperties: fire
     randomNum: 0
     towerTypePath: IconImage/FireTowerType
+    expenseTowerCoin: 500
   - dataID: nor13
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     hp: 3000
@@ -174,6 +177,7 @@ MonoBehaviour:
     elementaProperties: fire
     randomNum: 0
     towerTypePath: IconImage/FireTowerType
+    expenseTowerCoin: 1000
   - dataID: nor21
     name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 1000
@@ -186,6 +190,7 @@ MonoBehaviour:
     elementaProperties: ice
     randomNum: 1
     towerTypePath: IconImage/LightTowerType
+    expenseTowerCoin: 100
   - dataID: nor22
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 2000
@@ -198,6 +203,7 @@ MonoBehaviour:
     elementaProperties: ice
     randomNum: 1
     towerTypePath: IconImage/LightTowerType
+    expenseTowerCoin: 500
   - dataID: nor23
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 3000
@@ -210,6 +216,7 @@ MonoBehaviour:
     elementaProperties: ice
     randomNum: 1
     towerTypePath: IconImage/LightTowerType
+    expenseTowerCoin: 1000
   - dataID: nor31
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 1000
@@ -222,6 +229,7 @@ MonoBehaviour:
     elementaProperties: light
     randomNum: 2
     towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 100
   - dataID: nor32
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 2000
@@ -234,6 +242,7 @@ MonoBehaviour:
     elementaProperties: light
     randomNum: 2
     towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 500
   - dataID: nor33
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 3000
@@ -246,6 +255,7 @@ MonoBehaviour:
     elementaProperties: light
     randomNum: 2
     towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 1000
   monsterStatusEntity:
   - dataID: normon11
     hp: 150
