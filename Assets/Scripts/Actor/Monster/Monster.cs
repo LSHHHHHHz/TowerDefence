@@ -19,6 +19,8 @@ public class Monster : Actor
     int originHP;
     float originSpeed;
     InMonsterCanvas monsterCanvas;
+
+    public float TestSpeed;
     protected override void Awake()
     {
         base.Awake();
@@ -28,10 +30,11 @@ public class Monster : Actor
         originHP = monsterStatusDB.hp;
         originSpeed = monsterStatusDB.moveSpeed;
         fsmController = new FSMController<Monster>(this);
-        monsterCanvas = GetComponent<InMonsterCanvas>();        
+        monsterCanvas = GetComponent<InMonsterCanvas>();
     }
     protected void Update()
     {
+        TestSpeed = monsterStatusDB.moveSpeed;
         fsmController.FSMUpdate();
     }
     private void OnEnable()
@@ -89,8 +92,10 @@ public class Monster : Actor
     }
     public void TakeSlowDebuff(int amount)
     {
-        monsterSlowDebuffList.Add(amount);
-
+        if (!monsterSlowDebuffList.Contains(amount))
+        {
+            monsterSlowDebuffList.Add(amount);
+        }
         if (monsterSlowDebuffList.Count > 0)
         {
             currentSlowDebuff = monsterSlowDebuffList[0];
@@ -106,32 +111,32 @@ public class Monster : Actor
         {
             currentSlowDebuff = 1;
         }
-        monsterStatus.SetMoveSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
+        monsterStatus.SetMoveSpeed((float)GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
     }
     public void TakeOutSlowDebuff(int amount)
     {
         if (monsterSlowDebuffList.Contains(amount))
         {
             monsterSlowDebuffList.Remove(amount);
+        }
+        if (monsterSlowDebuffList.Count > 0)
+        {
+            currentSlowDebuff = monsterSlowDebuffList[0];
 
-            if (monsterSlowDebuffList.Count > 0)
+            for (int i = 1; i < monsterSlowDebuffList.Count; i++)
             {
-                currentSlowDebuff = monsterSlowDebuffList[0];
-
-                for (int i = 1; i < monsterSlowDebuffList.Count; i++)
+                if (monsterSlowDebuffList[i] > currentSlowDebuff)
                 {
-                    if (monsterSlowDebuffList[i] > currentSlowDebuff)
-                    {
-                        currentSlowDebuff = monsterSlowDebuffList[i];
-                    }
+                    currentSlowDebuff = monsterSlowDebuffList[i];
                 }
             }
-            else
-            {
-                currentSlowDebuff = 1;
-            }
-            SetMonsterSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
         }
+        else
+        {
+            currentSlowDebuff = 1;
+        }
+
+        SetMonsterSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
     }
     public void SetMonsterSpeed(float amount)
     {
@@ -142,7 +147,7 @@ public class Monster : Actor
         EventManager.instance.KilledMonster();
         monsterCanvas.OnEnableCoin();
         onMonsterDeath?.Invoke(this);
-        GiveCoinToPlayer(); 
+        GiveCoinToPlayer();
     }
     private void GiveCoinToPlayer()
     {

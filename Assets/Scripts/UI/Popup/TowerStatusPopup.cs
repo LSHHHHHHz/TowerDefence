@@ -45,7 +45,7 @@ public class TowerStatusPopup : MonoBehaviour
         }
         towerTpyeNameText.text = data.status.name;                     
         towerLV.text = "LV : " + data.status.level.ToString(); 
-        towerCurrentAttackDamage.text = "Damage: " + data.status.attackDamage.ToString(); 
+        towerCurrentAttackDamage.text = "Damage: " + data.status.combatEffectAmount.ToString(); 
         towerCurrentAttackSpeed.text = "Speed: " + data.status.attackSpeed.ToString();
     }
     IEnumerator ActiveTowerPopup()

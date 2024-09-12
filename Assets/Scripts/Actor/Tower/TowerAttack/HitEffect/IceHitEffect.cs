@@ -16,7 +16,6 @@ public class IceHitEffect : BaseHitEffect
     float activeObjTime = 2.5f;
     Coroutine activeObjCoroutine;
 
-    event Action<int> clearData;
     protected override void Awake()
     {
         base.Awake();
@@ -35,8 +34,6 @@ public class IceHitEffect : BaseHitEffect
         {
             StopCoroutine(activeObjCoroutine);
         }
-        clearData?.Invoke(combatEffectAmount);
-        clearData = null;
     }
     private void Update()
     {
@@ -62,22 +59,38 @@ public class IceHitEffect : BaseHitEffect
     }
 
     // 디버프 지속시간 
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
         {
             SendSlowDebuffEvent slow = new SendSlowDebuffEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
-            actor.ReceiveEvent(slow); //수정필요
+            actor.ReceiveEvent(slow);
 
-            if(actor is Monster monster)
-            if (monster != null)
+            if (actor is Monster monster)
+            { 
+                if (monster != null)
+                {
+                    monster.ReceiveEvent(slow);
+                }
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Monster"))
+        {
+            SendSlowDebuffEvent slow = new SendSlowDebuffEvent(combatEffectAmount);
+            IActor actor = other.GetComponent<IActor>();
+            actor.ReceiveEvent(slow);
+
+            if (actor is Monster monster)
             {
-                    monster.ReceiveEvent(slow); 
-                
-                clearData -= monster.TakeOutSlowDebuff;
-                clearData += monster.TakeOutSlowDebuff;
+                if (monster != null)
+                {
+                    monster.TakeOutSlowDebuff(slow.slowDebuffAmount);
+                }
             }
         }
     }

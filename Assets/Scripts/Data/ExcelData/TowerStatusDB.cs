@@ -6,7 +6,7 @@ public class TowerStatusDB
     public string dataID;
     public string name;
     public int hp;
-    public int attackDamage;
+    public int combatEffectAmount; 
     public int attackSpeed;
     public int attackRange;
     public int rotationSpeed;
