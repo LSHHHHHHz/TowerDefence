@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +5,16 @@ using UnityEngine;
 public class IceHitEffect : BaseHitEffect
 {
     CapsuleCollider capsuleCollider;
+    List<Monster> monstersInRange = new List<Monster>(); // 범위 내 몬스터들 추적
 
     float currentRadius = 1f;
     float startRadius = 1f;
-    float maxRadius = 20;
+    float maxRadius = 20f;
     float duration = 1f;
 
     float elapsedTime = 0f;
     float activeObjTime = 2.5f;
     Coroutine activeObjCoroutine;
-
     protected override void Awake()
     {
         base.Awake();
@@ -34,6 +33,14 @@ public class IceHitEffect : BaseHitEffect
         {
             StopCoroutine(activeObjCoroutine);
         }
+        foreach (Monster monster in monstersInRange)
+        {
+            if (monster != null)
+            {
+                monster.TakeOutSlowDebuff(combatEffectAmount);
+            }
+        }
+        monstersInRange.Clear();
     }
     private void Update()
     {
@@ -55,11 +62,9 @@ public class IceHitEffect : BaseHitEffect
         {
             elapsedTime = duration;
         }
+
         capsuleCollider.radius = currentRadius;
     }
-
-    // 디버프 지속시간 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
@@ -69,11 +74,9 @@ public class IceHitEffect : BaseHitEffect
             actor.ReceiveEvent(slow);
 
             if (actor is Monster monster)
-            { 
-                if (monster != null)
-                {
-                    monster.ReceiveEvent(slow);
-                }
+            {
+                monstersInRange.Add(monster); 
+                monster.ReceiveEvent(slow);
             }
         }
     }
@@ -81,15 +84,13 @@ public class IceHitEffect : BaseHitEffect
     {
         if (other.CompareTag("Monster"))
         {
-            SendSlowDebuffEvent slow = new SendSlowDebuffEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
-            actor.ReceiveEvent(slow);
-
             if (actor is Monster monster)
             {
                 if (monster != null)
                 {
-                    monster.TakeOutSlowDebuff(slow.slowDebuffAmount);
+                    monster.TakeOutSlowDebuff(combatEffectAmount);
+                    monstersInRange.Remove(monster); 
                 }
             }
         }

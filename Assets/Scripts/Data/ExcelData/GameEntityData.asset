@@ -129,7 +129,7 @@ MonoBehaviour:
   - dataID: nor01
     name: "\uAE30\uBCF8\uD0C0\uC6CC"
     hp: 500
-    attackDamage: 10
+    combatEffectAmount: 10
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -142,7 +142,7 @@ MonoBehaviour:
   - dataID: nor11
     name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     hp: 1000
-    attackDamage: 10
+    combatEffectAmount: 10
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -155,7 +155,7 @@ MonoBehaviour:
   - dataID: nor12
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     hp: 2000
-    attackDamage: 20
+    combatEffectAmount: 20
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -168,7 +168,7 @@ MonoBehaviour:
   - dataID: nor13
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     hp: 3000
-    attackDamage: 30
+    combatEffectAmount: 30
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -181,7 +181,7 @@ MonoBehaviour:
   - dataID: nor21
     name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 1000
-    attackDamage: 10
+    combatEffectAmount: 10
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -194,7 +194,7 @@ MonoBehaviour:
   - dataID: nor22
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 2000
-    attackDamage: 20
+    combatEffectAmount: 20
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -207,7 +207,7 @@ MonoBehaviour:
   - dataID: nor23
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 3000
-    attackDamage: 30
+    combatEffectAmount: 30
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -220,7 +220,7 @@ MonoBehaviour:
   - dataID: nor31
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 1000
-    attackDamage: 10
+    combatEffectAmount: 10
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -233,7 +233,7 @@ MonoBehaviour:
   - dataID: nor32
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 2000
-    attackDamage: 20
+    combatEffectAmount: 20
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
@@ -246,7 +246,7 @@ MonoBehaviour:
   - dataID: nor33
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 3000
-    attackDamage: 30
+    combatEffectAmount: 30
     attackSpeed: 5
     attackRange: 5
     rotationSpeed: 5
