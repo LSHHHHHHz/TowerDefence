@@ -18,6 +18,8 @@ public class EventManager
         }
     }
     public event Action<string, string, int> onSpawnMonster;
+    public event Action<bool> onPossibleStartStage;
+
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
 
@@ -42,5 +44,9 @@ public class EventManager
     public void KilledMonster()
     {
         onKilledMonster?.Invoke();
+    }
+    public void PossibleStartStage(bool possible)
+    {
+        onPossibleStartStage?.Invoke(possible);
     }
 }

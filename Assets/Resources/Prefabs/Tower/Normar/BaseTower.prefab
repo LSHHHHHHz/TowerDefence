@@ -409,18 +409,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  actorId: nor11
+  actorId: nor01
   actoryType: 2
   towerData:
     towerID: 
     status:
       dataID: 
+      name: 
       hp: 0
       attackDamage: 0
       attackSpeed: 0
       attackRange: 0
       rotationSpeed: 0
       type: 
+      level: 0
+      elementaProperties: 
+      randomNum: 0
+      towerTypePath: 
+      expenseTowerCoin: 0
     type: 0
   triggerStartAttack: 0
 --- !u!114 &9026880273250647982
@@ -439,6 +445,7 @@ MonoBehaviour:
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
   findActor: {fileID: 0}
+  isDropTower: 0
   detectActor: {fileID: 0}
 --- !u!114 &5228084698588272376
 MonoBehaviour:

@@ -11,6 +11,14 @@ public class Player : MonoBehaviour
     {
         InitializedPlayer();
     }
+    private void OnEnable()
+    {
+        status.onPlayerDie += GameManager.instance.gameOverManager.DeathPlayer;
+    }
+    private void OnDisable()
+    {
+        status.onPlayerDie -= GameManager.instance.gameOverManager.DeathPlayer;
+    }
     private void InitializedPlayer()
     {
         currency = GameData.instance.playerCurrency;

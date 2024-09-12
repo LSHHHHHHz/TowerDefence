@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
     float stageClearAfterElapsedTime = 5f;
     bool isClearStage = false;
     bool startStage =false;
+    bool possibleStartStage = true;
     int clearMonsterCount = 0;
     public int currentStageMonsterCount { get; private set; }
     string currentActorType = "NormarMonster";
@@ -36,7 +37,7 @@ public class StageManager : MonoBehaviour
     }
     private void Update()
     {
-        if (startStage)
+        if (startStage && possibleStartStage)
         {
             CheckStageClear();
         }
@@ -85,6 +86,13 @@ public class StageManager : MonoBehaviour
         StartStage();
         isClearStage = false;
     }
+    public void ReStartStage()
+    {
+        Debug.Log("스테이지 재시작!");
+        EventManager.instance.EndStage();
+        StartStage();
+        isClearStage = false;
+    }
     public void UpdateCurrentMonsterCount()
     {
         currentStageMonsterCount--;
@@ -102,5 +110,9 @@ public class StageManager : MonoBehaviour
                 currentStage++;
                 break;
         }
+    }
+    public void PossibleStartStage(bool possible)
+    {
+        possibleStartStage = possible;
     }
 }

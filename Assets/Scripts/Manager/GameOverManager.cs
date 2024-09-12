@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
+    StageManager stageManager;
     [SerializeField] Image playerDeathFadeImage;
     float playerDeathFadeImageElapsedTime = 0f;
     float playerDeathFadeImageDuration = 5f;
@@ -19,21 +20,25 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] Button restartButton;
 
     bool isRestartText = false;
-
+    private void Awake()
+    {
+        stageManager = GameManager.instance.stageManager;
+    }
     private void Start()
     {
         restartTextRectTransform.anchoredPosition = restartTextOriginPos;
         restartButton.gameObject.SetActive(false);
         restartButton.onClick.AddListener(() =>
         {
-            ResetObj();
-            //스테이지 재시작
+            ResetGameoverContents();
+            stageManager.ReStartStage();
         });
 
         playerDeathFadeImage.gameObject.SetActive(false);
     }
     public void DeathPlayer()
     {
+        stageManager.PossibleStartStage(false);
         playerDeathFadeImage.gameObject.SetActive(true);
         StartCoroutine(StartDeathPlayer());
     }
@@ -66,8 +71,11 @@ public class GameOverManager : MonoBehaviour
 
         sequence.AppendCallback(() => restartButton.gameObject.SetActive(true));
     }
-    void ResetObj()
+    void ResetGameoverContents()
     {
+        stageManager.PossibleStartStage(true);
+        GameManager.instance.player.GetHP(30);
+        //ActorManager<Monster>.instnace.ClearAllActor(); 이거 안됨
         restartButton.gameObject.SetActive(false);
         isRestartText = false;
         restartTextRectTransform.anchoredPosition = restartTextOriginPos;

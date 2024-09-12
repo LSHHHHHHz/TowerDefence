@@ -27,6 +27,16 @@ public class ActorManager<T> where T : Actor
     {
         actors.Remove(actor);
     }
+    public void ClearAllActor()
+    {
+        foreach(var actor in actors)
+        {
+            if(actor.gameObject.activeSelf)
+            {
+                actor.gameObject.SetActive(false);
+            }
+        }
+    }
     public List<T> GetActors()
     {
         return new List<T>(actors);

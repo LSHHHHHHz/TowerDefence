@@ -35,7 +35,8 @@ public class PlayerCurrency
 public class PlayerStatus
 {
     public int playerHP = 30;
-    public Action<int> onPlayerHPChanged;
+    public event Action<int> onPlayerHPChanged;
+    public event Action onPlayerDie;
     public void GetHP(int amount)
     {
         playerHP += amount;
@@ -43,7 +44,14 @@ public class PlayerStatus
     }
     public void ReduceHP(int amount)
     {
-        playerHP -= amount;
-        onPlayerHPChanged?.Invoke(playerHP);
+        if (this.playerHP > 0)
+        {
+            playerHP -= amount;
+            onPlayerHPChanged?.Invoke(playerHP);
+        }
+        else
+        {
+            onPlayerDie?.Invoke();
+        }
     }
 }
