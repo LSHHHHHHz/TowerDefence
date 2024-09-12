@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightHitEffect : BaseHitEffect
 {
-    CapsuleCollider capsuleCollider;
+    public CapsuleCollider capsuleCollider;
     float activeColliderTime = 1f;
     float activeObjTime = 1.2f;
     private Coroutine colliderCoroutine;
@@ -31,8 +31,6 @@ public class LightHitEffect : BaseHitEffect
             StopCoroutine(objCoroutine);
         }
     }
-
-
     IEnumerator OnEnableColliderTime(float activeColliderTime)
     {
         yield return new WaitForSeconds(activeColliderTime);
@@ -49,11 +47,11 @@ public class LightHitEffect : BaseHitEffect
     {
         if (other.CompareTag("Monster"))
         {
-            // 빛 효과에 따른 이벤트 처리
             SendDamageEvent damage = new SendDamageEvent(combatEffectAmount);
             IActor actor = other.GetComponent<IActor>();
             if (actor != null)
             {
+                Debug.LogError("몇번호출되냐이거");
                 actor.ReceiveEvent(damage);
             }
         }

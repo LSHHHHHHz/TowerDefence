@@ -18,7 +18,6 @@ public class MonsterInEndGate : MonoBehaviour
             if (monster != null)
             {
                 Debug.LogError("MonsterEndGate");
-                ActorManager<Monster>.instnace.UnregisterActor(monster);
                 EventManager.instance.KilledMonster();
                 player.ReduceHp(1);
                 monster.gameObject.SetActive(false);

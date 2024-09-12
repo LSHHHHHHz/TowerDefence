@@ -45,7 +45,7 @@ public class ShopPopup : MonoBehaviour
             Button slotButton = slotUI.GetComponent<Button>();
             slotButton.onClick.AddListener(() =>
             {
-                if(player.PlayerHasCoin() - captureData.status.expenseTowerCoin > 0)
+                if(player.PlayerHasCoin() - captureData.status.expenseTowerCoin >= 0)
                 {
                     player.SpendCoin(captureData.status.expenseTowerCoin);
                     onBuingTower?.Invoke(captureData);

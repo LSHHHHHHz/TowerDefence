@@ -24522,7 +24522,6 @@ GameObject:
   - component: {fileID: 81196478394754118}
   - component: {fileID: 3405842585460437434}
   - component: {fileID: 6474121559618975080}
-  - component: {fileID: 7053834569733448972}
   m_Layer: 0
   m_Name: Tower_LightEffectSkill
   m_TagString: Untagged
@@ -29359,6 +29358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555c76e8ef42674f9e3d61a3d537a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  capsuleCollider: {fileID: 0}
 --- !u!136 &6474121559618975080
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29382,15 +29382,3 @@ CapsuleCollider:
   m_Height: 24.550913
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7053834569733448972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8407850317558832785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7555c76e8ef42674f9e3d61a3d537a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

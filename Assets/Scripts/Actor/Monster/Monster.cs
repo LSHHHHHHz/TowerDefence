@@ -70,6 +70,8 @@ public class Monster : Actor
         if (ievent is SendDamageEvent damageEvent)
         {
             TakeDamage(damageEvent.damage);
+
+            Debug.LogError("데미지 들어옴");
         }
         if (ievent is SendSlowDebuffEvent slowDebuffEvent)
         {
