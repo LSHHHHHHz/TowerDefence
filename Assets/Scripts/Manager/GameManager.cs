@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public DraggableTower draggableTower;
     public MouseInteraction mouseInteraction;
     public GameOverManager gameOverManager;
+    public AudioManager audioManager;
     public Player player;
     private void Awake()
     {
@@ -26,5 +27,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         gameData = GameData.instance;
+    }
+    private void Start()
+    {
+        audioManager.PlayBgm(true);
     }
 }

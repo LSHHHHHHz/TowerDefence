@@ -6,6 +6,7 @@ using UnityEngine.Playables;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private GameObject startUI;
     StageDB currentStageDB;
     StageDB currentNormarMonsterDB;
     StageDB currentBossMonsterDB;
@@ -54,6 +55,10 @@ public class StageManager : MonoBehaviour
     }
     public void StartStage()
     {
+        if (startUI.activeSelf)
+        {
+            startUI.SetActive(false);
+        }
         startStage = true;
         currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
         currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");

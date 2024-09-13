@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameOverManager : MonoBehaviour
 {
     StageManager stageManager;
+    Player player;
     [SerializeField] Image playerDeathFadeImage;
     float playerDeathFadeImageElapsedTime = 0f;
     float playerDeathFadeImageDuration = 5f;
@@ -18,11 +19,12 @@ public class GameOverManager : MonoBehaviour
     Vector2 restartTextTargetPos = new Vector2(0, 80);
 
     [SerializeField] Button restartButton;
-
+    int requiredDiaForRestart = 1000;
     bool isRestartText = false;
     private void Awake()
     {
         stageManager = GameManager.instance.stageManager;
+        player = GameManager.instance.player;
     }
     private void Start()
     {
@@ -30,8 +32,16 @@ public class GameOverManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         restartButton.onClick.AddListener(() =>
         {
-            ResetGameoverContents();
-            stageManager.ReStartStage();
+            if (player.PlayerHasdDia() - requiredDiaForRestart >= 0)
+            {
+                player.SpendDia(requiredDiaForRestart);
+                ResetGameoverContents();
+                stageManager.ReStartStage();
+            }
+            else
+            {
+                Debug.Log("다이아 없어요 결제해주세요");
+            }
         });
 
         playerDeathFadeImage.gameObject.SetActive(false);

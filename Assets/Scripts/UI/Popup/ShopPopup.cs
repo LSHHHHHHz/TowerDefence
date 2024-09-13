@@ -20,6 +20,10 @@ public class ShopPopup : MonoBehaviour
         draggableTower = GameManager.instance.draggableTower;
         InitializeShopUI();
     }
+    private void Start()
+    {
+        ClosePopup();
+    }
     private void OnEnable()
     {
         onBuingTower += draggableTower.GetTower;
@@ -60,7 +64,7 @@ public class ShopPopup : MonoBehaviour
             });
         }
     }
-    void ClosePopup()
+   public void ClosePopup()
     {
         gameObject.SetActive(false);
     }

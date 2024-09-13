@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
     {
         currency.SpendDia(amount);
     }
+    public int PlayerHasdDia()
+    {
+        return currency.playerDia;
+    }
     public void GetHP(int amount)
     {
         status.GetHP(amount);
