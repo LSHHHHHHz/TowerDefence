@@ -41,8 +41,6 @@ public class MonsterMove : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) < 0.5f)
         {
             warePointIndex++;
-            Debug.Log("warePointIndex" + warePointIndex);
-            Debug.Log("monsterMovePos.Count" + monsterMovePos.Count);
             if (warePointIndex < monsterMovePos.Count)
             {
                 targetPos = monsterMovePos[warePointIndex];
@@ -53,10 +51,12 @@ public class MonsterMove : MonoBehaviour
                 return;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterStatus.moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterAttributes.moveSpeed);
+        Debug.LogError("Time.deltaTime * monster.monsterAttributes.moveSpeed : " + Time.deltaTime * monster.monsterAttributes.moveSpeed);
+        Debug.LogError("monster.monsterAttributes.moveSpeed : " +  monster.monsterAttributes.moveSpeed);
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * monster.monsterStatus.rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * monster.monsterAttributes.rotationSpeed);
     }
 }

@@ -9,80 +9,59 @@ using static UnityEngine.UI.Image;
 
 public class Monster : Actor
 {
-    public event Action<Monster> onMonsterDeath;
+    public event System.Action<Monster> onMonsterDeath;
     public FSMController<Monster> fsmController { get; private set; }
-    public MonsterStatus monsterStatus { get; private set; }
+    public MonsterAttributes monsterAttributes { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
     public CapsuleCollider monsterCollider { get; set; }
-    List<int> monsterSlowDebuffList = new List<int>();
-    int currentSlowDebuff = 1;
-    int originHP;
-    float originSpeed;
+    public MonsterDebuff monsterDebuff { get; private set; }
     InMonsterCanvas monsterCanvas;
-
-    public float TestSpeed;
     protected override void Awake()
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
         monsterCollider = GetComponent<CapsuleCollider>();
-        Initialize();
-        originHP = monsterStatusDB.hp;
-        originSpeed = monsterStatusDB.moveSpeed;
+        monsterAttributes = new MonsterAttributes(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
+        monsterDebuff = new MonsterDebuff();
         fsmController = new FSMController<Monster>(this);
         monsterCanvas = GetComponent<InMonsterCanvas>();
     }
     protected void Update()
     {
-        TestSpeed = monsterStatusDB.moveSpeed;
         fsmController.FSMUpdate();
     }
     private void OnEnable()
     {
         ActorManager<Monster>.instnace.RegisterActor(this);
-        monsterStatus.currentHP = originHP;
+        monsterAttributes.currentHP = monsterAttributes.maxHP;
         monsterCollider.enabled = true;
-        SetMonsterSpeed(originSpeed);
+        monsterAttributes.ResetMoveSpeed();
         fsmController.ChangeState(new WalkState());
     }
     private void OnDisable()
     {
         ActorManager<Monster>.instnace.UnregisterActor(this);
-        monsterSlowDebuffList.Clear(); //디버프가 있는 상태에서 제거되면 계속 남아있어서 Clear함
-        currentSlowDebuff = 1;
-    }
-    public void Initialize()
-    {
-        actoryType = GameManager.instance.gameEntityData.GetActorType(monsterStatusDB.type);
-        monsterStatus = new MonsterStatus(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
-        ApplyMonsterData();
-        monsterStatus.currentHP = 40;
-    }
-    private void ApplyMonsterData()
-    {
-        // 몬스터 상태 데이터 적용
-        if (monsterStatus != null)
-        {
-        }
+        monsterDebuff.ClearDebuffs();
     }
     public override void ReceiveEvent(IEvent ievent)
     {
         if (ievent is SendDamageEvent damageEvent)
         {
             TakeDamage(damageEvent.damage);
-
-            Debug.LogError("데미지 들어옴");
         }
+
         if (ievent is SendSlowDebuffEvent slowDebuffEvent)
         {
-            TakeSlowDebuff(slowDebuffEvent.slowDebuffAmount);
+            monsterDebuff.AddSlowDebuff(slowDebuffEvent.slowDebuffAmount);
+            SetMonsterSpeed(monsterAttributes.originSpeed / monsterDebuff.currentSlowDebuff);
         }
     }
     public override void TakeDamage(int damage)
     {
-        monsterStatus.TakeDamage(damage);
-        monsterCanvas.updateHpBar?.Invoke(monsterStatus.maxHP, monsterStatus.currentHP);
-        if (monsterStatus.currentHP <= 0)
+        monsterAttributes.TakeDamage(damage);
+        monsterCanvas.updateHpBar?.Invoke(monsterAttributes.maxHP, monsterAttributes.currentHP);
+
+        if (monsterAttributes.currentHP <= 0)
         {
             DieMonster();
             fsmController.ChangeState(new DieState());
@@ -92,57 +71,15 @@ public class Monster : Actor
             fsmController.ChangeState(new GetHitState());
         }
     }
-    public void TakeSlowDebuff(int amount)
-    {
-        if (!monsterSlowDebuffList.Contains(amount))
-        {
-            monsterSlowDebuffList.Add(amount);
-        }
-        if (monsterSlowDebuffList.Count > 0)
-        {
-            currentSlowDebuff = monsterSlowDebuffList[0];
-            for (int i = 1; i < monsterSlowDebuffList.Count; i++)
-            {
-                if (monsterSlowDebuffList[i] > currentSlowDebuff)
-                {
-                    currentSlowDebuff = monsterSlowDebuffList[i];
-                }
-            }
-        }
-        else
-        {
-            currentSlowDebuff = 1;
-        }
-        monsterStatus.SetMoveSpeed((float)GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
-    }
     public void TakeOutSlowDebuff(int amount)
     {
-        if (monsterSlowDebuffList.Contains(amount))
-        {
-            monsterSlowDebuffList.Remove(amount);
-        }
-        if (monsterSlowDebuffList.Count > 0)
-        {
-            currentSlowDebuff = monsterSlowDebuffList[0];
-
-            for (int i = 1; i < monsterSlowDebuffList.Count; i++)
-            {
-                if (monsterSlowDebuffList[i] > currentSlowDebuff)
-                {
-                    currentSlowDebuff = monsterSlowDebuffList[i];
-                }
-            }
-        }
-        else
-        {
-            currentSlowDebuff = 1;
-        }
-
-        SetMonsterSpeed(GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId).moveSpeed / currentSlowDebuff);
+        monsterDebuff.RemoveSlowDebuff(amount);
+        SetMonsterSpeed(monsterAttributes.originSpeed / monsterDebuff.currentSlowDebuff);
     }
+
     public void SetMonsterSpeed(float amount)
     {
-        monsterStatus.SetMoveSpeed(amount);
+        monsterAttributes.SetMoveSpeed(Mathf.Max(amount, 0.1f));
     }
     private void DieMonster()
     {

@@ -20771,7 +20771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b780ff329725b4caf50a8d62543c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - {fileID: 1088141474560473952, guid: e5f4fe62553b0e44ebe93baac489ee89, type: 3}
+  - {fileID: 2074832612367734740, guid: f17c7796325e4f44096800875016e5fb, type: 3}
+  - {fileID: 3444704290449373142, guid: 3586d0b1e5ec95a42baf1659bfddc677, type: 3}
+  - {fileID: 1088141474560473952, guid: 674f42d7bf4f64741ae870fe62b4128a, type: 3}
+  - {fileID: 2074832612367734740, guid: 517249637435e244b83fcc778f33b2cd, type: 3}
+  - {fileID: 3444704290449373142, guid: 6bd83ffdb51e97e4f879b8add7daa0b7, type: 3}
 --- !u!114 &1676606087
 MonoBehaviour:
   m_ObjectHideFlags: 0

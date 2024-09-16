@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorStatus
+public class ActorAttributes
 {
     public int currentHP { get; set;}
     public int maxHP { get; set;}   
-    public int rotationSpeed { get; set; } // original speed 
+    public int rotationSpeed { get; set; }
     public void TakeDamage(int amount)
     {
         this.currentHP -= amount;
@@ -16,27 +16,34 @@ public class ActorStatus
         this.rotationSpeed += amount;
     }    
 }
-public class MonsterStatus : ActorStatus
+public class MonsterAttributes : ActorAttributes
 {
-    public float moveSpeed { get; set; }
-    public MonsterStatus(int hp, int rotationSpeed, float moveSpeed)
+    public float moveSpeed { get; private set; }
+    public float originSpeed { get; private set; }
+
+    public MonsterAttributes(int hp, int rotationSpeed, float moveSpeed)
     {
         currentHP = hp;
         maxHP = hp;
         this.rotationSpeed = rotationSpeed;
         this.moveSpeed = moveSpeed;
+        this.originSpeed = moveSpeed; 
     }
     public void SetMoveSpeed(float amount)
     {
         moveSpeed = amount;
     }
+    public void ResetMoveSpeed()
+    {
+        moveSpeed = originSpeed;
+    }
 }
-public class TowerStatus :ActorStatus
+public class TowerAttributes :ActorAttributes
 {
     public int attackStatusAmount { get; set; }
     public int attackRange { get; set; }
     public int attackSpeed { get; set; }
-    public TowerStatus(int hp, int rotationSpeed, int amount, int attackRagne, int attackSpeed)
+    public TowerAttributes(int hp, int rotationSpeed, int amount, int attackRagne, int attackSpeed)
     {
         this.currentHP = hp;
         this.maxHP = hp;

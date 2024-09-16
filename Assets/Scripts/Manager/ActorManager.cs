@@ -24,14 +24,12 @@ public class ActorManager<T> where T : Actor
     public void RegisterActor(T actor)
     {
         registerCount++;
-        Debug.LogError("registerCount" + registerCount);
 
         actors.Add(actor);
     }
     public void UnregisterActor(T actor)
     {
         unregistercount++;
-        Debug.LogError("unregistercount" + unregistercount);
 
         actors.Remove(actor);
     }
