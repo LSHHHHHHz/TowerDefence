@@ -7,60 +7,55 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
     public List<GameObject> prefabs;
-    public List<List<GameObject>> pools;
-    string preGameObjectPrefabPath;
-    GameObject preGameObject;
+    public Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, GameObject> prefabCache = new Dictionary<string, GameObject>();
+
     private void Awake()
     {
-        instance = this; 
-        pools = new List<List<GameObject>>();
-        for (int i = 0; i < prefabs.Count; i++)
+        instance = this;
+
+        foreach (var prefab in prefabs)
         {
-            pools.Add(new List<GameObject>());
+            string prefabPath = prefab.name;
+            pools[prefabPath] = new List<GameObject>();
+            prefabCache[prefabPath] = prefab;
         }
     }
     public GameObject GetObjectFromPool(string gameObjectPath)
     {
-        if (preGameObjectPrefabPath != gameObjectPath)
+        if (!prefabCache.ContainsKey(gameObjectPath))
         {
-            preGameObjectPrefabPath = gameObjectPath;
-            preGameObject = Resources.Load<GameObject>(gameObjectPath);
-        }
-        int index = -1;
-        for (int i = 0; i < prefabs.Count; i++)
-        {
-            if (prefabs[i] == preGameObject)
+            GameObject loadedPrefab = Resources.Load<GameObject>(gameObjectPath);
+            if (loadedPrefab != null)
             {
-                index = i;
-                break;
+                prefabCache[gameObjectPath] = loadedPrefab;
+                pools[gameObjectPath] = new List<GameObject>();
+            }
+            else
+            {
+                Debug.LogError($"Failed to load prefab at path: {gameObjectPath}");
+                return null;
             }
         }
-        if (index == -1)
-        {
-            prefabs.Add(preGameObject);
-            pools.Add(new List<GameObject>());
-            index = prefabs.Count - 1;
-        }
-        if(preGameObject == null)
-        {
-            Debug.Log("풀 프리펩 없음");
-            return null;
-        }
-        GameObject select = null;
-        foreach (var obj in pools[index])
+
+        GameObject selectedObject = null;
+        List<GameObject> pool = pools[gameObjectPath];
+
+        foreach (var obj in pool)
         {
             if (!obj.activeSelf)
             {
-                select = obj;
-                select.SetActive(true);
-                return select;
+                selectedObject = obj;
+                selectedObject.SetActive(true);
+                return selectedObject;
             }
         }
-        if (select == null)
+        if (selectedObject == null)
         {
-            select = Instantiate(prefabs[index], transform);
-            pools[index].Add(select);
+            selectedObject = Instantiate(prefabCache[gameObjectPath], transform);
+            pool.Add(selectedObject);
         }
-        return select;
+
+        return selectedObject;
     }
 }

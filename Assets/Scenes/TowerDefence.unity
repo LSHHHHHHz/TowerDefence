@@ -4786,7 +4786,7 @@ GameObject:
   - component: {fileID: 513810438}
   - component: {fileID: 513810439}
   m_Layer: 5
-  m_Name: PlayerStatusPanel
+  m_Name: PlayerInfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

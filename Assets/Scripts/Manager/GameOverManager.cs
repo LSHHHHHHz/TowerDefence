@@ -32,7 +32,7 @@ public class GameOverManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         restartButton.onClick.AddListener(() =>
         {
-            if (player.PlayerHasdDia() - requiredDiaForRestart >= 0)
+            if (player.GetPlayerHasdDia() - requiredDiaForRestart >= 0)
             {
                 player.SpendDia(requiredDiaForRestart);
                 ResetGameoverContents();

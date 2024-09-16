@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         currency.SpendCoin(amount);
     }
-    public int PlayerHasCoin()
+    public int GetPlayerHasCoin()
     {
         return currency.playerCoin;
     }
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     {
         currency.SpendDia(amount);
     }
-    public int PlayerHasdDia()
+    public int GetPlayerHasdDia()
     {
         return currency.playerDia;
     }
