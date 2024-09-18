@@ -9,7 +9,7 @@ using static UnityEngine.UI.Image;
 
 public class Monster : Actor
 {
-    public event System.Action<Monster> onMonsterDeath;
+    public event Action<Monster> onMonsterDeath;
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterAttributes monsterAttributes { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }

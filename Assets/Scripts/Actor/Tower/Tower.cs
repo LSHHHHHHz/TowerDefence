@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Tower : Actor
 {
-    public TowerAttributes towerStatus { get; private set; }
     protected TowerStatusDB towerStatusDB;
-    protected List<Monster> detectedMonsters;
+    public TowerAttributes towerStatus { get; private set; }
     public TowerAttackSensor towerAttackSensor { get; set; }
     public FSMController<Tower> fsmController { get; private set; }
     public ActorDetector<Monster> detectActor { get; private set; }
@@ -15,9 +14,10 @@ public class Tower : Actor
     protected override void Awake()
     {
         base.Awake();
-        detectActor = GetComponent<ActorDetector<Monster>>();
         towerStatusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(actorId);
         Initialize();
+        detectActor = GetComponent<ActorDetector<Monster>>();
+        detectActor.detectionRange = towerStatus.attackRange;
         towerAttackSensor = GetComponent<TowerAttackSensor>();
         fsmController = new FSMController<Tower>(this);
         fsmController.ChangeState(new IdleState());

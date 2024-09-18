@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ActorManager<T> where T : Actor
 {
-    int registerCount = 0;
-    int unregistercount = 0;
     private static ActorManager<T> _instnace;
     public static ActorManager<T> instnace
     {
@@ -23,14 +21,10 @@ public class ActorManager<T> where T : Actor
 
     public void RegisterActor(T actor)
     {
-        registerCount++;
-
         actors.Add(actor);
     }
     public void UnregisterActor(T actor)
     {
-        unregistercount++;
-
         actors.Remove(actor);
     }
     public void ClearAllActor()

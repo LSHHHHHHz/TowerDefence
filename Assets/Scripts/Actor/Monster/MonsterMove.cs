@@ -52,8 +52,6 @@ public class MonsterMove : MonoBehaviour
             }
         }
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * monster.monsterAttributes.moveSpeed);
-        Debug.LogError("Time.deltaTime * monster.monsterAttributes.moveSpeed : " + Time.deltaTime * monster.monsterAttributes.moveSpeed);
-        Debug.LogError("monster.monsterAttributes.moveSpeed : " +  monster.monsterAttributes.moveSpeed);
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0;
         targetRot = Quaternion.LookRotation(dir);
