@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CountDownPopup : MonoBehaviour
 {
     [SerializeField] Text countDownText;
-    int countdownDuration = 3;
+    int countdownDuration = 10;
     public event Action onPossibleNextStage;
     private void Start()
     {

@@ -25,6 +25,8 @@ public class EventManager
 
     public event Action onDropTower;
     public event Action onBuyShopTower;
+
+    public event Action onClickUpgradeButton;
     public void StartStage(string prefabPath, string type, int count)
     {
         onSpawnMonster?.Invoke(prefabPath, type, count);
@@ -45,8 +47,8 @@ public class EventManager
     {
         onKilledMonster?.Invoke();
     }
-    public void PossibleStartStage(bool possible)
+    public void ClickUpgradeButton()
     {
-        onPossibleStartStage?.Invoke(possible);
+        onClickUpgradeButton?.Invoke();
     }
 }

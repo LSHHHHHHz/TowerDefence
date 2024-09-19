@@ -8,9 +8,11 @@ public class MouseInteraction : MonoBehaviour
 {
     public static MouseInteraction instance;
 
-    public GameObject towerStatusPopupPrefab;
     public RectTransform towerStatusPopupTransform;
+    public GameObject towerStatusPopupPrefab;
     TowerStatusPopup towerStatusPopup;
+    public GameObject upgradeFailPopupPrefab;
+    UpgradeFailPopup upgradeFailPopup;
 
     GameObject dragObj;
     public TowerGround detectedTowerGround;
@@ -26,8 +28,10 @@ public class MouseInteraction : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        towerStatusPopup = Instantiate(towerStatusPopupPrefab, towerStatusPopupTransform).GetComponent<TowerStatusPopup>();
+        towerStatusPopup = Instantiate(towerStatusPopupPrefab, towerStatusPopupTransform).GetComponent<TowerStatusPopup>();        
         towerStatusPopup.gameObject.SetActive(false);
+        upgradeFailPopup = Instantiate(upgradeFailPopupPrefab, towerStatusPopupTransform).GetComponent<UpgradeFailPopup>();
+        upgradeFailPopup.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -125,6 +129,8 @@ public class MouseInteraction : MonoBehaviour
                     && firstClickTowerGround.towerGroundData.towerData.towerID == "nor01")
                 {
                     Debug.Log("팝업 띄우고 바로 랜덤 돌릴 수 있게");
+                    dropTowerOnGround?.Invoke(firstClickTowerGround,
+                               GameManager.instance.gameEntityData.GetUpgradeTowerData(firstClickTowerGround.towerGroundData.towerData));
                     //isClickedGround = true;
                     firstClickTowerGround = null;
                 }
@@ -160,6 +166,8 @@ public class MouseInteraction : MonoBehaviour
                         else
                         {
                             Debug.Log("타입 또는 레벨이 다름 ! 꺼지게 삐삐 소리");
+                            upgradeFailPopup.gameObject.SetActive(false);
+                            upgradeFailPopup.gameObject.SetActive(true);
                         }
                         firstClickTowerGround = null;
                         secondSelecttowerGround = null;
@@ -171,6 +179,7 @@ public class MouseInteraction : MonoBehaviour
             {
                 isClickedGround = false;
                 firstClickTowerGround = null;
+                towerStatusPopup.gameObject.SetActive(false);
             }
             // 상점에서 타워를 드랍할 때
             else if (isBuingTower && isMouseOnGround)
