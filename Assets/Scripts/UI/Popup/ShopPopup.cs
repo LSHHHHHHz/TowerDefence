@@ -60,7 +60,6 @@ public class ShopPopup : MonoBehaviour
                 {
                     Debug.Log("플레이어 돈 부족");
                 }
-                ClosePopup();
             });
         }
     }

@@ -20,7 +20,7 @@ public class MouseInteraction : MonoBehaviour
     public event Action<TowerGround, TowerData> dropTowerOnGround;
     public event Action<TowerGround> inMouseOnGround;
     public event Action<TowerGround> outMouseOnGround;
-    bool isBuingTower = false;//
+    bool isBuingTower = false;
     bool isMouseOnGround = false;
     bool isClickedGround = false;
     private void Awake()
@@ -64,7 +64,7 @@ public class MouseInteraction : MonoBehaviour
                     outMouseOnGround?.Invoke(detectedTowerGround);
                     isMouseOnGround = false;
                 }
-                detectedTowerGround = null;//
+                detectedTowerGround = null;
                 detectedTowerGround = towerGround;
                 isFindGround = true;
                 inMouseOnGround?.Invoke(detectedTowerGround);
@@ -72,7 +72,7 @@ public class MouseInteraction : MonoBehaviour
                 break;
             }
         }
-        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null && detectedTowerGround.IsHasTower()) //여기서 팝업 생성
+        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null && detectedTowerGround.IsHasTower()) 
         {
             towerStatusPopup.gameObject.SetActive(true);
             towerStatusPopup.UpdatePopupData(detectedTowerGround.towerGroundData.towerData);

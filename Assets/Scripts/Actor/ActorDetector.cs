@@ -36,7 +36,11 @@ public class ActorDetector<T> : MonoBehaviour where T : Actor
         List<T> actors = actorManager.GetActors();
         foreach (var actor in actors)
         {
-            if (Vector3.Distance(transform.position, actor.transform.position) < detectionRange)
+            Vector3 direction = transform.position - actor.transform.position;
+            direction.y = 0;  
+
+            float distance = direction.magnitude; 
+            if (distance < detectionRange)
             {
                 detectedActors.Add(actor);
             }

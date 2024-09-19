@@ -33,7 +33,7 @@ public class MonsterMove : MonoBehaviour
     {
         for (int i = 0; i < warePoint.transform.childCount; i++)
         {
-            monsterMovePos.Add(warePoint.transform.GetChild(i).transform.position);
+            monsterMovePos.Add(warePoint.transform.GetChild(i).transform.position); 
         }
     }
     void MoveMonster()
