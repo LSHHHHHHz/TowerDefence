@@ -33,7 +33,7 @@ public class ActorDetector<T> : MonoBehaviour where T : Actor
     void UpdateDetectActors()
     {
         detectedActors.Clear();
-        List<T> actors = actorManager.GetActors();
+        IReadOnlyList<T> actors = actorManager.GetActors();
         foreach (var actor in actors)
         {
             Vector3 direction = transform.position - actor.transform.position;

@@ -15,7 +15,7 @@ public class TowerAttackSensor : MonoBehaviour
     public bool isReadyToAttack = false;
     public Actor findActor;
     bool isAttack = false;
-    public bool isDropTower;
+    public bool isActiveAttack;
     public ActorDetector<Monster> detectActor;
     private void Awake()
     {
@@ -36,15 +36,15 @@ public class TowerAttackSensor : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.instance.onDropTower += SetTowerOnGround;
+        EventManager.instance.onActiveAttack += SetTowerOnGround;
     }
     private void OnDisable()
     {
-        EventManager.instance.onDropTower -= SetTowerOnGround;
+        EventManager.instance.onActiveAttack -= SetTowerOnGround;
     }
     private void Update()
     {
-        if (isDropTower)
+        if (isActiveAttack)
         {
             RotateToward();
             if (tower.detectActor.targetActor != null && tower.triggerStartAttack && !isAttack)
@@ -88,7 +88,7 @@ public class TowerAttackSensor : MonoBehaviour
     }
     void SetTowerOnGround()
     {
-        isDropTower = true;
+        isActiveAttack = true;
     }
     void CheckAttackTrue()
     {

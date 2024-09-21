@@ -18,7 +18,14 @@ public class MonsterInEndGate : MonoBehaviour
             if (monster != null)
             {
                 EventManager.instance.KilledMonster();
-                player.ReduceHp(1);
+                if (monster is NormarMonster normarMonster)
+                {
+                    player.ReduceHp(1);
+                }
+                if(monster is BossMonster bossMonster)
+                {
+                    player.ReduceHp(5);
+                }
                 monster.gameObject.SetActive(false);
             }
         }

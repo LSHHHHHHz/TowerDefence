@@ -17,7 +17,7 @@ public class ActorManager<T> where T : Actor
             return _instnace;
         }
     }
-    public List<T> actors = new List<T>();
+    List<T> actors = new List<T>();
 
     public void RegisterActor(T actor)
     {
@@ -37,8 +37,8 @@ public class ActorManager<T> where T : Actor
             }
         }
     }
-    public List<T> GetActors()
+    public IReadOnlyList<T> GetActors()
     {
-        return new List<T>(actors);
+        return actors;
     }
 }

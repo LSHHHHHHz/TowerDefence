@@ -17,12 +17,12 @@ public class DraggableTower : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.instance.onDropTower += ResetTower;
+        EventManager.instance.onActiveAttack += ResetTower;
         onDragTowerObj += mouseInteraction.DragTowerObj;
     }
     private void OnDisable()
     {
-        EventManager.instance.onDropTower -= ResetTower;
+        EventManager.instance.onActiveAttack -= ResetTower;
         onDragTowerObj -= mouseInteraction.DragTowerObj;
     }
     public void GetTower(TowerData data)

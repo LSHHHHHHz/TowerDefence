@@ -23,7 +23,7 @@ public class EventManager
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
 
-    public event Action onDropTower;
+    public event Action onActiveAttack;
     public event Action onBuyShopTower;
 
     public event Action onClickUpgradeButton;
@@ -31,9 +31,9 @@ public class EventManager
     {
         onSpawnMonster?.Invoke(prefabPath, type, count);
     }
-    public void DropTowerForDraggableTowerClearData()
+    public void ActiveAttack()
     {
-        onDropTower?.Invoke();
+        onActiveAttack?.Invoke();
     }
     public void BuyShopTower()
     {

@@ -19,9 +19,10 @@ public class MouseInteraction : MonoBehaviour
     public TowerGround firstClickTowerGround;
     public TowerGround secondSelecttowerGround;
     TowerData boughtShopTowerData;
-    public event Action<TowerGround, TowerData> dropTowerOnGround;
+    public event Action<TowerGround, TowerData> onDropTowerOnGround;
     public event Action<TowerGround> inMouseOnGround;
     public event Action<TowerGround> outMouseOnGround;
+    public event Action onActiveMouseEffect;
     bool isBuingTower = false;
     bool isMouseOnGround = false;
     bool isClickedGround = false;
@@ -94,6 +95,10 @@ public class MouseInteraction : MonoBehaviour
             }
             detectedTowerGround = null;
         }
+        if (detectedTowerGround != null && detectedTowerGround.currentTower == null && !isClickedGround)
+        {
+            towerStatusPopup.gameObject.SetActive(false);
+        }
     }
 
     bool IsPointerInUI()
@@ -110,6 +115,7 @@ public class MouseInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            onActiveMouseEffect?.Invoke();
             // 구매한 타워가 없고 그라운드 내 마우스가 있으며 선택된 타워그라운드가 없을 때(처음 데이터 선택)
             if (!isBuingTower && isMouseOnGround && firstClickTowerGround == null)
             {
@@ -129,9 +135,10 @@ public class MouseInteraction : MonoBehaviour
                     && firstClickTowerGround.towerGroundData.towerData.towerID == "nor01")
                 {
                     Debug.Log("팝업 띄우고 바로 랜덤 돌릴 수 있게");
-                    dropTowerOnGround?.Invoke(firstClickTowerGround,
+                    onDropTowerOnGround?.Invoke(firstClickTowerGround,
                                GameManager.instance.gameEntityData.GetUpgradeTowerData(firstClickTowerGround.towerGroundData.towerData));
                     //isClickedGround = true;
+                    EventManager.instance.ActiveAttack();
                     firstClickTowerGround = null;
                 }
             }
@@ -158,16 +165,18 @@ public class MouseInteraction : MonoBehaviour
                             firstClickTowerGround.towerGroundData.towerData.status.level == secondSelecttowerGround.towerGroundData.towerData.status.level)
                         {
                             Debug.Log("타입과 레벨 같음 ! UI에서 합체 버튼 활성화");
-                            dropTowerOnGround?.Invoke(secondSelecttowerGround,
+                            onDropTowerOnGround?.Invoke(secondSelecttowerGround,
                                 GameManager.instance.gameEntityData.GetUpgradeTowerData(secondSelecttowerGround.towerGroundData.towerData));
-                            dropTowerOnGround?.Invoke(firstClickTowerGround, null);
+                            onDropTowerOnGround?.Invoke(firstClickTowerGround, null);
+                            EventManager.instance.ActiveAttack();
                             return;
                         }
                         else
                         {
-                            Debug.Log("타입 또는 레벨이 다름 ! 꺼지게 삐삐 소리");
+                            Debug.Log("타입 또는 레벨이 다름 ! ");
                             upgradeFailPopup.gameObject.SetActive(false);
                             upgradeFailPopup.gameObject.SetActive(true);
+                            towerStatusPopup.gameObject.SetActive(false);                           
                         }
                         firstClickTowerGround = null;
                         secondSelecttowerGround = null;
@@ -184,8 +193,8 @@ public class MouseInteraction : MonoBehaviour
             // 상점에서 타워를 드랍할 때
             else if (isBuingTower && isMouseOnGround)
             {
-                dropTowerOnGround?.Invoke(detectedTowerGround, boughtShopTowerData);
-                EventManager.instance.DropTowerForDraggableTowerClearData(); // DraggableTower에서 선택된 데이터 초기화
+                onDropTowerOnGround?.Invoke(detectedTowerGround, boughtShopTowerData);
+                EventManager.instance.ActiveAttack(); // DraggableTower에서 선택된 데이터 초기화
                 boughtShopTowerData = null;
                 isBuingTower = false;
             }
@@ -225,7 +234,6 @@ public class MouseInteraction : MonoBehaviour
         }
         else
         {
-            Debug.LogError("으악!~!!~");
             return Vector3.zero;
         }
     }

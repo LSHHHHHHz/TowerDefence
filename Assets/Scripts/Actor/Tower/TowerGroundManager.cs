@@ -27,7 +27,7 @@ public class TowerGroundManager : MonoBehaviour
                 towerGround.towerGroundData.SetTowerNum(i);
                 TowerGroundManagerData.instance.towerGroundDatas.Add(groundData);
 
-                mouseInteraction.dropTowerOnGround += towerGround.DropTower;
+                mouseInteraction.onDropTowerOnGround += towerGround.DropTower;
                 mouseInteraction.inMouseOnGround += towerGround.OnEnterGround;
                 mouseInteraction.outMouseOnGround += towerGround.OnExitGround;
             }

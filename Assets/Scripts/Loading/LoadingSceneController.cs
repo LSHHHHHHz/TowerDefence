@@ -62,15 +62,12 @@ public class LoadingSceneController : MonoBehaviour
             if (op.progress < 0.9f)
             {
                 progressBar.fillAmount = op.progress;
-                Debug.Log(" op.progress < 0.9f : " + op.progress);
             }
             else
             {
-                Debug.Log(" else : " + op.progress);
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, op.progress / 10);
                 if (progressBar.fillAmount >= 0.9f)
                 {
-                    Debug.Log(" progressBar.fillAmount >= 1f : " + op.progress / 10);
                     op.allowSceneActivation = true;
                     yield break;
                 }
