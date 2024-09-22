@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,8 +10,6 @@ public class MouseInteraction : MonoBehaviour
     public RectTransform towerStatusPopupTransform;
     public GameObject towerStatusPopupPrefab;
     TowerStatusPopup towerStatusPopup;
-    public GameObject upgradeFailPopupPrefab;
-    UpgradeFailPopup upgradeFailPopup;
 
     GameObject dragObj;
     public TowerGround detectedTowerGround;
@@ -23,16 +20,17 @@ public class MouseInteraction : MonoBehaviour
     public event Action<TowerGround> inMouseOnGround;
     public event Action<TowerGround> outMouseOnGround;
     public event Action onActiveMouseEffect;
+
     bool isBuingTower = false;
     bool isMouseOnGround = false;
     bool isClickedGround = false;
+    private Vector3 originalPosition;
+
     private void Awake()
     {
         instance = this;
-        towerStatusPopup = Instantiate(towerStatusPopupPrefab, towerStatusPopupTransform).GetComponent<TowerStatusPopup>();        
+        towerStatusPopup = Instantiate(towerStatusPopupPrefab, towerStatusPopupTransform).GetComponent<TowerStatusPopup>();
         towerStatusPopup.gameObject.SetActive(false);
-        upgradeFailPopup = Instantiate(upgradeFailPopupPrefab, towerStatusPopupTransform).GetComponent<UpgradeFailPopup>();
-        upgradeFailPopup.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -43,81 +41,28 @@ public class MouseInteraction : MonoBehaviour
         MouseButtonDown();
         ScreenToRayUseMouse();
         MouseButtonUp();
-        if (isBuingTower)
+        if (isBuingTower || (dragObj != null && firstClickTowerGround != null)) // 타워 구매 중이거나 드래그 중일 때
         {
             DragTowerObj(dragObj, boughtShopTowerData);
         }
-    }
-    void ScreenToRayUseMouse()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray);
-        bool isFindGround = false;
-        foreach (RaycastHit hit in hits)
-        {
-            if (IsPointerInUI())
-            {
-                isMouseOnGround = false;
-                break;
-            }
-
-            TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
-            if (towerGround != null)
-            {
-                if (detectedTowerGround != null)
-                {
-                    outMouseOnGround?.Invoke(detectedTowerGround);
-                    isMouseOnGround = false;
-                }
-                detectedTowerGround = null;
-                detectedTowerGround = towerGround;
-                isFindGround = true;
-                inMouseOnGround?.Invoke(detectedTowerGround);
-                isMouseOnGround = true;
-                break;
-            }
-        }
-        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null && detectedTowerGround.IsHasTower()) 
-        {
-            towerStatusPopup.gameObject.SetActive(true);
-            towerStatusPopup.UpdatePopupData(detectedTowerGround.towerGroundData.towerData);
-        }
-        if (!isFindGround)
-        {
-            if (detectedTowerGround != null && detectedTowerGround.towerGroundData != null)
-            {
-                if(!isClickedGround)
-                {
-                    towerStatusPopup.gameObject.SetActive(false);
-                }
-                outMouseOnGround?.Invoke(detectedTowerGround);
-                isMouseOnGround = false;
-            }
-            detectedTowerGround = null;
-        }
-        if (detectedTowerGround != null && detectedTowerGround.currentTower == null && !isClickedGround)
-        {
-            towerStatusPopup.gameObject.SetActive(false);
-        }
-    }
-
-    bool IsPointerInUI()
-    {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition
-        };
-        var results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerEventData, results);
-        return results.Count > 0;
     }
     void MouseButtonDown()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            onActiveMouseEffect?.Invoke();
+            // 기존 배치된 타워 클릭 시 드래그 가능하게 처리
+            if (!isBuingTower && isMouseOnGround && detectedTowerGround != null)
+            {
+                isClickedGround = true;
+                firstClickTowerGround = detectedTowerGround;
+                if (firstClickTowerGround.towerGroundData.towerData != null)
+                {
+                    dragObj = firstClickTowerGround.currentTower.gameObject; // 타워 오브젝트 가져오기
+                    originalPosition = dragObj.transform.position; // 드래그 전 원래 위치 저장
+                }
+            }
             // 구매한 타워가 없고 그라운드 내 마우스가 있으며 선택된 타워그라운드가 없을 때(처음 데이터 선택)
-            if (!isBuingTower && isMouseOnGround && firstClickTowerGround == null)
+            else if (!isBuingTower && isMouseOnGround && firstClickTowerGround == null)
             {
                 isClickedGround = true;
                 if (detectedTowerGround != null)
@@ -174,9 +119,7 @@ public class MouseInteraction : MonoBehaviour
                         else
                         {
                             Debug.Log("타입 또는 레벨이 다름 ! ");
-                            upgradeFailPopup.gameObject.SetActive(false);
-                            upgradeFailPopup.gameObject.SetActive(true);
-                            towerStatusPopup.gameObject.SetActive(false);                           
+                            towerStatusPopup.gameObject.SetActive(false);
                         }
                         firstClickTowerGround = null;
                         secondSelecttowerGround = null;
@@ -204,6 +147,42 @@ public class MouseInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            if (dragObj != null && detectedTowerGround != null)
+            {
+                if(firstClickTowerGround == null)
+                {
+                    return;
+                }
+                if (detectedTowerGround != firstClickTowerGround) // 다른 타워그라운드로 드랍했을 때
+                {
+                    // 타워 레벨과 프로퍼티 체크 후 업그레이드 시도
+                    if (detectedTowerGround.towerGroundData != null && firstClickTowerGround.towerGroundData != null
+                        && detectedTowerGround.towerGroundData.towerData != null
+                        && firstClickTowerGround.towerGroundData.towerData != null
+                        && detectedTowerGround.towerGroundData.towerData.status.elementaProperties == firstClickTowerGround.towerGroundData.towerData.status.elementaProperties
+                        && detectedTowerGround.towerGroundData.towerData.status.level == firstClickTowerGround.towerGroundData.towerData.status.level)
+                    {
+                        Debug.Log("타워 업그레이드");
+                        onDropTowerOnGround?.Invoke(detectedTowerGround,
+                            GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedTowerGround.towerGroundData.towerData));
+                        Destroy(firstClickTowerGround.currentTower.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log("타워 업그레이드 불가");
+                        dragObj.transform.position = originalPosition; // 원래 위치로 돌아감
+                    }
+                }
+                else
+                {
+                    dragObj.transform.position = originalPosition; // 원래 위치로 돌아감
+                }
+                EventManager.instance.ActiveAttack();
+                dragObj = null;
+                firstClickTowerGround = null;
+                secondSelecttowerGround = null;
+            }
+            onActiveMouseEffect?.Invoke();
         }
     }
     public void DragTowerObj(GameObject obj, TowerData data)
@@ -240,5 +219,67 @@ public class MouseInteraction : MonoBehaviour
     public void BuingTower()
     {
         isBuingTower = true;
+    }
+    void ScreenToRayUseMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+        bool isFindGround = false;
+        foreach (RaycastHit hit in hits)
+        {
+            if (IsPointerInUI())
+            {
+                isMouseOnGround = false;
+                break;
+            }
+
+            TowerGround towerGround = hit.collider.GetComponent<TowerGround>();
+            if (towerGround != null)
+            {
+                if (detectedTowerGround != null)
+                {
+                    outMouseOnGround?.Invoke(detectedTowerGround);
+                    isMouseOnGround = false;
+                }
+                detectedTowerGround = null;
+                detectedTowerGround = towerGround;
+                isFindGround = true;
+                inMouseOnGround?.Invoke(detectedTowerGround);
+                isMouseOnGround = true;
+                break;
+            }
+        }
+        if (isFindGround && detectedTowerGround.towerGroundData.towerData != null && detectedTowerGround.IsHasTower())
+        {
+            towerStatusPopup.gameObject.SetActive(true);
+            towerStatusPopup.UpdatePopupData(detectedTowerGround.towerGroundData.towerData);
+        }
+        if (!isFindGround)
+        {
+            if (detectedTowerGround != null && detectedTowerGround.towerGroundData != null)
+            {
+                if (!isClickedGround)
+                {
+                    towerStatusPopup.gameObject.SetActive(false);
+                }
+                outMouseOnGround?.Invoke(detectedTowerGround);
+                isMouseOnGround = false;
+            }
+            detectedTowerGround = null;
+        }
+        if (detectedTowerGround != null && detectedTowerGround.currentTower == null && !isClickedGround)
+        {
+            towerStatusPopup.gameObject.SetActive(false);
+        }
+    }
+    bool IsPointerInUI()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+        return results.Count > 0;
     }
 }

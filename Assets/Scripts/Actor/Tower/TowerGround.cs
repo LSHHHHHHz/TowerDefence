@@ -7,12 +7,10 @@ public class TowerGround : MonoBehaviour
 {
     public TowerGroundData towerGroundData;
     TowerGroundEffect towerGroundEffect;
-    List<Tower> hasTowers;
     public Tower currentTower;
     public bool isHasTower { get; private set; }
     private void Awake()
     {
-        hasTowers = new List<Tower>();
         towerGroundEffect = GetComponent<TowerGroundEffect>();
     }
     public void DropTower(TowerGround groundData, TowerData data)
@@ -21,11 +19,6 @@ public class TowerGround : MonoBehaviour
         //데이터가 없는게 들어오면 비활성화
         if(groundData.towerGroundData.towerGroundNum == towerGroundData.towerGroundNum && data == null)
         {
-            foreach (Tower t in hasTowers)
-            {
-                t.gameObject.SetActive(false);
-            }
-            isHasTower = false;
             return;
         }
         //선택된 그라운드 아니면 return
@@ -33,28 +26,18 @@ public class TowerGround : MonoBehaviour
         {
             return;
         }
-        //저장된 모든 Tower 비활성화
-        foreach (Tower t in hasTowers)
+        if (currentTower != null)
         {
-            t.gameObject.SetActive(false);
+            Destroy(currentTower.gameObject);
+            currentTower = null;
         }
         string towerID = data.towerID;
-        foreach (Tower t in hasTowers)
-        {
-            if(t.towerData.towerID == towerID)
-            {
-                t.gameObject.SetActive(true);
-                t.towerData = data;
-                hasSameData = true;
-            }
-        }
         if (!hasSameData)
         {
             string path = GameManager.instance.gameEntityData.GetProfileDB(towerID).prefabPath;
             GameObject obj = Resources.Load<GameObject>(path);
             Tower tower = Instantiate(obj, transform).GetComponent<Tower>();
             currentTower = tower;
-            hasTowers.Add(currentTower);
             currentTower.towerData = data;
             towerGroundData.towerData = data;
         }

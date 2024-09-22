@@ -64,6 +64,7 @@ public class MouseEffect : MonoBehaviour
             yield return null;
         }
         rectTransform.sizeDelta = targetSize;
+        gameObject.SetActive(false);
     }
     private IEnumerator SubCircleScaleUp()
     {

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,10 @@ using UnityEngine.UI;
 public class PlayerInfoPanelUI : MonoBehaviour
 {
     Player player;
+    [SerializeField] Image playerCurrentHpImage;
+    [SerializeField] Image playerCoinImage;
+    [SerializeField] Image playerDiaImage;
+
     [SerializeField] Text playerCurrentHpText;
     [SerializeField] Text playerCoinText;
     [SerializeField] Text playerDiaText;
@@ -15,33 +20,43 @@ public class PlayerInfoPanelUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        player.status.onPlayerHPChanged += UpdateCurrentHpUI;
-        player.currency.onPlayerCoinChanged += UpdateCoinUI;
-        player.currency.onPlayerDiaChanged += UpdateDiaUI;
+        player.status.onPlayerHPChanged += UpdateCurrentHpText;
+        player.currency.onPlayerCoinChanged += UpdateCoinText;
+        player.currency.onPlayerDiaChanged += UpdateDiaText;
         Initialized();
     }
     private void OnDisable()
     {
-        player.status.onPlayerHPChanged -= UpdateCurrentHpUI;
-        player.currency.onPlayerCoinChanged -= UpdateCoinUI;
-        player.currency.onPlayerDiaChanged -= UpdateDiaUI;
+        player.status.onPlayerHPChanged -= UpdateCurrentHpText;
+        player.currency.onPlayerCoinChanged -= UpdateCoinText;
+        player.currency.onPlayerDiaChanged -= UpdateDiaText;
     }
     private void Initialized()
     {
-        UpdateCurrentHpUI(GameManager.instance.player.status.playerHP);
-        UpdateCoinUI(GameManager.instance.player.currency.playerCoin);
-        UpdateDiaUI(GameManager.instance.player.currency.playerDia);
+        UpdateCurrentHpText(GameManager.instance.player.status.playerHP);
+        UpdateCoinText(GameManager.instance.player.currency.playerCoin);
+        UpdateDiaText(GameManager.instance.player.currency.playerDia);
     }
-    public void UpdateCurrentHpUI(int currentHP)
+    void UpdateCurrentHpText(int currentHP)
     {
         playerCurrentHpText.text = currentHP.ToString();
+        ImageEffect(playerCurrentHpImage);
     }
-    public void UpdateCoinUI(int currentCoin)
+    void UpdateCoinText(int currentCoin)
     {
         playerCoinText.text = currentCoin.ToString();
+        ImageEffect(playerCoinImage);
     }
-    public void UpdateDiaUI(int currentDia)
+    void UpdateDiaText(int currentDia)
     {
         playerDiaText.text = currentDia.ToString();
+        ImageEffect(playerDiaImage);
+    }
+    void ImageEffect(Image image)
+    {
+        image.transform.localScale = Vector3.one;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(image.transform.DOScale(transform.localScale * 1.2f, 0.1f));
+        sequence.Append(image.transform.DOScale(1, 0.1f));
     }
 }

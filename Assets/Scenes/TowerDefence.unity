@@ -4863,6 +4863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce234797532bf9f449b42851ad4e91e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCurrentHpImage: {fileID: 1469755691}
+  playerCoinImage: {fileID: 2030700422}
+  playerDiaImage: {fileID: 1889559188}
   playerCurrentHpText: {fileID: 2114305868}
   playerCoinText: {fileID: 1083792816}
   playerDiaText: {fileID: 1069035020}
@@ -9260,8 +9263,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469755690}
+  - {fileID: 2114305867}
   - {fileID: 2030700421}
+  - {fileID: 1083792815}
   - {fileID: 1889559187}
+  - {fileID: 1069035019}
   m_Father: {fileID: 513810438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11580,11 +11586,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1889559187}
+  m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58, y: -8}
+  m_AnchoredPosition: {x: 130, y: -12.5}
   m_SizeDelta: {x: 68, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069035020
@@ -11764,11 +11770,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2030700421}
+  m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: -8}
+  m_AnchoredPosition: {x: 6, y: -12.5}
   m_SizeDelta: {x: 68, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083792816
@@ -17665,8 +17671,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2114305867}
+  m_Children: []
   m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -19416,7 +19421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerStatusPopupTransform: {fileID: 349102392}
   towerStatusPopupPrefab: {fileID: 361290013395715983, guid: 1c8c38715e2e78b4bb0c1d043798b7c5, type: 3}
-  upgradeFailPopupPrefab: {fileID: 6825605236718912814, guid: ab086c8cba38f2e44832a40a07a90592, type: 3}
   detectedTowerGround: {fileID: 0}
   firstClickTowerGround: {fileID: 0}
   secondSelecttowerGround: {fileID: 0}
@@ -23141,8 +23145,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1069035019}
+  m_Children: []
   m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25237,8 +25240,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1083792815}
+  m_Children: []
   m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26294,16 +26296,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114305866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1469755690}
+  m_Father: {fileID: 892491566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: -8}
+  m_AnchoredPosition: {x: -99, y: -12.5}
   m_SizeDelta: {x: 68, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114305868

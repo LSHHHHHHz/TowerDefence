@@ -28,9 +28,10 @@ public class MouseClickEffect : MonoBehaviour
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, Input.mousePosition, null, out localPoint))
         {
-            GameObject effect = Instantiate(effectPrefab, rt);
+            GameObject effect =PoolManager.instance.GetObjectFromPool("Prefabs/UI/MouseEffect");
             RectTransform effectRectTransform = effect.GetComponent<RectTransform>();
-            effectRectTransform.anchoredPosition = localPoint; 
+            effectRectTransform.SetParent(rt);
+            effectRectTransform.anchoredPosition = localPoint;
             effectRectTransform.localScale = Vector3.one; 
         }
     }
