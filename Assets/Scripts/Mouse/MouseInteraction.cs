@@ -50,6 +50,10 @@ public class MouseInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (IsPointerInStatusUI())
+            {
+                return;
+            }
             // 기존 배치된 타워 클릭 시 드래그 가능하게 처리
             if (!isBuingTower && isMouseOnGround && detectedTowerGround != null)
             {
@@ -147,9 +151,13 @@ public class MouseInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            if (IsPointerInStatusUI())
+            {
+                return;
+            }
             if (dragObj != null && detectedTowerGround != null)
             {
-                if(firstClickTowerGround == null)
+                if (firstClickTowerGround == null)
                 {
                     return;
                 }
@@ -281,5 +289,23 @@ public class MouseInteraction : MonoBehaviour
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerEventData, results);
         return results.Count > 0;
+    }
+    bool IsPointerInStatusUI()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        foreach (var result in results)
+        {
+            if (result.gameObject.CompareTag("StatusUI"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
