@@ -235,7 +235,7 @@ public class MouseInteraction : MonoBehaviour
         bool isFindGround = false;
         foreach (RaycastHit hit in hits)
         {
-            if (IsPointerInUI())
+            if (IsPointerInStatusUI())
             {
                 isMouseOnGround = false;
                 break;

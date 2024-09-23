@@ -52,6 +52,10 @@ public class TowerGround : MonoBehaviour
         if (ground != null && ground == this)
         {
             towerGroundEffect.ChangeGroundColorEnterMouse();
+            if (ground.currentTower != null)
+            {
+                ground.currentTower.detectActorRange.ShowActorDetectRange(currentTower.towerStatus.attackRange);
+            }
         }
     }
     public void OnExitGround(TowerGround ground)
@@ -59,6 +63,10 @@ public class TowerGround : MonoBehaviour
         if (ground != null && ground == this)
         {
             towerGroundEffect.ChangeGroundColorExitMouse();
+            if (ground.currentTower != null)
+            {
+                ground.currentTower.detectActorRange.CloseActorDetectRange();
+            }
         }
     }
 }

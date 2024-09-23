@@ -9,6 +9,7 @@ public class Tower : Actor
     public TowerAttackSensor towerAttackSensor { get; set; }
     public FSMController<Tower> fsmController { get; private set; }
     public ActorDetector<Monster> detectActor { get; private set; }
+    public ActorDetectorRangeImage detectActorRange { get; private set; }
     public TowerData towerData;
     public bool triggerStartAttack;
     protected override void Awake()
@@ -18,6 +19,7 @@ public class Tower : Actor
         Initialize();
         detectActor = GetComponent<ActorDetector<Monster>>();
         detectActor.detectionRange = towerStatus.attackRange;
+        detectActorRange = GetComponentInChildren<ActorDetectorRangeImage>();
         towerAttackSensor = GetComponent<TowerAttackSensor>();
         fsmController = new FSMController<Tower>(this);
         fsmController.ChangeState(new IdleState());
