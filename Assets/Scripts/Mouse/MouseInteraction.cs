@@ -15,6 +15,7 @@ public class MouseInteraction : MonoBehaviour
     public TowerGround detectedTowerGround;
     public TowerGround firstClickTowerGround;
     public TowerGround secondSelecttowerGround;
+    public TowerGround detectedBaseTowerGround;
     TowerData boughtShopTowerData;
     public event Action<TowerGround, TowerData> onDropTowerOnGround;
     public event Action<TowerGround> inMouseOnGround;
@@ -35,6 +36,7 @@ public class MouseInteraction : MonoBehaviour
     private void Start()
     {
         EventManager.instance.onBuyShopTower += BuingTower;
+        EventManager.instance.onClickUpgradeButton += UpgradeTower;
     }
     private void Update()
     {
@@ -59,7 +61,8 @@ public class MouseInteraction : MonoBehaviour
             {
                 isClickedGround = true;
                 firstClickTowerGround = detectedTowerGround;
-                if (firstClickTowerGround.towerGroundData.towerData != null)
+                detectedBaseTowerGround = detectedTowerGround;
+                if (firstClickTowerGround.towerGroundData.towerData != null && firstClickTowerGround.towerGroundData.towerData.towerID != "nor01")
                 {
                     dragObj = firstClickTowerGround.currentTower.gameObject; // 타워 오브젝트 가져오기
                     originalPosition = dragObj.transform.position; // 드래그 전 원래 위치 저장
@@ -307,5 +310,11 @@ public class MouseInteraction : MonoBehaviour
             }
         }
         return false;
+    }
+    public void UpgradeTower()
+    {
+        onDropTowerOnGround?.Invoke(detectedBaseTowerGround,
+                           GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
+        towerStatusPopup.UpdatePopupData(GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
     }
 }

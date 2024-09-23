@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TowerStatusPopup : MonoBehaviour
 {
+    event Action onClickUpgradeButton;
     RectTransform rectTransform;
     Vector2 originPos = new Vector2(0, -280);
     Vector2 targetPos = new Vector2(0, 0);
@@ -18,9 +19,11 @@ public class TowerStatusPopup : MonoBehaviour
     [SerializeField] Text towerLV;
     [SerializeField] Text towerCurrentAttackDamage;        
     [SerializeField] Text towerCurrentAttackSpeed;
+    [SerializeField] Button upgradeButtonForBaseTower;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        upgradeButtonForBaseTower.onClick.AddListener(() => EventManager.instance.ClickUpgradeButton());
     }
     private void OnEnable()
     {
@@ -47,6 +50,14 @@ public class TowerStatusPopup : MonoBehaviour
         towerLV.text = "LV : " + data.status.level.ToString(); 
         towerCurrentAttackDamage.text = "Damage: " + data.status.combatEffectAmount.ToString(); 
         towerCurrentAttackSpeed.text = "Speed: " + data.status.attackSpeed.ToString();
+        if(data.status.dataID == "nor01")
+        {
+            upgradeButtonForBaseTower.gameObject.SetActive(true);
+        }
+        else
+        {
+            upgradeButtonForBaseTower.gameObject.SetActive(false);
+        }
     }
     IEnumerator ActiveTowerPopup()
     {

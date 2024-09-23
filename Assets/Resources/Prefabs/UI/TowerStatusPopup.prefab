@@ -133,6 +133,7 @@ MonoBehaviour:
   towerLV: {fileID: 295292682038912617}
   towerCurrentAttackDamage: {fileID: 3876802094852584211}
   towerCurrentAttackSpeed: {fileID: 284354510217267703}
+  upgradeButtonForBaseTower: {fileID: 7406639353334786746}
 --- !u!1 &645323662679498668
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ GameObject:
   - component: {fileID: 2033191079813048758}
   - component: {fileID: 7406639353334786746}
   m_Layer: 5
-  m_Name: SellTower
+  m_Name: UpgradeButton
   m_TagString: StatusUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +789,7 @@ GameObject:
   - component: {fileID: 4858074740357535499}
   - component: {fileID: 3917528558365846910}
   m_Layer: 5
-  m_Name: SellImage
+  m_Name: UpgradImage
   m_TagString: StatusUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,7 +943,7 @@ GameObject:
   - component: {fileID: 677150508609094437}
   - component: {fileID: 2786699865616529823}
   m_Layer: 5
-  m_Name: SellText
+  m_Name: UpgradeText
   m_TagString: StatusUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1009,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD310\uB9E4"
+  m_Text: "\uC5C5"
 --- !u!1 &7377990173234193109
 GameObject:
   m_ObjectHideFlags: 0
