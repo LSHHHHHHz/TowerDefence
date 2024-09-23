@@ -313,8 +313,10 @@ public class MouseInteraction : MonoBehaviour
     }
     public void UpgradeTower()
     {
+        TowerData td = null;
         onDropTowerOnGround?.Invoke(detectedBaseTowerGround,
                            GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
-        towerStatusPopup.UpdatePopupData(GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
+        td = detectedBaseTowerGround.towerGroundData.towerData;
+        towerStatusPopup.UpdatePopupData(GameManager.instance.gameEntityData.GetUpgradeTowerData(td));
     }
 }
