@@ -131,7 +131,7 @@ MonoBehaviour:
     hp: 500
     combatEffectAmount: 10
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 2
     rotationSpeed: 5
     type: NormarTower
     level: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     hp: 1000
     combatEffectAmount: 10
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 3
     rotationSpeed: 5
     type: NormarTower
     level: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
     hp: 2000
     combatEffectAmount: 20
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 4
     rotationSpeed: 5
     type: NormarTower
     level: 2
@@ -183,7 +183,7 @@ MonoBehaviour:
     hp: 1000
     combatEffectAmount: 10
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 3
     rotationSpeed: 5
     type: NormarTower
     level: 1
@@ -196,7 +196,7 @@ MonoBehaviour:
     hp: 2000
     combatEffectAmount: 20
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 4
     rotationSpeed: 5
     type: NormarTower
     level: 2
@@ -222,7 +222,7 @@ MonoBehaviour:
     hp: 1000
     combatEffectAmount: 10
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 3
     rotationSpeed: 5
     type: NormarTower
     level: 1
@@ -235,7 +235,7 @@ MonoBehaviour:
     hp: 2000
     combatEffectAmount: 20
     attackSpeed: 5
-    attackRange: 5
+    attackRange: 4
     rotationSpeed: 5
     type: NormarTower
     level: 2
