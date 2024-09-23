@@ -10,7 +10,6 @@ public class DieState : IState<Monster>
     {
         monster.anim.SetBool("IsDie", true);
         monster.SetMonsterSpeed(0);
-        monster.monsterCollider.enabled = false;
         elapsedTime = 0;
     }
 

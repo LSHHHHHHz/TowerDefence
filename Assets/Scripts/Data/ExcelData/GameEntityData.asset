@@ -278,6 +278,13 @@ MonoBehaviour:
     type: NormarMonster
     stage: 3
     rewardCoin: 30
+  - dataID: normon13
+    hp: 600
+    rotationSpeed: 10
+    moveSpeed: 5
+    type: NormarMonster
+    stage: 4
+    rewardCoin: 40
   - dataID: bosmon11
     hp: 1500
     rotationSpeed: 10
@@ -299,6 +306,13 @@ MonoBehaviour:
     type: BossMonster
     stage: 3
     rewardCoin: 300
+  - dataID: bosmon14
+    hp: 6000
+    rotationSpeed: 10
+    moveSpeed: 5
+    type: BossMonster
+    stage: 4
+    rewardCoin: 400
   stageEntity:
   - stage: 1
     dataID: normon11

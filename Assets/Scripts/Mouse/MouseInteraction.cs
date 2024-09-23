@@ -317,6 +317,6 @@ public class MouseInteraction : MonoBehaviour
         onDropTowerOnGround?.Invoke(detectedBaseTowerGround,
                            GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
         td = detectedBaseTowerGround.towerGroundData.towerData;
-        towerStatusPopup.UpdatePopupData(GameManager.instance.gameEntityData.GetUpgradeTowerData(td));
+        towerStatusPopup.UpdatePopupData(td);
     }
 }

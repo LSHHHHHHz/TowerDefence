@@ -13,14 +13,12 @@ public class Monster : Actor
     public FSMController<Monster> fsmController { get; private set; }
     public MonsterAttributes monsterAttributes { get; private set; }
     public MonsterStatusDB monsterStatusDB { get; private set; }
-    public CapsuleCollider monsterCollider { get; set; }
     public MonsterDebuff monsterDebuff { get; private set; }
     InMonsterCanvas monsterCanvas;
     protected override void Awake()
     {
         base.Awake();
         monsterStatusDB = GameManager.instance.gameEntityData.GetMonsterStatusDB(actorId);
-        monsterCollider = GetComponent<CapsuleCollider>();
         monsterAttributes = new MonsterAttributes(monsterStatusDB.hp, monsterStatusDB.rotationSpeed, monsterStatusDB.moveSpeed);
         monsterDebuff = new MonsterDebuff();
         fsmController = new FSMController<Monster>(this);
@@ -34,7 +32,6 @@ public class Monster : Actor
     {
         ActorManager<Monster>.instnace.RegisterActor(this);
         monsterAttributes.currentHP = monsterAttributes.maxHP;
-        monsterCollider.enabled = true;
         monsterAttributes.ResetMoveSpeed();
         fsmController.ChangeState(new WalkState());
     }
