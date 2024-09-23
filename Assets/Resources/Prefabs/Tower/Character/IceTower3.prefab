@@ -426,11 +426,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4707166858695254534}
   - component: {fileID: 1043503553385121572}
-  - component: {fileID: -4268487992270566378}
   - component: {fileID: 2951035891242986957}
   - component: {fileID: -3794855827099049624}
   - component: {fileID: 7266158200232356352}
-  - component: {fileID: 5100547281330252218}
   - component: {fileID: 3853041046607338607}
   m_Layer: 0
   m_Name: IceTower3
@@ -479,27 +477,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &-4268487992270566378
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3672825079004920434}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2951035891242986957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,29 +543,6 @@ MonoBehaviour:
   attackDelay: 0
   projectilePath: 
   resetTime: 0.2
---- !u!136 &5100547281330252218
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3672825079004920434}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3853041046607338607
 MonoBehaviour:
   m_ObjectHideFlags: 0

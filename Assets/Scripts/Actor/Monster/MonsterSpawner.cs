@@ -28,7 +28,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             case "NormarMonster":
                 maxSpawnCount = count;
-                monsterSpawnTime = 0.1f;
+                monsterSpawnTime = 0.3f;
                 break;
             case "BossMonster":
                 maxSpawnCount = count;

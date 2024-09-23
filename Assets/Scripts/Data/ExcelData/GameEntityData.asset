@@ -85,53 +85,67 @@ MonoBehaviour:
     iconPath: IconImage/LightTowerLv3
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
-    prefabPath: Prefabs/Monster/Normar/LV1_Golem
+    prefabPath: Prefabs/Monster/Normar/LV1_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Normar1
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
-    prefabPath: Prefabs/Monster/Normar/LV2_Golem
+    prefabPath: Prefabs/Monster/Normar/LV2_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Normar2
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
-    prefabPath: Prefabs/Monster/Normar/LV3_Golem
+    prefabPath: Prefabs/Monster/Normar/LV3_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Normar3
+  - dataID: normon14
+    name: "\uB178\uB9D0\uBAAC\uC2A4\uD1304"
+    prefabPath: Prefabs/Monster/Normar/LV4_Normar
+    projectilePath: 
+    buyTowerPrice: 10
+    sellTowerPrice: 5
+    iconPath: IconImage/Normar4
   - dataID: bosmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
-    prefabPath: Prefabs/Monster/Boss/LV1_Golem
+    prefabPath: Prefabs/Monster/Boss/LV1_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Boss1
   - dataID: bosmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
-    prefabPath: Prefabs/Monster/Boss/LV2_Golem
+    prefabPath: Prefabs/Monster/Boss/LV2_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Boss2
   - dataID: bosmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
-    prefabPath: Prefabs/Monster/Boss/LV3_Golem
+    prefabPath: Prefabs/Monster/Boss/LV3_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/Boss3
+  - dataID: bosmon14
+    name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1304"
+    prefabPath: Prefabs/Monster/Boss/LV4_Boss
+    projectilePath: 
+    buyTowerPrice: 10
+    sellTowerPrice: 5
+    iconPath: IconImage/Boss4
   towerStatusEntity:
   - dataID: nor01
     name: "\uAE30\uBCF8\uD0C0\uC6CC"
     hp: 500
     combatEffectAmount: 10
     attackSpeed: 5
-    attackRange: 2
+    attackRange: 3
     rotationSpeed: 5
     type: NormarTower
     level: 0
@@ -316,21 +330,21 @@ MonoBehaviour:
   stageEntity:
   - stage: 1
     dataID: normon11
-    spawnCount: 100
+    spawnCount: 50
     type: NormarMonster
     iconPath: IconImage/Normar1
     monsterHP: 150
     rewardCoin: 10
   - stage: 2
     dataID: normon12
-    spawnCount: 100
+    spawnCount: 50
     type: NormarMonster
     iconPath: IconImage/Normar2
     monsterHP: 300
     rewardCoin: 20
   - stage: 3
     dataID: normon13
-    spawnCount: 100
+    spawnCount: 50
     type: NormarMonster
     iconPath: IconImage/Normar3
     monsterHP: 450

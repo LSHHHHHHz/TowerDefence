@@ -95,4 +95,9 @@ public class IceHitEffect : BaseHitEffect
             }
         }
     }
+
+    protected override void UpdateDetection()
+    {
+        throw new System.NotImplementedException();
+    }
 }

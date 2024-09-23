@@ -7,8 +7,6 @@ public class TowerAttackSensor : MonoBehaviour
 {
     Tower tower;
     Quaternion originRotation;
-    CapsuleCollider capsuleCollider;
-
     [SerializeField] Transform firePos; // 공격 시작 지점
 
     public TowerBaseAttack towerBaseAttack;
@@ -20,8 +18,6 @@ public class TowerAttackSensor : MonoBehaviour
     private void Awake()
     {
         tower = GetComponent<Tower>();
-
-        capsuleCollider = GetComponent<CapsuleCollider>();
         originRotation = transform.rotation;
         towerBaseAttack = GetComponent<TowerBaseAttack>();
 
@@ -29,7 +25,6 @@ public class TowerAttackSensor : MonoBehaviour
     private void Start()
     {
         detectActor = tower.detectActor;
-        capsuleCollider.radius = tower.towerStatus.attackRange;
         towerBaseAttack.Initialize(firePos, tower.towerStatus.attackSpeed, tower.towerStatus.attackStatusAmount);
         towerBaseAttack.isAttackActionFalse += CheckAttackFalse;
         towerBaseAttack.isAttackActionTrue += CheckAttackTrue;

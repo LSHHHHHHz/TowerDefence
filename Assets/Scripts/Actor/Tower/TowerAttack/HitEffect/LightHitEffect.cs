@@ -56,4 +56,9 @@ public class LightHitEffect : BaseHitEffect
             }
         }
     }
+
+    protected override void UpdateDetection()
+    {
+        throw new System.NotImplementedException();
+    }
 }

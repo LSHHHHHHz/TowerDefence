@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorDetector<T> : MonoBehaviour where T : Actor
+public class ActorDetector<T> : BaseDetector where T : Actor
 {
     ActorManager<T> actorManager;
     public T targetActor;
     public List<T> detectedActors = new List<T>();
-
-    float elapsedTime = 0;
-    float intervalTime = 0.05f;
-    private float _detectionRange = 1; 
-    public float detectionRange
-    {
-        get { return _detectionRange; }
-        set { _detectionRange = value; }
-    }
-    private void Awake()
+    protected void Awake()
     {
         actorManager = ActorManager<T>.instnace;
     }
@@ -25,28 +16,32 @@ public class ActorDetector<T> : MonoBehaviour where T : Actor
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= intervalTime)
         {
-            UpdateDetectActors();
-            FindTargetActor();
+            UpdateDetection();
             elapsedTime = 0;
         }
     }
-    void UpdateDetectActors()
+    protected override void UpdateDetection()
     {
         detectedActors.Clear();
         IReadOnlyList<T> actors = actorManager.GetActors();
-        foreach (var actor in actors)
-        {
-            Vector3 direction = transform.position - actor.transform.position;
-            direction.y = 0;  
 
-            float distance = direction.magnitude; 
-            if (distance < detectionRange)
+        if (actors != null)
+        {
+            foreach (var actor in actors)
             {
-                detectedActors.Add(actor);
+                Vector3 direction = transform.position - actor.transform.position;
+                direction.y = 0;
+
+                float distance = direction.magnitude;
+                if (distance < detectionRange)
+                {
+                    detectedActors.Add(actor);
+                }
             }
         }
+        FindTargetActor();
     }
-    void FindTargetActor()
+    protected void FindTargetActor()
     {
         if (detectedActors.Count > 0)
         {

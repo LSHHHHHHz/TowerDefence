@@ -53,4 +53,8 @@ public class FireHitEffect : BaseHitEffect
             }
         }
     }
+    protected override void UpdateDetection()
+    {
+
+    }
 }

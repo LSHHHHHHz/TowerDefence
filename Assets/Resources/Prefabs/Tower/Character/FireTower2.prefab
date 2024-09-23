@@ -465,11 +465,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4617159174555797635}
   - component: {fileID: 7956510232081707431}
-  - component: {fileID: 2975746967598224391}
   - component: {fileID: 5200961392404275595}
   - component: {fileID: 896436368753792923}
   - component: {fileID: -128439802727104260}
-  - component: {fileID: -5433216469791400462}
   - component: {fileID: -4195312200198472330}
   m_Layer: 0
   m_Name: FireTower2
@@ -517,27 +515,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &2975746967598224391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844593010782088553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &5200961392404275595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,14 +534,18 @@ MonoBehaviour:
     towerID: 
     status:
       dataID: 
+      name: 
       hp: 0
-      attackDamage: 0
+      combatEffectAmount: 0
       attackSpeed: 0
       attackRange: 0
       rotationSpeed: 0
       type: 
       level: 0
       elementaProperties: 
+      randomNum: 0
+      towerTypePath: 
+      expenseTowerCoin: 0
     type: 0
   triggerStartAttack: 0
 --- !u!114 &896436368753792923
@@ -583,6 +564,7 @@ MonoBehaviour:
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
   findActor: {fileID: 0}
+  isActiveAttack: 0
   detectActor: {fileID: 0}
 --- !u!114 &-128439802727104260
 MonoBehaviour:
@@ -599,29 +581,6 @@ MonoBehaviour:
   attackDelay: 0
   projectilePath: 
   resetTime: 0.2
---- !u!136 &-5433216469791400462
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844593010782088553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4195312200198472330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,8 +595,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetActor: {fileID: 0}
   detectedActors: []
-  intervalTime: 0.05
-  detectionRange: 5
 --- !u!1 &5194061682864471403
 GameObject:
   m_ObjectHideFlags: 0

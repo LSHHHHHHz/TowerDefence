@@ -627,11 +627,9 @@ GameObject:
   m_Component:
   - component: {fileID: 987434043186109121}
   - component: {fileID: 6123091631933672283}
-  - component: {fileID: -2299370748138212521}
   - component: {fileID: 4884194906880881044}
   - component: {fileID: -4746693787698058508}
   - component: {fileID: 6857572416068313886}
-  - component: {fileID: -6230696848451272731}
   - component: {fileID: -7257786779306006463}
   m_Layer: 0
   m_Name: LightTower1
@@ -679,27 +677,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &-2299370748138212521
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7479495270865267080}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &4884194906880881044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,29 +743,6 @@ MonoBehaviour:
   attackDelay: 0
   projectilePath: 
   resetTime: 0.2
---- !u!136 &-6230696848451272731
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7479495270865267080}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7257786779306006463
 MonoBehaviour:
   m_ObjectHideFlags: 0

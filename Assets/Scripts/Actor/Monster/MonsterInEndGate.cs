@@ -1,32 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-public class MonsterInEndGate : MonoBehaviour
+public class MonsterInEndGate : BaseDetector
 {
     Player player;
+    ActorManager<Monster> monsterManager;
     private void Awake()
     {
-        player = GameManager.instance.player;   
+        monsterManager = ActorManager<Monster>.instnace;
+        player = GameManager.instance.player;
     }
-    private void OnTriggerEnter(Collider other)
+    protected override void UpdateDetection()
     {
-        if (other.CompareTag("Monster"))
+        IReadOnlyList<Monster> actors = monsterManager.GetActors();
+
+        if (actors != null)
         {
-            Monster monster = other.GetComponent<Monster>();
-            if (monster != null)
+            foreach (var actor in actors)
             {
-                EventManager.instance.KilledMonster();
-                if (monster is NormarMonster normarMonster)
+                Vector3 direction = transform.position - actor.transform.position;
+                direction.y = 0;
+
+                float distance = direction.magnitude;
+                if (distance < detectionRange)
                 {
-                    player.ReduceHp(1);
+                    EventManager.instance.KilledMonster();
+                    if (actor is NormarMonster normarMonster)
+                    {
+                        player.ReduceHp(1);
+                    }
+                    if (actor is BossMonster bossMonster)
+                    {
+                        player.ReduceHp(5);
+                    }
+                    actor.gameObject.SetActive(false);
+                    break;
                 }
-                if(monster is BossMonster bossMonster)
-                {
-                    player.ReduceHp(5);
-                }
-                monster.gameObject.SetActive(false);
             }
         }
     }

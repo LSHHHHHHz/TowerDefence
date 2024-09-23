@@ -465,11 +465,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4617159174555797635}
   - component: {fileID: 7956510232081707431}
-  - component: {fileID: -8527067850272701017}
   - component: {fileID: -3366498219717255855}
   - component: {fileID: 4713946782988802885}
   - component: {fileID: -5401302153773492764}
-  - component: {fileID: -2787438288838643237}
   - component: {fileID: -3559607224555632594}
   m_Layer: 0
   m_Name: FireTower3
@@ -518,27 +516,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &-8527067850272701017
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844593010782088553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &-3366498219717255855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,29 +582,6 @@ MonoBehaviour:
   attackDelay: 0
   projectilePath: 
   resetTime: 0.2
---- !u!136 &-2787438288838643237
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844593010782088553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-3559607224555632594
 MonoBehaviour:
   m_ObjectHideFlags: 0
