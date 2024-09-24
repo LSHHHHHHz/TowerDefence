@@ -318,5 +318,6 @@ public class MouseInteraction : MonoBehaviour
                            GameManager.instance.gameEntityData.GetUpgradeTowerData(detectedBaseTowerGround.towerGroundData.towerData));
         td = detectedBaseTowerGround.towerGroundData.towerData;
         towerStatusPopup.UpdatePopupData(td);
+        EventManager.instance.ActiveAttack();
     }
 }

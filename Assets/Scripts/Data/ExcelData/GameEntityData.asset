@@ -83,6 +83,27 @@ MonoBehaviour:
     buyTowerPrice: 10
     sellTowerPrice: 5
     iconPath: IconImage/LightTowerLv3
+  - dataID: nor41
+    name: "\uCD08\uAE09\uBC14\uBC14\uB9AC\uC548"
+    prefabPath: Prefabs/Tower/Character/Barbarian1
+    projectilePath: 
+    buyTowerPrice: 10
+    sellTowerPrice: 5
+    iconPath: IconImage/LightTowerLv1
+  - dataID: nor42
+    name: "\uC911\uAE09\uBC14\uBC14\uB9AC\uC548"
+    prefabPath: Prefabs/Tower/Character/Barbarian2
+    projectilePath: 
+    buyTowerPrice: 10
+    sellTowerPrice: 5
+    iconPath: IconImage/LightTowerLv2
+  - dataID: nor43
+    name: "\uACE0\uAE09\uBC14\uBC14\uB9AC\uC548"
+    prefabPath: Prefabs/Tower/Character/Barbarian3
+    projectilePath: 
+    buyTowerPrice: 10
+    sellTowerPrice: 5
+    iconPath: IconImage/LightTowerLv3
   - dataID: normon11
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Normar/LV1_Normar
@@ -268,6 +289,45 @@ MonoBehaviour:
     level: 3
     elementaProperties: light
     randomNum: 2
+    towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 1000
+  - dataID: nor41
+    name: "\uCD08\uAE09\uBC14\uBC14\uB9AC\uC548"
+    hp: 500
+    combatEffectAmount: 10
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 1
+    type: NormarTower
+    level: 1
+    elementaProperties: axe
+    randomNum: 3
+    towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 100
+  - dataID: nor42
+    name: "\uC911\uAE09\uBC14\uBC14\uB9AC\uC548"
+    hp: 1000
+    combatEffectAmount: 20
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 1
+    type: NormarTower
+    level: 2
+    elementaProperties: axe
+    randomNum: 3
+    towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 500
+  - dataID: nor43
+    name: "\uACE0\uAE09\uBC14\uBC14\uB9AC\uC548"
+    hp: 2000
+    combatEffectAmount: 30
+    attackSpeed: 5
+    attackRange: 5
+    rotationSpeed: 1
+    type: NormarTower
+    level: 3
+    elementaProperties: axe
+    randomNum: 3
     towerTypePath: IconImage/IceTowerType
     expenseTowerCoin: 1000
   monsterStatusEntity:

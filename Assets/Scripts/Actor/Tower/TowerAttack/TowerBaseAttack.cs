@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
 public class TowerBaseAttack : MonoBehaviour
 {
     Coroutine attackCoroutine;
@@ -12,12 +11,14 @@ public class TowerBaseAttack : MonoBehaviour
     float initializedAttackDelay;
     int attackAmount;
     public string projectilePath;
-    [SerializeField] float resetTime = 0.2f; // 공격 후 초기화 시간
+    [SerializeField] float resetTime = 0.2f;
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
+    public BaseProjectile projectile;
     public event Action isAttackActionFalse;
     public event Action isAttackActionTrue;
+
     private void Start()
     {
         projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
@@ -30,7 +31,7 @@ public class TowerBaseAttack : MonoBehaviour
     }
     public void StartAttack(IActor targetActor)
     {
-        if (isReadyToAttack && attackCoroutine == null)
+        if (isReadyToAttack && attackCoroutine == null) 
         {
             attackCoroutine = StartCoroutine(AttackCoroutine(targetActor));
         }
@@ -52,8 +53,9 @@ public class TowerBaseAttack : MonoBehaviour
         while (attackDelay > 0)
         {
             attackDelay -= Time.deltaTime;
-            yield return null; 
+            yield return null;
         }
+        attackDelay = initializedAttackDelay;
     }
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
     {
@@ -76,9 +78,9 @@ public class TowerBaseAttack : MonoBehaviour
             attackDelay -= Time.deltaTime;
             if (attackDelay <= 0)
             {
-                StartAttackAction(targetActor); 
-                yield return new WaitForSeconds(resetTime); 
-                attackDelay = initializedAttackDelay; 
+                StartAttackAction(targetActor);
+                yield return new WaitForSeconds(resetTime);
+                attackDelay = initializedAttackDelay;
             }
             yield return null;
         }
@@ -86,14 +88,21 @@ public class TowerBaseAttack : MonoBehaviour
     }
     void StartAttackAction(IActor target)
     {
+        Debug.LogError("False");
         isAttackActionFalse?.Invoke();
         FireProjectile(firePos.position, targetPos, target);
     }
-
-    //이 투사체가 공유가 되니 문제가 되는 상황임
     public void FireProjectile(Vector3 firePos, Vector3 targetPos, IActor target)
     {
-        BaseProjectile projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
+        BaseProjectile projectile = null;
+        if (this.projectile == null)
+        {
+            projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
+        }
+        else
+        {
+            projectile = this.projectile;
+        }
         if (projectile != null)
         {
             projectile.InitializedProjectile(firePos, attackAmount, target);

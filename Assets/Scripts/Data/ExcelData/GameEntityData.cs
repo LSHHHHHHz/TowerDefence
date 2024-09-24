@@ -51,7 +51,8 @@ public class GameEntityData : ScriptableObject
     {
         TowerData towerData = new TowerData();
         int nextLevel = data.status.level + 1;
-        int randomNum = UnityEngine.Random.Range(0, 3);
+        int randomNum = UnityEngine.Random.Range(0, 4);
+        randomNum = 3;
         TowerStatusDB statusDB = GameManager.instance.gameEntityData.GetTowerStatusDB(nextLevel, randomNum);
         string towerID = statusDB.dataID;
 

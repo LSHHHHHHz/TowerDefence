@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 9026880273250647982}
   - component: {fileID: 5228084698588272376}
   - component: {fileID: 2399267394380467187}
-  - component: {fileID: 2020216871413702757}
   - component: {fileID: 265522254656185984}
   m_Layer: 0
   m_Name: BaseTower
@@ -371,7 +370,6 @@ MonoBehaviour:
   firePos: {fileID: 4693184981632452266}
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
-  findActor: {fileID: 0}
   isActiveAttack: 0
   detectActor: {fileID: 0}
 --- !u!114 &5228084698588272376
@@ -410,27 +408,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &2020216871413702757
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640220790048461196}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &265522254656185984
 MonoBehaviour:
   m_ObjectHideFlags: 0

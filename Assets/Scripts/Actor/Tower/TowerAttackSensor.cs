@@ -47,7 +47,7 @@ public class TowerAttackSensor : MonoBehaviour
                 findActor = tower.detectActor.targetActor;
                 towerBaseAttack.StartAttack(tower.detectActor.targetActor);
             }
-            else
+            else if(tower.detectActor.targetActor == null)
             {
                 findActor = tower.detectActor.targetActor;
                 towerBaseAttack.StopAttack();
@@ -69,7 +69,7 @@ public class TowerAttackSensor : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * tower.towerStatus.rotationSpeed * 20);
 
             float angleDif = Quaternion.Angle(transform.rotation, rot);
-            if (angleDif < 0.3f)
+            if (angleDif < 0.5f)
             {
                 isReadyToAttack = true;
                 towerBaseAttack.SetReadyToAttack(isReadyToAttack, tower.detectActor.targetActor.transform.position);

@@ -20,7 +20,6 @@ public class DieState : IState<Monster>
 
     public void Update(Monster monster)
     {
-        Debug.LogError(elapsedTime);
         elapsedTime += Time.deltaTime;
         monster.SetMonsterSpeed(0);
         if (elapsedTime >= duration)
