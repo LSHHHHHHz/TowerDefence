@@ -76,7 +76,7 @@ public class TowerBaseAttack : MonoBehaviour
             attackDelay -= Time.deltaTime;
             if (attackDelay <= 0)
             {
-                StartAttackAction(); 
+                StartAttackAction(targetActor); 
                 yield return new WaitForSeconds(resetTime); 
                 attackDelay = initializedAttackDelay; 
             }
@@ -84,20 +84,20 @@ public class TowerBaseAttack : MonoBehaviour
         }
         StopAttack();
     }
-    void StartAttackAction()
+    void StartAttackAction(IActor target)
     {
         isAttackActionFalse?.Invoke();
-        FireProjectile(firePos.position, targetPos);
+        FireProjectile(firePos.position, targetPos, target);
     }
 
     //이 투사체가 공유가 되니 문제가 되는 상황임
-    public void FireProjectile(Vector3 firePos, Vector3 targetPos)
+    public void FireProjectile(Vector3 firePos, Vector3 targetPos, IActor target)
     {
         BaseProjectile projectile = PoolManager.instance.GetObjectFromPool(projectilePath).GetComponent<BaseProjectile>();
         if (projectile != null)
         {
-            projectile.InitializedProjectile(firePos, attackAmount);
-            projectile.MoveTarget(targetPos);
+            projectile.InitializedProjectile(firePos, attackAmount, target);
+            projectile.MoveTarget(targetPos, target);
         }
     }
 }

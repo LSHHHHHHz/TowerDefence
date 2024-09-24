@@ -25,7 +25,10 @@ public class ActorManager<T> where T : Actor
     }
     public void UnregisterActor(T actor)
     {
-        actors.Remove(actor);
+        if (actors.Contains(actor)) 
+        {
+            actors.Remove(actor);
+        }
     }
     public void ClearAllActor()
     {

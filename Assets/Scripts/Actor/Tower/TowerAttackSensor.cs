@@ -11,7 +11,7 @@ public class TowerAttackSensor : MonoBehaviour
 
     public TowerBaseAttack towerBaseAttack;
     public bool isReadyToAttack = false;
-    public Actor findActor;
+    public IActor findActor;
     bool isAttack = false;
     public bool isActiveAttack;
     public ActorDetector<Monster> detectActor;

@@ -60,6 +60,7 @@ public class Monster : Actor
 
         if (monsterAttributes.currentHP <= 0)
         {
+            ActorManager<Monster>.instnace.UnregisterActor(this);
             DieMonster();
             fsmController.ChangeState(new DieState());
         }

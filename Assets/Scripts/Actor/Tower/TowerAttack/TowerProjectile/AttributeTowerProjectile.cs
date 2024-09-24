@@ -7,26 +7,20 @@ public class AttributeTowerProjectile : BaseProjectile
 {
     [SerializeField] string hitEffectPrefabPath;
     BaseHitEffect hitEffect;
-    SphereCollider sphereCollider;
-    MeshRenderer meshRenderer;
-    private void Awake()
-    {
-        sphereCollider = GetComponent<SphereCollider>();
-        meshRenderer = GetComponent<MeshRenderer>();
-    }
-    private void OnEnable()
-    {
-        sphereCollider.enabled = true;
-        meshRenderer.enabled = true;
-    }
     private void Update()
     {
         if (Vector3.Distance(transform.position, targetPos) < 0.1f)
         {
             gameObject.SetActive(false);
+
+            hitEffect = PoolManager.instance.GetObjectFromPool(hitEffectPrefabPath).GetComponent<BaseHitEffect>();
+            if (hitEffect != null)
+            {
+                hitEffect.Initialize(targetPos, towerAttackmount);
+            }
         }
     }
-    public override void MoveTarget(Vector3 targetPos)
+    public override void MoveTarget(Vector3 targetPos, IActor target)
     {
         Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 2, targetPos.z);
         this.targetPos = adjustPos;
@@ -38,19 +32,6 @@ public class AttributeTowerProjectile : BaseProjectile
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileMoveSpeed * Time.deltaTime);
             yield return null;
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Monster"))
-        {
-            hitEffect = PoolManager.instance.GetObjectFromPool(hitEffectPrefabPath).GetComponent<BaseHitEffect>();
-            if (hitEffect != null)
-            {
-                hitEffect.Initialize(targetPos, towerAttackmount);
-            }
-            sphereCollider.enabled = false;
-            meshRenderer.enabled = false;
         }
     }
 }
