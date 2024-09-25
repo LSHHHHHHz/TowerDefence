@@ -11,6 +11,7 @@ public class GameEntityData : ScriptableObject
     public List<MonsterStatusDB> monsterStatusEntity;
     public List<StageDB> stageEntity;
     public List<ShopDB> shopEntity;
+    public List<HiddinMissionDB> hiddenEntity;
     public ProfileDB GetProfileDB(string id)
     {
         foreach (ProfileDB profile in profileEntity)
@@ -82,6 +83,17 @@ public class GameEntityData : ScriptableObject
             }
         }
         Debug.LogError("맞는 스테이지 데이터 없음");
+        return null;
+    }
+    public HiddinMissionDB GetHiddenDB(int id)
+    {
+        foreach (HiddinMissionDB db in hiddenEntity)
+        {
+            if (id == db.dataID)
+            {
+                return db;
+            }
+        }
         return null;
     }
     public string GetMonsterIdByStage(int stage, string type)

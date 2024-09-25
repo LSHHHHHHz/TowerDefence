@@ -88,7 +88,6 @@ public class TowerBaseAttack : MonoBehaviour
     }
     void StartAttackAction(IActor target)
     {
-        Debug.LogError("False");
         isAttackActionFalse?.Invoke();
         FireProjectile(firePos.position, targetPos, target);
     }

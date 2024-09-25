@@ -23,7 +23,7 @@ public class EventManager
     public event Action onAllDestoryMonster;
     public event Action onKilledMonster;
 
-    public event Action onActiveAttack;
+    public event Action onSetTower;
     public event Action onBuyShopTower;
 
     public event Action onClickUpgradeButton;
@@ -33,7 +33,7 @@ public class EventManager
     }
     public void ActiveAttack()
     {
-        onActiveAttack?.Invoke();
+        onSetTower?.Invoke();
     }
     public void BuyShopTower()
     {

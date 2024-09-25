@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : Actor
 {
-    protected TowerStatusDB towerStatusDB;
+    public TowerStatusDB towerStatusDB { get; private set; }
     public TowerAttributes towerStatus { get; private set; }
     public TowerAttackSensor towerAttackSensor { get; set; }
     public FSMController<Tower> fsmController { get; private set; }
@@ -27,6 +27,15 @@ public class Tower : Actor
     protected void Update()
     {
         fsmController.FSMUpdate();
+    }
+
+    private void OnEnable()
+    {
+        ActorManager<Tower>.instnace.RegisterActor(this);
+    }
+    private void OnDisable()
+    {
+        ActorManager<Tower>.instnace.UnregisterActor(this);
     }
     public void Initialize()
     {

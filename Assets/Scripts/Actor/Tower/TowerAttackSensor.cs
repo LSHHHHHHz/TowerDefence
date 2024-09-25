@@ -31,11 +31,11 @@ public class TowerAttackSensor : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.instance.onActiveAttack += SetTowerOnGround;
+        EventManager.instance.onSetTower += SetTowerOnGround;
     }
     private void OnDisable()
     {
-        EventManager.instance.onActiveAttack -= SetTowerOnGround;
+        EventManager.instance.onSetTower -= SetTowerOnGround;
     }
     private void Update()
     {

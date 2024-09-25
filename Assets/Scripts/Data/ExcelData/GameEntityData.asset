@@ -165,7 +165,7 @@ MonoBehaviour:
     name: "\uAE30\uBCF8\uD0C0\uC6CC"
     hp: 500
     combatEffectAmount: 10
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 3
     rotationSpeed: 5
     type: NormarTower
@@ -178,7 +178,7 @@ MonoBehaviour:
     name: "\uD558\uAE09\uBD88\uD0C0\uC6CC"
     hp: 1000
     combatEffectAmount: 10
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 3
     rotationSpeed: 5
     type: NormarTower
@@ -191,7 +191,7 @@ MonoBehaviour:
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     hp: 2000
     combatEffectAmount: 20
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 4
     rotationSpeed: 5
     type: NormarTower
@@ -204,7 +204,7 @@ MonoBehaviour:
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     hp: 3000
     combatEffectAmount: 30
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
@@ -217,7 +217,7 @@ MonoBehaviour:
     name: "\uD558\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 1000
     combatEffectAmount: 10
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 3
     rotationSpeed: 5
     type: NormarTower
@@ -230,7 +230,7 @@ MonoBehaviour:
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 2000
     combatEffectAmount: 20
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 4
     rotationSpeed: 5
     type: NormarTower
@@ -243,7 +243,7 @@ MonoBehaviour:
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 3000
     combatEffectAmount: 30
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
@@ -256,7 +256,7 @@ MonoBehaviour:
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 1000
     combatEffectAmount: 10
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 3
     rotationSpeed: 5
     type: NormarTower
@@ -269,7 +269,7 @@ MonoBehaviour:
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 2000
     combatEffectAmount: 20
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 4
     rotationSpeed: 5
     type: NormarTower
@@ -282,7 +282,7 @@ MonoBehaviour:
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 3000
     combatEffectAmount: 30
-    attackSpeed: 5
+    attackSpeed: 1
     attackRange: 5
     rotationSpeed: 5
     type: NormarTower
@@ -461,3 +461,10 @@ MonoBehaviour:
   - dataID: nor33
     price: 1000
     iconPath: IconImage/LightTowerLv3
+  hiddenEntity:
+  - dataID: 0
+    missionName: "\uC2DC\uC791\uC774 \uBC18"
+    rewardCoin: 1000
+  - dataID: 1
+    missionName: "\uB098\uB294 \uD0C0\uC6CC\uC7A5\uC778"
+    rewardCoin: 2000
