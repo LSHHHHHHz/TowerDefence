@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MortarTowerProjectile : BaseProjectile
 {
-    Monster targetMonster;
     private void Update()
     {
         if (target != null && targetMonster != null)

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BarbarianTowerProjectile : BaseProjectile
 {
-    Monster targetMonster;
     Vector3 originPos;
     Quaternion originRot; 
     float projectileRotSpeed = 3000f;
@@ -30,9 +29,9 @@ public class BarbarianTowerProjectile : BaseProjectile
     }
     IEnumerator MoveProjectile()
     {
-        while (targetMonster != null && Vector3.Distance(transform.position, targetMonster.transform.position) > 0.1f)
+        while (targetMonster != null && Vector3.Distance(transform.position, targetMonster.transform.position + new Vector3(0,1,0)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position = new Vector3(0,1,0), projectileMoveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position + new Vector3(0,1,0), projectileMoveSpeed * Time.deltaTime);
             transform.Rotate(projectileRotSpeed * Time.deltaTime, 0, 0);
             yield return null;
         }
