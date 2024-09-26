@@ -39,7 +39,14 @@ public class ActorDetector<T> : BaseDetector where T : Actor
                 }
             }
         }
-        FindTargetActor();
+        if (targetActor != null && detectedActors.Contains(targetActor))
+        {
+            return;
+        }
+        else
+        {
+            FindTargetActor();
+        }
     }
     protected void FindTargetActor()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseProjectile : MonoBehaviour
 {
     protected Monster targetMonster;
-    protected float projectileMoveSpeed =10;
+    [SerializeField]protected float projectileMoveSpeed =10;
     protected int towerAttackmount;
     protected Vector3 targetPos;
     protected IActor target;

@@ -12,7 +12,7 @@ public class TowerAttackSensor : MonoBehaviour
     public TowerBaseAttack towerBaseAttack;
     public bool isReadyToAttack = false;
     public IActor findActor;
-    bool isAttack = false;
+    public bool isAttack = false;
     public bool isActiveAttack;
     public ActorDetector<Monster> detectActor;
     private void Awake()
@@ -42,15 +42,18 @@ public class TowerAttackSensor : MonoBehaviour
         if (isActiveAttack)
         {
             RotateToward();
-            if (tower.detectActor.targetActor != null && tower.triggerStartAttack && !isAttack)
+            if (tower.detectActor.targetActor != null && isReadyToAttack && !isAttack)
             {
                 findActor = tower.detectActor.targetActor;
                 towerBaseAttack.StartAttack(tower.detectActor.targetActor);
+                isAttack = true;
+                Debug.Log("어디1");
             }
-            else if(tower.detectActor.targetActor == null)
+            else if(tower.detectActor.targetActor == null )
             {
                 findActor = tower.detectActor.targetActor;
-                towerBaseAttack.StopAttack();
+               // towerBaseAttack.StopAttack();
+                Debug.LogError("어디2");
             }
         }
     }

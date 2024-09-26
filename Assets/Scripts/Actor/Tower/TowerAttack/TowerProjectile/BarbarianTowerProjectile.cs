@@ -14,7 +14,7 @@ public class BarbarianTowerProjectile : BaseProjectile
         originPos = transform.localPosition;
         originRot = Quaternion.Euler(0, 310, 40);
         Debug.Log(originRot.eulerAngles);
-        projectileMoveSpeed = 3;
+        projectileMoveSpeed = 8;
         originalParent = transform.parent;
     }
     public override void MoveTarget(Vector3 targetPos, IActor target)
@@ -40,7 +40,5 @@ public class BarbarianTowerProjectile : BaseProjectile
         transform.SetParent(originalParent);
         transform.localPosition = originPos;
         transform.localRotation = originRot;
-        Debug.Log(originRot.eulerAngles);
-        Debug.Log(transform.rotation.eulerAngles);
     }
 }

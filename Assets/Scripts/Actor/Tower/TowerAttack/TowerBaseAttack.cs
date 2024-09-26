@@ -5,20 +5,22 @@ using System.IO;
 using UnityEngine;
 public class TowerBaseAttack : MonoBehaviour
 {
+    Tower tower;
     Coroutine attackCoroutine;
-    Coroutine reduceAttackDelayCoroutine;
-    public float attackDelay;
     float initializedAttackDelay;
     int attackAmount;
     public string projectilePath;
-    [SerializeField] float resetTime = 0.2f;
+    [SerializeField] float resetTime = 0.4f;
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
     public BaseProjectile projectile;
     public event Action isAttackActionFalse;
     public event Action isAttackActionTrue;
-
+    private void Awake()
+    {
+        tower = GetComponent<Tower>();
+    }
     private void Start()
     {
         projectilePath = gameObject.GetComponent<Tower>().profileDB.projectilePath;
@@ -34,6 +36,8 @@ public class TowerBaseAttack : MonoBehaviour
         if (isReadyToAttack && attackCoroutine == null) 
         {
             attackCoroutine = StartCoroutine(AttackCoroutine(targetActor));
+            isAttackActionTrue?.Invoke();
+            Debug.Log("아아");
         }
     }
     public void StopAttack()
@@ -43,27 +47,11 @@ public class TowerBaseAttack : MonoBehaviour
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
         }
-        if (reduceAttackDelayCoroutine == null)
-        {
-            reduceAttackDelayCoroutine = StartCoroutine(ReduceAttackDelay());
-        }
-    }
-    IEnumerator ReduceAttackDelay()
-    {
-        while (attackDelay > 0)
-        {
-            attackDelay -= Time.deltaTime;
-            yield return null;
-        }
-        attackDelay = initializedAttackDelay;
+        isAttackActionFalse?.Invoke();
+        Debug.Log("StopAttack");
     }
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
     {
-        if (reduceAttackDelayCoroutine != null)
-        {
-            StopCoroutine(reduceAttackDelayCoroutine);
-            reduceAttackDelayCoroutine = null;
-        }
         isReadyToAttack = ready;
         if (ready)
         {
@@ -73,26 +61,29 @@ public class TowerBaseAttack : MonoBehaviour
     IEnumerator AttackCoroutine(IActor targetActor)
     {
         isAttackActionTrue?.Invoke();
-        while (targetActor != null)
-        {
-            attackDelay -= Time.deltaTime;
-            if (attackDelay <= 0)
-            {
-                StartAttackAction(targetActor);
-                yield return new WaitForSeconds(resetTime);
-                attackDelay = initializedAttackDelay;
-            }
-            yield return null;
-        }
+        StartAttackAction(targetActor);
+        //while (targetActor != null)
+        //{
+        //    attackDelay -= Time.deltaTime;
+        //    if (attackDelay <= 0)
+        //    {
+        //        yield return new WaitForSeconds(resetTime);
+        //        attackDelay = initializedAttackDelay;
+        //    }
+        //    yield return null;
+        //}
+        yield return new WaitForSeconds(0.2f);
+        tower.fsmController.ChangeState(new AttackState());
+        yield return new WaitForSeconds(resetTime);
         StopAttack();
     }
     void StartAttackAction(IActor target)
     {
-        isAttackActionFalse?.Invoke();
         FireProjectile(firePos.position, targetPos, target);
     }
     public void FireProjectile(Vector3 firePos, Vector3 targetPos, IActor target)
     {
+        Debug.Log("몇번");
         BaseProjectile projectile = null;
         if (this.projectile == null)
         {

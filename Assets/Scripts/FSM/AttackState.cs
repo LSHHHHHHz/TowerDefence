@@ -16,10 +16,11 @@ public class AttackState : IState<Tower>
 
     public void Update(Tower tower)
     {
-        //if(tower.towerAttackSensor.isReadyToAttack)
-        //{
-        //    tower.anim.SetTrigger("IsAttack");
-        //}
+        AnimatorStateInfo stateInfo = tower.anim.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1.0f)
+        {
+            tower.fsmController.ChangeState(new IdleState());
+        }
         if (tower.detectActor.targetActor == null)
         {
             tower.fsmController.ChangeState(new IdleState());
