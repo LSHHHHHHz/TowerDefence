@@ -16,6 +16,7 @@ public class AttributeTowerProjectile : BaseProjectile
             hitEffect = PoolManager.instance.GetObjectFromPool(hitEffectPrefabPath).GetComponent<BaseHitEffect>();
             if (hitEffect != null)
             {
+                hitEffect.transform.position = new Vector3(targetMonster.transform.position.x, hitEffect.transform.position.y, targetMonster.transform.position.z);
                 hitEffect.Initialize(targetMonster, towerAttackmount);
             }
         }
