@@ -1142,6 +1142,7 @@ MonoBehaviour:
   firePos: {fileID: 4558426661421289569}
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
+  isAttack: 0
   isActiveAttack: 0
   detectActor: {fileID: 0}
 --- !u!114 &4932468182314968917
@@ -1156,9 +1157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747769323dac18d489222e1025a82429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 0
   projectilePath: 
-  resetTime: 0.2
+  resetTime: 3
   projectile: {fileID: 3854298179144812656}
 --- !u!114 &6004843501193963818
 MonoBehaviour:
@@ -4984,6 +4984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8151439e65f794488401be6e8693e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileMoveSpeed: 10
 --- !u!1 &2780143940904611558
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class TowerBaseAttack : MonoBehaviour
     float initializedAttackDelay;
     int attackAmount;
     public string projectilePath;
-    [SerializeField] float resetTime = 0.4f;
+    [SerializeField] float resetTime = 3f;
     Transform firePos;
     private bool isReadyToAttack = false;
     private Vector3 targetPos;
@@ -48,6 +48,7 @@ public class TowerBaseAttack : MonoBehaviour
             attackCoroutine = null;
         }
         isAttackActionFalse?.Invoke();
+        tower.fsmController.ChangeState(new IdleState());
         Debug.Log("StopAttack");
     }
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
