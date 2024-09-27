@@ -9,10 +9,7 @@ public class MonsterDebuff
 
     public void AddSlowDebuff(int amount)
     {
-        if (!slowDebuffList.Contains(amount))
-        {
-            slowDebuffList.Add(amount);
-        }
+        slowDebuffList.Add(amount);
         UpdateCurrentSlowDebuff();
     }
     public void RemoveSlowDebuff(int amount)
@@ -32,7 +29,8 @@ public class MonsterDebuff
     {
         if (slowDebuffList.Count > 0)
         {
-            int maxSlow = slowDebuffList[0]; 
+            Debug.Log(slowDebuffList[0]);
+            int maxSlow = slowDebuffList[0];
             for (int i = 1; i < slowDebuffList.Count; i++)
             {
                 if (slowDebuffList[i] > maxSlow)
@@ -44,7 +42,8 @@ public class MonsterDebuff
         }
         else
         {
-            currentSlowDebuff = 1; 
+            Debug.Log("디버프 없음");
+            currentSlowDebuff = 1;
         }
     }
 }

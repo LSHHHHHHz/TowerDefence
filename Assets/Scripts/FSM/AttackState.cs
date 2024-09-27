@@ -19,12 +19,10 @@ public class AttackState : IState<Tower>
         AnimatorStateInfo stateInfo = tower.anim.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 0.9f)
         {
-            Debug.Log("FSM AttackState : À§ ");
             tower.fsmController.ChangeState(new IdleState());
         }
         if (tower.detectActor.targetActor == null)
         {
-            Debug.Log("FSM AttackState : ¾Æ·¡ ");
             tower.fsmController.ChangeState(new IdleState());
         }
     }

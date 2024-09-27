@@ -47,13 +47,11 @@ public class TowerAttackSensor : MonoBehaviour
                 findActor = tower.detectActor.targetActor;
                 towerBaseAttack.StartAttack(tower.detectActor.targetActor);
                 isAttack = true;
-                Debug.Log("어디1");
             }
             else if(tower.detectActor.targetActor == null )
             {
                 findActor = tower.detectActor.targetActor;
                // towerBaseAttack.StopAttack();
-                Debug.LogError("어디2");
             }
         }
     }

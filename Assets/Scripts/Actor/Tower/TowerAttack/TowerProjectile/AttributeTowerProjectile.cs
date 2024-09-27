@@ -26,15 +26,13 @@ public class AttributeTowerProjectile : BaseProjectile
         {
             targetMonster = monster;
         }
-        Vector3 adjustPos = new Vector3(targetPos.x, targetPos.y + 1, targetPos.z);
-        this.targetPos = adjustPos;
-        StartCoroutine(MoveProjectile(adjustPos));
+        StartCoroutine(MoveProjectile());
     }
-    IEnumerator MoveProjectile(Vector3 targetPos)
+    IEnumerator MoveProjectile()
     {
-        while (Vector3.Distance(transform.position, targetPos) > 0.01f)
+        while (targetMonster != null && Vector3.Distance(transform.position, targetMonster.transform.position + new Vector3(0, 1, 0)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileMoveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position + new Vector3(0, 1, 0), projectileMoveSpeed * Time.deltaTime);
             yield return null;
         }
     }

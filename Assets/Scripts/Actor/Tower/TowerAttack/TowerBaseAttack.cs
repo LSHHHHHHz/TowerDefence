@@ -37,7 +37,6 @@ public class TowerBaseAttack : MonoBehaviour
         {
             attackCoroutine = StartCoroutine(AttackCoroutine(targetActor));
             isAttackActionTrue?.Invoke();
-            Debug.Log("아아");
         }
     }
     public void StopAttack()
@@ -49,7 +48,6 @@ public class TowerBaseAttack : MonoBehaviour
         }
         isAttackActionFalse?.Invoke();
         tower.fsmController.ChangeState(new IdleState());
-        Debug.Log("StopAttack");
     }
     public void SetReadyToAttack(bool ready, Vector3 targetPos)
     {
@@ -84,7 +82,6 @@ public class TowerBaseAttack : MonoBehaviour
     }
     public void FireProjectile(Vector3 firePos, Vector3 targetPos, IActor target)
     {
-        Debug.Log("몇번");
         BaseProjectile projectile = null;
         if (this.projectile == null)
         {

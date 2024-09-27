@@ -4871,8 +4871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d030efc708a65742aa5cc43d00fca80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
-  activeObjTime: 3
+  combatEffectAmount: 0
+  attackRange: 2
+  activeObjTime: 2
 --- !u!1 &2024541381705590733
 GameObject:
   m_ObjectHideFlags: 0
