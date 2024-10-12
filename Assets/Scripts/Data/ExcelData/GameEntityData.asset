@@ -110,56 +110,56 @@ MonoBehaviour:
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Normar1
+    iconPath: IconImage/Monster1
   - dataID: normon12
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Normar/LV2_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Normar2
+    iconPath: IconImage/Monster2
   - dataID: normon13
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Normar/LV3_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Normar3
+    iconPath: IconImage/Monster3
   - dataID: normon14
     name: "\uB178\uB9D0\uBAAC\uC2A4\uD1304"
     prefabPath: Prefabs/Monster/Normar/LV4_Normar
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Normar4
-  - dataID: bosmon11
+    iconPath: IconImage/Monster4
+  - dataID: bossmon11
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1301"
     prefabPath: Prefabs/Monster/Boss/LV1_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Boss1
-  - dataID: bosmon12
+    iconPath: IconImage/Monster1
+  - dataID: bossmon12
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1302"
     prefabPath: Prefabs/Monster/Boss/LV2_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Boss2
-  - dataID: bosmon13
+    iconPath: IconImage/Monster2
+  - dataID: bossmon13
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1303"
     prefabPath: Prefabs/Monster/Boss/LV3_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Boss3
-  - dataID: bosmon14
+    iconPath: IconImage/Monster3
+  - dataID: bossmon14
     name: "\uBCF4\uC2A4\uBAAC\uC2A4\uD1304"
     prefabPath: Prefabs/Monster/Boss/LV4_Boss
     projectilePath: 
     buyTowerPrice: 10
     sellTowerPrice: 5
-    iconPath: IconImage/Boss4
+    iconPath: IconImage/Monster4
   towerStatusEntity:
   - dataID: nor01
     name: "\uAE30\uBCF8\uD0C0\uC6CC"
@@ -186,7 +186,7 @@ MonoBehaviour:
     elementaProperties: fire
     randomNum: 0
     towerTypePath: IconImage/FireTowerType
-    expenseTowerCoin: 100
+    expenseTowerCoin: 300
   - dataID: nor12
     name: "\uC911\uAE09\uBD88\uD0C0\uC6CC"
     hp: 2000
@@ -199,7 +199,7 @@ MonoBehaviour:
     elementaProperties: fire
     randomNum: 0
     towerTypePath: IconImage/FireTowerType
-    expenseTowerCoin: 500
+    expenseTowerCoin: 1000
   - dataID: nor13
     name: "\uACE0\uAE09\uBD88\uD0C0\uC6CC"
     hp: 3000
@@ -224,8 +224,8 @@ MonoBehaviour:
     level: 1
     elementaProperties: ice
     randomNum: 1
-    towerTypePath: IconImage/LightTowerType
-    expenseTowerCoin: 100
+    towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 300
   - dataID: nor22
     name: "\uC911\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 2000
@@ -237,8 +237,8 @@ MonoBehaviour:
     level: 2
     elementaProperties: ice
     randomNum: 1
-    towerTypePath: IconImage/LightTowerType
-    expenseTowerCoin: 500
+    towerTypePath: IconImage/IceTowerType
+    expenseTowerCoin: 1000
   - dataID: nor23
     name: "\uACE0\uAE09\uC5BC\uC74C\uD0C0\uC6CC"
     hp: 3000
@@ -250,7 +250,7 @@ MonoBehaviour:
     level: 3
     elementaProperties: ice
     randomNum: 1
-    towerTypePath: IconImage/LightTowerType
+    towerTypePath: IconImage/IceTowerType
     expenseTowerCoin: 1000
   - dataID: nor31
     name: "\uD558\uAE09\uC804\uAE30\uD0C0\uC6CC"
@@ -263,8 +263,8 @@ MonoBehaviour:
     level: 1
     elementaProperties: light
     randomNum: 2
-    towerTypePath: IconImage/IceTowerType
-    expenseTowerCoin: 100
+    towerTypePath: IconImage/LightTowerType
+    expenseTowerCoin: 300
   - dataID: nor32
     name: "\uC911\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 2000
@@ -276,8 +276,8 @@ MonoBehaviour:
     level: 2
     elementaProperties: light
     randomNum: 2
-    towerTypePath: IconImage/IceTowerType
-    expenseTowerCoin: 500
+    towerTypePath: IconImage/LightTowerType
+    expenseTowerCoin: 1000
   - dataID: nor33
     name: "\uACE0\uAE09\uC804\uAE30\uD0C0\uC6CC"
     hp: 3000
@@ -289,7 +289,7 @@ MonoBehaviour:
     level: 3
     elementaProperties: light
     randomNum: 2
-    towerTypePath: IconImage/IceTowerType
+    towerTypePath: IconImage/LightTowerType
     expenseTowerCoin: 1000
   - dataID: nor41
     name: "\uCD08\uAE09\uBC14\uBC14\uB9AC\uC548"
@@ -297,38 +297,38 @@ MonoBehaviour:
     combatEffectAmount: 10
     attackSpeed: 5
     attackRange: 5
-    rotationSpeed: 1
+    rotationSpeed: 5
     type: NormarTower
     level: 1
     elementaProperties: axe
     randomNum: 3
-    towerTypePath: IconImage/IceTowerType
-    expenseTowerCoin: 100
+    towerTypePath: IconImage/AxeTowerType
+    expenseTowerCoin: 300
   - dataID: nor42
     name: "\uC911\uAE09\uBC14\uBC14\uB9AC\uC548"
     hp: 1000
     combatEffectAmount: 20
     attackSpeed: 5
     attackRange: 5
-    rotationSpeed: 1
+    rotationSpeed: 5
     type: NormarTower
     level: 2
     elementaProperties: axe
     randomNum: 3
-    towerTypePath: IconImage/IceTowerType
-    expenseTowerCoin: 500
+    towerTypePath: IconImage/AxeTowerType
+    expenseTowerCoin: 1000
   - dataID: nor43
     name: "\uACE0\uAE09\uBC14\uBC14\uB9AC\uC548"
     hp: 2000
     combatEffectAmount: 30
     attackSpeed: 5
     attackRange: 5
-    rotationSpeed: 1
+    rotationSpeed: 5
     type: NormarTower
     level: 3
     elementaProperties: axe
     randomNum: 3
-    towerTypePath: IconImage/IceTowerType
+    towerTypePath: IconImage/AxeTowerType
     expenseTowerCoin: 1000
   monsterStatusEntity:
   - dataID: normon11
@@ -352,35 +352,35 @@ MonoBehaviour:
     type: NormarMonster
     stage: 3
     rewardCoin: 30
-  - dataID: normon13
+  - dataID: normon14
     hp: 600
     rotationSpeed: 10
     moveSpeed: 3
     type: NormarMonster
     stage: 4
     rewardCoin: 40
-  - dataID: bosmon11
+  - dataID: bossmon11
     hp: 1500
     rotationSpeed: 10
     moveSpeed: 3
     type: BossMonster
     stage: 1
     rewardCoin: 100
-  - dataID: bosmon12
+  - dataID: bossmon12
     hp: 3000
     rotationSpeed: 10
     moveSpeed: 3
     type: BossMonster
     stage: 2
     rewardCoin: 200
-  - dataID: bosmon13
+  - dataID: bossmon13
     hp: 4500
     rotationSpeed: 10
     moveSpeed: 3
     type: BossMonster
     stage: 3
     rewardCoin: 300
-  - dataID: bosmon14
+  - dataID: bossmon14
     hp: 6000
     rotationSpeed: 10
     moveSpeed: 3
@@ -392,75 +392,80 @@ MonoBehaviour:
     dataID: normon11
     spawnCount: 50
     type: NormarMonster
-    iconPath: IconImage/Normar1
+    iconPath: IconImage/Monster1
     monsterHP: 150
     rewardCoin: 10
   - stage: 2
     dataID: normon12
     spawnCount: 50
     type: NormarMonster
-    iconPath: IconImage/Normar2
+    iconPath: IconImage/Monster2
     monsterHP: 300
     rewardCoin: 20
   - stage: 3
     dataID: normon13
     spawnCount: 50
     type: NormarMonster
-    iconPath: IconImage/Normar3
+    iconPath: IconImage/Monster3
     monsterHP: 450
     rewardCoin: 30
+  - stage: 4
+    dataID: normon14
+    spawnCount: 50
+    type: NormarMonster
+    iconPath: IconImage/Monster4
+    monsterHP: 600
+    rewardCoin: 40
   - stage: 1
-    dataID: bosmon11
+    dataID: bossmon11
     spawnCount: 2
     type: BossMonster
-    iconPath: IconImage/Boss1
+    iconPath: IconImage/Monster1
     monsterHP: 1500
     rewardCoin: 100
   - stage: 2
-    dataID: bosmon12
+    dataID: bossmon12
     spawnCount: 2
     type: BossMonster
-    iconPath: IconImage/Boss2
+    iconPath: IconImage/Monster2
     monsterHP: 3000
     rewardCoin: 200
   - stage: 3
-    dataID: bosmon13
+    dataID: bossmon13
     spawnCount: 2
     type: BossMonster
-    iconPath: IconImage/Boss3
+    iconPath: IconImage/Monster3
     monsterHP: 4500
     rewardCoin: 300
+  - stage: 4
+    dataID: bossmon14
+    spawnCount: 2
+    type: BossMonster
+    iconPath: IconImage/Monster4
+    monsterHP: 6000
+    rewardCoin: 400
   shopEntity:
   - dataID: nor01
     price: 100
     iconPath: IconImage/BaseTower
   - dataID: nor11
-    price: 100
+    price: 300
     iconPath: IconImage/FireTowerLv1
-  - dataID: nor12
-    price: 500
-    iconPath: IconImage/FireTowerLv2
-  - dataID: nor13
-    price: 1000
-    iconPath: IconImage/FireTowerLv3
   - dataID: nor21
-    price: 100
+    price: 300
     iconPath: IconImage/IceTowerLv1
-  - dataID: nor22
-    price: 500
-    iconPath: IconImage/IceTowerLv2
-  - dataID: nor23
-    price: 1000
-    iconPath: IconImage/IceTowerLv3
   - dataID: nor31
-    price: 100
+    price: 300
     iconPath: IconImage/LightTowerLv1
-  - dataID: nor32
-    price: 500
-    iconPath: IconImage/LightTowerLv2
-  - dataID: nor33
+  - dataID: nor12
     price: 1000
-    iconPath: IconImage/LightTowerLv3
+    iconPath: IconImage/FireTowerLv2
+  - dataID: nor22
+    price: 1000
+    iconPath: IconImage/IceTowerLv2
+  - dataID: nor32
+    price: 1000
+    iconPath: IconImage/LightTowerLv2
   hiddenEntity:
   - dataID: 0
     missionName: "\uC2DC\uC791\uC774 \uBC18"

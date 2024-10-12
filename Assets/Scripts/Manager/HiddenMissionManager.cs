@@ -16,10 +16,13 @@ public class HiddenMissionManager : MonoBehaviour
     public event Action onClearMission;
 
     private void Awake()
+
+        // ActorManager<Tower>
+        // ActorManager<Monster>
     {
         actorManager = ActorManager<Tower>.instnace;
         missionDic = new Dictionary<int, List<string>>();
-        missionDic.Add(0, new List<string> { "nor11", "nor21","nor32", "nor42 "});
+        missionDic.Add(0, new List<string> { "nor11", "nor21","nor31", "nor41"});
         missionDic.Add(1, new List<string> { "nor12", "nor22", "nor32", "nor42" });
 
         isClearMission = new bool[missionDic.Count];

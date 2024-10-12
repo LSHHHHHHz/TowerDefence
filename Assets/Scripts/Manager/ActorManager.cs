@@ -3,6 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ActorManager2
+{
+    private static ActorManager2 instance;
+    public static ActorManager2 Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new ActorManager2();
+            }
+            return instance;
+        }
+    }
+    List<Actor> actors = new List<Actor>();
+    public IEnumerable<T> EnumerateActors<T>() where T : class
+    {
+        foreach(var actor in actors)
+        {
+            if (actor is T)
+            {
+                yield return actor as T;
+            }
+        }
+    }
+}
+
 public class ActorManager<T> where T : Actor
 {
     private static ActorManager<T> _instnace;

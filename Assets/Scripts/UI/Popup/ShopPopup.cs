@@ -22,7 +22,7 @@ public class ShopPopup : MonoBehaviour
     }
     private void Start()
     {
-        ClosePopup();
+       // ClosePopup();
     }
     private void OnEnable()
     {

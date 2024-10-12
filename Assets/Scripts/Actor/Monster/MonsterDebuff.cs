@@ -29,7 +29,6 @@ public class MonsterDebuff
     {
         if (slowDebuffList.Count > 0)
         {
-            Debug.Log(slowDebuffList[0]);
             int maxSlow = slowDebuffList[0];
             for (int i = 1; i < slowDebuffList.Count; i++)
             {
@@ -42,7 +41,6 @@ public class MonsterDebuff
         }
         else
         {
-            Debug.Log("디버프 없음");
             currentSlowDebuff = 1;
         }
     }

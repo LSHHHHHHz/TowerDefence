@@ -59,8 +59,9 @@ public abstract class BaseHitEffect : MonoBehaviour
         {
             return;
         }
-        foreach (var monster in monsters)
+        for (int i = 0; i < monsters.Count; i++)
         {
+            var monster = monsters[i];
             float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
                                               new Vector3(monster.transform.position.x, 0, monster.transform.position.z));
             if (distance <= attackRange && !damagedMonsters.Contains(monster))
@@ -68,7 +69,7 @@ public abstract class BaseHitEffect : MonoBehaviour
                 ApplyEffect(monster);
                 damagedMonsters.Add(monster);
             }
-            if (distance > attackRange)
+            else if (distance > attackRange && damagedMonsters.Contains(monster))
             {
                 monster.TakeOutSlowDebuff(combatEffectAmount);
                 damagedMonsters.Remove(monster);

@@ -36,6 +36,7 @@ public class MonsterInEndGate : BaseDetector
                     {
                         player.ReduceHp(5);
                     }
+                    ActorManager<Monster>.instnace.UnregisterActor(actor);
                     actor.gameObject.SetActive(false);
                     break;
                 }

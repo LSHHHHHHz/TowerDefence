@@ -34,10 +34,11 @@ public class Monster : Actor
         monsterAttributes.currentHP = monsterAttributes.maxHP;
         monsterAttributes.ResetMoveSpeed();
         fsmController.ChangeState(new WalkState());
+        monsterCanvas.updateHpBar?.Invoke(monsterAttributes.maxHP, monsterAttributes.currentHP);
     }
     private void OnDisable()
     {
-        ActorManager<Monster>.instnace.UnregisterActor(this);
+        //ActorManager<Monster>.instnace.UnregisterActor(this);
         monsterDebuff.ClearDebuffs();
     }
     public override void ReceiveEvent(IEvent ievent)

@@ -13,7 +13,6 @@ public class BarbarianTowerProjectile : BaseProjectile
     {
         originPos = transform.localPosition;
         originRot = Quaternion.Euler(0, 310, 40);
-        Debug.Log(originRot.eulerAngles);
         projectileMoveSpeed = 8;
         originalParent = transform.parent;
     }

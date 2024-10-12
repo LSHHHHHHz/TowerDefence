@@ -491,7 +491,6 @@ Transform:
   m_Children:
   - {fileID: 2608660094413192992}
   - {fileID: 7513770891938635603}
-  - {fileID: 3228226109328591621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7956510232081707431
@@ -563,7 +562,7 @@ MonoBehaviour:
   firePos: {fileID: 6569358732572017085}
   towerBaseAttack: {fileID: 0}
   isReadyToAttack: 0
-  findActor: {fileID: 0}
+  isAttack: 0
   isActiveAttack: 0
   detectActor: {fileID: 0}
 --- !u!114 &-128439802727104260
@@ -578,9 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747769323dac18d489222e1025a82429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 0
   projectilePath: 
   resetTime: 0.2
+  projectile: {fileID: 0}
 --- !u!114 &-4195312200198472330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,66 +1043,4 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7245797422635625268, guid: 570d4a4adcb75584daa95c5cb13e6982, type: 3}
   m_PrefabInstance: {fileID: 2103043034066584051}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6570777770336741203
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4617159174555797635}
-    m_Modifications:
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9003418275175459602, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-      propertyPath: m_Name
-      value: 2LevelTowerUpGrade
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
---- !u!4 &3228226109328591621 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8646032892735548502, guid: fd5001329a68e6c42b3e2295be55bfd3, type: 3}
-  m_PrefabInstance: {fileID: 6570777770336741203}
   m_PrefabAsset: {fileID: 0}

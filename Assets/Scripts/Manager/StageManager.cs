@@ -60,10 +60,7 @@ public class StageManager : MonoBehaviour
             startUI.SetActive(false);
         }
         startStage = true;
-        currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
-        currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");
-        onInitializedStage?.Invoke(currentStage, currentNormarMonsterDB.iconPath, currentNormarMonsterDB.monsterHP, currentNormarMonsterDB.rewardCoin,
-                                   currentBossMonsterDB.iconPath, currentBossMonsterDB.monsterHP, currentBossMonsterDB.rewardCoin);
+        UpdateNextStageInfo(currentStage);
 
         currentStageDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, currentActorType);
         string id = GameManager.instance.gameEntityData.GetMonsterIdByStage(currentStageDB.stage, currentStageDB.type);
@@ -81,6 +78,10 @@ public class StageManager : MonoBehaviour
         {
             isClearStage = true;
             countDownPopup.gameObject.SetActive(true);
+           if(currentActorType == "BossMonster")
+            {
+                UpdateNextStageInfo(currentStage + 1);
+            }
         }
     }
     void StartNextStage()
@@ -115,6 +116,14 @@ public class StageManager : MonoBehaviour
                 currentStage++;
                 break;
         }
+    }
+    private void UpdateNextStageInfo(int currentStage)
+    {
+        currentNormarMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "NormarMonster");
+        currentBossMonsterDB = GameManager.instance.gameEntityData.GetStageDB(currentStage, "BossMonster");
+
+        onInitializedStage?.Invoke(currentStage, currentNormarMonsterDB.iconPath, currentNormarMonsterDB.monsterHP, currentNormarMonsterDB.rewardCoin,
+                                    currentBossMonsterDB.iconPath, currentBossMonsterDB.monsterHP, currentBossMonsterDB.rewardCoin);
     }
     public void PossibleStartStage(bool possible)
     {
